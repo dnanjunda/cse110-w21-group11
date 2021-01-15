@@ -5,6 +5,9 @@
 - Greeting each other
   - Sadly Jonathan wasn't able to make it
   - We'll be discussing future meeting times in a moment
+- Add everyone to the github!
+  - Collect usernames in zoom chat
+  - Can add them to the repo while we move on to discuss the team name
 - Discuss team name
   - Any ideas would be appreciated!
 - Discuss future meeting times
