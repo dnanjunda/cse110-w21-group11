@@ -1,8 +1,9 @@
-# 1/15 Meeting Notes
+# 1/16 Meeting Notes
 
 ## Meeting Outline
 
 - Greeting each other
+  - Go around and say name, year, college, and where they're from
   - Sadly Jonathan wasn't able to make it
   - We'll be discussing future meeting times in a moment
 - Add everyone to the github!
@@ -20,8 +21,9 @@
   - Vote on when to meet in the future
 - Discuss first assignment
   - Group Bonding Event
+  - Ideas: Codenames, Among us, Jackbox
   - Hour long group activity
-  - Due Monday morning
+  - Due Wednesday morning
   - Can hold after the meeting, or schedule for Sunday
   - Could try to hold now, but meeting will go long
 - Vote on when to complete first assignment
