@@ -59,10 +59,10 @@
 - Team 11/All for one and ten for all
 - Meeting at 11:30am on Zoom
 - Met Sasya our TA advisor
-- She won’t be paying attention to the general chat
+  - She won’t be paying attention to the general chat
 - Did a round of general introductions
-- Talked about what everyone thinks of this class
-- Jamie, Dhanush, Brian, Haley, Arela, Ashley, and Ivan all were able to attend the meeting
+  - Talked about what everyone thinks of this class
+  - Jamie, Dhanush, Brian, Haley, Arela, Ashley, and Ivan all were able to attend the meeting
 - Team name is All For One And Ten For All
 - Looks like Thursday 3:30 PM will work for everyone
   - Haley might be at work, and might have variable levels of response
