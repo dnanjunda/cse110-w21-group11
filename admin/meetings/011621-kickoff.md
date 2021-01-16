@@ -27,12 +27,13 @@
   - Due Wednesday at midnight, so we need to get moving
   - There are four of them, and unfortunately none are arbitrarily easy. They'll all take some work
 - Kickoff Meeting
-  - We just did it, yay!
+  - We're already doing it, yay!
 - Group Bonding Event
   - Ideas: Codenames, Among us, Jackbox
   - Hour long group activity
   - Can hold after the meeting, or schedule soon
   - Could try to hold now, but meeting will go long
+  - Need to submit a screenshot of us doing it
 - Group Page
   - Need to make a group page on Github Wiki or Github Pages
     - Should have our team "theme" or "brand"
