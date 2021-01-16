@@ -56,4 +56,41 @@
   
 
 ## Meeting Notes
-- 
+- Team 11/All for one and ten for all
+- Meeting at 11:30am on Zoom
+- Met Sasya our TA advisor
+- She won’t be paying attention to the general chat
+- Did a round of general introductions
+- Talked about what everyone thinks of this class
+- Jamie, Dhanush, Brian, Haley, Arela, Ashley, and Ivan all were able to attend the meeting
+- Team name is All For One And Ten For All
+- Looks like Thursday 3:30 PM will work for everyone
+  - Haley might be at work, and might have variable levels of response
+- Monday at 3:00 we can have our group bonding event
+  - Can play Codenames
+- Maybe hold the video off until Monday, so Jonathan can be included
+- GIthub Page
+  - Brian will take charge on making the initial Github Wiki, will let us know on Slack when he’s got an initial page done
+  - https://ashk233.github.io/
+  - https://haleytran.github.io/
+  - https://lin-ister.github.io/lin-ister.lab2.io/
+  - https://ivluu.github.io/
+  - http://arelae.github.io
+  - https://james-c-lars.github.io/
+  - https://dnanjunda.github.io/
+
+- Rules
+  - Responsive to communication
+    - 6 hours to respond
+    - If you have an urgent question, use individual tags to notify people
+  - Send out a reminder about meetings a day before, but if can’t make it let someone know
+    - Even five minutes before the meeting its okay, just let us know
+  - Don’t commit directly to main, use a separate branch for your own work
+  - Reach out if you’re struggling with your task or unsure what to do
+    - Don’t try to fix everything yourself
+    - Remember you can ask anyone on the team for help
+  - Conflict handling
+    - Talk to someone individually before bringing it up with the group
+    - If someone continues to struggle, bring it up with the group and try to work through it collectively
+    
+- Arela will write the rules markdown document
