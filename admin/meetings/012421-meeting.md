@@ -22,6 +22,35 @@
     - We can divide this up into the different components we were thinking about.
 
 # Meeting Notes:
-- 
-- 
-- 
+- Went over the Miro board and discussed everyone’s ideas
+- Will decide which components we want to keep later after doing research
+- Explained how we will define roles and responsibilities on the team
+  - Everyone filled out the form for roles that we can refer to in the future
+Agreed upon the following components for the initial prototype:
+  - Start button
+  - Stop button
+  - Reset button
+  - Task list
+    - We’re thinking a very simple text box or something equivalent
+- Tasks for this week:
+  - Ivan: Visual design
+  - Ashley: research
+  - Arela: visual design
+  - Brian: technical
+  - Jonathan: visual design
+  - Haley: technical
+  - Dhanush: technical
+  - Jamie: research
+- More details on each task was sent in Slack chat and are recorded here:
+
+### Research Task - Jamie, Ashley:
+
+Write up a page or so of notes on what other pomodoro timers exist and what they do, as well as the theory behind pomodoro timers and how they were intended to work.
+
+### Visual Design Task - Ivan, Arela, Jonathan:
+
+Come up with a few rough sketches of what a pomodoro timer app could look like. This could include the various buttons we might want to include as well as the different ways the user might interact with an app. This could be done through Figma, on paper, or any other way of designing it that you could share with the group.
+
+### Basic Prototype - Dhanush, Haley, Brian:
+
+Begin a basic prototype using HTML, CSS, Javascript. Include a Time Display, Start Button, Stop Button, Reset Button, as well as a Simple Task List. You'll hear more from Dhanush.
