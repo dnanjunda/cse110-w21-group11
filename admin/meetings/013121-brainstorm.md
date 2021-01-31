@@ -5,10 +5,10 @@
 - First let’s take some time to review what we all did over the last week. Some key details we should each include are:
 - What you did
     - Present what you were able to work on! Feel free to share your screen and go into as much detail as you’d like.
-- Summary / Takeaways of your work
-- What you felt you did well / What you struggled with
-- Was this too much work? Not very much?
-- Whether you want to do the same type of thing going forward or try something else out
+    - Summary / Takeaways of your work
+    - What you felt you did well / What you struggled with
+    - Was this too much work? Not very much?
+    - Whether you want to do the same type of thing going forward or try something else out
 - We can contribute popcorn style
 - We should all put our work in the specs/brainstorming folder on Github. If you designed something on figma, take a screenshot or convert it to a PDF.
 
@@ -18,9 +18,9 @@
 - Let’s go over to the Miro board to begin updating our overall game plan
     - https://miro.com/welcomeonboard/3tzxsyuhTFIeOAffXHh2pOyRFZ3OcSU2ukFuYh1MTW96LVnQnQSO0fKdQJ3cws6o
 - First we can take a look at our feature board.
-- I have a couple new features to add. Depending on what people learned over the week, now you could add stuff as well.
+    - I have a couple new features to add. Depending on what people learned over the week, now you could add stuff as well.
 - Hopefully now we can begin to figure out how difficult each of these features would be to implement.  Do we want to shift any of the features from one category to another? Dhanush, Haley, and Brian might have the most input on this given the work they’ve done.
-- Do we want to reevaluate what we should include in a very basic prototype? Do we want to aim, higher, lower?
+    - Do we want to reevaluate what we should include in a very basic prototype? Do we want to aim, higher, lower?
 - Next let’s talk about visual design
 - Ivan, Arela, Jonathan. What were you thinking about and considering as you made your mockup?
     - Color scheme?
