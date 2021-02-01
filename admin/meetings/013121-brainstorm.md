@@ -38,11 +38,11 @@
 - Let’s spend some time and each add an idea for a user to our Miro board, following the steps proposed on the website
     - After 25 minutes we’ll come back with a persona with the different listed traits:
         - Occupation
-- Hobbies
-- Technology familiarity
-- Devices used
-- What do they want to use our timer for?
-- What do they want from our timer?
+        - Hobbies
+        - Technology familiarity
+        - Devices used
+        - What do they want to use our timer for?
+        - What do they want from our timer?
 
 ## Overarching Decisions
 
@@ -91,7 +91,9 @@
 ## Attendance
 
 - Took place at 4 PM on 1/31/21 through Zoom
-- 
+- Everyone attended the meeting
+    - Brian had to leave a bit early and let us know
+        - Might have to get back to him about what he’ll be doing in the upcoming week
 
 ## Review our work
 
@@ -100,14 +102,101 @@
     - I think I got some good information on what types of features we should focus on. I really struggled with my personal time management this week though. I only got my research done a few hours before the meeting. I had a couple midterms which really sapped my time.
     - This was the right amount of work for this week for me, but I think I could handle more work on less busy weeks.
     - I’d be happy to do a bit more research going forward, but I’m also curious to try out some exploratory programming.
+- Brian
+    - Happy to keep working on the timer stuff
+    - Got a basic prototype with some bugs
+    - Not too bad time wise
+- Haley
+    - Wants to keep working on the code stuff before passing it off
+    - Got a basic prototype with some bugs
+    - Good on time
+-Dhanush
+    - Compiled list of resources
+    - Multiple sounds for user to pick
+    - Can just use local storage for our features
+        - Labels, for different tasks
+    - Did a good amount of research into feasibility
+    - Hard to make something unique
+    - Good amount of work
+    - Open to working on other things
+        - Designing or research
+- Ashley
+    - Types of data we can collect from pomodoro
+        - Number of tasks completed
+    - Want to know why user skip a pomodoro
+        - Collect distraction data
+    - Competitive Audit
+        - Looked at very streamlined timer
+            - Time and start button are all that stand out
+            - Different color themes for working vs break
+        - Looked at a focus timer
+            - More designed
+            - Showed time using dots
+            - Task list is weird
+            - Has a desktop version
+            - A markdown editor with a timer
+            - Very unobtrusive design
+        - Gamification of the timer
+            - Every completed work session gives you a cake
+            - Has upper and lower limit for the timer
+                - For breaks versus work sessions
+    - Want to change it up
+    - Good amount of work
+- Ivan
+    - A lot of timers were very monotone. Not much contrast. Hard to tell where all the buttons are when shrunk down for a mobile device
+    - Not colors he’s settled with, but good for contrast
+    - Want background that’s easy on eyes and not black or white
+    - Timer bigger, compared to other timers
+    - Other timers didn’t use space properly. Lots of wasted space
+    - Missing a couple components, but tried to get everything
+    - Went off of Miro board
+    - Think we should minimize the number of secondary windows. Keep it to just one
+        - Basic but nice
+    - Need a way to delete a task or edit a task
+    - Settings it’s inevitable to have another window
+    - Could redo where settings and login are
+    - Mostly struggled with details
+    - Would like some more work
+        - To focus on small details
+    - Would like to help out with the CSS and javascript if anything
+- Arela
+    - Made a few designs
+    - Not sure how much description people might want to enter for tasks
+    - Don’t use timer for much
+    - Went off of Ivan’s settings menu
+        - Liked long and short break button
+    - Played with different colors
+        - Liked the colors more contrasting
+    - Did well with keeping it simple
+    - Not super familiar with how to design stuff, if she spent a bit more time learning
+    - Fine amount of work, perfect amount of work
+    - Okay with designing more, and programming more
+- Jonathan
+    - Wanted to make it as minimal as possible
+    - Don’t want to spend too much time figuring out what to do
+    - Did a simple start/stop button with both functionality on one button
+    - Thought of it more as an iOS app
+    - Wanted to differentiate with colors a lot
+        - Mapping functionality with colors (Green for good, blue for slow down, red for reset)
+    - Needed to have a way to add more tasks, but didn’t necessarily want an add button
+    - Just somewhere for them to click and enter info
+    - Struggled to put content onto the page
+        - One of the first time he designed something. Struggled to use the website
+    - Did really enjoy the learning process of it. Wants to continue to work on it. But could also help out with other stuff
 
 ## Updating the Miro board
 
-- Components of basic prototype: Same?
+- Components of basic prototype:
+    - Tasklist delete, clear
+    - Number of sessions for each
+    - Add in sound after that
 - Visual design
-    - Components of the design
-    - Favorite aspects of each design
-    - Theme of our app
+    - Added a lot of ideas to the Miro board
+
+Feedback:
+- Most people like to have a variation in the color scheme rather than having one or two colors for the whole app
+- Need to be aware of text and button colors if using the changing background color as timer goes down
+- Like the idea of having everything centered on the page
 
 ## User Centered Design Documents
 
@@ -116,14 +205,47 @@
 ## Overarching Decisions
 
 - Gauging how people have felt about our approach to the project so far
-    -
+    - Dhanush
+        - Likes weekly meeting
+        - Giving everyone a chance to do all three things
+    - Ashley
+        - Like the way things are being done
+        - Our meetings have been productive, and everyone is doing their part
+    - Jonathan
+        - Like the discussions so far. Getting a lot of ideas that way
+        - Going forward, just keep doing what we’re doing
+        - Wouldn’t mind midweek check ins
+    - Ivan
+        - Likes the pace at which we’re working
+        - Everyone is getting something done
+        - Cool if everyone could try something they’re not comfortable with
+        - Awesome if final project was fully working web app
+    - Haley
+        - Pace is good
+        - Task splitting is good
+        - Have someone focus on more specific things. Visual design (color), coding (components)
+        - Longer response time for midweek check in
+    - Arela
+        - Like how everything is organized and productive
+        - Liked ability to try design
+        - Good with midweek checkins
+    
+    
 
 ## Work over the next week
 
 - Exploratory Programming / Prototyping
-    - 
+    - Haley - Task list
+    - Brian - Timer
+    - Arela - Sound features
 - Visual Design Iteration
-    - 
+    - Jamie
+    - Ivan
+    - Dhanush
 - System Diagramming
-    - 
+    - Jonathan
+    - Ashley
  
+
+Feedback fro TA:
+Discuss things we are struggling with so that they can help us
