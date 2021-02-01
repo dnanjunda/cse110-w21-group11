@@ -15,3 +15,6 @@ Haley - Prototyping
 
 Brian - Prototyping
 - https://github.com/lin-ister/test.io 
+
+Dhanush - Technical Research
+- https://docs.google.com/document/d/1CExuIGgZs_Gz9JXW3nAYvrZRsPoUjChP2vgFqDcF0bM/edit?usp=sharing
