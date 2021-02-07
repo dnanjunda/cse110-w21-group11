@@ -100,23 +100,28 @@
 ## Review our work
 
 - Jamie
+    - Saved under specs/brainstorming/jamie-tasklist.pdf, specs/brainstorming/jamie-timer.pdf
 - Ashley
+    - Saved under specs/brainstorming/ashley-diagram.drawio.png
     - System Diagram
     - Check off completed tasks
     - Four pomo sessions
     - Struggled with figuring out which type of diagram to use. Some were very complicated.
 - Brian
+    - https://github.com/lin-ister/test.io
     - Got most of everything to work
     - Worked a bit on the task list and the sound design
         - Did a bit of everything
     - Wants to work on the pomodoro intervals
     - More advanced things will have to start earlier
 -Arela
+    - https://github.com/arelae/audioTest
     - Worked on the audio track
     - Got it to start when it gets to 0
     - Will stop when you press stop
     - Not too much time, after learning more about Javascript
 - Dhanush
+    - https://www.figma.com/proto/kMMTpQKblxVTIOI6ilegm3/Pomodoro-Design?node-id=1%3A2&scaling=min-zoom
     - Worked on visual design as well
     - Focused more on colors and simplicity
     - Tried a lighter design and a darker design
@@ -133,6 +138,8 @@
     - Had issues with spacing
     - Maybe change from <p> tag to <table>
     - Pretty easy to figure out once figured out the create element function
+- Jonathan
+    - Saved under specs/brainstorming/jonathan-diagram.png
 
 
 
