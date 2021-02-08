@@ -135,6 +135,7 @@
     - Blues are easier on the eyes, nice color to look at
     - Edit the task list items by clicking on them
 - Haley
+    - https://github.com/haleytran/pomodoro_prototype/blob/main/index.html
     - Worked on the task list
     - Had issues with spacing
     - Maybe change from <p> tag to <table>
