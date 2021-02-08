@@ -128,6 +128,7 @@
     - Had a circle that slowly changed color
     - Had a more striking, dark design
 - Ivan
+    - https://www.figma.com/proto/lalXbGZD5tEYPuAyHfFfAM/Pomodoro?node-id=136%3A10&scaling=min-zoom
     - Visual design
     - Changed colors around
     - Made it darker, thought people wouldn’t like the light background
