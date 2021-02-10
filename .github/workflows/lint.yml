@@ -25,6 +25,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # Enable linters
-          eslint: true
           prettier: true
           styleline: true

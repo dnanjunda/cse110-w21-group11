@@ -1,16 +1,11 @@
 {
-	"name": "cse110-w21-group11",
-	"version": "0.0",
-	"devDependencies": {
-		"eslint": "^7.19.0",
-		"eslint-config-prettier": "^7.2.0",
-		"eslint-config-standard": "^16.0.2",
-		"eslint-plugin-import": "^2.22.1",
-		"eslint-plugin-node": "^11.1.0",
-		"eslint-plugin-promise": "^4.2.1",
-		"prettier": "2.2.1",
-		"stylelint": "^13.9.0",
-		"stylelint-config-prettier": "^8.0.2",
-		"stylelint-config-standard": "^20.0.0"
-	}
+  "name": "cse110-w21-group11",
+  "version": "0.0",
+  "devDependencies": {
+    "prettier": "2.2.1",
+    "stylelint": "^13.9.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^20.0.0"
+  },
+  "dependencies": {}
 }

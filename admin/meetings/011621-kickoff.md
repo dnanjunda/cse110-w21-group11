@@ -53,9 +53,9 @@
 - That's a lot of stuff...
   - We'll need to get started
   - We'll need to divide and conquer with this
-  
 
 ## Meeting Notes
+
 - Team 11/All for one and ten for all
 - Meeting at 11:30am on Zoom
 - Met Sasya our TA advisor
@@ -70,6 +70,7 @@
   - Can play Codenames
 - Maybe hold the video off until Monday, so Jonathan can be included
 - GIthub Page
+
   - Brian will take charge on making the initial Github Wiki, will let us know on Slack when he’s got an initial page done
   - https://ashk233.github.io/
   - https://haleytran.github.io/
@@ -92,5 +93,4 @@
   - Conflict handling
     - Talk to someone individually before bringing it up with the group
     - If someone continues to struggle, bring it up with the group and try to work through it collectively
-    
 - Arela will write the rules markdown document

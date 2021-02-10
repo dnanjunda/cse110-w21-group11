@@ -1,6 +1,7 @@
 # Meeting Outline:
 
 ## Components of a Pomodoro Timer
+
 - We began brainstorming what components might be needed for a Pomodoro Timer. Thanks to everyone who added some ideas!
 - Let’s all take a look at the board and look these ideas over:
   - We can go category by category.
@@ -8,6 +9,7 @@
 - Let’s talk about which features we would want to include for a very basic prototype. Hopefully one we could conceivably get done in a week or so.
 
 ## Team Roles
+
 - As we begin to move forward with the project it would be helpful for us all to clarify our role within the project. At the moment we’re an amorphous collective and it’s hard for us to say where we all stand in relation to the project. Hopefully we’ll be able to clarify that today.
 - At the moment we are still solidly within the design and research phase of our development process. This means that we aren’t going to box people into javascript programmer or ui designer yet. We all still need to generally contribute to the same types of tasks. But as we get a better idea of where we need to be doing, these notes on each of our roles within the team can help guide who takes which tasks.
 - There’s two types of information we need to know so that we can understand our role within the team. We need to know what types of work people are comfortable doing, and how much commitment each of us can give to the project.
@@ -22,11 +24,12 @@
     - We can divide this up into the different components we were thinking about.
 
 # Meeting Notes:
+
 - Went over the Miro board and discussed everyone’s ideas
 - Will decide which components we want to keep later after doing research
 - Explained how we will define roles and responsibilities on the team
   - Everyone filled out the form for roles that we can refer to in the future
-Agreed upon the following components for the initial prototype:
+    Agreed upon the following components for the initial prototype:
   - Start button
   - Stop button
   - Reset button
