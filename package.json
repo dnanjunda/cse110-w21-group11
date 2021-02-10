@@ -2,6 +2,8 @@
   "name": "cse110-w21-group11",
   "version": "0.0",
   "devDependencies": {
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^7.2.0",
     "prettier": "2.2.1",
     "stylelint": "^13.9.0",
     "stylelint-config-prettier": "^8.0.2",
