@@ -19,7 +19,7 @@ function clearList() {
     const taskList = document.getElementById('task-list');
     const noTask = document.getElementById('no-task');
     noTask.style.display = 'inline';
-    while (taskList.childNodes.length >= 4) {
+    while (taskList.childNodes.length > 4) {
         taskList.removeChild(taskList.childNodes[4]);
     }
 }
