@@ -4,7 +4,7 @@ function addTask() {
     const taskName = document.getElementById('task-name');
     const pomoNum = document.getElementById('pomo-num');
 
-    noTask.style.display = 'hidden';
+    noTask.style.display = 'none';
 
     var newTask = taskName.value;
     var newPomo = pomoNum.value;
@@ -17,9 +17,9 @@ function addTask() {
 
 function clearList() {
     const taskList = document.getElementById('task-list');
-    while (taskList.childElementCount > 1) {
-        taskList.removeChild(taskList.childNodes[3]);
-    }
     const noTask = document.getElementById('no-task');
     noTask.style.display = 'inline';
+    while (taskList.childNodes.length >= 4) {
+        taskList.removeChild(taskList.childNodes[4]);
+    }
 }
