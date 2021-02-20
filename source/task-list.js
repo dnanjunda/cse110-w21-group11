@@ -17,14 +17,15 @@ class Task extends HTMLElement {
       wrapper.appendChild(taskName);
       wrapper.appendChild(pomoNum);
 
-      const style = `
-      li {
+      const style = document.createElement('style');
+      style.textContent = `li {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        max-width: 710px;
+        max-width: 200px;
       }
       `
+      shadow.appendChild(style);
   
       shadow.appendChild(wrapper);
     }
