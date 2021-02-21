@@ -2,13 +2,17 @@ class Task extends HTMLElement {
   constructor(task) {
     super();
 
+    const taskList = document.getElementById("task-list");
     const shadow = this.attachShadow({ mode: "open" });
 
     const deleteTask = document.createElement("button");
     deleteTask.setAttribute("id", "delete");
     deleteTask.textContent = "Delete";
     deleteTask.addEventListener("click", function (e) {
-      e.target.parentElement.remove();
+      e.target.getRootNode().host.remove();
+      if (taskList.children.length == 2) {
+        document.getElementById("no-task").style.display = "inline";
+      }
     });
 
     const editTask = document.createElement("button");
@@ -57,6 +61,7 @@ class Task extends HTMLElement {
 
     shadow.appendChild(wrapper);
   }
+  
 }
 
 customElements.define("task-item", Task);
