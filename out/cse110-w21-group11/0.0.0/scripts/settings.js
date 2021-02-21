@@ -49,11 +49,11 @@ window.onload = () => {
             document.getElementById("completePomos").innerHTML = "Number of Complete Pomodoros: " + pomodoro;
             sound();
         }
-        
+
         let pomoBreak = document.getElementById("userPomos").value
         let pomoBreakLength = document.getElementById("breakPomos").value
 
-        if(pomodoro - pomoBreak == 0 && pomodoro != 0){ //TODO: timer not starting anymore
+        if(pomodoro % pomoBreak == 0 && pomodoro != 0){ //TODO: timer not starting anymore
             alert("Time to take a break");
             var longBreak = 60 * pomoBreakLength;
             totalSeconds = longBreak;

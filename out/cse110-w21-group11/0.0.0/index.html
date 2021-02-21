@@ -21,17 +21,17 @@
                             <span class="close">&times;</span>
                             <span id="modal-title"><p>Settings</p></span>
                             <div class="modal-settings-customization">
-                                <p>Pomodoro's Long Break</p>
-                                    <input type="number" class="pomos" id="userPomos"/>
-                                <p>Length of Long Break</p>
-                                    <input type="number" class="pomos" id="breakPomos"/>
-                                <p>Pomodoro Length</p>
-                                    <input type="number" class="minutes" id="userMins"/>
-                                    <input type="number" class="seconds" min="0" step="1" id="userSecs"/>
+                                <p class="settingText">Pomodoro's til Long Break</p>
+                                    <input type="number" placeholder="Pomos" class="pomos" id="userPomos"/>
+                                <p class="settingText">Length of Long Break</p>
+                                    <input type="number" placeholder="Breaks" class="pomos" id="breakPomos"/>
+                                <p class="settingText">Pomodoro Length</p>
+                                    <input type="number" placeholder="Minutes" class="minutes" id="userMins"/>
+                                    <input type="number" placeholder="Seconds" class="seconds" min="0" step="1" id="userSecs"/>
                                     <br><hr style="color: black;"><br>
                                 <!-- <p>Notification Sound</p> -->
                                     <!-- <form action="/action_page.php"> --> <!-- if 2 forms open, task doesnt work -->
-                                    <label for="cars">Notification Sound:</label>
+                                    <label class="settingText">Notification Sound:</label>
                                     <br><br>
                                     <select id="changeSelect" name="alarmMusic" onselect="sound()">
                                         <option value="Chirp">Chirp</option>
@@ -44,7 +44,7 @@
                                 <br>
                                 <fieldset id="volume-controls">
                                     <div id="volume-grid-container">
-                                    <label for="volume-number" id="volume-text">Volume</label>
+                                    <label for="volume-number" class="settingText" id="volume-text">Volume</label>
                                     <input id="volume-number" name="volume-number" type="number" min="0" max="100"
                                         value="100">
                                     <input id="volume-slider" name="volume-slider" type="range" min="0" max="100"
