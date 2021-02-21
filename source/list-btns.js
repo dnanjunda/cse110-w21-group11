@@ -14,6 +14,11 @@ entPomo.addEventListener("keyup", function (e) {
   }
 });
 
+const addButton = document.getElementById("add");
+addButton.addEventListener("click",function(){
+  addTask();
+});
+
 /**
  * Add a new task into the list.
  */
@@ -34,6 +39,10 @@ function addTask() {
   taskList.appendChild(new Task(task));
 }
 
+const clearButton = document.getElementById("clear");
+clearButton.addEventListener("click",function(){
+  clearList();
+});
 /**
  * Clear the current task list.
  */
@@ -41,7 +50,7 @@ function clearList() {
   const taskList = document.getElementById("task-list");
   const noTask = document.getElementById("no-task");
   noTask.style.display = "inline";
-  while (taskList.childNodes.length > 4) {
-    taskList.removeChild(taskList.childNodes[4]);
+  while (taskList.children.length > 2) {
+    taskList.removeChild(taskList.children[2]);
   }
 }
