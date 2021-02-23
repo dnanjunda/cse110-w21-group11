@@ -30,8 +30,13 @@ class Task extends HTMLElement {
       }
     });
 
-    const wrapper = document.createElement("li");
-    wrapper.setAttribute("class", "task");
+    const wrapper = document.createElement("div");
+    wrapper.setAttribute("class", "nested-grid");
+    const wrapper1 = document.createElement("div");
+    const wrapper2 = document.createElement("div");
+    const wrapper3 = document.createElement("div");
+    const wrapper4 = document.createElement("div");
+
     const taskName = document.createElement("p");
     taskName.setAttribute("id", "taskName");
     taskName.textContent = task["taskName"];
@@ -44,18 +49,42 @@ class Task extends HTMLElement {
     pomoNum.setAttribute("readonly", "true");
     pomoNum.value = task["pomoNum"];
 
-    wrapper.appendChild(deleteTask);
-    wrapper.appendChild(editTask);
-    wrapper.appendChild(taskName);
-    wrapper.appendChild(pomoNum);
+    // this.setAttribute("class","nested-grid");
+    wrapper1.appendChild(taskName);
+    wrapper2.appendChild(pomoNum);
+    wrapper3.appendChild(editTask);
+    wrapper4.appendChild(deleteTask);
+
+    wrapper.appendChild(wrapper1);
+    wrapper.appendChild(wrapper2);
+    wrapper.appendChild(wrapper3);
+    wrapper.appendChild(wrapper4);
+    
+
+
+
 
     const style = document.createElement("style");
-    style.textContent = `li {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        max-width: 200px;
+    style.textContent = `.nested-grid {
+          display: grid;
+          grid-template-columns: 45% 25% 15% 15%;
+          padding: 10px;
+          max-width: 100%;
+          min-width: 400px;  
       }
+      
+      .nested-grid > div {
+          font-size: 16px; 
+      }
+
+      button {
+        border-radius: 10px;
+        width: 70px;
+        border: none;
+        padding: 5px;
+    
+        background-color: rgb(102, 128, 146);
+    }
       `;
     shadow.appendChild(style);
 

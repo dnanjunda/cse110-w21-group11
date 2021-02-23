@@ -24,6 +24,7 @@ addButton.addEventListener("click",function(){
  */
 function addTask() {
   const noTask = document.getElementById("no-task");
+  const tasks = document.getElementById("tasks");
   const taskList = document.getElementById("task-list");
   const taskName = document.getElementById("task-name");
   const pomoNum = document.getElementById("pomo-num");
@@ -36,7 +37,8 @@ function addTask() {
     taskName: newTask,
     pomoNum: newPomo,
   };
-  taskList.appendChild(new Task(task));
+  
+  tasks.appendChild(new Task(task));
 }
 
 const clearButton = document.getElementById("clear");
