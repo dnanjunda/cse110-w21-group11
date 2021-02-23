@@ -38,10 +38,13 @@ First, let’s share our progress on last week’s tasks
 - Jamie
   -
 - Ashley
+  - ![Iteration Image](images/TaskList.png)
   - Have task-list.js which is a custom element
   - Didn’t style anything
   - Used a web component
 - Arela
+  - ![Iteration Image](images/BrianPrototypeWithIvanDesign.png)
+  - ![Iteration Image](images/SettingsLogic.png)
   - Worked on the settings menu
   - Already had volume and custom sound working
   - Had timer editing functions
@@ -59,6 +62,7 @@ First, let’s share our progress on last week’s tasks
   - Main thing that people will be working with is Jest
   - The tutorial is pretty good
 - Ivan
+  - ![Iteration Image](images/TaskList2.png)
   - Worked on task list logic with Ashley
   - Each task has a delete and edit button
   - Can also edit the pomodoro number
@@ -67,6 +71,8 @@ First, let’s share our progress on last week’s tasks
   - Had more key shortcuts
   - Just used an HTML unordered list rather than a grid or table
 - Haley
+  - ![Iteration Image](images/TaskListCSS.png)
+  - ![Iteration Image](images/TaskListCSS2.png)
   - Worked on the task list design
   - Used a nest grid to build it
   - Works with what Ivan and Ashley created pretty easily
@@ -76,6 +82,8 @@ First, let’s share our progress on last week’s tasks
   - Basically can copy the structure of Ivan and Haley’s
   - Should work as a subcomponent
 - Jonathan
+  - ![Iteration Image](images/SettingsCSS.png)
+  - ![Iteration Image](images/FormattingIssues.png)
   - Worked on the timer
   - Had a lot of the same work as Arela
   - Tried to turn it into a flexbox
@@ -87,6 +95,7 @@ First, let’s share our progress on last week’s tasks
   - Had some different tags on what she did
   - Tried to make the settings as modular as possible while working with Arela’s HTML code
 - Brian
+  - ![Iteration Image](images/PossibleAnimations.png)
   - Mainly working on the visuals for the timer
   - Worked on getting a rotated timer visual
   - Need to link it to the timer
