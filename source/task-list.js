@@ -21,21 +21,21 @@ class Task extends HTMLElement {
     editTask.addEventListener("click", function (e) {
       if (editTask.textContent === "Edit") {
         editTask.textContent = "Done";
-        editTask.nextSibling.contentEditable = true;
-        editTask.nextSibling.nextSibling.readOnly = false;
+        editTask.previousSibling.previousSibling.contentEditable = true;
+        editTask.previousSibling.readOnly = false;
       } else {
         editTask.textContent = "Edit";
-        editTask.nextSibling.contentEditable = false;
-        editTask.nextSibling.nextSibling.readOnly = true;
+        editTask.previousSibling.previousSibling.contentEditable = false;
+        editTask.previousSibling.readOnly = true;
       }
     });
 
     const wrapper = document.createElement("div");
     wrapper.setAttribute("class", "nested-grid");
-    const wrapper1 = document.createElement("div");
-    const wrapper2 = document.createElement("div");
-    const wrapper3 = document.createElement("div");
-    const wrapper4 = document.createElement("div");
+    // const wrapper1 = document.createElement("div");
+    // const wrapper2 = document.createElement("div");
+    // const wrapper3 = document.createElement("div");
+    // const wrapper4 = document.createElement("div");
 
     const taskName = document.createElement("p");
     taskName.setAttribute("id", "taskName");
@@ -50,15 +50,15 @@ class Task extends HTMLElement {
     pomoNum.value = task["pomoNum"];
 
     // this.setAttribute("class","nested-grid");
-    wrapper1.appendChild(taskName);
-    wrapper2.appendChild(pomoNum);
-    wrapper3.appendChild(editTask);
-    wrapper4.appendChild(deleteTask);
+    wrapper.appendChild(taskName);
+    wrapper.appendChild(pomoNum);
+    wrapper.appendChild(editTask);
+    wrapper.appendChild(deleteTask);
 
-    wrapper.appendChild(wrapper1);
-    wrapper.appendChild(wrapper2);
-    wrapper.appendChild(wrapper3);
-    wrapper.appendChild(wrapper4);
+    // wrapper.appendChild(wrapper1);
+    // wrapper.appendChild(wrapper2);
+    // wrapper.appendChild(wrapper3);
+    // wrapper.appendChild(wrapper4);
     
 
 
