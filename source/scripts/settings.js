@@ -53,6 +53,8 @@ function timeAdvance() {
         timeAdvance();
     }
 }
+// keep count of how many pomodoros have been completed
+document.getElementById("completePomos").innerHTML = "Number of Complete Pomodoros: " + pomodoro;
 
 
 
@@ -248,3 +250,47 @@ slider.oninput = function(){
 numInp.oninput = function(){
     document.getElementById("volume-slider").value = document.getElementById("volume-number").value;
 }
+
+
+
+
+
+/*
+* Task List functions
+*/
+// (function(){
+//     var todo = document.querySelector( '#tasks' ),
+//         form = document.querySelector( 'form' ),
+//         field = document.querySelector( '#newitem' );
+//     form.addEventListener( 'submit', function( event ) {
+//       var text = field.value;
+//       if ( text !== '' ) {
+//         todo.innerHTML += '<li>' + text +
+//           ' <button onclick="Check(this);">check as done</button> <button onclick="Delete(this);">X</button> </li>';
+//         field.value = '';
+//       }
+//       event.preventDefault();
+//     }, false);
+//   })();
+
+// function Check(curr){
+// if(curr.parentNode.innerHTML.charAt(0) == "✓"){
+//     curr.parentNode.innerHTML= curr.parentNode.innerHTML.substring(1);
+// }
+// else{
+//     curr.parentNode.innerHTML = "✓" + curr.parentNode.innerHTML;
+// }
+// }
+
+// function Delete(curr){
+// curr.parentNode.parentNode.removeChild(curr.parentNode);    
+// }
+
+// var listClear = document.getElementById("clearList");
+
+// listClear.addEventListener("click", noList);
+
+// function noList(){
+// var ul = document.getElementById("tasks");
+// ul.innerHTML = "";
+// }
