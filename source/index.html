@@ -8,115 +8,118 @@
 
     <body>
         <div id="main">
-            <div id="SettingsLogin">
-                <button id="settings-btn" onclick="document.getElementById('settings-modal').style.display = 'block'"> 
-                    <img src="images/cog-solid.svg" height="35"/>
-                </button>
+            <body>
+                <div id="all">
+                    <div id="SettingsLogin">
+                    <button id="settings-btn" onclick="document.getElementById('settings-modal').style.display = 'block'"> 
+                        <img src="images/cog-solid.svg" height="35"/>
+                    </button>
 
-                <!-- Settings modal> -->
-                <div id="settings-modal" class="modal">
-                    <div class="modal-settings-content">
-                        <span class="close" onclick="document.getElementById('settings-modal').style.display = 'none'">&times;</span>
-                        <span id="modal-title"><p>Settings</p></span>
+                    <!-- Settings modal> -->
+                    <div id="settings-modal" class="modal">
+                        <div class="modal-settings-content">
+                            <span class="close" onclick="document.getElementById('settings-modal').style.display = 'none'">&times;</span>
+                            <span id="modal-title"><p>Settings</p></span>
 
-                        <!-- Settings customization of breaks/pomos -->
-                        <div class="modal-settings-customization">
-                            
-                            <p class="settingText">Length of Short Break</p>
-                            <input type="number" placeholder="Breaks" class="pomos" id="shortBreakPomos"/>
-
-                            <p class="settingText">Pomodoros til Long Break</p>
-                            <input type="number" placeholder="Pomos" class="pomos" id="userPomos"/>
-                            
-                            <p class="settingText">Length of Long Break</p>
-                            <input type="number" placeholder="Breaks" class="pomos" id="breakPomos"/>
-                            
-                            <p class="settingText">Pomodoro Length</p>
-                            <input type="number" placeholder="Minutes" class="minutes" id="userMins"/>
-                            <input type="number" placeholder="Seconds" class="seconds" min="0" step="1" id="userSecs"/>
-                            
-                            <br><hr style="color: black;"><br>
+                            <!-- Settings customization of breaks/pomos -->
+                            <div class="modal-settings-customization">
                                 
-                            <!-- Notification Sound -->
-                            <label class="settingText">Notification Sound:</label>
-                            
-                            <!-- Line break -->
-                            <br><br>
-                            <form>
-                                <select id="changeSelect" name="alarmMusic" onselect="sound()">
-                                    <option value="Chirp">Chirp</option>
-                                    <option value="Alarm-Clock">Alarm Clock</option>
-                                    <option value="None">None</option>
-                                </select>
-                            </form>
+                                <p class="settingText">Length of Short Break</p>
+                                <input type="number" placeholder="Breaks" class="pomos" id="shortBreakPomos"/>
 
-                            <!-- Thematic break -->
-                            <hr>
+                                <p class="settingText">Pomodoros til Long Break</p>
+                                <input type="number" placeholder="Pomos" class="pomos" id="userPomos"/>
+                                
+                                <p class="settingText">Length of Long Break</p>
+                                <input type="number" placeholder="Breaks" class="pomos" id="breakPomos"/>
+                                
+                                <p class="settingText">Pomodoro Length</p>
+                                <input type="number" placeholder="Minutes" class="minutes" id="userMins"/>
+                                <input type="number" placeholder="Seconds" class="seconds" min="0" step="1" id="userSecs"/>
+                                
+                                <br><hr style="color: black;"><br>
+                                    
+                                <!-- Notification Sound -->
+                                <label class="settingText">Notification Sound:</label>
+                                
+                                <!-- Line break -->
+                                <br><br>
+                                <form>
+                                    <select id="changeSelect" name="alarmMusic" onselect="sound()">
+                                        <option value="Chirp">Chirp</option>
+                                        <option value="Alarm-Clock">Alarm Clock</option>
+                                        <option value="None">None</option>
+                                    </select>
+                                </form>
 
-                            <!-- Second line break -->
-                            <br>
-                            
-                            <!-- Volume adjuster -->
-                            <fieldset id="volume-controls">
-                                <div id="volume-grid-container">
-                                <label for="volume-number" class="settingText" id="volume-text">Volume</label>
-                                <input id="volume-number" name="volume-number" type="number" min="0" max="100"
-                                    value="100">
-                                <input id="volume-slider" name="volume-slider" type="range" min="0" max="100"
-                                    value="100">
-                                </div>
-                            </fieldset>
+                                <!-- Thematic break -->
+                                <hr>
+
+                                <!-- Second line break -->
+                                <br>
+                                
+                                <!-- Volume adjuster -->
+                                <fieldset id="volume-controls">
+                                    <div id="volume-grid-container">
+                                    <label for="volume-number" class="settingText" id="volume-text">Volume</label>
+                                    <input id="volume-number" name="volume-number" type="number" min="0" max="100"
+                                        value="100">
+                                    <input id="volume-slider" name="volume-slider" type="range" min="0" max="100"
+                                        value="100">
+                                    </div>
+                                </fieldset>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Timer  -->
-            <div id="timer-container">
+                <!-- Timer  -->
+                <div id="timer-container">
 
-                <!-- Makes timer into larger font -->
-                <h1>
-                    <div id="timer">
-                        <span id="minute">25</span> : 
-                        <span id="seconds">00</span>
-                    </div>
-                    <!-- Turns start into stop button with changing colors -->
-                    <input type="button" id="mixBut" style="background-color:lightgreen;color:white;width:150px;height:40px;" value="Start Timer" />
-                    <button id="reset-btn" style="background-color:gray;color:white;width:150px;height:40px;">Reset</button>
-                </h1>
-            </div>
-
-            <!-- States the complete number of pomodoros -->
-            <p id="completePomos"></p>
-            <!-- <h2>Tasks:</h2>
-            <br>
-            <div id="tasklist">
-                <div id="task-container">
-                    <div id="tasks-title">   
-                        <div id="tasks-subtitle">
-                            <p style="float: left; width: 33%; text-align: left;">Tasks</p>
-                            <p style="float: right; width: 33%; text-align: right;">Pomodoros</p>
+                    <!-- Makes timer into larger font -->
+                    <h1>
+                        <div id="timer">
+                            <span id="minute">25</span> : 
+                            <span id="seconds">00</span>
                         </div>
-                        <br>
-                    </div>
-                    <ul id="tasks"></ul> -->
-                    <!-- TODO: Add number of pomos next to task -->
-                <!-- </div>
-                <input type="button" id="clearList" value="Clear List" />
-                <form action="#" method="post">
-                    <div>
-                        <h2>Add a task:</h2>
-                        <input type="text" name="newitem" id="newitem" placeholder="New Task" />
-                        <input type="number" name="newitempomo" id="newitempomo" placeholder="# Pomos" />
-                        <input type="submit" value="Add" id="add-btn" />
-                        <input type="reset" value="Clear" id="clear-btn" /> -->
-                        <!-- TODO: Add number of pomos when creating task -->
-                    <!-- </div>
-                </form>
-            </div>  -->
+                        <!-- Turns start into stop button with changing colors -->
+                        <input type="button" id="mixBut" style="background-color:lightgreen;color:white;width:150px;height:40px;" value="Start Timer" />
+                        <button id="reset-btn" style="background-color:gray;color:white;width:150px;height:40px;">Reset</button>
+                    </h1>
+                </div>
 
-        <script src = "scripts/settings.js"></script> 
-        <a href="https://github.com/james-c-lars/cse110-w21-group11.git">SOURCE</a>
+                <!-- States the complete number of pomodoros -->
+                <p id="completePomos"></p>
+                <!-- <h2>Tasks:</h2>
+                <br>
+                <div id="tasklist">
+                    <div id="task-container">
+                        <div id="tasks-title">   
+                            <div id="tasks-subtitle">
+                                <p style="float: left; width: 33%; text-align: left;">Tasks</p>
+                                <p style="float: right; width: 33%; text-align: right;">Pomodoros</p>
+                            </div>
+                            <br>
+                        </div>
+                        <ul id="tasks"></ul> -->
+                        <!-- TODO: Add number of pomos next to task -->
+                    <!-- </div>
+                    <input type="button" id="clearList" value="Clear List" />
+                    <form action="#" method="post">
+                        <div>
+                            <h2>Add a task:</h2>
+                            <input type="text" name="newitem" id="newitem" placeholder="New Task" />
+                            <input type="number" name="newitempomo" id="newitempomo" placeholder="# Pomos" />
+                            <input type="submit" value="Add" id="add-btn" />
+                            <input type="reset" value="Clear" id="clear-btn" /> -->
+                            <!-- TODO: Add number of pomos when creating task -->
+                        <!-- </div>
+                    </form>
+                </div>  -->
+
+                <script src = "scripts/settings.js"></script> 
+                <a href="https://github.com/james-c-lars/cse110-w21-group11.git">SOURCE</a>
+            </body>
         </div>
     </body>
 </html>
