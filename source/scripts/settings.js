@@ -52,6 +52,8 @@ function startTimer() {
         startTimer();
     }
 }
+// keep count of how many pomodoros have been completed
+document.getElementById("completePomos").innerHTML = "Number of Complete Pomodoros: " + pomodoro;
 
 var resetTimer = document.getElementById("reset-btn");
 resetTimer.addEventListener("click", resetButton);
@@ -67,7 +69,6 @@ function startButton(){
     document.getElementById("mixBut").style.background = "indianred";
     mixBut.value = "Stop";
 }
-
 function stopButton(){
     if (intervalId){
         clearInterval(intervalId);
@@ -141,13 +142,9 @@ window.onclick = function(event) {
 
 // var twentyfiveMinutes = 60 * 1;
 
-
-document.getElementById("completePomos").innerHTML = "Number of Complete Pomodoros: " + pomodoro;
 var inputMins = document.getElementById("userMins");
-// TODO: custom seconds(?)
-// var inputSecs = document.getElementById("userSecs");
 inputMins.oninput = function(){
-    Stop(); //so that there's no overlapping timers
+    stopButton(); //so that there's no overlapping timers
     indexMins = 0;
     // doesnt allow for custom timer to start with a 0 and more numbers
     if(inputMins.value.length > 1){
@@ -174,16 +171,18 @@ inputMins.oninput = function(){
         twentyfiveMinutes = 60 * inputMins.value;
     }
     document.getElementById("seconds").innerHTML = '00';
+    
     // minute = 0;
     // seconds = 0;
     totalSeconds = twentyfiveMinutes;
     intervalId = null;
 }
 
+
 // TODO: custom seconds
 var inputSecs = document.getElementById("userSecs");
 inputSecs.oninput = function(){
-  Stop(); //so that there's no overlapping timers
+  stopButton(); //so that there's no overlapping timers
   indexSecs = 0;
   // doesnt allow for custom timer to start with a 0 and more numbers
   if(inputSecs.value.length > 1){
@@ -260,39 +259,39 @@ numInp.oninput = function(){
 /*
 * Task List functions
 */
-(function(){
-    var todo = document.querySelector( '#tasks' ),
-        form = document.querySelector( 'form' ),
-        field = document.querySelector( '#newitem' );
-    form.addEventListener( 'submit', function( event ) {
-      var text = field.value;
-      if ( text !== '' ) {
-        todo.innerHTML += '<li>' + text +
-          ' <button onclick="Check(this);">check as done</button> <button onclick="Delete(this);">X</button> </li>';
-        field.value = '';
-      }
-      event.preventDefault();
-    }, false);
-  })();
+// (function(){
+//     var todo = document.querySelector( '#tasks' ),
+//         form = document.querySelector( 'form' ),
+//         field = document.querySelector( '#newitem' );
+//     form.addEventListener( 'submit', function( event ) {
+//       var text = field.value;
+//       if ( text !== '' ) {
+//         todo.innerHTML += '<li>' + text +
+//           ' <button onclick="Check(this);">check as done</button> <button onclick="Delete(this);">X</button> </li>';
+//         field.value = '';
+//       }
+//       event.preventDefault();
+//     }, false);
+//   })();
 
-function Check(curr){
-if(curr.parentNode.innerHTML.charAt(0) == "✓"){
-    curr.parentNode.innerHTML= curr.parentNode.innerHTML.substring(1);
-}
-else{
-    curr.parentNode.innerHTML = "✓" + curr.parentNode.innerHTML;
-}
-}
+// function Check(curr){
+// if(curr.parentNode.innerHTML.charAt(0) == "✓"){
+//     curr.parentNode.innerHTML= curr.parentNode.innerHTML.substring(1);
+// }
+// else{
+//     curr.parentNode.innerHTML = "✓" + curr.parentNode.innerHTML;
+// }
+// }
 
-function Delete(curr){
-curr.parentNode.parentNode.removeChild(curr.parentNode);    
-}
+// function Delete(curr){
+// curr.parentNode.parentNode.removeChild(curr.parentNode);    
+// }
 
-var listClear = document.getElementById("clearList");
+// var listClear = document.getElementById("clearList");
 
-listClear.addEventListener("click", noList);
+// listClear.addEventListener("click", noList);
 
-function noList(){
-var ul = document.getElementById("tasks");
-ul.innerHTML = "";
-}
+// function noList(){
+// var ul = document.getElementById("tasks");
+// ul.innerHTML = "";
+// }
