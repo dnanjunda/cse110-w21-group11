@@ -18,6 +18,7 @@
 let secondsPerPomo = 60 * 25;           // Number of seconds in single pomo session
 let timeRemaining = secondsPerPomo;     // Time remaining in session in seconds
 let pomodoro = 0;                       // Number of pomodoros completed
+let numLongBreaks = 0;                  // Number of long breaks started
 let intervalId = null;                  // ID of interval calling the timeAdvance method
 
 
@@ -38,23 +39,27 @@ function timeAdvance() {
         pomodoro++;
         timeRemaining = secondsPerPomo;
         clearInterval(intervalId);
-        document.getElementById("completePomos").innerHTML = "Number of Complete Pomodoros: " + pomodoro;
+        document.getElementById("completePomos").innerHTML = "Number of Complete Pomodoros: " + (pomodoro-numLongBreaks);
         sound();
     }
 
     let pomoBreak = document.getElementById("userPomos").value
     let pomoBreakLength = document.getElementById("breakPomos").value
 
-    if(pomodoro % pomoBreak == 0 && pomodoro != 0){ //TODO: timer not starting anymore
-        alert("Time to take a break");
+    if(pomodoro % pomoBreak == 0 && pomodoro != 0){
+        numLongBreaks++;
+        alert("Time to take a long break");
         let longBreak = 60 * pomoBreakLength;
         timeRemaining = longBreak;
         clearInterval(intervalId);
-        timeAdvance();
+        startButton();
+    }
+    else{
+        
     }
 }
 // keep count of how many pomodoros have been completed
-document.getElementById("completePomos").innerHTML = "Number of Complete Pomodoros: " + pomodoro;
+document.getElementById("completePomos").innerHTML = "Number of Complete Pomodoros: " + (pomodoro-numLongBreaks);
 
 
 
@@ -89,7 +94,7 @@ mixBut.addEventListener("click", startButton);
 /**
  * resetButton will be linked to the reset button and resets the pomo session
  */
-function resetButton(){ //TODO: messes up secs if inputted before mins
+function resetButton(){
     timeRemaining = secondsPerPomo;
     //minutes
     if(inputMins.value == ""){
@@ -104,7 +109,6 @@ function resetButton(){ //TODO: messes up secs if inputted before mins
     else{
         document.getElementById("minute").innerHTML = inputMins.value;
     }
-    document.getElementById("seconds").innerHTML = '00';
     //seconds
     if(inputSecs.value == "" || inputSecs.value == "0" ){
         document.getElementById("seconds").innerHTML = '00';
@@ -155,17 +159,18 @@ inputMins.oninput = function(){
     }
     else if(inputMins.value == "0"){
         document.getElementById("minute").innerHTML = '00';
-        secondsPerPomo = inputSecs.value;
+        secondsPerPomo = 0;
     }
     else if(inputMins.value < 10){
         document.getElementById("minute").innerHTML = '0' + inputMins.value;
-        secondsPerPomo = (60 * inputMins.value) + inputSecs.value;
+        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+        secondsPerPomo = addTime;
     }
     else{
         document.getElementById("minute").innerHTML = inputMins.value;
-        secondsPerPomo = (60 * inputMins.value) + inputSecs.value;
+        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+        secondsPerPomo = addTime;
     }
-    document.getElementById("seconds").innerHTML = '00';
     timeRemaining = secondsPerPomo;
     intervalId = null;
 }
@@ -191,11 +196,13 @@ inputSecs.oninput = function(){
   }
   else if(inputSecs.value < 10){
       document.getElementById("seconds").innerHTML = '0' + inputSecs.value;
-      secondsPerPomo = (60 * inputMins.value) + inputSecs.value;
+      var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+      secondsPerPomo = addTime;
   }
   else{
       document.getElementById("seconds").innerHTML = inputSecs.value;
-      secondsPerPomo = (60 * inputMins.value) + inputSecs.value;
+      var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+      secondsPerPomo = addTime;
   }
   timeRemaining = secondsPerPomo;
   intervalId = null;
@@ -207,18 +214,20 @@ inputSecs.oninput = function(){
 * Notfication Sound Functions
 */
 function sound(){
+    // alarm("alarm");
     let x = document.getElementById("changeSelect").value;
     let volLevel = document.getElementById("volume-slider").value / 100;
+    let audioSound;
     if(x == "Chirp"){
-        let audioSound = new Audio('https://freesound.org/data/previews/456/456440_5121236-lq.mp3');
+        audioSound = new Audio('https://freesound.org/data/previews/456/456440_5121236-lq.mp3');
         audioSound.volume = volLevel;
     }
     else if(x == "Alarm-Clock"){
-        let audioSound = new Audio('https://freesound.org/data/previews/219/219244_4082826-lq.mp3');
+        audioSound = new Audio('https://freesound.org/data/previews/219/219244_4082826-lq.mp3');
         audioSound.volume = volLevel;
     }
     else if(x == "None"){
-        let audioSound = new Audio('https://freesound.org/data/previews/219/219244_4082826-lq.mp3');
+        audioSound = new Audio('https://freesound.org/data/previews/219/219244_4082826-lq.mp3');
         audioSound.volume = 0;
     }
     // infinite loop
