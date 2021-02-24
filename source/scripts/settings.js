@@ -2,7 +2,7 @@
 /* 
 - Settings modal not responsive to window size
 - Custom minutes and seconds don’t work together (only changing one of them works at a time)
-  - messes up if secs is inputted before mins
+  - messes up if secs is inputted before mins 
 - When the goal for number of pomodoros for long break is reached, alert for both short break and long break both alert
 - Having short and long breaks not freeze the timer
 - Add JSDoc comments
@@ -18,7 +18,6 @@
 let secondsPerPomo = 60 * 25;           // Number of seconds in single pomo session
 let timeRemaining = secondsPerPomo;     // Time remaining in session in seconds
 let pomodoro = 0;                       // Number of pomodoros completed
-let numLongBreaks = 0;                  // Number of long breaks started
 let intervalId = null;                  // ID of interval calling the timeAdvance method
 
 
@@ -39,27 +38,39 @@ function timeAdvance() {
         pomodoro++;
         timeRemaining = secondsPerPomo;
         clearInterval(intervalId);
-        document.getElementById("completePomos").innerHTML = "Number of Complete Pomodoros: " + (pomodoro-numLongBreaks);
+        document.getElementById("completePomos").innerHTML = "Number of Complete Pomodoros: " + (pomodoro);
         sound();
     }
 
-    let pomoBreak = document.getElementById("userPomos").value
-    let pomoBreakLength = document.getElementById("breakPomos").value
+    let pomoBreak = document.getElementById("userPomos").value;
+    let pomoBreakLength = document.getElementById("breakPomos").value;
+    let pomoShortBreakLength = document.getElementById("shortBreakPomos").value
+    if(pomoBreakLength == 0){
+        pomoBreakLength = 0.5;
+    }
 
     if(pomodoro % pomoBreak == 0 && pomodoro != 0){
-        numLongBreaks++;
+        // alert(pomodoro + " : " + numLongBreaks);
+        // numLongBreaks++;
         alert("Time to take a long break");
         let longBreak = 60 * pomoBreakLength;
         timeRemaining = longBreak;
         clearInterval(intervalId);
         startButton();
+        // pomodoro--;
     }
-    else{
-        
+    // for short breaks(after every pomodoro except when its a long break)
+    else if(pomodoro % pomoBreak != 0 && pomodoro != 0) {
+        alert("Time to take a short break");
+        let shortBreak = 60 * pomoShortBreakLength;
+        timeRemaining = shortBreak;
+        clearInterval(intervalId);
+        startButton();
+        // pomodoro--;
     }
 }
 // keep count of how many pomodoros have been completed
-document.getElementById("completePomos").innerHTML = "Number of Complete Pomodoros: " + (pomodoro-numLongBreaks);
+document.getElementById("completePomos").innerHTML = "Number of Complete Pomodoros: " + (pomodoro);
 
 
 
@@ -70,6 +81,9 @@ document.getElementById("completePomos").innerHTML = "Number of Complete Pomodor
 const mixBut = document.getElementById("mixBut");
 
 function startButton(){
+    if(secondsPerPomo == 0){ // defaults back to 25 mins if both mins and secs 0
+        timeRemaining = 25 * 60;
+    }
     intervalId = setInterval(timeAdvance, 1000);
     console.log("Started");
     mixBut.removeEventListener("click", startButton);
