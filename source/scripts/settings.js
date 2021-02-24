@@ -60,14 +60,14 @@ function timeAdvance() {
         // pomodoro--;
     }
     // for short breaks(after every pomodoro except when its a long break)
-    else if(pomodoro % pomoBreak != 0 && pomodoro != 0) {
-        alert("Time to take a short break");
-        let shortBreak = 60 * pomoShortBreakLength;
-        timeRemaining = shortBreak;
-        clearInterval(intervalId);
-        startButton();
-        // pomodoro--;
-    }
+    // else if(pomodoro % pomoBreak != 0 && pomodoro != 0) {
+    //     alert("Time to take a short break");
+    //     let shortBreak = 60 * pomoShortBreakLength;
+    //     timeRemaining = shortBreak;
+    //     clearInterval(intervalId);
+    //     startButton();
+    //     // pomodoro--;
+    // }
 }
 // keep count of how many pomodoros have been completed
 document.getElementById("completePomos").innerHTML = "Number of Complete Pomodoros: " + (pomodoro);
