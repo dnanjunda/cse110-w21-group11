@@ -90,7 +90,7 @@ a {
     float: right;
   } 
 
-#StartReset {
+#StartResetSpace {
     display: flex;
     justify-content: center;
     flex-direction: row;
