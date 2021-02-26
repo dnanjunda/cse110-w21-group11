@@ -83,8 +83,8 @@ main > div > button {
     display: grid;
     background: #B7DAEB;
     grid-template-columns: auto auto;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    border-radius: 1vw;
+    margin-bottom: 1vw;
 }
 
 #new-task>div, #new-task>p {
@@ -93,15 +93,21 @@ main > div > button {
 
 input {
     background-color: white;
-    border-radius: 10px;
+    border-radius: 1vw;
     margin: auto;
     border: none;
-    margin-bottom: 20px;
+    margin-bottom: 2vw;
+    padding: 1vw;
 }
 
 .grid-item {
     text-align: center;
-    font-size: 24px;
-    padding: 10px;
-    border-radius: 10px;
+    font-size: 2vw;
+}
+
+#no-task {
+    justify-content: center;
+    color: black;
+    background-color: white;
+    font-size: 4vw;
 }
