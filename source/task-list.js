@@ -1,4 +1,4 @@
-class Task extends HTMLElement {
+class Task extends window.HTMLElement {
   constructor(task) {
     super();
 
@@ -10,7 +10,7 @@ class Task extends HTMLElement {
     deleteTask.textContent = "Delete";
     deleteTask.addEventListener("click", function (e) {
       e.target.getRootNode().host.remove();
-      if (taskList.children.length == 2) {
+      if (taskList.children.length === 2) {
         document.getElementById("no-task").style.display = "inline";
       }
     });
@@ -39,7 +39,7 @@ class Task extends HTMLElement {
 
     const taskName = document.createElement("p");
     taskName.setAttribute("id", "taskName");
-    taskName.textContent = task["taskName"];
+    taskName.textContent = task.taskName;
     const pomoNum = document.createElement("input");
     pomoNum.setAttribute("type", "number");
     pomoNum.setAttribute("id", "pomo-num");
@@ -47,7 +47,7 @@ class Task extends HTMLElement {
     pomoNum.setAttribute("min", "1");
     pomoNum.setAttribute("max", "4");
     pomoNum.setAttribute("readonly", "true");
-    pomoNum.value = task["pomoNum"];
+    pomoNum.value = task.pomoNum;
 
     // this.setAttribute("class","nested-grid");
     wrapper.appendChild(taskName);
@@ -93,4 +93,4 @@ class Task extends HTMLElement {
   
 }
 
-customElements.define("task-item", Task);
+window.customElements.define("task-item", Task);

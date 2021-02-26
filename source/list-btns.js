@@ -1,3 +1,5 @@
+/* global Task */
+/* eslint no-undef: "error" */
 const entName = document.getElementById("task-name");
 entName.addEventListener("keyup", function (e) {
   if (e.key === "Enter") {
@@ -25,7 +27,6 @@ addButton.addEventListener("click",function(){
 function addTask() {
   const noTask = document.getElementById("no-task");
   const tasks = document.getElementById("tasks");
-  const taskList = document.getElementById("task-list");
   const taskName = document.getElementById("task-name");
   const pomoNum = document.getElementById("pomo-num");
 
