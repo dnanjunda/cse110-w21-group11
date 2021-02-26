@@ -78,3 +78,30 @@ main > div > button {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+#new-task {
+    display: grid;
+    background: #B7DAEB;
+    grid-template-columns: auto auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#new-task>div, #new-task>p {
+    background-color: #B7DAEB;
+}
+
+input {
+    background-color: white;
+    border-radius: 10px;
+    margin: auto;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.grid-item {
+    text-align: center;
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 10px;
+}
