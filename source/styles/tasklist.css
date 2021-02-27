@@ -1,0 +1,80 @@
+body {
+    max-width: 60%;
+    min-width: 550px;
+    margin: auto;
+    background: white;
+    padding: 10px;
+    text-align: center;
+}
+
+#head {
+    background-color: rgb(135, 204, 231);
+    font-weight: bold;
+    font-size: larger;
+}
+
+.grid-container {
+    display: grid;  
+    background-color: rgb(135, 204, 231);
+    border-radius: 10px;
+    padding: 10px;
+    min-height: 250px;
+}
+
+#tasks {
+    
+    background-color: rgb(243, 241, 239);
+    padding: 10px;
+    min-height: 190px;
+}
+
+.nested-grid {
+    display: grid;
+    grid-template-columns: 45% 25% 15% 15%;
+    padding: 10px;
+    max-width: 100%;
+    min-width: 400px;
+    border: 1px solid black;
+}
+
+.nested-grid > div {
+    font-size: 16px; 
+}
+
+
+
+div > div > button {
+    border-radius: 10px;
+    width: 70px;
+    border: none;
+    padding: 5px;
+
+    background-color: rgb(102, 128, 146);
+}
+
+main > div > button {
+    border: none;
+    border-radius: 25px;
+    width: 150px;
+    height: 40px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+#clear {
+    background-color: rgb(46, 58, 66);
+    color:honeydew;
+    font-weight: bold;
+    padding:10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#add {
+    background-color: rgb(35, 133, 68);
+    color:honeydew;
+    font-weight: bold;
+    padding:10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
