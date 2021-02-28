@@ -17,7 +17,8 @@ entPomo.addEventListener("keyup", function (e) {
 });
 
 const addButton = document.getElementById("add");
-addButton.addEventListener("click",function(){
+addButton.addEventListener("click",function(e){
+  e.preventDefault();
   addTask();
 });
 
@@ -34,6 +35,7 @@ function addTask() {
 
   const newTask = taskName.value;
   const newPomo = pomoNum.value;
+  if (newPomo > 4)
   const task = {
     taskName: newTask,
     pomoNum: newPomo,
