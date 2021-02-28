@@ -48,11 +48,11 @@ clearButton.addEventListener("click",function(){
  * Clear the current task list.
  */
 function clearList() {
-  const taskList = document.getElementById("task-list");
+  const tasks = document.getElementById("tasks");
   const noTask = document.getElementById("no-task");
   noTask.style.display = "inline";
-  while (taskList.children.length > 2) {
-    taskList.removeChild(taskList.children[2]);
+  while (tasks.children.length > 1) {
+    tasks.removeChild(tasks.children[1]);
   }
 }
 
