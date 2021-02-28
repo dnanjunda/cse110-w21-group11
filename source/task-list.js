@@ -32,15 +32,12 @@ class Task extends HTMLElement {
 
     const wrapper = document.createElement("div");
     wrapper.setAttribute("class", "nested-grid");
-    // const wrapper1 = document.createElement("div");
-    // const wrapper2 = document.createElement("div");
-    // const wrapper3 = document.createElement("div");
-    // const wrapper4 = document.createElement("div");
 
     const taskName = document.createElement("p");
     taskName.setAttribute("id", "taskName");
     taskName.textContent = task["taskName"];
     const pomoNum = document.createElement("input");
+
     pomoNum.setAttribute("type", "number");
     pomoNum.setAttribute("id", "pomo-num");
     pomoNum.setAttribute("type", "number");
@@ -49,45 +46,75 @@ class Task extends HTMLElement {
     pomoNum.setAttribute("readonly", "true");
     pomoNum.value = task["pomoNum"];
 
-    // this.setAttribute("class","nested-grid");
     wrapper.appendChild(taskName);
     wrapper.appendChild(pomoNum);
     wrapper.appendChild(editTask);
     wrapper.appendChild(deleteTask);
-
-    // wrapper.appendChild(wrapper1);
-    // wrapper.appendChild(wrapper2);
-    // wrapper.appendChild(wrapper3);
-    // wrapper.appendChild(wrapper4);
     
-
-
-
 
     const style = document.createElement("style");
-    style.textContent = `.nested-grid {
+    style.textContent = 
+    `.nested-grid {
           display: grid;
-          grid-template-columns: 45% 25% 15% 15%;
-          padding: 10px;
-          max-width: 100%;
-          min-width: 400px;  
-      }
-      
-      .nested-grid > div {
-          font-size: 16px; 
+          grid-template-columns: auto auto auto auto;
+          padding-bottom: 5px;
+          padding-left: 0px;
+          margin: auto;
+          align-content: center;
       }
 
-      button {
-        border-radius: 10px;
+      input {
+        border: none;
+        text-align: center;
+        padding-right: 5vw;
+        margin-left: 5vw;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      #taskName {
+        text-align: left;
+        padding-left: 2vw;
+      }
+
+      #taskName:focus {
+        outline: none;
+      }
+
+      #pomo-num {
+        text-align: left;
+      }
+
+      #edit {
+        font-family: Nunito;
         width: 70px;
         border: none;
-        padding: 5px;
-    
+        border-radius: 10px;
         background-color: rgb(102, 128, 146);
-    }
-      `;
-    shadow.appendChild(style);
+        text-align: center;
+        color: white;
+      }
 
+      #edit:focus {
+        outline: none;
+      }
+
+      #delete {
+        font-family: Nunito;
+        width: 70px;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        margin-left: 0px;
+        background-color: #bd0000;
+      }
+      #delete:focus {
+        outline: none;
+      }`;
+
+    shadow.appendChild(style);
     shadow.appendChild(wrapper);
   }
   

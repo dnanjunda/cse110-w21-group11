@@ -1,64 +1,61 @@
 body {
-    max-width: 60%;
-    min-width: 550px;
+    max-width: 50%;
+    min-width: 450px;
     margin: auto;
-    background: white;
-    padding: 10px;
-    text-align: center;
+    background: #08222e;
+    font-family: Nunito;
 }
 
 #head {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    max-width: 100%;
+    min-width: 400px;
     background-color: rgb(135, 204, 231);
     font-weight: bold;
     font-size: larger;
 }
 
-.grid-container {
-    display: grid;  
+#title {
+    color: white;
+    font-size: calc(18px + 1vw);
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+#list-title1 {
+    font-size: calc(10px + 1vw);
+    padding-left: calc(20px + 1vw);
+}
+#list-title2 {
+    text-align: left;
+    font-size: calc(10px + 1vw);
+}
+
+#task-list {
+    display: grid;
+    grid-template-columns: auto;
     background-color: rgb(135, 204, 231);
     border-radius: 10px;
     padding: 10px;
     min-height: 250px;
+    margin-bottom: 20px;
+    color:#08222e;
 }
 
 #tasks {
     
-    background-color: rgb(243, 241, 239);
+    grid-template-columns: auto auto;
+    background-color: white;
     padding: 10px;
     min-height: 190px;
 }
 
-.nested-grid {
-    display: grid;
-    grid-template-columns: 45% 25% 15% 15%;
-    padding: 10px;
-    max-width: 100%;
-    min-width: 400px;
-    border: 1px solid black;
-}
-
-.nested-grid > div {
-    font-size: 16px; 
-}
-
-
-
-div > div > button {
-    border-radius: 10px;
-    width: 70px;
-    border: none;
-    padding: 5px;
-
-    background-color: rgb(102, 128, 146);
-}
-
-main > div > button {
-    border: none;
-    border-radius: 25px;
-    width: 150px;
-    height: 40px;
-    margin-left: 25px;
-    margin-right: 25px;
+#no-task {
+    font-size: calc(18px + .5vw);
+    text-align: center;
+    line-height: 200px;
 }
 
 #clear {
@@ -66,8 +63,7 @@ main > div > button {
     color:honeydew;
     font-weight: bold;
     padding:10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: auto;
 }
 
 #add {
@@ -75,6 +71,117 @@ main > div > button {
     color:honeydew;
     font-weight: bold;
     padding:10px;
-    margin-top: 10px;
+    margin: auto;
+}
+
+#new-task {
+    margin: auto;
+    display:grid;
+    background-color: white;
+    border-radius: 10px;
+    max-width: 350px;
+    grid-template-columns: auto auto;
+    padding-top: 10px;
+    padding-bottom: 25px;
     margin-bottom: 10px;
+    text-align: center;
+    color:#08222e; 
+}
+
+#task-name {
+    margin: auto;
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+#task-name:focus {
+    outline: none;
+}
+
+#pomo-num {
+    margin: auto;
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+#pomo-num:focus {
+    outline: none;
+}
+
+#minus {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    background-color:rgb(35, 133, 68);
+    color: white;
+    line-height: 6px;
+    border: none;
+}
+
+#minus:focus {
+    outline:none;
+}
+
+#plus {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    background-color: #bd0000;
+    color: white;
+    line-height: 5px;
+    border: none;
+}
+
+#plus:focus {
+    outline:none;
+}
+
+#btnGrid {
+    display:grid;
+    grid-template-columns: auto auto;
+    margin: auto;
+    margin-top: 15px;
+    align-content: center;
+    text-align: center;
+    max-width: 250px;
+}
+
+#add {
+    border: none;
+    border-radius: 20px;
+    width: 100px;
+    text-align: center;
+    margin: auto;
+}
+
+#add:focus {
+    outline: none;
+}
+
+#clear {
+    border: none;
+    border-radius: 20px;
+    width: 100px;
+    text-align: center;
+    background-color: #bd0000;
+    margin-left: .5vw;
+}
+#clear:focus {
+    outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
 }
