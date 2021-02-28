@@ -2,7 +2,7 @@ class Task extends HTMLElement {
   constructor(task) {
     super();
 
-    const taskList = document.getElementById("task-list");
+    const taskList = document.getElementById("tasks");
     const shadow = this.attachShadow({ mode: "open" });
 
     const deleteTask = document.createElement("button");
@@ -10,8 +10,8 @@ class Task extends HTMLElement {
     deleteTask.textContent = "Delete";
     deleteTask.addEventListener("click", function (e) {
       e.target.getRootNode().host.remove();
-      if (taskList.children.length == 2) {
-        document.getElementById("no-task").style.display = "inline";
+      if (taskList.children.length == 1) {
+        document.getElementById("no-task").style.display = "block";
       }
     });
 
@@ -22,11 +22,15 @@ class Task extends HTMLElement {
       if (editTask.textContent === "Edit") {
         editTask.textContent = "Done";
         editTask.previousSibling.previousSibling.contentEditable = true;
+        editTask.previousSibling.previousSibling.style.backgroundColor = "#dddbdb";
         editTask.previousSibling.readOnly = false;
+        editTask.previousSibling.style.backgroundColor = "#dddbdb";
       } else {
         editTask.textContent = "Edit";
         editTask.previousSibling.previousSibling.contentEditable = false;
+        editTask.previousSibling.previousSibling.style.backgroundColor = "white";
         editTask.previousSibling.readOnly = true;
+        editTask.previousSibling.style.backgroundColor = "white";
       }
     });
 
@@ -85,6 +89,7 @@ class Task extends HTMLElement {
 
       #pomo-num {
         text-align: left;
+        width: 40px;
       }
 
       #edit {
