@@ -16,8 +16,8 @@ entPomo.addEventListener("keyup", function (e) {
   }
 });
 
-const addButton = document.getElementById("add");
-addButton.addEventListener("click",function(e){
+const form = document.getElementById("form");
+form.addEventListener("submit",function(e){
   e.preventDefault();
   addTask();
 });
@@ -28,20 +28,16 @@ addButton.addEventListener("click",function(e){
 function addTask() {
   const noTask = document.getElementById("no-task");
   const tasks = document.getElementById("tasks");
-  const taskName = document.getElementById("task-name");
-  const pomoNum = document.getElementById("pomo-num");
+  const newTask = document.getElementById("task-name").value;
+  const newPomo = document.getElementById("pomo-num").value;
 
   noTask.style.display = "none";
-
-  const newTask = taskName.value;
-  const newPomo = pomoNum.value;
-  if (newPomo > 4)
-  const task = {
+  
+  tasks.appendChild(new Task({
     taskName: newTask,
     pomoNum: newPomo,
-  };
-  
-  tasks.appendChild(new Task(task));
+  }));
+  document.getElementById("form").reset();
 }
 
 const clearButton = document.getElementById("clear");
@@ -59,3 +55,6 @@ function clearList() {
     taskList.removeChild(taskList.children[2]);
   }
 }
+
+// module.exports.addTask = addTask;
+// module.exports.clearList = clearList;
