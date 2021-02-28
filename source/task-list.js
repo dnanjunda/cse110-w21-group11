@@ -2,44 +2,21 @@ class Task extends window.HTMLElement {
   constructor(task) {
     super();
 
-    const taskList = document.getElementById("task-list");
+    const tasks = document.getElementById("tasks");
     const shadow = this.attachShadow({ mode: "open" });
 
-    const deleteTask = document.createElement("button");
-    deleteTask.setAttribute("id", "delete");
-    deleteTask.textContent = "Delete";
-    deleteTask.addEventListener("click", function (e) {
-      e.target.getRootNode().host.remove();
-      if (taskList.children.length === 2) {
-        document.getElementById("no-task").style.display = "inline";
-      }
-    });
-
-    const editTask = document.createElement("button");
-    editTask.setAttribute("id", "edit");
-    editTask.textContent = "Edit";
-    editTask.addEventListener("click", function (e) {
-      if (editTask.textContent === "Edit") {
-        editTask.textContent = "Done";
-        editTask.previousSibling.previousSibling.contentEditable = true;
-        editTask.previousSibling.readOnly = false;
-      } else {
-        editTask.textContent = "Edit";
-        editTask.previousSibling.previousSibling.contentEditable = false;
-        editTask.previousSibling.readOnly = true;
-      }
-    });
-
-    const wrapper = document.createElement("div");
+    const wrapper = document.createElement("form");
     wrapper.setAttribute("class", "nested-grid");
-    // const wrapper1 = document.createElement("div");
-    // const wrapper2 = document.createElement("div");
-    // const wrapper3 = document.createElement("div");
-    // const wrapper4 = document.createElement("div");
 
     const taskName = document.createElement("p");
     taskName.setAttribute("id", "taskName");
     taskName.textContent = task.taskName;
+    const editName = document.createElement("input");
+    editName.setAttribute("id","edit-name")
+    editName.value = taskName.textContent;
+    editName.setAttribute("required","");
+    editName.style.display = "none";
+
     const pomoNum = document.createElement("input");
     pomoNum.setAttribute("type", "number");
     pomoNum.setAttribute("id", "pomo-num");
@@ -49,8 +26,39 @@ class Task extends window.HTMLElement {
     pomoNum.setAttribute("readonly", "true");
     pomoNum.value = task.pomoNum;
 
+    const deleteTask = document.createElement("button");
+    deleteTask.setAttribute("id", "delete");
+    deleteTask.textContent = "Delete";
+    deleteTask.addEventListener("click", function (e) {
+      e.target.getRootNode().host.remove();
+      if (tasks.children.length === 1 && 
+        document.getElementById("no-task").style.display === "none") {
+        document.getElementById("no-task").style.display = "inline";
+      }
+    });
+
+    const editTask = document.createElement("button");
+    editTask.setAttribute("id", "edit");
+    editTask.textContent = "Edit";
+    wrapper.addEventListener("submit", function(e) {
+      e.preventDefault();
+      if (editTask.textContent === "Edit") {
+        editTask.textContent = "Done";
+        taskName.style.display = "none";
+        editName.style.display = "inline-block";
+        pomoNum.readOnly = false;
+      } else {
+        editTask.textContent = "Edit";
+        taskName.style.display = "block";
+        editName.style.display = "none";
+        taskName.textContent = editName.value;
+        pomoNum.readOnly = true;
+      }
+    });
+
     // this.setAttribute("class","nested-grid");
     wrapper.appendChild(taskName);
+    wrapper.appendChild(editName);
     wrapper.appendChild(pomoNum);
     wrapper.appendChild(editTask);
     wrapper.appendChild(deleteTask);
@@ -72,10 +80,6 @@ class Task extends window.HTMLElement {
           max-width: 100%;
           min-width: 400px;  
       }
-      
-      .nested-grid > div {
-          font-size: 16px; 
-      }
 
       button {
         border-radius: 10px;
@@ -84,7 +88,13 @@ class Task extends window.HTMLElement {
         padding: 5px;
     
         background-color: rgb(102, 128, 146);
-    }
+      }
+
+      #edit-name {
+        text-align: center;
+        font-size: 16px;
+        padding: 12px;
+      }
       `;
     shadow.appendChild(style);
 
