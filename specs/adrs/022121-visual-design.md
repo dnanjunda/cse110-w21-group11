@@ -55,7 +55,7 @@ Chosen option: Ivan’s design, because the color scheme is nice on the eye, and
 - Ivan’s color scheme, which is a dark blue background, orange and white buttons, and lighter blue for other components
 - There was some interest in light blue/pale for the background, but majority voted for dark blue
 - Darker color scheme is more visually appealing and fits with the rest of the components better, but will make the dark blue a few shades lighter
-Orange and light blue for other components add good contrast to the background
+  Orange and light blue for other components add good contrast to the background
 
 ### Settings Menu
 
