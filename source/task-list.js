@@ -67,24 +67,30 @@ class Task extends HTMLElement {
     const style = document.createElement("style");
     style.textContent = `.nested-grid {
           display: grid;
-          grid-template-columns: 45% 25% 15% 15%;
-          padding: 10px;
+          grid-template-columns: 55% 11% 17% 17%;
+          padding:.75vh;
           max-width: 100%;
-          min-width: 400px;  
+          min-width: 65.5vh;  
+          align-items: center;
+          justify-items: center;
       }
       
-      .nested-grid > div {
-          font-size: 16px; 
+      button {
+        align-items: center;
+        border-radius: 1.5vh;
+        width: 9vh;
+        height: 4vh;
+        border: none;
+        background-color: #b9b9c2; 
+        color:honeydew;
+        font-weight: bold;
       }
 
-      button {
-        border-radius: 10px;
-        width: 70px;
-        border: none;
-        padding: 5px;
-    
-        background-color: rgb(102, 128, 146);
-    }
+      #taskName {
+        justify-self: left;
+        margin: 0px;
+        padding-left: 1vh;
+      }
       `;
     shadow.appendChild(style);
 
