@@ -1,82 +1,195 @@
 body {
-    max-width: 60%;
-    min-width: 79.5vh;
+    max-width: 50%;
+    min-width: 450px;
     margin: auto;
     background: #08222e;
-    padding: 1.5vh;
-    text-align: center;
+    font-family: Nunito;
 }
 
 #head {
-    background-color: rgb(135, 204, 231);
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    max-width: 100%;
+    min-width: 400px;
+    background-color: #c7edff;
     font-weight: bold;
     font-size: larger;
 }
 
-.grid-container {
-    display: grid;  
-    background-color: rgb(135, 204, 231);
-    border-radius: 1.5vh;
-    padding: 1.5vh;
-    min-height: 30vh;
-    font-family: Arial, Helvetica, sans-serif;
+#title {
+    color: white;
+    font-size: calc(18px + 1vw);
+    padding-bottom: 5px;
+    text-align: center;
 }
 
-#tasks {  
-    background-color: rgb(243, 241, 239);
-    min-height: 30vh;
-    border-radius: 1.5vh;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
+#list-title1 {
+    font-size: calc(10px + 1vw);
+    padding-left: calc(20px + 1vw);
+}
+#list-title2 {
+    text-align: left;
+    font-size: calc(10px + 1vw);
 }
 
-.nested-grid {
+#task-list {
     display: grid;
-    grid-template-columns: 55% 11% 34%;
-    padding-left: 1.5vh;
-    padding-bottom: 1.5vh;
-    padding-right: 1.5vh;
-    max-width: 100%;
-    min-width: 65.5vh;
-    align-items: center;
-    justify-items: center;
+    grid-template-columns: auto;
+    background-color: #c7edff;
+    border-radius: 10px;
+    padding: 10px;
+    min-height: 250px;
+    margin-bottom: 20px;
+    color:#08222e;
 }
 
-main > div > span > button {
+#tasks {
+    
+    grid-template-columns: auto auto;
+    background-color: white;
+    padding: 10px;
+    min-height: 190px;
+}
+
+#no-task {
+    font-size: calc(18px + .5vw);
+    text-align: center;
+    line-height: 200px;
+}
+
+#new-task {
+    margin: auto;
+    display:grid;
+    background-color: white;
+    border-radius: 10px;
+    max-width: 350px;
+    grid-template-columns: auto auto;
+    padding-top: 10px;
+    padding-bottom: 25px;
+    margin-bottom: 10px;
+    text-align: center;
+    color:#08222e; 
+}
+
+#task-name {
+    margin: auto;
     border: none;
-    border-radius: 3.5vh;
-    width: 21.5vh;
-    height: 5.5vh;
-    margin-left: 3.5vh;
-    margin-right: 3.5vh;
+    border-radius: 10px;
+    height: 30px;
+    background-color: #f0f0f0;
+    text-align: center;
 }
 
-button {
-    justify-self: right;
-    border-radius: 1.5vh;
-    width: 15vh;
-    height: 5vh;
+#task-name:focus {
+    outline: none;
+}
+
+#pomo-num {
+    margin: auto;
     border: none;
-    background-color: rgb(208, 180, 240); 
-    color:honeydew;
-    font-weight: bolder;
-    font-size: large;
+    border-radius: 10px;
+    height: 30px;
+    background-color: #f0f0f0;
+    text-align: center;
 }
 
-#clear-all > .button-off {
-    background-color: rgb(131, 159, 179);
-    color:honeydew;
-    font-weight: bold;
-    padding: 1.5vh;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
+#pomo-num:focus {
+    outline: none;
+}
+
+#minus {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    background-color:rgb(35, 133, 68);
+    color: white;
+    line-height: 6px;
+    border: none;
+}
+
+#minus:focus {
+    outline:none;
+}
+
+#minus:hover {
+    background-color: rgb(45, 173, 88);
+}
+
+#plus {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    background-color: #bd0000;
+    color: white;
+    line-height: 5px;
+    border: none;
+}
+
+#plus:focus {
+    outline:none;
+}
+
+#plus:hover {
+    background-color: #e22424;
+}
+
+#btnGrid {
+    display:grid;
+    grid-template-columns: auto auto;
+    margin: auto;
+    margin-top: 15px;
+    align-content: center;
+    text-align: center;
+    max-width: 250px;
 }
 
 #add {
-    background-color: rgb(73, 165, 104);
-    color:honeydew;
-    font-weight: bold;
-    padding: 1.5vh;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
+    border: none;
+    border-radius: 20px;
+    background-color: #c7edff;
+    color: #08222e;
+    font-family: Nunito;
+    padding:10px;
+    width: 100px;
+    text-align: center;
+    margin: auto;
+}
+
+#add:focus {
+    outline: none;
+}
+#add:hover {
+    outline: none;
+    background-color: #97d4f3;
+}
+
+#clear {
+    border: none;
+    border-radius: 20px;
+    background-color: #ff671d;
+    color: white;
+    font-family: Nunito;
+    padding:10px;
+    width: 100px;
+    text-align: center;
+    margin-left: .5vw;
+}
+#clear:focus {
+    outline: none;
+}
+
+#clear:hover {
+    outline: none;
+    background-color: #ff8d53;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
 }
