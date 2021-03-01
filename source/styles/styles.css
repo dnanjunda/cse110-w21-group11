@@ -44,59 +44,8 @@ a {
     color: #b7daeb;
 }
 
-<<<<<<< HEAD
 /* Not used */
 /* #StartReset {
-=======
-#SettingsLogin {
-    /* display: flex; */
-    /* justify-content: center; */
-    flex-direction: row;
-    font-size: 1.25em;
-    /* align-items: center; */
-    /* padding: 1%; */
-    /* padding-bottom: 10%; */
-}
-
-#settings {
-    background-color: #C4B480;
-    margin: 0 auto;
-    border-radius: 10%;
-    padding: .25rem;  
-}
- .settings-btn {
-    background-color: rgba(251, 251, 251, 0.6);
-    background-repeat: no-repeat;
-    /* background-position: 50% 50%;
-    margin: 0 auto; */
-    float: left;
-    border: none;
-  } 
-  
-/* button span {
-    display: none;
-} */
-
-#login { 
-    background-color: #C4B480;
-    margin: 0 auto;
-    border-radius: 10%;
-    padding: .25rem;
-}
-.login-btn {
-    background-color: #ff671d;
-    background-repeat: no-repeat;
-    /* background-position: 50% 50%;
-    margin: 0 auto; */
-    /* put the height and width of your image here */
-    /* height: 50px;
-    width: 100px; */
-    border: none;
-    float: right;
-  } 
-
-#StartResetSpace {
->>>>>>> 3af749f088a01fc3a2c4b4df62da6c51349c99e0
     display: flex;
     justify-content: center;
     flex-direction: row;
