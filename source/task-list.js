@@ -2,7 +2,7 @@ class Task extends HTMLElement {
   constructor(task) {
     super();
 
-    const taskList = document.getElementById("task-list");
+    const taskList = document.getElementById("tasks");
     const shadow = this.attachShadow({ mode: "open" });
 
     const deleteTask = document.createElement("button");
@@ -10,8 +10,8 @@ class Task extends HTMLElement {
     deleteTask.textContent = "Delete";
     deleteTask.addEventListener("click", function (e) {
       e.target.getRootNode().host.remove();
-      if (taskList.children.length == 2) {
-        document.getElementById("no-task").style.display = "inline";
+      if (taskList.children.length == 1) {
+        document.getElementById("no-task").style.display = "block";
       }
     });
 
@@ -22,25 +22,26 @@ class Task extends HTMLElement {
       if (editTask.textContent === "Edit") {
         editTask.textContent = "Done";
         editTask.previousSibling.previousSibling.contentEditable = true;
+        editTask.previousSibling.previousSibling.style.backgroundColor = "#dddbdb";
         editTask.previousSibling.readOnly = false;
+        editTask.previousSibling.style.backgroundColor = "#dddbdb";
       } else {
         editTask.textContent = "Edit";
         editTask.previousSibling.previousSibling.contentEditable = false;
+        editTask.previousSibling.previousSibling.style.backgroundColor = "white";
         editTask.previousSibling.readOnly = true;
+        editTask.previousSibling.style.backgroundColor = "white";
       }
     });
 
     const wrapper = document.createElement("div");
     wrapper.setAttribute("class", "nested-grid");
-    // const wrapper1 = document.createElement("div");
-    // const wrapper2 = document.createElement("div");
-    // const wrapper3 = document.createElement("div");
-    // const wrapper4 = document.createElement("div");
 
     const taskName = document.createElement("p");
     taskName.setAttribute("id", "taskName");
     taskName.textContent = task["taskName"];
     const pomoNum = document.createElement("input");
+
     pomoNum.setAttribute("type", "number");
     pomoNum.setAttribute("id", "pomo-num");
     pomoNum.setAttribute("type", "number");
@@ -49,51 +50,76 @@ class Task extends HTMLElement {
     pomoNum.setAttribute("readonly", "true");
     pomoNum.value = task["pomoNum"];
 
-    // this.setAttribute("class","nested-grid");
     wrapper.appendChild(taskName);
     wrapper.appendChild(pomoNum);
     wrapper.appendChild(editTask);
     wrapper.appendChild(deleteTask);
-
-    // wrapper.appendChild(wrapper1);
-    // wrapper.appendChild(wrapper2);
-    // wrapper.appendChild(wrapper3);
-    // wrapper.appendChild(wrapper4);
     
 
-
-
-
     const style = document.createElement("style");
-    style.textContent = `.nested-grid {
+    style.textContent = 
+    `.nested-grid {
           display: grid;
-          grid-template-columns: 55% 11% 17% 17%;
-          padding:.75vh;
-          max-width: 100%;
-          min-width: 65.5vh;  
-          align-items: center;
-          justify-items: center;
+          grid-template-columns: auto auto auto auto;
+          padding-bottom: 5px;
+          padding-left: 0px;
+          margin: auto;
+          align-content: center;
       }
-      
-      button {
-        align-items: center;
-        border-radius: 1.5vh;
-        width: 9vh;
-        height: 4vh;
+
+      input {
         border: none;
-        background-color: #b9b9c2; 
-        color:honeydew;
-        font-weight: bold;
+        text-align: center;
+        padding-right: 5vw;
+        margin-left: 5vw;
+      }
+
+      input:focus {
+        outline: none;
       }
 
       #taskName {
-        justify-self: left;
-        margin: 0px;
-        padding-left: 1vh;
+        text-align: left;
+        padding-left: 2vw;
       }
-      `;
-    shadow.appendChild(style);
 
+      #taskName:focus {
+        outline: none;
+      }
+
+      #pomo-num {
+        text-align: left;
+        width: 40px;
+      }
+
+      #edit {
+        font-family: Nunito;
+        width: 70px;
+        border: none;
+        border-radius: 10px;
+        background-color: rgb(102, 128, 146);
+        text-align: center;
+        color: white;
+      }
+
+      #edit:focus {
+        outline: none;
+      }
+
+      #delete {
+        font-family: Nunito;
+        width: 70px;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        margin-left: 0px;
+        background-color: #bd0000;
+      }
+      #delete:focus {
+        outline: none;
+      }`;
+
+    shadow.appendChild(style);
     shadow.appendChild(wrapper);
   }
   
