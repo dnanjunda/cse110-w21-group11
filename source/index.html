@@ -3,6 +3,12 @@
     <head>
         <link rel="stylesheet" href="styles/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="stylesheet" href="./styles/tasklist.css">
+        <link
+          href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap"
+          rel="stylesheet"
+        />
         <meta charset="utf-8"> 
     </head>
 
@@ -89,35 +95,50 @@
             <br>
             <!-- States the complete number of pomodoros -->
             <p id="completePomos"> Number of Complete Pomodors </p>
-            <!-- <h2>Tasks:</h2>
-            <br>
-            <div id="tasklist">
-                <div id="task-container">
-                    <div id="tasks-title">   
-                        <div id="tasks-subtitle">
-                            <p style="float: left; width: 33%; text-align: left;">Tasks</p>
-                            <p style="float: right; width: 33%; text-align: right;">Pomodoros</p>
-                        </div>
-                        <br>
-                    </div>
-                    <ul id="tasks"></ul> -->
-                    <!-- TODO: Add number of pomos next to task -->
-                <!-- </div>
-                <input type="button" id="clearList" value="Clear List" />
-                <form action="#" method="post">
-                    <div>
-                        <h2>Add a task:</h2>
-                        <input type="text" name="newitem" id="newitem" placeholder="New Task" />
-                        <input type="number" name="newitempomo" id="newitempomo" placeholder="# Pomos" />
-                        <input type="submit" value="Add" id="add-btn" />
-                        <input type="reset" value="Clear" id="clear-btn" /> -->
-                        <!-- TODO: Add number of pomos when creating task -->
-                    <!-- </div>
-                </form>
-            </div>  -->
+            <div id="title">TASKS</div>
 
+            <section id="task-list" class="grid-container">
+
+                <div id="head" class="nested-grid">
+                    <div class="grid-item" id="list-title1">Task</div>
+                    <div class="grid-item" id="list-title2">Time</div>
+                    <div class="grid-item"></div>          
+                    <div class="grid-item"></div>
+                </div>
+
+                <div id="tasks">
+                    <div id="no-task">
+                    Tasks Complete!
+                    </div>
+                </div>
+
+            </section>
+
+            </div>
+            <div id="new-task" class="grid-container">
+                <div class="grid-item" id="task-title1">Task</div>
+                <div class="grid-item" id="task-title2">Pomos</div>
+                <div><input class="grid-item" type="text" id="task-name" placeholder="Task name"/></div>
+                <div>
+                <button id="minus" onclick="decrement()">-</button>
+                <input class="grid-item" type="number" id="pomo-num" placeholder="1" min="1" max="4"/>
+                <button id="plus" onclick="increment()">+</button>
+                </div>
+                
+            </div>
+
+            <div id="btnGrid" class="grid-container">
+                <div><button id="add" class="button-on" type="submit">ADD</button></div>
+                <div><button id="clear" class="button-off" type="button" onclick="clearList()">CLEAR</button></div>
+            </div>
+
+            <script src="./task-list.js"></script>
+            <script src="./list-btns.js"></script>
             <script src = "scripts/settings.js"></script> 
             <a href="https://github.com/james-c-lars/cse110-w21-group11.git">SOURCE</a>
         </div>
     </body>
+    <footer>
+      <!-- <div style="color: white;">Icons made by <a href="" style="color: white;" title="Icongeek26">Icongeek26</a> from <a style="color: white;" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+    </footer>
 </html>
