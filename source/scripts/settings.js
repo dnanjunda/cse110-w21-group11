@@ -45,9 +45,9 @@ function timeAdvance() {
     let pomoBreak = document.getElementById("userPomos").value;
     let pomoBreakLength = document.getElementById("breakPomos").value;
     let pomoShortBreakLength = document.getElementById("shortBreakPomos").value
-    if(pomoBreakLength == 0){
-        pomoBreakLength = 0.5;
-    }
+    // if(pomoBreakLength == 0){
+    //     pomoBreakLength = 0.5;
+    // }
 
     if(pomodoro % pomoBreak == 0 && pomodoro != 0){
         // alert(pomodoro + " : " + numLongBreaks);
@@ -180,6 +180,11 @@ inputMins.oninput = function(){
         var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
         secondsPerPomo = addTime;
     }
+    else if(inputMins.value > 59){ //max mins for pomo timer 2 hours
+        inputMins.value = 59;
+        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+        secondsPerPomo = addTime;
+    }
     else{
         document.getElementById("minute").innerHTML = inputMins.value;
         var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
@@ -213,6 +218,11 @@ inputSecs.oninput = function(){
       var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
       secondsPerPomo = addTime;
   }
+  else if(inputSecs.value >= 60){ //max mins for pomo timer 2 hours
+    inputSecs.value = 59;
+    var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+    secondsPerPomo = addTime;
+}
   else{
       document.getElementById("seconds").innerHTML = inputSecs.value;
       var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
