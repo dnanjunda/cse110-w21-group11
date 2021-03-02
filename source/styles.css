@@ -1,0 +1,253 @@
+html {
+  background-color: #fbfbfb;
+}
+
+body {
+  background-color: #08222e;
+  padding-bottom: 100%;
+  margin: 0;
+  color: #fbfbfb;
+}
+
+a {
+  color: #fbfbfb;
+  background-color: #1b3642;
+  height: 1.5rem;
+  width: 5rem;
+  text-align: center;
+  padding: 5px 0;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+#all {
+  background-color: #1b3642;
+  width: 20rem;
+  margin: 0 auto;
+  margin-top: 1em;
+  padding: 4rem;
+  border-radius: 25px;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#timer {
+  display: flex;
+  justify-content: center;
+  font-size: 4em;
+  /* margin-top: 1rem; */
+  color: #b7daeb;
+}
+
+#SettingsLogin {
+  /* display: flex; */
+  /* justify-content: center; */
+  flex-direction: row;
+  font-size: 1.25em;
+  /* align-items: center; */
+  /* padding: 1%; */
+  /* padding-bottom: 10%; */
+}
+
+#settings {
+  background-color: #c4b480;
+  margin: 0 auto;
+  border-radius: 10%;
+  padding: 0.25rem;
+}
+.settings-btn {
+  background-color: rgba(251, 251, 251, 0.6);
+  background-repeat: no-repeat;
+  /* background-position: 50% 50%;
+    margin: 0 auto; */
+  float: left;
+  border: none;
+}
+
+#login {
+  background-color: #c4b480;
+  margin: 0 auto;
+  border-radius: 10%;
+  padding: 0.25rem;
+}
+.login-btn {
+  background-color: #ff671d;
+  background-repeat: no-repeat;
+  /* background-position: 50% 50%;
+    margin: 0 auto; */
+  /* put the height and width of your image here */
+  /* height: 50px;
+    width: 100px; */
+  border: none;
+  float: right;
+}
+
+#StartReset {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  font-size: 2em;
+  padding: 1%;
+  padding-top: 1em;
+  align-items: center;
+}
+
+ul {
+  text-align: left;
+}
+
+/* start btn */
+#mixBut {
+  background-color: #fbfbfb;
+  color: #2b2b2b;
+  margin: 0 auto;
+  float: left;
+  padding: 0.25rem;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+#reset-btn {
+  background-color: #ff671d;
+  margin: 0 auto;
+  float: right;
+  padding: 0.25rem;
+  border-radius: 25px;
+  color: #fbfbfb;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+#task-container {
+  background-color: #b8daeb;
+  border-radius: 15px;
+  align-items: center;
+  color: #07232e;
+  text-align: center;
+  padding-bottom: 3px;
+  margin-bottom: 0.5rem;
+}
+
+#tasks {
+  background-color: #fbfbfb;
+  color: #2b2b2b;
+  padding: 1rem;
+  margin: 0.5em;
+  /* border-radius: 25px; */
+}
+
+#completePomos {
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#newitempomo {
+  width: 5em;
+}
+
+#add-btn {
+  background-color: #fbfbfb;
+  color: #2b2b2b;
+  margin: 0 auto;
+  /* float: left; */
+  padding: 0.25rem;
+  border-radius: 25px;
+  /* font-weight: bold; */
+  /* font-size: 1.5rem; */
+}
+
+#clear-btn,
+#clearList {
+  background-color: #fbfbfb;
+  color: #2b2b2b;
+  margin: 0 auto;
+  /* float: left; */
+  padding: 0.25rem;
+  border-radius: 25px;
+  /* font-weight: bold; */
+  /* font-size: 1.5rem; */
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+#settings-modal {
+  background-color: transparent;
+}
+
+/* whole modal popup */
+.modal-settings-content {
+  /* display: flex;
+    flex-direction: column; */
+  background-color: #fefefe;
+  color: #2b2b2b;
+  margin: 4em auto; /* 15% from the top and centered */
+  padding: 25px;
+  /* change padding for modal size */
+  padding-bottom: 1em;
+  border: 1px solid #888;
+  /* min-width: 100px; */
+  max-width: 20vw;
+  /* white-space:nowrap; */
+}
+
+#modal-title {
+  font-size: 3vw;
+  text-align: center;
+  vertical-align: top;
+}
+
+.modal-settings-customization {
+  border-top: 0.1vw solid black;
+  font-size: 1.5vw;
+  width: 100%;
+}
+
+.minutes {
+  width: 45%;
+  float: left;
+}
+
+.seconds {
+  width: 45%;
+  float: right;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #2b2b2b;
+  text-decoration: none;
+  cursor: pointer;
+}
