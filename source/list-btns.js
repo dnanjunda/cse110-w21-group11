@@ -48,12 +48,28 @@ clearButton.addEventListener("click",function(){
  * Clear the current task list.
  */
 function clearList() {
-  const tasks = document.getElementById("tasks");
+  const taskList = document.getElementById("tasks");
   const noTask = document.getElementById("no-task");
-  noTask.style.display = "inline";
-  while (tasks.children.length > 1) {
-    tasks.removeChild(tasks.children[1]);
-  }
+  noTask.style.display = "block";
+  while (taskList.children.length > 1) {
+    taskList.removeChild(taskList.children[1]);
+  } 
+}
+
+/**
+ * Increment pomos by 1 when plus button is pressed.
+ */
+function increment(){
+  document.getElementById("pomo-num").stepUp();
+
+}
+
+/**
+ * Decrement pomos by 1 when plus button is pressed.
+ */
+function decrement(){
+  document.getElementById("pomo-num").stepDown();
+
 }
 
 // module.exports.addTask = addTask;

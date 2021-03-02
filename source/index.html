@@ -12,70 +12,42 @@
   </head>
   <body>
     <main>
-      <div id="icons">
-        <img id="Settings" src="./assets/Settings.svg" alt="Settings" />
-        <p id="current-session" style="color: white; font-size: 3rem">FOCUS</p>
-        <img id="Profile" src="./assets/Profile.svg" alt="Profile" />
-      </div>
-      <div id="timer">25:00</div>
-      <div id="buttons">
-        <button id="start" class="button-on">START</button>
-        <button id="reset" class="button-off">RESET</button>
-      </div>
+      
       <div id="title">TASKS</div>
-      <section id="task-list" class="grid-container">
-          <div id="head" class="nested-grid">
-            <span> Task </span>
-            <span> Time </span>
-                <span> Edit </span>
-                <span> Delete </span>
-          </div>
-          <div id="tasks">
-            <div id="no-task" style="display: inline">ALL COMPLETED!</div>
 
+      <section id="task-list" class="grid-container">
+
+          <div id="head" class="nested-grid">
+            <div class="grid-item" id="list-title1">Task</div>
+            <div class="grid-item" id="list-title2">Time</div>
+            <div class="grid-item"></div>          
+            <div class="grid-item"></div>
+          </div>
+
+          <div id="tasks">
+            <div id="no-task">
+            Tasks Complete!
+            </div>
           </div>
         </section>
       </div>
-      <div><form id="form">
-        <div id="new-task">
-          <p class="grid-item">Task</p>
-          <p class="grid-item">Pomos</p>
-          <input
-            class="grid-item"
-            type="text"
-            id="task-name"
-            placeholder="Task name"
-            required
-          />
-          <input
-            class="grid-item"
-            type="number"
-            id="pomo-num"
-            value="1"
-            min="1"
-            max="4"
-          />
-          <!-- <div class="grid-item" id="tomatoes"> -->
-          <!-- <img id="pomo1" alt="no" src="./assets/tomato_color.svg"></img>
-                      <img id="pomo2" alt="no" src="./assets/tomato_white.svg"></img>
-                      <img id="pomo3" alt="no" src="./assets/tomato_white.svg"></img>
-                      <img id="pomo4" alt="no" src="./assets/tomato_white.svg"></img></div> -->
+      <form id="form">
+        <div id="new-task" class="grid-container">
+          <p class="grid-item" id="task-title1">Task</p>
+          <p class="grid-item" id="task-title2">Pomos</p>
+          <input class="grid-item" type="text" id="task-name" placeholder="Task name" required/>
+          <div>
+            <button id="minus" type="button" onclick="decrement()">-</button>
+            <input class="grid-item" type="number" id="pomo-num" value="1" min="1" max="4"/>
+            <button id="plus" type="button" onclick="increment()">+</button>
+          </div>
+          
         </div>
-        <div id="submit-new">
-          <button id="add" class="button-on" type="submit">
-            ADD
-          </button>
+        <div id="btnGrid" class="grid-container">
+          <button id="add" class="button-on" type="submit">ADD</button>
+          <button id="clear" class="button-off" type="button" onclick="clearList()">CLEAR</button>
         </div>
-      </form></div>
-      
-      <div id="clear-all">
-        <button
-          id="clear"
-          class="button-off"
-          type="button"
-        >
-          CLEAR
-        </button>
+      </form>
       </div>
     </main>
     <script src="./task-list.js"></script>

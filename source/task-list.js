@@ -9,7 +9,7 @@ class Task extends window.HTMLElement {
     wrapper.setAttribute("class", "nested-grid");
 
     const taskName = document.createElement("p");
-    taskName.setAttribute("id", "taskName");
+    taskName.setAttribute("id", "task-name");
     taskName.textContent = task.taskName;
     const editName = document.createElement("input");
     editName.setAttribute("id","edit-name")
@@ -33,7 +33,7 @@ class Task extends window.HTMLElement {
       e.target.getRootNode().host.remove();
       if (tasks.children.length === 1 && 
         document.getElementById("no-task").style.display === "none") {
-        document.getElementById("no-task").style.display = "inline";
+        document.getElementById("no-task").style.display = "block";
       }
     });
 
@@ -45,14 +45,18 @@ class Task extends window.HTMLElement {
       if (editTask.textContent === "Edit") {
         editTask.textContent = "Done";
         taskName.style.display = "none";
-        editName.style.display = "inline-block";
+        editName.style.display = "block";
+        editName.style.backgroundColor = "#dddbdb";
         pomoNum.readOnly = false;
+        pomoNum.style.backgroundColor = "#dddbdb";
       } else {
         editTask.textContent = "Edit";
         taskName.style.display = "block";
         editName.style.display = "none";
+        editName.style.backgroundColor = "white";
         taskName.textContent = editName.value;
         pomoNum.readOnly = true;
+        pomoNum.style.backgroundColor = "white";
       }
     });
 
@@ -62,42 +66,70 @@ class Task extends window.HTMLElement {
     wrapper.appendChild(pomoNum);
     wrapper.appendChild(editTask);
     wrapper.appendChild(deleteTask);
-
-    // wrapper.appendChild(wrapper1);
-    // wrapper.appendChild(wrapper2);
-    // wrapper.appendChild(wrapper3);
-    // wrapper.appendChild(wrapper4);
     
-
-
-
 
     const style = document.createElement("style");
-    style.textContent = `.nested-grid {
+    style.textContent = 
+    `.nested-grid {
           display: grid;
-          grid-template-columns: 45% 25% 15% 15%;
-          padding: 10px;
-          max-width: 100%;
-          min-width: 400px;  
+          grid-template-columns: auto auto auto auto;
+          padding-bottom: 5px;
+          padding-left: 0px;
+          margin: auto;
+          align-content: center;
       }
 
-      button {
-        border-radius: 10px;
+      #task-name {
+        text-align: left;
+      }
+
+      #task-name:focus {
+        outline: none;
+      }
+
+      #pomo-num {
+        text-align: left;
+        width: 40px;
+      }
+
+      #edit {
+        font-family: Nunito;
         width: 70px;
         border: none;
-        padding: 5px;
-    
+        border-radius: 10px;
         background-color: rgb(102, 128, 146);
       }
 
       #edit-name {
-        text-align: center;
+        text-align: left;
+        padding-left: 2vw;
         font-size: 16px;
         padding: 12px;
       }
-      `;
-    shadow.appendChild(style);
+      
+        text-align: center;
+        color: white;
+      }
 
+      #edit:focus {
+        outline: none;
+      }
+
+      #delete {
+        font-family: Nunito;
+        width: 70px;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        margin-left: 0px;
+        background-color: #bd0000;
+      }
+      #delete:focus {
+        outline: none;
+      }
+      `;
+
+    shadow.appendChild(style);
     shadow.appendChild(wrapper);
   }
   
