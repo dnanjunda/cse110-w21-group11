@@ -60,11 +60,12 @@ class Task extends HTMLElement {
     style.textContent = 
     `.nested-grid {
           display: grid;
-          grid-template-columns: auto auto auto auto;
+          grid-template-columns: 55% 11% 17% 17%;
           padding-bottom: 5px;
           padding-left: 0px;
           margin: auto;
-          align-content: center;
+          align-items: center;
+          justify-items: center;
       }
 
       input {
@@ -88,8 +89,10 @@ class Task extends HTMLElement {
       }
 
       #pomo-num {
-        text-align: left;
+        text-align: center;
         width: 40px;
+        margin:0;
+        padding:0;
       }
 
       #edit {
@@ -100,12 +103,16 @@ class Task extends HTMLElement {
         background-color: rgb(102, 128, 146);
         text-align: center;
         color: white;
+        height: 25px;
       }
 
       #edit:focus {
         outline: none;
       }
 
+      #edit:hover {
+        background-color: #97b2c4;
+    }
       #delete {
         font-family: Nunito;
         width: 70px;
@@ -114,10 +121,21 @@ class Task extends HTMLElement {
         border-radius: 10px;
         margin-left: 0px;
         background-color: #bd0000;
+        height: 25px;
       }
       #delete:focus {
         outline: none;
-      }`;
+      }
+
+      #delete:hover {
+        background-color: #f03a3a;
+    }
+      #taskName {
+        justify-self: left;
+        margin: 0px;
+        padding-left: 1vh;
+      }
+      `;
 
     shadow.appendChild(style);
     shadow.appendChild(wrapper);

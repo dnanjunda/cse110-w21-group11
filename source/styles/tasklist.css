@@ -1,14 +1,16 @@
 body {
     max-width: 50%;
-    min-width: 450px;
+    min-width: 79.5vh;
     margin: auto;
     background: #08222e;
+    padding: 1.5vh;
     font-family: Nunito;
+    text-align: center;
 }
 
 #head {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 55% 11% 34%;
     padding: 10px;
     max-width: 100%;
     min-width: 400px;
@@ -26,7 +28,7 @@ body {
 
 #list-title1 {
     font-size: calc(10px + 1vw);
-    padding-left: calc(20px + 1vw);
+    text-align:left;
 }
 #list-title2 {
     text-align: left;
