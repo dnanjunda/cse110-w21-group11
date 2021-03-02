@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="./assets/styles/title.css">
+</head>
+
+<body>
+<!--
+  <div>
+    <header>
+      <h1>Pomodoro Timer:</h1>
+      <div class ="timer"></div>
+      <span id="time"></span>
+    </header>
+  </div>
+-->
+<h1>
+  <div id="pomodoro">Pomodoro Timer
+    <span id="minute">00</span> : 
+    <span id="seconds">00</span>
+    <svg>
+      <circle r="18" cx="20" cy="20"></circle>
+    </svg>
+  </div>
+</h1>
+
+
+
+
+<!-- An input to set the timer by the number
+<h1>
+  <div>Enter an interval for timer:
+    <input id="volume-number" name="volume-number" type="number" min="1" max="25"
+    value="1">
+    <button onclick="setTimer()">Click me</button>
+  </div>
+</h1>
+-->
+
+
+  <input type="button" id="mixBut"
+  style="background-color:lightgreen;color:white;width:150px;height:40px;" value="Start Timer" />
+  <button id="reset-btn" style="background-color:gray;color:white;width:150px;height:40px;">Reset</button>
+ 
+  <form action="#" method="post">
+    <div>
+      <h2>Add a task:</h2>
+      <input type="text" name="newitem" id="newitem" placeholder="New Task" />
+      <input type="submit" value="Add" />
+      <input type="reset" value="Clear" />
+    </div>
+  </form>
+
+  <h2>Tasks:</h2>
+  <ul id="tasks"></ul>
+  <input type="button" id="clearList" value="Clear List" />
+  
+  <!-- Not a necessary function, only finish possible
+  <h2>Done:</h2>
+  <ul id="finished"></ul> 
+  -->
+
+<div>
+<h3>Notification sound:</h3>
+<select id="changeSelect" onchange="sound()">
+  <option value="Google">Google</option>
+  <option value="Mario">Mario</option>
+  <option value="iPhone">iPhone</option>
+</select>
+</div>
+
+<!--
+<input type="button" id="StopSound" value="mute" />
+-->
+
+  <fieldset id="volume-controls">
+    <div id="volume-grid-container">
+      <label for="volume-number" id="volume-text">Volume</label>
+      <input id="volume-number" name="volume-number" type="number" min="0" max="100"
+        value="100">
+      <input id="volume-slider" name="volume-slider" type="range" min="0" max="100"
+        value="100">
+    </div>
+  </fieldset>
+  
+
+<script src = "assets/scripts/clock.js"></script>
+
+</body>
+
+</html>

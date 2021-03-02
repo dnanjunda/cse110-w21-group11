@@ -1,0 +1,131 @@
+/* main.css */
+
+
+body {
+    background-color: tomato;
+  }
+  
+  fieldset {
+    border: none;
+  }
+  
+  h1 {
+    margin: 0;
+    text-align: center;
+  }
+  
+  input[type="number"] {
+    font-size: 1.2rem;
+    width: 60px;
+  }
+  
+  main {
+    display: grid;
+    height: 100%;
+    justify-items: center;
+    max-height   : 600px;
+    max-width    : 50vw;
+    width        : 100%;
+  }
+  
+  #audio-selection {
+    align-items        : center;
+    display            : grid;
+    grid-template-areas: 'air car party';
+    justify-items      : center;
+  }
+  
+  #honk-btn {
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+    height: 35px;
+    margin: 20px auto 0 auto;
+    transition: 0.1s ease all;
+    width: 100px;
+  }
+  
+  #honk-btn:hover {
+    cursor: pointer;
+    background-color: #aaa;
+    transition: 0.1s ease all;
+  }
+  
+  #honk-btn-container {
+    display: grid;
+    justify-items: center;
+    width: 100%;
+  }
+  
+  #radio-air-horn-container, #radio-car-horn-container {
+    padding-right: 30px;
+  }
+  
+  #sound-image {
+    max-width: 200px;
+    padding: 30px 0;
+    width: 80%;
+  }
+  
+  #volume-grid-container {
+    align-items: center;
+    display: grid;
+    column-gap: 10px;
+    justify-items: center;
+    grid-template-areas:
+      'title image input'
+      'slider slider slider';
+    row-gap: 20px;
+  }
+  
+  #volume-image {
+    justify-self: center;
+    justify-self: flex-start;
+    padding-right: 20px;
+    width: 40px;
+  }
+  
+  #volume-slider {
+    grid-area: slider;
+    width: 80%;
+  }
+  .done {
+    text-decoration: line-through;
+  }
+  
+  #pomodoro {
+    position: relative;
+    margin: auto;
+    margin-top: 100px;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+  }
+  
+  svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    transform: rotateY(-180deg) rotateZ(-90deg);
+  }
+  
+  svg circle {
+    stroke-dasharray: 113px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+    stroke-width: 2px;
+    stroke: white;
+    fill: none;
+    animation: seconds 10s linear infinite forwards;
+  }
+
+  @keyframes seconds {
+    from {
+      stroke-dashoffset: 0px;
+    }
+    to {
+      stroke-dashoffset: 113px;
+    }
+  }
