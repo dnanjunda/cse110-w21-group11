@@ -17,7 +17,7 @@ entPomo.addEventListener("keyup", function (e) {
 });
 
 const form = document.getElementById("form");
-form.addEventListener("submit",function(e){
+form.addEventListener("submit", function (e) {
   e.preventDefault();
   addTask();
 });
@@ -32,16 +32,18 @@ function addTask() {
   const newPomo = document.getElementById("pomo-num").value;
 
   noTask.style.display = "none";
-  
-  tasks.appendChild(new Task({
-    taskName: newTask,
-    pomoNum: newPomo,
-  }));
+
+  tasks.appendChild(
+    new Task({
+      taskName: newTask,
+      pomoNum: newPomo,
+    })
+  );
   document.getElementById("form").reset();
 }
 
 const clearButton = document.getElementById("clear");
-clearButton.addEventListener("click",function(){
+clearButton.addEventListener("click", function () {
   clearList();
 });
 /**
@@ -53,23 +55,21 @@ function clearList() {
   noTask.style.display = "block";
   while (taskList.children.length > 1) {
     taskList.removeChild(taskList.children[1]);
-  } 
+  }
 }
 
 /**
  * Increment pomos by 1 when plus button is pressed.
  */
-function increment(){
+function increment() {
   document.getElementById("pomo-num").stepUp();
-
 }
 
 /**
  * Decrement pomos by 1 when plus button is pressed.
  */
-function decrement(){
+function decrement() {
   document.getElementById("pomo-num").stepDown();
-
 }
 
 // module.exports.addTask = addTask;
