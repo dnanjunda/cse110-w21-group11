@@ -44,16 +44,16 @@ function timeAdvance() {
     let pomoBreakLength = document.getElementById("breakPomos").value;
     let pomoShortBreakLength = document.getElementById("shortBreakPomos").value
 
-    if(pomodoro % pomoBreak == 0 && pomodoro != 0){
-        // alert(pomodoro + " : " + numLongBreaks);
-        // numLongBreaks++;
-        alert("Time to take a long break");
-        let longBreak = 60 * pomoBreakLength;
-        timeRemaining = longBreak;
-        clearInterval(intervalId);
-        startButton();
-        // pomodoro--;
-    }
+    // if(pomodoro % pomoBreak == 0 && pomodoro != 0){
+    //     // alert(pomodoro + " : " + numLongBreaks);
+    //     // numLongBreaks++;
+    //     alert("Time to take a long break");
+    //     let longBreak = 60 * pomoBreakLength;
+    //     timeRemaining = longBreak;
+    //     clearInterval(intervalId);
+    //     startButton();
+    //     pomodoro++; // added so that there's no infinite loop
+    // }
     // for short breaks(after every pomodoro except when its a long break)
     // else if(pomodoro % pomoBreak != 0 && pomodoro != 0) {
     //     alert("Time to take a short break");
@@ -144,9 +144,9 @@ function saveSettings(){
     localStorage._breakPomos = parseInt(document.getElementById("breakPomos").value);
     localStorage._userMins = parseInt(document.getElementById("userMins").value);
     localStorage._userSecs = parseInt(document.getElementById("userSecs").value);
-    localStorage._changeSelect = parseInt(document.getElementById("changeSelect").value);
+    localStorage._changeSelect = document.getElementById("changeSelect").value;
     localStorage._volume_number = parseInt(document.getElementById("volume-number").value);
-    //     <input id="volume-slider" name="volume-slider" type="range" min="0" max="100"
+    localStorage._volume_slider = parseInt(document.getElementById("volume-slider").value);
 }
 
 function loadSettings(){
@@ -157,6 +157,7 @@ function loadSettings(){
     document.getElementById("userSecs").value = localStorage._userSecs;
     document.getElementById("changeSelect").value = localStorage._changeSelect;
     document.getElementById("volume-number").value = localStorage._volume_number;
+    document.getElementById("volume-slider").value = localStorage._volume_slider;
 
     localStorage.setItem('shortBreakPomos', document.getElementById("shortBreakPomos").value);
     localStorage.setItem('userPomos', document.getElementById("userPomos").value);
@@ -165,21 +166,12 @@ function loadSettings(){
     localStorage.setItem('userSecs', document.getElementById("userSecs").value);
     localStorage.setItem('changeSelect', document.getElementById("changeSelect").value);
     localStorage.setItem('volume-number', document.getElementById("volume-number").value);
+    localStorage.setItem('volume-slider', document.getElementById("volume-slider").value);
 
-    // var shortBreakPomos = localStorage.getItem('shortBreakPomos');
-    // shortBreakPomos = parseInt(shortBreakPomos);
-    // var userPomos = localStorage.getItem('userPomos');
-    // userPomos = parseInt(userPomos);
-    // var breakPomos = localStorage.getItem('breakPomos');
-    // breakPomos = parseInt(breakPomos);
     // var userMins = localStorage.getItem('userMins');
     // userMins = parseInt(userMins);
     // var userSecs = localStorage.getItem('userSecs');
     // userSecs = parseInt(userSecs);
-    // var changeSelect = localStorage.getItem('changeSelect');
-    // changeSelect = parseInt(changeSelect);
-    // var volumeNumber = localStorage.getItem('volume-number'); //TODO maybe a problem? naming variable
-    // volumeNumber = parseInt(volumeNumber);
 
     document.getElementById('shortBreakPomos').value = localStorage.getItem('shortBreakPomos');
     document.getElementById('userPomos').value = localStorage.getItem('userPomos');
@@ -188,6 +180,7 @@ function loadSettings(){
     document.getElementById('userSecs').value = localStorage.getItem('userSecs');
     document.getElementById('changeSelect').value = localStorage.getItem('changeSelect');
     document.getElementById('volume-number').value = localStorage.getItem('volume-number');
+    document.getElementById('volume-slider').value = localStorage.getItem('volume-slider');
 }
 
 // When the user clicks anywhere outside of the modal, close it
