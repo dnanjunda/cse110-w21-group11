@@ -139,24 +139,55 @@ document.getElementById("reset-btn").addEventListener("click", resetButton);
 
 // Local Storage
 function saveSettings(){
+    localStorage._shortBreakPomos = parseInt(document.getElementById("shortBreakPomos").value);
+    localStorage._userPomos = parseInt(document.getElementById("userPomos").value);
+    localStorage._breakPomos = parseInt(document.getElementById("breakPomos").value);
     localStorage._userMins = parseInt(document.getElementById("userMins").value);
     localStorage._userSecs = parseInt(document.getElementById("userSecs").value);
+    localStorage._changeSelect = parseInt(document.getElementById("changeSelect").value);
+    localStorage._volume_number = parseInt(document.getElementById("volume-number").value);
+    //     <input id="volume-slider" name="volume-slider" type="range" min="0" max="100"
 }
 
 function loadSettings(){
+    document.getElementById("shortBreakPomos").value = localStorage._shortBreakPomos;
+    document.getElementById("userPomos").value = localStorage._userPomos;
+    document.getElementById("breakPomos").value = localStorage._breakPomos;
     document.getElementById("userMins").value = localStorage._userMins;
     document.getElementById("userSecs").value = localStorage._userSecs;
+    document.getElementById("changeSelect").value = localStorage._changeSelect;
+    document.getElementById("volume-number").value = localStorage._volume_number;
 
-    localStorage.setItem('userMins', document.getElementById("userMins").value );
-    localStorage.setItem('userSecs', document.getElementById("userSecs").value );
+    localStorage.setItem('shortBreakPomos', document.getElementById("shortBreakPomos").value);
+    localStorage.setItem('userPomos', document.getElementById("userPomos").value);
+    localStorage.setItem('breakPomos', document.getElementById("breakPomos").value);
+    localStorage.setItem('userMins', document.getElementById("userMins").value);
+    localStorage.setItem('userSecs', document.getElementById("userSecs").value);
+    localStorage.setItem('changeSelect', document.getElementById("changeSelect").value);
+    localStorage.setItem('volume-number', document.getElementById("volume-number").value);
 
-    var userMins = localStorage.getItem('userMins');
-    userMins = parseInt(userMins);
-    var userSecs = localStorage.getItem('userSecs');
-    userSecs = parseInt(userSecs);
+    // var shortBreakPomos = localStorage.getItem('shortBreakPomos');
+    // shortBreakPomos = parseInt(shortBreakPomos);
+    // var userPomos = localStorage.getItem('userPomos');
+    // userPomos = parseInt(userPomos);
+    // var breakPomos = localStorage.getItem('breakPomos');
+    // breakPomos = parseInt(breakPomos);
+    // var userMins = localStorage.getItem('userMins');
+    // userMins = parseInt(userMins);
+    // var userSecs = localStorage.getItem('userSecs');
+    // userSecs = parseInt(userSecs);
+    // var changeSelect = localStorage.getItem('changeSelect');
+    // changeSelect = parseInt(changeSelect);
+    // var volumeNumber = localStorage.getItem('volume-number'); //TODO maybe a problem? naming variable
+    // volumeNumber = parseInt(volumeNumber);
 
+    document.getElementById('shortBreakPomos').value = localStorage.getItem('shortBreakPomos');
+    document.getElementById('userPomos').value = localStorage.getItem('userPomos');
+    document.getElementById('breakPomos').value = localStorage.getItem('breakPomos');
     document.getElementById('userMins').value = localStorage.getItem('userMins');
     document.getElementById('userSecs').value = localStorage.getItem('userSecs');
+    document.getElementById('changeSelect').value = localStorage.getItem('changeSelect');
+    document.getElementById('volume-number').value = localStorage.getItem('volume-number');
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -171,7 +202,48 @@ window.onclick = function(event) {
  * Updating timer when the inputMins element in the settings menu changes
  */
 const inputMins = document.getElementById("userMins");
-// addEventListener("change", function(){
+addEventListener("change", function(){
+    stopButton(); //so that there's no overlapping timers
+    indexMins = 0;
+    // doesnt allow for custom timer to start with a 0 and more numbers
+    if(inputMins.value.length > 1){
+        while(inputMins.value.substring(indexMins, indexMins + 1) == "0"){
+            indexMins++;
+        }
+    }
+    inputMins.value = inputMins.value.substring(indexMins);
+    if(inputMins.value == ""){
+        document.getElementById("minute").innerHTML = '25';
+        secondsPerPomo = 60 * 25;
+    }
+    else if(inputMins.value == "0"){
+        document.getElementById("minute").innerHTML = '00';
+        secondsPerPomo = 0;
+    }
+    else if(inputMins.value < 10){
+        document.getElementById("minute").innerHTML = '0' + inputMins.value;
+        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+        secondsPerPomo = addTime;
+    }
+    else if(inputMins.value > 59){ //max mins for pomo timer 2 hours
+        inputMins.value = 59;
+        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+        secondsPerPomo = addTime;
+    }
+    else{
+        document.getElementById("minute").innerHTML = inputMins.value;
+        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+        secondsPerPomo = addTime;
+    }
+    timeRemaining = secondsPerPomo;
+    intervalId = null;
+    saveSettings();
+})
+let evtMins = new Event("change", {bubbles:true});
+document.dispatchEvent(evtMins);
+
+
+// inputMins.onchange = function(){
 //     stopButton(); //so that there's no overlapping timers
 //     indexMins = 0;
 //     // doesnt allow for custom timer to start with a 0 and more numbers
@@ -207,47 +279,7 @@ const inputMins = document.getElementById("userMins");
 //     timeRemaining = secondsPerPomo;
 //     intervalId = null;
 //     saveSettings();
-// })
-// let evtMins = new Event("change", {bubbles:true});
-// document.dispatchEvent(evtMins);
-inputMins.onchange = function(){
-    stopButton(); //so that there's no overlapping timers
-    // alert("listened");
-    indexMins = 0;
-    // doesnt allow for custom timer to start with a 0 and more numbers
-    if(inputMins.value.length > 1){
-        while(inputMins.value.substring(indexMins, indexMins + 1) == "0"){
-            indexMins++;
-        }
-    }
-    inputMins.value = inputMins.value.substring(indexMins);
-    if(inputMins.value == ""){
-        document.getElementById("minute").innerHTML = '25';
-        secondsPerPomo = 60 * 25;
-    }
-    else if(inputMins.value == "0"){
-        document.getElementById("minute").innerHTML = '00';
-        secondsPerPomo = 0;
-    }
-    else if(inputMins.value < 10){
-        document.getElementById("minute").innerHTML = '0' + inputMins.value;
-        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
-        secondsPerPomo = addTime;
-    }
-    else if(inputMins.value > 59){ //max mins for pomo timer 2 hours
-        inputMins.value = 59;
-        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
-        secondsPerPomo = addTime;
-    }
-    else{
-        document.getElementById("minute").innerHTML = inputMins.value;
-        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
-        secondsPerPomo = addTime;
-    }
-    timeRemaining = secondsPerPomo;
-    intervalId = null;
-    saveSettings();
-}
+// }
 
 
 
@@ -255,43 +287,85 @@ inputMins.onchange = function(){
  * Updating timer when the inputSecs element in the settings menu changes
  */
 const inputSecs = document.getElementById("userSecs");
-inputSecs.onchange = function(){
-  stopButton(); //so that there's no overlapping timers
-  let indexSecs = 0;
-  // doesnt allow for custom timer to start with a 0 and more numbers
-  if(inputSecs.value.length > 1){
-      while(inputSecs.value.substring(indexSecs, indexSecs + 1) == "0"){
-          indexSecs++;
-      }
-  }
-  inputSecs.value = inputSecs.value.substring(indexSecs);
-  if(inputSecs.value == "" || inputSecs.value == "0"){
-      document.getElementById("seconds").innerHTML = '00';
-  }
-  else if(inputSecs.value < 10){
-      document.getElementById("seconds").innerHTML = '0' + inputSecs.value;
-      var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
-      secondsPerPomo = addTime;
-  }
-  else if(inputSecs.value >= 60){ //max mins for pomo timer 2 hours
-    inputSecs.value = 59;
-    var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
-    secondsPerPomo = addTime;
-}
-  else{
-      document.getElementById("seconds").innerHTML = inputSecs.value;
-      if(inputMins.value == ""){
-        var addTime = parseInt(60 * 25, 10) + parseInt(inputSecs.value, 10)
-      }
-      else{
+
+addEventListener("change", function(){
+    stopButton(); //so that there's no overlapping timers
+    let indexSecs = 0;
+    // doesnt allow for custom timer to start with a 0 and more numbers
+    if(inputSecs.value.length > 1){
+        while(inputSecs.value.substring(indexSecs, indexSecs + 1) == "0"){
+            indexSecs++;
+        }
+    }
+    inputSecs.value = inputSecs.value.substring(indexSecs);
+    if(inputSecs.value == "" || inputSecs.value == "0"){
+        document.getElementById("seconds").innerHTML = '00';
+    }
+    else if(inputSecs.value < 10){
+        document.getElementById("seconds").innerHTML = '0' + inputSecs.value;
         var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
-      }
-      secondsPerPomo = addTime;
-  }
-  timeRemaining = secondsPerPomo;
-  intervalId = null;
-  saveSettings();
-}
+        secondsPerPomo = addTime;
+    }
+    else if(inputSecs.value >= 60){ //max mins for pomo timer 2 hours
+        inputSecs.value = 59;
+        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+        secondsPerPomo = addTime;
+    }
+    else{
+        document.getElementById("seconds").innerHTML = inputSecs.value;
+        if(inputMins.value == ""){
+            var addTime = parseInt(60 * 25, 10) + parseInt(inputSecs.value, 10)
+        }
+        else{
+            var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+        }
+        secondsPerPomo = addTime;
+    }
+    timeRemaining = secondsPerPomo;
+    intervalId = null;
+    saveSettings();
+})
+let evtSecs = new Event("change", {bubbles:true});
+document.dispatchEvent(evtSecs);
+
+
+// inputSecs.onchange = function(){
+//   stopButton(); //so that there's no overlapping timers
+//   let indexSecs = 0;
+//   // doesnt allow for custom timer to start with a 0 and more numbers
+//   if(inputSecs.value.length > 1){
+//       while(inputSecs.value.substring(indexSecs, indexSecs + 1) == "0"){
+//           indexSecs++;
+//       }
+//   }
+//   inputSecs.value = inputSecs.value.substring(indexSecs);
+//   if(inputSecs.value == "" || inputSecs.value == "0"){
+//       document.getElementById("seconds").innerHTML = '00';
+//   }
+//   else if(inputSecs.value < 10){
+//       document.getElementById("seconds").innerHTML = '0' + inputSecs.value;
+//       var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+//       secondsPerPomo = addTime;
+//   }
+//   else if(inputSecs.value >= 60){ //max mins for pomo timer 2 hours
+//     inputSecs.value = 59;
+//     var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+//     secondsPerPomo = addTime;
+// }
+//   else{
+//       document.getElementById("seconds").innerHTML = inputSecs.value;
+//       if(inputMins.value == ""){
+//         var addTime = parseInt(60 * 25, 10) + parseInt(inputSecs.value, 10)
+//       }
+//       else{
+//         var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+//       }
+//       secondsPerPomo = addTime;
+//   }
+//   timeRemaining = secondsPerPomo;
+//   intervalId = null;
+//   saveSettings();
+// }
 
 
 
