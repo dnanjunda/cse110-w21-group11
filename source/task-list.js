@@ -99,11 +99,13 @@ class Task extends window.HTMLElement {
       }
 
       #pomo-num {
+        text-align: center;
         width: 80%;
       }
 
       #edit-name {
         width: 90%;
+        padding-left: 1vw;
       }
 
       #edit {
