@@ -56,6 +56,8 @@ function clearList() {
   } 
 }
 
+/* eslint-disable no-unused-vars */
+
 /**
  * Increment pomos by 1 when plus button is pressed.
  */
