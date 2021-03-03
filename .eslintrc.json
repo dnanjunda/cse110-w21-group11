@@ -10,7 +10,7 @@
     "sourceType": "module"
   },
   "rules": {
-  	"eqeqeq": "off",
+    "eqeqeq": "off"
   },
   "plugins": ["jest"],
   "env": {
