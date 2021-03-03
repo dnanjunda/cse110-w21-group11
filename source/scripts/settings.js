@@ -168,11 +168,6 @@ function loadSettings(){
     localStorage.setItem('volume-number', document.getElementById("volume-number").value);
     localStorage.setItem('volume-slider', document.getElementById("volume-slider").value);
 
-    // var userMins = localStorage.getItem('userMins');
-    // userMins = parseInt(userMins);
-    // var userSecs = localStorage.getItem('userSecs');
-    // userSecs = parseInt(userSecs);
-
     document.getElementById('shortBreakPomos').value = localStorage.getItem('shortBreakPomos');
     document.getElementById('userPomos').value = localStorage.getItem('userPomos');
     document.getElementById('breakPomos').value = localStorage.getItem('breakPomos');
@@ -235,47 +230,6 @@ addEventListener("change", function(){
 let evtMins = new Event("change", {bubbles:true});
 document.dispatchEvent(evtMins);
 
-
-// inputMins.onchange = function(){
-//     stopButton(); //so that there's no overlapping timers
-//     indexMins = 0;
-//     // doesnt allow for custom timer to start with a 0 and more numbers
-//     if(inputMins.value.length > 1){
-//         while(inputMins.value.substring(indexMins, indexMins + 1) == "0"){
-//             indexMins++;
-//         }
-//     }
-//     inputMins.value = inputMins.value.substring(indexMins);
-//     if(inputMins.value == ""){
-//         document.getElementById("minute").innerHTML = '25';
-//         secondsPerPomo = 60 * 25;
-//     }
-//     else if(inputMins.value == "0"){
-//         document.getElementById("minute").innerHTML = '00';
-//         secondsPerPomo = 0;
-//     }
-//     else if(inputMins.value < 10){
-//         document.getElementById("minute").innerHTML = '0' + inputMins.value;
-//         var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
-//         secondsPerPomo = addTime;
-//     }
-//     else if(inputMins.value > 59){ //max mins for pomo timer 2 hours
-//         inputMins.value = 59;
-//         var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
-//         secondsPerPomo = addTime;
-//     }
-//     else{
-//         document.getElementById("minute").innerHTML = inputMins.value;
-//         var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
-//         secondsPerPomo = addTime;
-//     }
-//     timeRemaining = secondsPerPomo;
-//     intervalId = null;
-//     saveSettings();
-// }
-
-
-
 /**
  * Updating timer when the inputSecs element in the settings menu changes
  */
@@ -320,47 +274,6 @@ addEventListener("change", function(){
 })
 let evtSecs = new Event("change", {bubbles:true});
 document.dispatchEvent(evtSecs);
-
-
-// inputSecs.onchange = function(){
-//   stopButton(); //so that there's no overlapping timers
-//   let indexSecs = 0;
-//   // doesnt allow for custom timer to start with a 0 and more numbers
-//   if(inputSecs.value.length > 1){
-//       while(inputSecs.value.substring(indexSecs, indexSecs + 1) == "0"){
-//           indexSecs++;
-//       }
-//   }
-//   inputSecs.value = inputSecs.value.substring(indexSecs);
-//   if(inputSecs.value == "" || inputSecs.value == "0"){
-//       document.getElementById("seconds").innerHTML = '00';
-//   }
-//   else if(inputSecs.value < 10){
-//       document.getElementById("seconds").innerHTML = '0' + inputSecs.value;
-//       var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
-//       secondsPerPomo = addTime;
-//   }
-//   else if(inputSecs.value >= 60){ //max mins for pomo timer 2 hours
-//     inputSecs.value = 59;
-//     var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
-//     secondsPerPomo = addTime;
-// }
-//   else{
-//       document.getElementById("seconds").innerHTML = inputSecs.value;
-//       if(inputMins.value == ""){
-//         var addTime = parseInt(60 * 25, 10) + parseInt(inputSecs.value, 10)
-//       }
-//       else{
-//         var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
-//       }
-//       secondsPerPomo = addTime;
-//   }
-//   timeRemaining = secondsPerPomo;
-//   intervalId = null;
-//   saveSettings();
-// }
-
-
 
 /*
 * Notfication Sound Functions
@@ -411,47 +324,3 @@ slider.oninput = function(){
 numInp.oninput = function(){
     document.getElementById("volume-slider").value = document.getElementById("volume-number").value;
 }
-
-
-
-
-
-/*
-* Task List functions
-*/
-// (function(){
-//     var todo = document.querySelector( '#tasks' ),
-//         form = document.querySelector( 'form' ),
-//         field = document.querySelector( '#newitem' );
-//     form.addEventListener( 'submit', function( event ) {
-//       var text = field.value;
-//       if ( text !== '' ) {
-//         todo.innerHTML += '<li>' + text +
-//           ' <button onclick="Check(this);">check as done</button> <button onclick="Delete(this);">X</button> </li>';
-//         field.value = '';
-//       }
-//       event.preventDefault();
-//     }, false);
-//   })();
-
-// function Check(curr){
-// if(curr.parentNode.innerHTML.charAt(0) == "✓"){
-//     curr.parentNode.innerHTML= curr.parentNode.innerHTML.substring(1);
-// }
-// else{
-//     curr.parentNode.innerHTML = "✓" + curr.parentNode.innerHTML;
-// }
-// }
-
-// function Delete(curr){
-// curr.parentNode.parentNode.removeChild(curr.parentNode);    
-// }
-
-// var listClear = document.getElementById("clearList");
-
-// listClear.addEventListener("click", noList);
-
-// function noList(){
-// var ul = document.getElementById("tasks");
-// ul.innerHTML = "";
-// }
