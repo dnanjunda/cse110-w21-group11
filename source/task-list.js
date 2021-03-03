@@ -46,17 +46,13 @@ class Task extends window.HTMLElement {
         editTask.textContent = "Done";
         taskName.style.display = "none";
         editName.style.display = "block";
-        editName.style.backgroundColor = "#dddbdb";
         pomoNum.readOnly = false;
-        pomoNum.style.backgroundColor = "#dddbdb";
       } else {
         editTask.textContent = "Edit";
         taskName.style.display = "block";
         editName.style.display = "none";
-        editName.style.backgroundColor = "white";
         taskName.textContent = editName.value;
         pomoNum.readOnly = true;
-        pomoNum.style.backgroundColor = "white";
       }
     });
 
@@ -73,8 +69,7 @@ class Task extends window.HTMLElement {
     `.nested-grid {
           display: grid;
           grid-template-columns: 55% 11% 17% 17%;
-          padding-bottom: 5px;
-          padding-left: 0px;
+          padding-left: 0;
           margin: auto;
           align-items: center;
       }
@@ -83,8 +78,12 @@ class Task extends window.HTMLElement {
       input {
         border: none;
         text-align: center;
-        padding-right: 5vw;
-        margin-left: 5vw;
+        border-radius: 10px;
+        background-color: #f0f0f0;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        font-family: Nunito;
+        font-size: 16px;
       }
 
       input:focus {
@@ -101,28 +100,21 @@ class Task extends window.HTMLElement {
       }
 
       #pomo-num {
-        text-align: center;
-        width: 40px;
-        margin:0;
-        padding:0;
+        width: 80%;
       }
 
       #edit-name {
-        text-align: center;
-        width: 100%;
-        margin:0;
-        padding:0;
+        width: 90%;
       }
 
       #edit {
         font-family: Nunito;
-        width: 70px;
+        width: 90%;
         border: none;
         border-radius: 10px;
         background-color: rgb(102, 128, 146);
-        text-align: center;
         color: white;
-        height: 25px;
+        height: 65%;
       }  
 
       #edit:focus {
@@ -134,13 +126,12 @@ class Task extends window.HTMLElement {
     }
       #delete {
         font-family: Nunito;
-        width: 70px;
+        width: 90%;
         color: white;
         border: none;
         border-radius: 10px;
-        margin-left: 0px;
         background-color: #bd0000;
-        height: 25px;
+        height: 65%;
       }
       #delete:focus {
         outline: none;
