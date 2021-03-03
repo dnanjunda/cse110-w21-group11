@@ -9,7 +9,9 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "rules": {},
+  "rules": {
+  	"eqeqeq": "off",
+  },
   "plugins": ["jest"],
   "env": {
     "jest/globals": true
