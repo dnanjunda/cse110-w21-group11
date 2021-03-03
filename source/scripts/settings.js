@@ -26,7 +26,7 @@ let intervalId = null;                  // ID of interval calling the timeAdvanc
 function timeAdvance() {
     --timeRemaining;
 
-    let minute = Math.floor((timeRemaining / 60) % 60);
+    let minute = Math.floor((timeRemaining / 60));
     let seconds = Math.floor(timeRemaining % 60);
     minute = minute < 10 ? "0" + minute : minute;
     seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -213,8 +213,8 @@ addEventListener("change", function(){
         var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
         secondsPerPomo = addTime;
     }
-    else if(inputMins.value > 59){ //max mins for pomo timer 2 hours
-        inputMins.value = 59;
+    else if(inputMins.value > 120){ //max mins for pomo timer 2 hours
+        inputMins.value = 120;
         var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
         secondsPerPomo = addTime;
     }
