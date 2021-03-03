@@ -77,7 +77,6 @@ class Task extends window.HTMLElement {
 
       input {
         border: none;
-        text-align: center;
         border-radius: 10px;
         background-color: #f0f0f0;
         padding-top: 1em;
