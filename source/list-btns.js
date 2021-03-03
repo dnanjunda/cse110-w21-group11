@@ -1,3 +1,5 @@
+/* global Task */
+/* eslint no-undef: "error" */
 const entName = document.getElementById("task-name");
 entName.addEventListener("keyup", function (e) {
   if (e.key === "Enter") {
@@ -14,8 +16,9 @@ entPomo.addEventListener("keyup", function (e) {
   }
 });
 
-const addButton = document.getElementById("add");
-addButton.addEventListener("click",function(){
+const form = document.getElementById("form");
+form.addEventListener("submit",function(e){
+  e.preventDefault();
   addTask();
 });
 
@@ -25,30 +28,16 @@ addButton.addEventListener("click",function(){
 function addTask() {
   const noTask = document.getElementById("no-task");
   const tasks = document.getElementById("tasks");
-  const taskList = document.getElementById("task-list");
-
-  const taskName = document.getElementById("task-name");
-  const pomoNum = document.getElementById("pomo-num");
+  const newTask = document.getElementById("task-name").value;
+  const newPomo = document.getElementById("pomo-num").value;
 
   noTask.style.display = "none";
-
   
-  let newTask = taskName.value;
-  let newPomo = pomoNum.value;
-
-  if(newTask == null || newTask == "") {
-    newTask = "New Task";
-  }
-  if(newPomo == null || newPomo == "") {
-    newPomo = "1";
-  }
-
-  const task = {
+  tasks.appendChild(new Task({
     taskName: newTask,
     pomoNum: newPomo,
-  };
-  
-  tasks.appendChild(new Task(task));
+  }));
+  document.getElementById("form").reset();
 }
 
 const clearButton = document.getElementById("clear");
@@ -61,12 +50,12 @@ clearButton.addEventListener("click",function(){
 function clearList() {
   const taskList = document.getElementById("tasks");
   const noTask = document.getElementById("no-task");
-  const tasks = document.getElementById("tasks");
   noTask.style.display = "block";
   while (taskList.children.length > 1) {
     taskList.removeChild(taskList.children[1]);
   } 
 }
+
 /**
  * Increment pomos by 1 when plus button is pressed.
  */
@@ -75,7 +64,13 @@ function increment(){
 
 }
 
+/**
+ * Decrement pomos by 1 when plus button is pressed.
+ */
 function decrement(){
   document.getElementById("pomo-num").stepDown();
 
 }
+
+// module.exports.addTask = addTask;
+// module.exports.clearList = clearList;
