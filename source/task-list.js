@@ -12,9 +12,9 @@ class Task extends window.HTMLElement {
     taskName.setAttribute("id", "task-name");
     taskName.textContent = task.taskName;
     const editName = document.createElement("input");
-    editName.setAttribute("id","edit-name")
+    editName.setAttribute("id", "edit-name");
     editName.value = taskName.textContent;
-    editName.setAttribute("required","");
+    editName.setAttribute("required", "");
     editName.style.display = "none";
 
     const pomoNum = document.createElement("input");
@@ -31,8 +31,10 @@ class Task extends window.HTMLElement {
     deleteTask.textContent = "Delete";
     deleteTask.addEventListener("click", function (e) {
       e.target.getRootNode().host.remove();
-      if (tasks.children.length === 1 && 
-        document.getElementById("no-task").style.display === "none") {
+      if (
+        tasks.children.length === 1 &&
+        document.getElementById("no-task").style.display === "none"
+      ) {
         document.getElementById("no-task").style.display = "block";
       }
     });
@@ -40,7 +42,7 @@ class Task extends window.HTMLElement {
     const editTask = document.createElement("button");
     editTask.setAttribute("id", "edit");
     editTask.textContent = "Edit";
-    wrapper.addEventListener("submit", function(e) {
+    wrapper.addEventListener("submit", function (e) {
       e.preventDefault();
       if (editTask.textContent === "Edit") {
         editTask.textContent = "Done";
@@ -62,11 +64,9 @@ class Task extends window.HTMLElement {
     wrapper.appendChild(pomoNum);
     wrapper.appendChild(editTask);
     wrapper.appendChild(deleteTask);
-    
 
     const style = document.createElement("style");
-    style.textContent = 
-    `.nested-grid {
+    style.textContent = `.nested-grid {
           display: grid;
           grid-template-columns: 55% 15% 15% 15%;
           padding-left: 0;
@@ -151,7 +151,6 @@ class Task extends window.HTMLElement {
     shadow.appendChild(style);
     shadow.appendChild(wrapper);
   }
-  
 }
 
 window.customElements.define("task-item", Task);
