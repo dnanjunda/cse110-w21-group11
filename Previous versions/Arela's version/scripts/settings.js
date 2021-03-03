@@ -15,7 +15,7 @@
 */
 
 
-let secondsPerPomo = 60 * 25;           // Number of seconds in single pomo session
+let secondsPerPomo = 5;           // Number of seconds in single pomo session
 let timeRemaining = secondsPerPomo;     // Time remaining in session in seconds
 let pomodoro = 0;                       // Number of pomodoros completed
 let intervalId = null;                  // ID of interval calling the timeAdvance method

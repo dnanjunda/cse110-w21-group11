@@ -15,7 +15,7 @@
 */
 
 
-let secondsPerPomo = 60 * 25;           // Number of seconds in single pomo session
+let secondsPerPomo = 5;           // Number of seconds in single pomo session
 let timeRemaining = secondsPerPomo;     // Time remaining in session in seconds
 let pomodoro = 0;                       // Number of pomodoros completed
 let intervalId = null;                  // ID of interval calling the timeAdvance method
@@ -34,31 +34,35 @@ function timeAdvance() {
     seconds = seconds < 10 ? "0" + seconds : seconds;
     document.getElementById("minute").innerHTML = minute;
     document.getElementById("seconds").innerHTML = seconds;
+
+    let pomoBreak = document.getElementById("userPomos").value;
+    let pomoBreakLength = document.getElementById("breakPomos").value;
+    let pomoShortBreakLength = document.getElementById("shortBreakPomos").value
+
     if(timeRemaining <= 0){ 
         pomodoro++;
         timeRemaining = secondsPerPomo;
         clearInterval(intervalId);
         document.getElementById("completePomos").innerHTML = "Number of Complete Pomodoros: " + (pomodoro);
         sound();
+        if(pomodoro % pomoBreak == 0 && pomodoro != 0){
+            // alert(pomodoro + " : " + numLongBreaks);
+            // numLongBreaks++;
+            alert("Time to take a long break");
+            let longBreak = 60 * pomoBreakLength;
+            timeRemaining = longBreak;
+            clearInterval(intervalId);
+            startButton();
+            // pomodoro--;
+        }
+        else{
+            alert("take a short break!");
+        }
     }
-
-    let pomoBreak = document.getElementById("userPomos").value;
-    let pomoBreakLength = document.getElementById("breakPomos").value;
-    let pomoShortBreakLength = document.getElementById("shortBreakPomos").value
     // if(pomoBreakLength == 0){
     //     pomoBreakLength = 0.5;
     // }
 
-    if(pomodoro % pomoBreak == 0 && pomodoro != 0){
-        // alert(pomodoro + " : " + numLongBreaks);
-        // numLongBreaks++;
-        alert("Time to take a long break");
-        let longBreak = 60 * pomoBreakLength;
-        timeRemaining = longBreak;
-        clearInterval(intervalId);
-        startButton();
-        // pomodoro--;
-    }
     // for short breaks(after every pomodoro except when its a long break)
     // else if(pomodoro % pomoBreak != 0 && pomodoro != 0) {
     //     alert("Time to take a short break");
