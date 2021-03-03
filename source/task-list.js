@@ -72,15 +72,28 @@ class Task extends window.HTMLElement {
     style.textContent = 
     `.nested-grid {
           display: grid;
-          grid-template-columns: auto auto auto auto;
+          grid-template-columns: 55% 11% 17% 17%;
           padding-bottom: 5px;
           padding-left: 0px;
           margin: auto;
-          align-content: center;
+          align-items: center;
+      }
+
+
+      input {
+        border: none;
+        text-align: center;
+        padding-right: 5vw;
+        margin-left: 5vw;
+      }
+
+      input:focus {
+        outline: none;
       }
 
       #task-name {
         text-align: left;
+        padding-left: 1vh;
       }
 
       #task-name:focus {
@@ -88,8 +101,17 @@ class Task extends window.HTMLElement {
       }
 
       #pomo-num {
-        text-align: left;
+        text-align: center;
         width: 40px;
+        margin:0;
+        padding:0;
+      }
+
+      #edit-name {
+        text-align: center;
+        width: 100%;
+        margin:0;
+        padding:0;
       }
 
       #edit {
@@ -98,23 +120,18 @@ class Task extends window.HTMLElement {
         border: none;
         border-radius: 10px;
         background-color: rgb(102, 128, 146);
-      }
-
-      #edit-name {
-        text-align: left;
-        padding-left: 2vw;
-        font-size: 16px;
-        padding: 12px;
-      }
-      
         text-align: center;
         color: white;
-      }
+        height: 25px;
+      }  
 
       #edit:focus {
         outline: none;
       }
 
+      #edit:hover {
+        background-color: #97b2c4;
+    }
       #delete {
         font-family: Nunito;
         width: 70px;
@@ -123,9 +140,19 @@ class Task extends window.HTMLElement {
         border-radius: 10px;
         margin-left: 0px;
         background-color: #bd0000;
+        height: 25px;
       }
       #delete:focus {
         outline: none;
+      }
+
+      #delete:hover {
+        background-color: #f03a3a;
+    }
+      #taskName {
+        justify-self: left;
+        margin: 0px;
+        padding-left: 1vh;
       }
       `;
 
