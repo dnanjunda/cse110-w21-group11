@@ -68,7 +68,7 @@ class Task extends window.HTMLElement {
     style.textContent = 
     `.nested-grid {
           display: grid;
-          grid-template-columns: 55% 11% 17% 17%;
+          grid-template-columns: 55% 15% 15% 15%;
           padding-left: 0;
           margin: auto;
           align-items: center;
