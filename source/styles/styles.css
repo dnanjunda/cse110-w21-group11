@@ -167,17 +167,13 @@ p {
     max-width: 20vw;
     display: flex;
     flex-direction: column;
+
+    line-height: 1;
 }
 
 /* Lines up the "x" in the settings to the left */
 .close {
     text-align: left;
-}
-
-/* Font of the settings */
-.settingText {
-    font-size: 100%;
-    font-family: 'Nunito', sans-serif;
 }
 
 /* Style for user input boxes */
@@ -189,6 +185,7 @@ input[type=number] {
     border-radius: 1vh;
 }
 
+/* Changes small text size in input boxes */
 :placeholder-shown {
     font-size: 100%;
     font-family: 'Nunito', sans-serif;
@@ -199,6 +196,22 @@ fieldset {
     border: 0;
     height: 10vh;
     width: 19vw;
+}
+
+/* Font of the settings */
+.settingText {
+    font-size: 100%;
+    font-family: 'Nunito', sans-serif;
+}
+
+#changeSelect {
+    font-family: 'Nunito', sans-serif;
+    height: 5vh;
+    width: 15vw;
+}
+
+#volume-grid-container {
+    line-height: .1;
 }
 
 /* Keeps volume number relative to window size */
@@ -222,10 +235,9 @@ select {
 
 /* Changes size of "Settings" at top of settings */
 #modal-title {
+    line-height: .1;
     font-size: 3vw;
     font-weight: bold;
-    text-align: center;
-    vertical-align: top;
 }
 
 /* Slightly alters spacing in settings */
