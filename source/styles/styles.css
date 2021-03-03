@@ -176,15 +176,22 @@ p {
 
 /* Font of the settings */
 .settingText {
-    font-size: 1.5rem;
+    font-size: 100%;
     font-family: 'Nunito', sans-serif;
 }
 
 /* Style for user input boxes */
 input[type=number] {
     border: 0;
+    width: 7vw;
+    height: 3vh;
     padding: 1vh 1vw;
     border-radius: 1vh;
+}
+
+:placeholder-shown {
+    font-size: 100%;
+    font-family: 'Nunito', sans-serif;
 }
 
 /* Gets rid of box around volume control */
@@ -192,6 +199,18 @@ fieldset {
     border: 0;
     height: 10vh;
     width: 19vw;
+}
+
+/* Keeps volume number relative to window size */
+#volume-number {
+    height: 2vh;
+    width: 5vw;
+}
+
+/* Keeps volume slider relative to window size */
+#volume-slider {
+    height: 10vh;
+    width: 10vw;
 }
 
 /* Changes size of the audio selection */
@@ -215,7 +234,7 @@ select {
     width:100%;
 }
 
-/* Scales lengths, pomodoros with window size*/
+/* Scales lengths, pomodoros input boxes with window size*/
 .pomos {
     width: 7vw;
 }
