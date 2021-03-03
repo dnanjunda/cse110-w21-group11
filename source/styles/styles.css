@@ -2,7 +2,6 @@
 body {
     /* Background color*/
     background-color: #08222e;
-    padding-bottom: 100%;
     margin: 0;
     /* Text color */
     color: #B7DAEB;
@@ -22,7 +21,7 @@ a {
 /* Main page layout and colors */
 #all{
     background-color: #1B3642;
-    width: 20rem;
+    width: auto;
     margin: 0 auto;
     margin-top: 1em;
     padding: 4rem;
