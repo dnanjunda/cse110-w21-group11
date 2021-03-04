@@ -62,15 +62,24 @@ function timeAdvance() {
         alert("Time to take a long break");
 
         const minutesPerLongBreak = document.getElementById("breakPomos").value;
-        timeRemaining = 60 * minutesPerLongBreak;
+        if(minutesPerLongBreak == ""){ //default value: 30 mins
+            timeRemaining = 60 * 30;
+        }
+        else{
+            timeRemaining = 60 * minutesPerLongBreak;
+        }
       }
       // If it is time for a short break
       else {
         alert("Time to take a short break");
 
-        const minutesPerShortBreak = document.getElementById("shortBreakPomos")
-          .value;
-        timeRemaining = 60 * minutesPerShortBreak;
+        const minutesPerShortBreak = document.getElementById("shortBreakPomos").value;
+        if(minutesPerShortBreak == ""){ //default value: 5 mins
+            timeRemaining = 60 * 5;
+        }
+        else{
+            timeRemaining = 60 * minutesPerShortBreak;
+        }
       }
     }
   }
