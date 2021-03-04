@@ -1,10 +1,14 @@
+:root {
+    --custom-font: nunito;
+}
+
 body {
   max-width: 50%;
   min-width: 79.5vh;
   margin: auto;
   background: #08222e;
   padding: 1.5vh;
-  font-family: Nunito;
+  font-family: var(--custom-font);
   text-align: center;
 }
 
@@ -80,7 +84,7 @@ body {
   height: 30px;
   background-color: #f0f0f0;
   text-align: center;
-  font-family: Nunito;
+  font-family: var(--custom-font);
 }
 
 #task-name:focus {
@@ -94,7 +98,7 @@ body {
   height: 30px;
   background-color: #f0f0f0;
   text-align: center;
-  font-family: Nunito;
+  font-family: var(--custom-font);
 }
 
 #pomo-num:focus {
@@ -152,7 +156,7 @@ body {
   border-radius: 20px;
   background-color: #c7edff;
   color: #08222e;
-  font-family: Nunito;
+  font-family: var(--custom-font);
   padding: 10px;
   width: 100px;
   text-align: center;
@@ -172,7 +176,7 @@ body {
   border-radius: 20px;
   background-color: #ff671d;
   color: white;
-  font-family: Nunito;
+  font-family: var(--custom-font);
   padding: 10px;
   width: 100px;
   text-align: center;

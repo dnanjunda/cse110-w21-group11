@@ -1,8 +1,9 @@
 /* Background and "number of complete pomodoros" colors */
 body {
-  /* Background color*/
+  /* Background color */
   background-color: #08222e;
   margin: 0;
+
   /* Text color */
   color: #b7daeb;
 }
@@ -44,6 +45,7 @@ a {
 }
 
 /* Not used */
+
 /* #StartReset {
     display: flex;
     justify-content: center;
@@ -104,6 +106,7 @@ ul {
 }
 
 /* Old task list css */
+
 /* 
 h2 {
     margin-bottom: 0;
@@ -154,23 +157,26 @@ p {
 .modal-settings-content {
   /* background of settings */
   background-color: #b7daeb;
+
   /* Color of text */
   color: #08222e;
   margin: 4em auto; /* 15% from the top and centered */
   padding: 25px;
-
   text-align: center;
   border-radius: 15px;
-
   border: 1px solid #888;
   max-width: 20vw;
   display: flex;
   flex-direction: column;
 }
 
-/* Lines up the "x" in the settings to the left */
+/* Lines up the "x" in the settings to the left and changes "x" sign in settings */
 .close {
   text-align: left;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 /* Font of the settings */
@@ -214,24 +220,16 @@ select {
   width: 100%;
 }
 
-/* Puts input minutes to the left in settings*/
+/* Puts input minutes to the left in settings */
 .minutes {
   width: 45%;
   float: left;
 }
 
-/* Puts input seconds to the right in settings*/
+/* Puts input seconds to the right in settings */
 .seconds {
   width: 45%;
   float: right;
-}
-
-/* Changes "x" sign in settings */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
 }
 
 /* Changes "x" to bold when mouse hovers over */

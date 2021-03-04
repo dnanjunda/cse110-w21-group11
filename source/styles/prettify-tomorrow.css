@@ -1,7 +1,11 @@
 /* Tomorrow Theme */
+
 /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
 /* Pretty printing styles. Used with prettify.js. */
+
 /* SPAN elements with the classes below are added by prettyprint. */
+
 /* plain text */
 .pln {
   color: #4d4d4c;
@@ -78,6 +82,7 @@
     color: #4271ae;
   }
 }
+
 /* Use higher contrast and text-weight for printable form. */
 @media print, projection {
   .str {
@@ -122,7 +127,9 @@
     color: #060;
   }
 }
+
 /* Style */
+
 /*
 pre.prettyprint {
   background: white;
