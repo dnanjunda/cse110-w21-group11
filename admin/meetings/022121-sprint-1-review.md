@@ -35,7 +35,7 @@ First, let’s share our progress on last week’s tasks
 
 ## Review our work
 
-- ## Jamie
+- Jamie
 - Ashley
   - ![Iteration Image](images/TaskList.png)
   - Have task-list.js which is a custom element
