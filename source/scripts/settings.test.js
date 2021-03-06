@@ -1,13 +1,10 @@
 import * as pageOperations from "./settings.js";
 
 describe("timeAdvance tests", () => {
-  let minuteDisplay;
-  let secondDisplay;
+  let minuteDisplay = document.getElementById("minute");
+  let secondDisplay = document.getElementById("seconds");
 
-  beforeEach(() => {
-    minuteDisplay = document.getElementById("minute");
-    secondDisplay = document.getElementById("seconds");
-
+  afterEach(() => {
     pageOperations.stopButton();
     pageOperations.resetButton();
   });
@@ -53,14 +50,15 @@ describe("timeAdvance tests", () => {
 });
 
 describe("Mixed Button tests", () => {
-  let mixBut;
+  let mixBut = document.getElementById("mixBut");
 
   beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
     pageOperations.stopButton();
     pageOperations.resetButton();
-    jest.useFakeTimers();
-
-    mixBut = document.getElementById("mixBut");
   });
 
   test("Does the start button become a stop button", () => {
@@ -83,4 +81,28 @@ describe("Mixed Button tests", () => {
     jest.advanceTimersByTime(5000);
     expect(document.getElementById("seconds").innerHTML).toBe("00");
   });
+});
+
+describe("Break tests", () => {
+    let minuteDisplay = document.getElementById("minute");
+    let secondDisplay = document.getElementById("seconds");
+
+    beforeEach(() => {
+      jest.useFakeTimers();
+    });
+  
+    afterEach(() => {
+      pageOperations.stopButton();
+      pageOperations.resetButton();
+    });
+
+    test("Does the timer stop counting down after 25 minutes", () => {
+        pageOperations.startButton();
+
+        expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe('2500');
+
+        jest.advanceTimersByTime(25 * 60000 + 1000);
+
+        expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe('0000');
+    });
 });

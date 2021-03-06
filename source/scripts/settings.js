@@ -245,16 +245,23 @@ function sound() {
     );
     audioSound.volume = 0;
   }
-  // infinite loop
-  audioSound.addEventListener(
-    "ended",
-    function () {
-      this.currentTime = 0;
-      this.play();
-    },
-    false
-  );
-  audioSound.play();
+
+  // Check if audio sound was successfully gotten (useful for jest)
+  if(audioSound) {
+    // infinite loop
+    audioSound.addEventListener(
+      "ended",
+      function () {
+        this.currentTime = 0;
+        this.play();
+      },
+      false
+    );
+    audioSound.play();
+  } else {
+    console.log("Couldn't get Audio track")
+  }
+  
   // Stop alarm sound
   document.getElementById("mixBut").onclick = function (event) {
     stopAlarm();
