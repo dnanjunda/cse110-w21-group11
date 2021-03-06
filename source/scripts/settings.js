@@ -81,28 +81,29 @@ const mixBut = document.getElementById("mixBut");
  * This function implements the functionality of the start button. It sets the timer back to the full time, starts calling timeAdvance on an interval of one second,
  * and transforms the start button into a stop button by changing its color, text, and associated function (startButton() -> stopButton()).
  */
-export function startButton(){
-    if(secondsPerPomo == 0){ // defaults back to 25 mins if both mins and secs 0
-        timeRemaining = 25 * 60;
-    }
-    intervalId = setInterval(timeAdvance, 1000);
-    mixBut.removeEventListener("click", startButton);
-    mixBut.addEventListener("click", stopButton);
-    document.getElementById("mixBut").style.background = "indianred";
-    mixBut.value = "Stop";
+export function startButton() {
+  if (secondsPerPomo == 0) {
+    // defaults back to 25 mins if both mins and secs 0
+    timeRemaining = 25 * 60;
+  }
+  intervalId = setInterval(timeAdvance, 1000);
+  mixBut.removeEventListener("click", startButton);
+  mixBut.addEventListener("click", stopButton);
+  document.getElementById("mixBut").style.background = "indianred";
+  mixBut.value = "Stop";
 }
 /**
  * This function implements the functionality of the stop button. It stops calling timeAdvance every second, and transforms the stop button into a start button
  * by changing its color, text, and associated function (stopButton() -> startButton()).
  */
-export function stopButton(){
-    if (intervalId){
-        clearInterval(intervalId);
-    }
-    mixBut.removeEventListener("click", stopButton);
-    mixBut.addEventListener("click", startButton);
-    document.getElementById("mixBut").style.background = "lightgreen";
-    mixBut.value = "Start Timer";
+export function stopButton() {
+  if (intervalId) {
+    clearInterval(intervalId);
+  }
+  mixBut.removeEventListener("click", stopButton);
+  mixBut.addEventListener("click", startButton);
+  document.getElementById("mixBut").style.background = "lightgreen";
+  mixBut.value = "Start Timer";
 }
 
 mixBut.addEventListener("click", startButton);
@@ -110,15 +111,15 @@ mixBut.addEventListener("click", startButton);
 /**
  * resetButton is called by the reset button on the page. This button resets how much time is left on the timer to a non break amount.
  */
-export function resetButton(){
-    timeRemaining = secondsPerPomo;
+export function resetButton() {
+  timeRemaining = secondsPerPomo;
 
-    let minute = Math.floor((timeRemaining / 60) % 60);
-    let seconds = Math.floor(timeRemaining % 60);
-    minute = minute < 10 ? "0" + minute : minute;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-    document.getElementById("minute").innerHTML = minute;
-    document.getElementById("seconds").innerHTML = seconds;
+  let minute = Math.floor((timeRemaining / 60) % 60);
+  let seconds = Math.floor(timeRemaining % 60);
+  minute = minute < 10 ? "0" + minute : minute;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  document.getElementById("minute").innerHTML = minute;
+  document.getElementById("seconds").innerHTML = seconds;
 }
 document.getElementById("reset-btn").addEventListener("click", resetButton);
 
@@ -134,56 +135,55 @@ window.onclick = function (event) {
   }
 };
 
+const inputMins = document.getElementById("userMins");
+
 /**
  * Updating the timer when the userMins element in the settings menu changes.
  * Prevents leading zeroes in the input field.
  */
 export function minuteChange() {
-    stopButton(); //so that there's no overlapping timers
-    let indexMins = 0;
-    // doesnt allow for custom timer to start with a 0 and more numbers
-    if(inputMins.value.length > 1){
-        while(inputMins.value.substring(indexMins, indexMins + 1) == "0"){
-            indexMins++;
-        }
+  stopButton(); // so that there's no overlapping timers
+  let indexMins = 0;
+  // doesnt allow for custom timer to start with a 0 and more numbers
+  if (inputMins.value.length > 1) {
+    while (inputMins.value.substring(indexMins, indexMins + 1) == "0") {
+      indexMins++;
     }
-    inputMins.value = inputMins.value.substring(indexMins);
-    if(inputMins.value == ""){
-        document.getElementById("minute").innerHTML = '25';
-        secondsPerPomo = 60 * 25;
-    }
-    else if(inputMins.value == "0"){
-        document.getElementById("minute").innerHTML = '00';
-        secondsPerPomo = 0;
-    }
-    else if(inputMins.value < 10){
-        document.getElementById("minute").innerHTML = '0' + inputMins.value;
-        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
-        secondsPerPomo = addTime;
-    }
-    else if(inputMins.value > 59){ //max mins for pomo timer 2 hours
-        inputMins.value = 59;
-        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
-        secondsPerPomo = addTime;
-    }
-    else{
-        document.getElementById("minute").innerHTML = inputMins.value;
-        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
-        secondsPerPomo = addTime;
-    }
-    timeRemaining = secondsPerPomo;
-    intervalId = null;
+  }
+  inputMins.value = inputMins.value.substring(indexMins);
+  if (inputMins.value == "") {
+    document.getElementById("minute").innerHTML = "25";
+    secondsPerPomo = 60 * 25;
+  } else if (inputMins.value == "0") {
+    document.getElementById("minute").innerHTML = "00";
+    secondsPerPomo = 0;
+  } else if (inputMins.value < 10) {
+    document.getElementById("minute").innerHTML = "0" + inputMins.value;
+    secondsPerPomo =
+      parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10);
+  } else if (inputMins.value > 59) {
+    // max mins for pomo timer 2 hours
+    inputMins.value = 59;
+    secondsPerPomo =
+      parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10);
+  } else {
+    document.getElementById("minute").innerHTML = inputMins.value;
+    secondsPerPomo =
+      parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10);
+  }
+  timeRemaining = secondsPerPomo;
+  intervalId = null;
 }
-document.getElementById("userMins").oninput = minuteChange;
+inputMins.oninput = minuteChange;
 
-
+const inputSecs = document.getElementById("userSecs");
 
 /**
  * Updating timer when the userSecs element in the settings menu changes.
  * Prevents leading zeroes in the input field.
  */
 export function secondChange() {
-  stopButton(); //so that there's no overlapping timers
+  stopButton(); // so that there's no overlapping timers
   let indexSecs = 0;
   // doesnt allow for custom timer to start with a 0 and more numbers
   if (inputSecs.value.length > 1) {
@@ -214,53 +214,61 @@ export function secondChange() {
   timeRemaining = secondsPerPomo;
   intervalId = null;
 }
-document.getElementById("userSecs").oninput = secondChange;
-
-
+inputSecs.oninput = secondChange;
 
 /*
-* Notfication Sound Functions
-*/
+ * Notfication Sound Functions
+ */
 
 /**
  * This function begins playing the audio associated with the alarm. It sets the audio's volume, as well as which sound will be played.
  * It also adds a function to the start/stop button and reset button to stop the audio clip when pressed, otherwise it will continue on a loop.
  */
-function sound(){
-    // alarm("alarm");
-    let x = document.getElementById("changeSelect").value;
-    let volLevel = document.getElementById("volume-slider").value / 100;
-    let audioSound;
-    if(x == "Chirp"){
-        audioSound = new Audio('https://freesound.org/data/previews/456/456440_5121236-lq.mp3');
-        audioSound.volume = volLevel;
-    }
-    else if(x == "Alarm-Clock"){
-        audioSound = new Audio('https://freesound.org/data/previews/219/219244_4082826-lq.mp3');
-        audioSound.volume = volLevel;
-    }
-    else if(x == "None"){
-        audioSound = new Audio('https://freesound.org/data/previews/219/219244_4082826-lq.mp3');
-        audioSound.volume = 0;
-    }
-    // infinite loop
-    audioSound.addEventListener('ended', function() {
-        this.currentTime = 0;
-        this.play();
-    }, false);
-    audioSound.play();
-    //Stop alarm sound
-    document.getElementById("mixBut").onclick = function(event) {stopAlarm()}; //stop alarm when press stop
-    document.getElementById("reset-btn").onclick = function(event) {stopAlarm()}; //stop alarm when press reset
-    function stopAlarm() {
-        if(audioSound){
-            audioSound.pause();
-            audioSound.currentTime = 0;
-        }
+function sound() {
+  // alarm("alarm");
+  const x = document.getElementById("changeSelect").value;
+  const volLevel = document.getElementById("volume-slider").value / 100;
+  let audioSound;
+  if (x == "Chirp") {
+    audioSound = new Audio(
+      "https://freesound.org/data/previews/456/456440_5121236-lq.mp3"
+    );
+    audioSound.volume = volLevel;
+  } else if (x == "Alarm-Clock") {
+    audioSound = new Audio(
+      "https://freesound.org/data/previews/219/219244_4082826-lq.mp3"
+    );
+    audioSound.volume = volLevel;
+  } else if (x == "None") {
+    audioSound = new Audio(
+      "https://freesound.org/data/previews/219/219244_4082826-lq.mp3"
+    );
+    audioSound.volume = 0;
+  }
+  // infinite loop
+  audioSound.addEventListener(
+    "ended",
+    function () {
+      this.currentTime = 0;
+      this.play();
+    },
+    false
+  );
+  audioSound.play();
+  // Stop alarm sound
+  document.getElementById("mixBut").onclick = function (event) {
+    stopAlarm();
+  }; // stop alarm when press stop
+  document.getElementById("reset-btn").onclick = function (event) {
+    stopAlarm();
+  }; // stop alarm when press reset
+  function stopAlarm() {
+    if (audioSound) {
+      audioSound.pause();
+      audioSound.currentTime = 0;
     }
   }
 }
-
 
 /*
  * Making sure the volume-number and the volume-slider always match
@@ -277,7 +285,6 @@ numInp.oninput = function () {
     "volume-number"
   ).value;
 };
-
 
 /*
  * Task List functions

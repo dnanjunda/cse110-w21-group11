@@ -1,7 +1,5 @@
 {
-  "presets": [
-    ["@babel/preset-env", {"modules": false, "loose": true}]
-  ],
+  "presets": [["@babel/preset-env", { "modules": false, "loose": true }]],
   "env": {
     "test": {
       "plugins": ["transform-es2015-modules-commonjs"]
