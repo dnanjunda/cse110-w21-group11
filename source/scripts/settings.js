@@ -18,6 +18,7 @@ let secondsPerPomo = 60 * 25; // Number of seconds in single pomo session
 let timeRemaining = secondsPerPomo; // Time remaining in session in seconds
 let pomodoro = 0; // Number of pomodoros completed
 let intervalId = null; // ID of interval calling the timeAdvance method
+let onBreak = false;
 
 /**
  * This function advances time by one second. It will be called on a one second interval while the timer is running.
@@ -31,41 +32,57 @@ export function timeAdvance() {
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
+
+  /*
+   * Break handling
+   */
+
   if (timeRemaining <= 0) {
-    pomodoro++;
-    timeRemaining = secondsPerPomo;
-    clearInterval(intervalId);
-    document.getElementById("completePomos").innerHTML =
-      "Number of Complete Pomodoros: " + pomodoro;
-    sound();
-  }
+    // If a break just completed
+    if (onBreak) {
+      onBreak = false;
 
-  const pomoBreak = document.getElementById("userPomos").value;
-  const pomoBreakLength = document.getElementById("breakPomos").value;
-  // let pomoShortBreakLength = document.getElementById("shortBreakPomos").value
-  // if(pomoBreakLength == 0){
-  //     pomoBreakLength = 0.5;
-  // }
+      clearInterval(intervalId);
+      timeRemaining = secondsPerPomo;
+      sound();
+    }
+    // If a pomo session just completed
+    else {
+      onBreak = true;
+      pomodoro++;
+      document.getElementById("completePomos").innerHTML =
+        "Number of Complete Pomodoros: " + pomodoro;
+      clearInterval(intervalId);
+      sound();
 
-  if (pomodoro % pomoBreak === 0 && pomodoro !== 0) {
-    // alert(pomodoro + " : " + numLongBreaks);
-    // numLongBreaks++;
-    alert("Time to take a long break");
-    const longBreak = 60 * pomoBreakLength;
-    timeRemaining = longBreak;
-    clearInterval(intervalId);
-    startButton();
-    // pomodoro--;
+      const pomosUntilLongBreak = document.getElementById("userPomos").value;
+
+      // If it is time for a long break
+      if (pomodoro % pomosUntilLongBreak == 0 && pomodoro != 0) {
+        alert("Time to take a long break");
+
+        const minutesPerLongBreak = document.getElementById("breakPomos").value;
+        if(minutesPerLongBreak == ""){ //default value: 30 mins
+            timeRemaining = 60 * 30;
+        }
+        else{
+            timeRemaining = 60 * minutesPerLongBreak;
+        }
+      }
+      // If it is time for a short break
+      else {
+        alert("Time to take a short break");
+
+        const minutesPerShortBreak = document.getElementById("shortBreakPomos").value;
+        if(minutesPerShortBreak == ""){ //default value: 5 mins
+            timeRemaining = 60 * 5;
+        }
+        else{
+            timeRemaining = 60 * minutesPerShortBreak;
+        }
+      }
+    }
   }
-  // for short breaks(after every pomodoro except when its a long break)
-  // else if(pomodoro % pomoBreak != 0 && pomodoro != 0) {
-  //     alert("Time to take a short break");
-  //     let shortBreak = 60 * pomoShortBreakLength;
-  //     timeRemaining = shortBreak;
-  //     clearInterval(intervalId);
-  //     startButton();
-  //     // pomodoro--;
-  // }
 }
 // keep count of how many pomodoros have been completed
 document.getElementById("completePomos").innerHTML =
@@ -96,16 +113,24 @@ export function startButton() {
  * This function implements the functionality of the stop button. It stops calling timeAdvance every second, and transforms the stop button into a start button
  * by changing its color, text, and associated function (stopButton() -> startButton()).
  */
-export function stopButton() {
+ export function stopButton() {
   if (intervalId) {
     clearInterval(intervalId);
   }
+  console.log("Stopped");
   mixBut.removeEventListener("click", stopButton);
   mixBut.addEventListener("click", startButton);
   document.getElementById("mixBut").style.background = "lightgreen";
+
+  // Updating the time display given that a new time remaining will have been set for a break
+  let minute = Math.floor((timeRemaining / 60) % 60);
+  let seconds = Math.floor(timeRemaining % 60);
+  minute = minute < 10 ? "0" + minute : minute;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  document.getElementById("minute").innerHTML = minute;
+  document.getElementById("seconds").innerHTML = seconds;
   mixBut.value = "Start Timer";
 }
-
 mixBut.addEventListener("click", startButton);
 
 /**
@@ -135,8 +160,8 @@ window.onclick = function (event) {
   }
 };
 
-const inputMins = document.getElementById("userMins");
 
+const inputMins = document.getElementById("userMins");
 /**
  * Updating the timer when the userMins element in the settings menu changes.
  * Prevents leading zeroes in the input field.
@@ -176,8 +201,8 @@ export function minuteChange() {
 }
 inputMins.oninput = minuteChange;
 
-const inputSecs = document.getElementById("userSecs");
 
+const inputSecs = document.getElementById("userSecs");
 /**
  * Updating timer when the userSecs element in the settings menu changes.
  * Prevents leading zeroes in the input field.
@@ -292,43 +317,3 @@ numInp.oninput = function () {
     "volume-number"
   ).value;
 };
-
-/*
- * Task List functions
- */
-// (function(){
-//     var todo = document.querySelector( '#tasks' ),
-//         form = document.querySelector( 'form' ),
-//         field = document.querySelector( '#newitem' );
-//     form.addEventListener( 'submit', function( event ) {
-//       var text = field.value;
-//       if ( text !== '' ) {
-//         todo.innerHTML += '<li>' + text +
-//           ' <button onclick="Check(this);">check as done</button> <button onclick="Delete(this);">X</button> </li>';
-//         field.value = '';
-//       }
-//       event.preventDefault();
-//     }, false);
-//   })();
-
-// function Check(curr){
-// if(curr.parentNode.innerHTML.charAt(0) == "✓"){
-//     curr.parentNode.innerHTML= curr.parentNode.innerHTML.substring(1);
-// }
-// else{
-//     curr.parentNode.innerHTML = "✓" + curr.parentNode.innerHTML;
-// }
-// }
-
-// function Delete(curr){
-// curr.parentNode.parentNode.removeChild(curr.parentNode);
-// }
-
-// var listClear = document.getElementById("clearList");
-
-// listClear.addEventListener("click", noList);
-
-// function noList(){
-// var ul = document.getElementById("tasks");
-// ul.innerHTML = "";
-// }
