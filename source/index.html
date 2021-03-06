@@ -1,144 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="styles/styles.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link rel="stylesheet" href="./styles/tasklist.css">
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap"
-          rel="stylesheet"
-        />
-        <meta charset="utf-8"> 
-    </head>
+  <head>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="./styles/tasklist.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="utf-8" />
+  </head>
 
-    <body>
-        <div id="main">
-            <div id="all">
-                <div id="Login">
-                <button id="settings-btn" onclick="document.getElementById('settings-modal').style.display = 'block'"> 
-                    <img src="images/cog-solid.svg" height="35"/>
-                </button>
+  <body>
+    <div id="main">
+      <div id="all">
+        <div id="Login">
+          <button
+            id="settings-btn"
+            onclick="document.getElementById('settings-modal').style.display = 'block'"
+          >
+            <img src="images/cog-solid.svg" height="35" />
+          </button>
 
-                <!-- Settings modal> -->
-                <div id="settings-modal" class="modal">
-                    <div class="modal-settings-content">
-                        <span class="close" onclick="document.getElementById('settings-modal').style.display = 'none'">&times;</span>
-                        <span id="modal-title"><p>Settings</p></span>
+          <!-- Settings modal> -->
+          <div id="settings-modal" class="modal">
+            <div class="modal-settings-content">
+              <span
+                class="close"
+                onclick="document.getElementById('settings-modal').style.display = 'none'"
+                >&times;</span
+              >
+              <span id="modal-title">
+                <p>Settings</p>
+              </span>
 
-                        <!-- Settings customization of breaks/pomos -->
-                        <div class="modal-settings-customization">
-                            
-                            <p class="settingText">Length of Short Break</p>
-                            <input type="number" placeholder="Breaks" class="pomos" id="shortBreakPomos"/>
+              <!-- Settings customization of breaks/pomos -->
+              <div class="modal-settings-customization">
+                <p class="settingText">Length of Short Break</p>
+                <input
+                  type="number"
+                  placeholder="Breaks"
+                  class="pomos"
+                  id="shortBreakPomos"
+                />
 
-                            <p class="settingText">Pomodoros til Long Break</p>
-                            <input type="number" placeholder="Pomos" class="pomos" id="userPomos"/>
-                            
-                            <p class="settingText">Length of Long Break</p>
-                            <input type="number" placeholder="Breaks" class="pomos" id="breakPomos"/>
-                            
-                            <p class="settingText">Pomodoro Length</p>
-                            <input type="number" placeholder="Minutes" class="minutes" id="userMins"/>
-                            <input type="number" placeholder="Seconds" class="seconds" min="0" step="1" id="userSecs"/>
-                            
-                            <br><hr style="color: black;"><br>
-                                
-                            <!-- Notification Sound -->
-                            <label class="settingText">Notification Sound:</label>
-                            
-                            <!-- Line break -->
-                            <br><br>
-                            <form>
-                                <select id="changeSelect" name="alarmMusic" onselect="sound()">
-                                    <option value="Chirp">Chirp</option>
-                                    <option value="Alarm-Clock">Alarm Clock</option>
-                                    <option value="None">None</option>
-                                </select>
-                            </form>
+                <p class="settingText">Pomodoros til Long Break</p>
+                <input
+                  type="number"
+                  placeholder="Pomos"
+                  class="pomos"
+                  id="userPomos"
+                />
 
-                            <!-- Thematic break -->
-                            <hr>
+                <p class="settingText">Length of Long Break</p>
+                <input
+                  type="number"
+                  placeholder="Breaks"
+                  class="pomos"
+                  id="breakPomos"
+                />
 
-                            <!-- Second line break -->
-                            <br>
-                            
-                            <!-- Volume adjuster -->
-                            <fieldset id="volume-controls">
-                                <div id="volume-grid-container">
-                                    <label for="volume-number" class="settingText" id="volume-text">Volume</label>
-                                    <input id="volume-number" name="volume-number" type="number" min="0" max="100"
-                                        value="100">
-                                    <input id="volume-slider" name="volume-slider" type="range" min="0" max="100"
-                                        value="100">
-                                </div>
-                            </fieldset>
-                        </div>
-                    </div>
-                </div>
+                <p class="settingText">Pomodoro Length</p>
+                <input
+                  type="number"
+                  placeholder="Minutes"
+                  class="minutes"
+                  id="userMins"
+                />
+                <input
+                  type="number"
+                  placeholder="Seconds"
+                  class="seconds"
+                  min="0"
+                  step="1"
+                  id="userSecs"
+                />
+
+                <br />
+                <hr style="color: black" />
+                <br />
+
+                <!-- Notification Sound -->
+                <label class="settingText">Notification Sound:</label>
+
+                <!-- Line break -->
+                <br /><br />
+                <form>
+                  <select
+                    id="changeSelect"
+                    name="alarmMusic"
+                    onselect="sound()"
+                  >
+                    <option value="Chirp">Chirp</option>
+                    <option value="Alarm-Clock">Alarm Clock</option>
+                    <option value="None">None</option>
+                  </select>
+                </form>
+
+                <!-- Thematic break -->
+                <hr />
+
+                <!-- Second line break -->
+                <br />
+
+                <!-- Volume adjuster -->
+                <fieldset id="volume-controls">
+                  <div id="volume-grid-container">
+                    <label
+                      for="volume-number"
+                      class="settingText"
+                      id="volume-text"
+                      >Volume</label
+                    >
+                    <input
+                      id="volume-number"
+                      name="volume-number"
+                      type="number"
+                      min="0"
+                      max="100"
+                      value="100"
+                    />
+                    <input
+                      id="volume-slider"
+                      name="volume-slider"
+                      type="range"
+                      min="0"
+                      max="100"
+                      value="100"
+                    />
+                  </div>
+                </fieldset>
+              </div>
             </div>
-
-            <!-- Timer  -->
-            <div id="timer-container">
-
-                <!-- Makes timer into larger font -->
-                <h1>
-                    <div id="timer">
-                        <span id="minute">25</span> : 
-                        <span id="seconds">00</span>
-                    </div>
-                    <!-- Turns start into stop button with changing colors -->
-                    <input type="button" id="mixBut" style="background-color:lightgreen;color:white;width:150px;height:40px;" value="Start Timer" />
-                    <button id="reset-btn" style="background-color:gray;color:white;width:150px;height:40px;">Reset</button>
-                </h1>
-            </div>
-            <br>
-            <!-- States the complete number of pomodoros -->
-            <p id="completePomos"> Number of Complete Pomodors </p>
-            <div id="title">TASKS</div>
-
-            <section id="task-list" class="grid-container">
-
-                <div id="head" class="nested-grid">
-                    <div class="grid-item" id="list-title1">Task</div>
-                    <div class="grid-item" id="list-title2">Time</div>
-                    <div class="grid-item"></div>          
-                    <div class="grid-item"></div>
-                </div>
-
-                <div id="tasks">
-                    <div id="no-task">
-                    Tasks Complete!
-                    </div>
-                </div>
-
-            </section>
-
-            </div>
-            <div id="new-task" class="grid-container">
-                <div class="grid-item" id="task-title1">Task</div>
-                <div class="grid-item" id="task-title2">Pomos</div>
-                <div><input class="grid-item" type="text" id="task-name" placeholder="Task name"/></div>
-                <div>
-                <button id="minus" onclick="decrement()">-</button>
-                <input class="grid-item" type="number" id="pomo-num" placeholder="1" min="1" max="4"/>
-                <button id="plus" onclick="increment()">+</button>
-                </div>
-                
-            </div>
-
-            <div id="btnGrid" class="grid-container">
-                <div><button id="add" class="button-on" type="submit">ADD</button></div>
-                <div><button id="clear" class="button-off" type="button" onclick="clearList()">CLEAR</button></div>
-            </div>
-
-            <script src="./task-list.js"></script>
-            <script src="./list-btns.js"></script>
-            <script src = "scripts/settings.js"></script> 
-            <a href="https://github.com/james-c-lars/cse110-w21-group11.git">SOURCE</a>
+          </div>
         </div>
-    </body>
-    <footer>
-      <!-- <div style="color: white;">Icons made by <a href="" style="color: white;" title="Icongeek26">Icongeek26</a> from <a style="color: white;" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
-    </footer>
+
+        <!-- Timer  -->
+        <div id="timer-container">
+          <!-- Makes timer into larger font -->
+          <h1>
+            <div id="timer">
+              <span id="minute">25</span> :
+              <span id="seconds">00</span>
+            </div>
+            <!-- Turns start into stop button with changing colors -->
+            <input
+              type="button"
+              id="mixBut"
+              style="
+                background-color: lightgreen;
+                color: white;
+                width: 150px;
+                height: 40px;
+              "
+              value="Start Timer"
+            />
+            <button
+              id="reset-btn"
+              style="
+                background-color: gray;
+                color: white;
+                width: 150px;
+                height: 40px;
+              "
+            >
+              Reset
+            </button>
+          </h1>
+        </div>
+        <br />
+        <!-- States the complete number of pomodoros -->
+        <p id="completePomos">Number of Complete Pomodors</p>
+        <div id="title">TASKS</div>
+
+        <section id="task-list" class="grid-container">
+          <div id="head" class="nested-grid">
+            <div class="grid-item" id="list-title1">Task</div>
+            <div class="grid-item" id="list-title2">Time</div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+          </div>
+
+          <div id="tasks">
+            <div id="no-task">Tasks Complete!</div>
+          </div>
+        </section>
+        <form id="form">
+          <div id="new-task">
+            <p class="grid-item" id="task-title1">Task</p>
+            <p class="grid-item" id="task-title2">Pomos</p>
+            <input
+              class="grid-item"
+              type="text"
+              id="task-name"
+              placeholder="Task name"
+              required
+            />
+            <div>
+              <button id="minus" type="button" onclick="decrement()">-</button>
+              <input
+                class="grid-item"
+                type="number"
+                id="pomo-num"
+                value="1"
+                min="1"
+                max="4"
+              />
+              <button id="plus" type="button" onclick="increment()">+</button>
+            </div>
+          </div>
+          <div id="btnGrid">
+            <button id="add" class="button-on" type="submit">ADD</button>
+            <button
+              id="clear"
+              class="button-off"
+              type="button"
+              onclick="clearList()"
+            >
+              CLEAR
+            </button>
+          </div>
+        </form>
+      </div>
+      <script src="./task-list.js"></script>
+      <script src="./list-btns.js"></script>
+      <script src="scripts/settings.js" type="module"></script>
+      <a href="https://github.com/james-c-lars/cse110-w21-group11.git"
+        >SOURCE</a
+      >
+    </div>
+  </body>
+  <footer>
+    <!-- <div style="color: white;">Icons made by <a href="" style="color: white;" title="Icongeek26">Icongeek26</a> from <a style="color: white;" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+  </footer>
 </html>
