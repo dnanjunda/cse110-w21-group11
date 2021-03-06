@@ -16,21 +16,21 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-const entName = document.getElementById("task-name");
-entName.addEventListener("keyup", function (e) {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    addTask();
-  }
-});
+// const entName = document.getElementById("task-name");
+// entName.addEventListener("keyup", function (e) {
+//   if (e.key === "Enter") {
+//     e.preventDefault();
+//     addTask();
+//   }
+// });
 
-const entPomo = document.getElementById("pomo-num");
-entPomo.addEventListener("keyup", function (e) {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    addTask();
-  }
-});
+// const entPomo = document.getElementById("pomo-num");
+// entPomo.addEventListener("keyup", function (e) {
+//   if (e.key === "Enter") {
+//     e.preventDefault();
+//     addTask();
+//   }
+// });
 
 const form = document.getElementById("form");
 form.addEventListener("submit", function (e) {
