@@ -55,7 +55,11 @@ export function timeAdvance() {
       clearInterval(intervalId);
       sound();
 
-      const pomosUntilLongBreak = document.getElementById("userPomos").value;
+      let pomosUntilLongBreak = document.getElementById("userPomos").value;
+
+      if(!Boolean(pomosUntilLongBreak)) {
+        pomosUntilLongBreak = 4;
+      }
 
       // If it is time for a long break
       if (pomodoro % pomosUntilLongBreak == 0 && pomodoro != 0) {
@@ -117,7 +121,6 @@ export function startButton() {
   if (intervalId) {
     clearInterval(intervalId);
   }
-  console.log("Stopped");
   mixBut.removeEventListener("click", stopButton);
   mixBut.addEventListener("click", startButton);
   document.getElementById("mixBut").style.background = "lightgreen";
@@ -148,6 +151,16 @@ export function resetButton() {
 }
 document.getElementById("reset-btn").addEventListener("click", resetButton);
 
+/**
+ * resetPomo is for use by Jest to reset the number of pomos completed
+ */
+export function resetPomos() {
+  pomodoro = 0;
+  onBreak = false;
+}
+
+
+
 /*
  * Settings Modal
  */
@@ -162,6 +175,7 @@ window.onclick = function (event) {
 
 
 const inputMins = document.getElementById("userMins");
+const inputSecs = document.getElementById("userSecs");
 /**
  * Updating the timer when the userMins element in the settings menu changes.
  * Prevents leading zeroes in the input field.
@@ -177,24 +191,22 @@ export function minuteChange() {
   }
   inputMins.value = inputMins.value.substring(indexMins);
   if (inputMins.value == "") {
+    inputMins.value = "25";
     document.getElementById("minute").innerHTML = "25";
-    secondsPerPomo = 60 * 25;
+    secondsPerPomo = 60 * 25 + Number(inputSecs.value);
   } else if (inputMins.value == "0") {
     document.getElementById("minute").innerHTML = "00";
-    secondsPerPomo = 0;
+    secondsPerPomo = Number(inputSecs.value);
   } else if (inputMins.value < 10) {
     document.getElementById("minute").innerHTML = "0" + inputMins.value;
-    secondsPerPomo =
-      parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10);
+    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
   } else if (inputMins.value > 59) {
     // max mins for pomo timer 2 hours
     inputMins.value = 59;
-    secondsPerPomo =
-      parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10);
+    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
   } else {
     document.getElementById("minute").innerHTML = inputMins.value;
-    secondsPerPomo =
-      parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10);
+    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
   }
   timeRemaining = secondsPerPomo;
   intervalId = null;
@@ -202,7 +214,6 @@ export function minuteChange() {
 inputMins.oninput = minuteChange;
 
 
-const inputSecs = document.getElementById("userSecs");
 /**
  * Updating timer when the userSecs element in the settings menu changes.
  * Prevents leading zeroes in the input field.
@@ -218,23 +229,19 @@ export function secondChange() {
   }
   inputSecs.value = inputSecs.value.substring(indexSecs);
   if (inputSecs.value === "" || inputSecs.value === "0") {
+    inputSecs.value = 0;
     document.getElementById("seconds").innerHTML = "00";
+    secondsPerPomo = 60 * Number(inputMins.value)
   } else if (inputSecs.value < 10) {
     document.getElementById("seconds").innerHTML = "0" + inputSecs.value;
-    const addTime =
-      parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10);
-    secondsPerPomo = addTime;
+    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
   } else if (inputSecs.value >= 60) {
     // max mins for pomo timer 2 hours
     inputSecs.value = 59;
-    const addTime =
-      parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10);
-    secondsPerPomo = addTime;
+    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
   } else {
     document.getElementById("seconds").innerHTML = inputSecs.value;
-    const addTime =
-      parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10);
-    secondsPerPomo = addTime;
+    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
   }
   timeRemaining = secondsPerPomo;
   intervalId = null;
@@ -283,8 +290,6 @@ function sound() {
       false
     );
     audioSound.play();
-  } else {
-    console.log("Couldn't get Audio track")
   }
   
   // Stop alarm sound
