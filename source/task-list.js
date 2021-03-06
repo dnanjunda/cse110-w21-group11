@@ -23,6 +23,7 @@ class Task extends window.HTMLElement {
     pomoNum.setAttribute("type", "number");
     pomoNum.setAttribute("min", "1");
     pomoNum.setAttribute("max", "4");
+    pomoNum.setAttribute("required", "");
     pomoNum.setAttribute("readonly", "true");
     pomoNum.value = task.pomoNum;
 
