@@ -57,7 +57,7 @@ export function timeAdvance() {
 
       let pomosUntilLongBreak = document.getElementById("userPomos").value;
 
-      if(!Boolean(pomosUntilLongBreak)) {
+      if (!pomosUntilLongBreak) {
         pomosUntilLongBreak = 4;
       }
 
@@ -66,23 +66,24 @@ export function timeAdvance() {
         alert("Time to take a long break");
 
         const minutesPerLongBreak = document.getElementById("breakPomos").value;
-        if(minutesPerLongBreak == ""){ //default value: 30 mins
-            timeRemaining = 60 * 30;
-        }
-        else{
-            timeRemaining = 60 * minutesPerLongBreak;
+        if (minutesPerLongBreak == "") {
+          // default value: 30 mins
+          timeRemaining = 60 * 30;
+        } else {
+          timeRemaining = 60 * minutesPerLongBreak;
         }
       }
       // If it is time for a short break
       else {
         alert("Time to take a short break");
 
-        const minutesPerShortBreak = document.getElementById("shortBreakPomos").value;
-        if(minutesPerShortBreak == ""){ //default value: 5 mins
-            timeRemaining = 60 * 5;
-        }
-        else{
-            timeRemaining = 60 * minutesPerShortBreak;
+        const minutesPerShortBreak = document.getElementById("shortBreakPomos")
+          .value;
+        if (minutesPerShortBreak == "") {
+          // default value: 5 mins
+          timeRemaining = 60 * 5;
+        } else {
+          timeRemaining = 60 * minutesPerShortBreak;
         }
       }
     }
@@ -117,7 +118,7 @@ export function startButton() {
  * This function implements the functionality of the stop button. It stops calling timeAdvance every second, and transforms the stop button into a start button
  * by changing its color, text, and associated function (stopButton() -> startButton()).
  */
- export function stopButton() {
+export function stopButton() {
   if (intervalId) {
     clearInterval(intervalId);
   }
@@ -159,8 +160,6 @@ export function resetPomos() {
   onBreak = false;
 }
 
-
-
 /*
  * Settings Modal
  */
@@ -172,7 +171,6 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
-
 
 const inputMins = document.getElementById("userMins");
 const inputSecs = document.getElementById("userSecs");
@@ -213,7 +211,6 @@ export function minuteChange() {
 }
 inputMins.oninput = minuteChange;
 
-
 /**
  * Updating timer when the userSecs element in the settings menu changes.
  * Prevents leading zeroes in the input field.
@@ -231,7 +228,7 @@ export function secondChange() {
   if (inputSecs.value === "" || inputSecs.value === "0") {
     inputSecs.value = 0;
     document.getElementById("seconds").innerHTML = "00";
-    secondsPerPomo = 60 * Number(inputMins.value)
+    secondsPerPomo = 60 * Number(inputMins.value);
   } else if (inputSecs.value < 10) {
     document.getElementById("seconds").innerHTML = "0" + inputSecs.value;
     secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
@@ -279,7 +276,7 @@ function sound() {
   }
 
   // Check if audio sound was successfully gotten (useful for jest)
-  if(audioSound) {
+  if (audioSound) {
     // infinite loop
     audioSound.addEventListener(
       "ended",
@@ -291,7 +288,7 @@ function sound() {
     );
     audioSound.play();
   }
-  
+
   // Stop alarm sound
   document.getElementById("mixBut").onclick = function (event) {
     stopAlarm();
