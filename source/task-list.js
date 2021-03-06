@@ -2,6 +2,8 @@ class Task extends window.HTMLElement {
   constructor(task) {
     super();
 
+    let myStorage = window.localStorage;
+
     const tasks = document.getElementById("tasks");
     const shadow = this.attachShadow({ mode: "open" });
 
@@ -28,9 +30,16 @@ class Task extends window.HTMLElement {
     pomoNum.value = task.pomoNum;
 
     const deleteTask = document.createElement("button");
+    deleteTask.setAttribute("type","button");
     deleteTask.setAttribute("id", "delete");
     deleteTask.textContent = "Delete";
     deleteTask.addEventListener("click", function (e) {
+
+      let array = e.target.getRootNode().host.parentNode.children;
+      let index = [].indexOf.call(array, e.target.getRootNode().host)-1;
+      let storedTasks = JSON.parse(myStorage.getItem("tasks"));
+      storedTasks.splice(index,1);
+      myStorage.setItem("tasks",JSON.stringify(storedTasks));
       e.target.getRootNode().host.remove();
       if (
         tasks.children.length === 1 &&
@@ -56,6 +65,14 @@ class Task extends window.HTMLElement {
         editName.style.display = "none";
         taskName.textContent = editName.value;
         pomoNum.readOnly = true;
+        let array = e.target.getRootNode().host.parentNode.children;
+        let index = [].indexOf.call(array, e.target.getRootNode().host);
+        let storedTasks = JSON.parse(myStorage.getItem("tasks"));
+        storedTasks.splice(index,1, {
+          taskName: taskName.textContent,
+          pomoNum: pomoNum.value,
+        });
+        myStorage.setItem("tasks",JSON.stringify(storedTasks));
       }
     });
 

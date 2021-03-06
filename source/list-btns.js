@@ -1,5 +1,21 @@
 /* global Task */
 /* eslint no-undef: "error" */
+let myStorage = window.localStorage;
+const taskList = document.getElementById("tasks");
+
+window.addEventListener("DOMContentLoaded", () => {
+  if (!myStorage.getItem("tasks")) {
+    myStorage.setItem("tasks","[]");
+  }
+  let tasks = JSON.parse(myStorage.getItem("tasks"));
+  if (tasks.length > 0) {
+    document.getElementById("no-task").style.display = "none";
+    for (let i = 0; i < tasks.length; i++) {
+      taskList.appendChild(new Task(tasks[i]));
+    }
+  }
+});
+
 const entName = document.getElementById("task-name");
 entName.addEventListener("keyup", function (e) {
   if (e.key === "Enter") {
@@ -40,6 +56,13 @@ function addTask() {
     })
   );
   document.getElementById("form").reset();
+
+  let storedTasks = JSON.parse(myStorage.getItem("tasks"));
+  storedTasks.push({
+    taskName: newTask,
+    pomoNum: newPomo,
+  });
+  myStorage.setItem("tasks",JSON.stringify(storedTasks));
 }
 
 const clearButton = document.getElementById("clear");
@@ -50,12 +73,13 @@ clearButton.addEventListener("click", function () {
  * Clear the current task list.
  */
 function clearList() {
-  const taskList = document.getElementById("tasks");
+  const tasks = document.getElementById("tasks");
   const noTask = document.getElementById("no-task");
   noTask.style.display = "block";
-  while (taskList.children.length > 1) {
-    taskList.removeChild(taskList.children[1]);
+  while (tasks.children.length > 1) {
+    tasks.removeChild(tasks.children[1]);
   }
+  myStorage.setItem("tasks","[]");
 }
 
 /* eslint-disable no-unused-vars */
@@ -68,7 +92,7 @@ function increment() {
 }
 
 /**
- * Decrement pomos by 1 when plus button is pressed.
+ * Decrement pomos by 1 when minus button is pressed.
  */
 function decrement() {
   document.getElementById("pomo-num").stepDown();
