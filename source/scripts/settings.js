@@ -18,11 +18,10 @@
 /*
  * Exporting the functions for testing with Jest
  */
-module.exports = {};
 
 
 let secondsPerPomo = 60 * 25;           // Number of seconds in single pomo session
-let timeRemaining = secondsPerPomo;     // Time remaining in session in seconds
+var timeRemaining = secondsPerPomo;     // Time remaining in session in seconds
 let pomodoro = 0;                       // Number of pomodoros completed
 let intervalId = null;                  // ID of interval calling the timeAdvance method
 
@@ -31,7 +30,7 @@ let intervalId = null;                  // ID of interval calling the timeAdvanc
 /**
  * This function advances time by one second. It will be called on a one second interval while the timer is running.
  */
-function timeAdvance() {
+export function timeAdvance() {
     --timeRemaining;
 
     let minute = Math.floor((timeRemaining / 60) % 60);
@@ -74,7 +73,7 @@ function timeAdvance() {
     //     startButton();
     //     // pomodoro--;
     // }
-} module.exports.timeAdvance = timeAdvance;
+}
 // keep count of how many pomodoros have been completed
 document.getElementById("completePomos").innerHTML = "Number of Complete Pomodoros: " + (pomodoro);
 
@@ -90,31 +89,29 @@ const mixBut = document.getElementById("mixBut");
  * This function implements the functionality of the start button. It sets the timer back to the full time, starts calling timeAdvance on an interval of one second,
  * and transforms the start button into a stop button by changing its color, text, and associated function (startButton() -> stopButton()).
  */
-function startButton(){
+export function startButton(){
     if(secondsPerPomo == 0){ // defaults back to 25 mins if both mins and secs 0
         timeRemaining = 25 * 60;
     }
     intervalId = setInterval(timeAdvance, 1000);
-    console.log("Started");
     mixBut.removeEventListener("click", startButton);
     mixBut.addEventListener("click", stopButton);
     document.getElementById("mixBut").style.background = "indianred";
     mixBut.value = "Stop";
-} module.exports.startButton = startButton;
+}
 /**
  * This function implements the functionality of the stop button. It stops calling timeAdvance every second, and transforms the stop button into a start button
  * by changing its color, text, and associated function (stopButton() -> startButton()).
  */
-function stopButton(){
+export function stopButton(){
     if (intervalId){
         clearInterval(intervalId);
     }
-    console.log("Stopped");
     mixBut.removeEventListener("click", stopButton);
     mixBut.addEventListener("click", startButton);
     document.getElementById("mixBut").style.background = "lightgreen";
     mixBut.value = "Start Timer";
-} module.exports.stopButton = stopButton;
+}
 
 mixBut.addEventListener("click", startButton);
 
@@ -123,7 +120,7 @@ mixBut.addEventListener("click", startButton);
 /**
  * resetButton is called by the reset button on the page. This button resets how much time is left on the timer to a non break amount.
  */
-function resetButton(){
+export function resetButton(){
     timeRemaining = secondsPerPomo;
 
     let minute = Math.floor((timeRemaining / 60) % 60);
@@ -132,7 +129,7 @@ function resetButton(){
     seconds = seconds < 10 ? "0" + seconds : seconds;
     document.getElementById("minute").innerHTML = minute;
     document.getElementById("seconds").innerHTML = seconds;
-} module.exports.resetButton = resetButton;
+}
 document.getElementById("reset-btn").addEventListener("click", resetButton);
 
 
@@ -156,7 +153,7 @@ window.onclick = function(event) {
  * Updating the timer when the userMins element in the settings menu changes.
  * Prevents leading zeroes in the input field.
  */
-function minuteChange() {
+export function minuteChange() {
     stopButton(); //so that there's no overlapping timers
     indexMins = 0;
     // doesnt allow for custom timer to start with a 0 and more numbers
@@ -191,7 +188,7 @@ function minuteChange() {
     }
     timeRemaining = secondsPerPomo;
     intervalId = null;
-} module.exports.minuteChange = minuteChange;
+}
 document.getElementById("userMins").oninput = minuteChange;
 
 
@@ -200,7 +197,7 @@ document.getElementById("userMins").oninput = minuteChange;
  * Updating timer when the userSecs element in the settings menu changes.
  * Prevents leading zeroes in the input field.
  */
-function secondChange() {
+export function secondChange() {
   stopButton(); //so that there's no overlapping timers
   let indexSecs = 0;
   // doesnt allow for custom timer to start with a 0 and more numbers
@@ -230,7 +227,7 @@ function secondChange() {
   }
   timeRemaining = secondsPerPomo;
   intervalId = null;
-}  module.exports.secondChange = secondChange;
+}
 document.getElementById("userSecs").oninput = secondChange;
 
 
@@ -275,7 +272,7 @@ function sound(){
             audioSound.currentTime = 0;
         }
     }
-} module.exports.sound = sound;
+}
 
 
 /*

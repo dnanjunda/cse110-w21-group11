@@ -1,32 +1,16 @@
+import * as pageOperations from './settings.js';
 
-const pageContent = 
-    '<span id="minute">25</span>' + 
-    '<span id="seconds">00</span>' +
-    '<p id="completePomos"> Number of Complete Pomodors </p>' +
-    '<input type="button" id="mixBut" style="background-color:lightgreen;color:white;width:150px;height:40px;" value="Start Timer" />' + 
-    '<button id="reset-btn" style="background-color:gray;color:white;width:150px;height:40px;">Reset</button>' +
-    '<div id="settings-modal" class="modal"></div>' +
-    '<input type="number" placeholder="Minutes" class="minutes" id="userMins" />' +
-    '<input type="number" placeholder="Seconds" class="seconds" min="0" step="1" id="userSecs" />' +
-    '<input id="volume-number" name="volume-number" type="number" min="0" max="100" value="100">' +
-    '<input id="volume-slider" name="volume-slider" type="range" min="0" max="100" value="100">' +
-    '<input type="number" placeholder="Breaks" class="pomos" id="shortBreakPomos" />' +
-    '<input type="number" placeholder="Pomos" class="pomos" id="userPomos" />' +
-    '<input type="number" placeholder="Breaks" class="pomos" id="breakPomos" />' +
-    '<select id="changeSelect" name="alarmMusic" onselect="sound()">';
-document.body.innerHTML = pageContent;
-
-const pageOperations = require('./settings');
 
 describe('timeAdvance tests', () => {
     let minuteDisplay;
     let secondDisplay;
 
     beforeEach(() => {
-        document.body.innerHTML = pageContent;
-        
         minuteDisplay = document.getElementById("minute");
         secondDisplay = document.getElementById("seconds");
+
+        pageOperations.stopButton();
+        pageOperations.resetButton();
     })
 
     test('Does timeAdvance correctly change the timer display', () => {
@@ -65,8 +49,8 @@ describe('Mixed Button tests', () => {
     let mixBut;
 
     beforeEach(() => {
-        document.body.innerHTML = pageContent;
-
+        pageOperations.stopButton();
+        pageOperations.resetButton();
         jest.useFakeTimers();
 
         mixBut = document.getElementById("mixBut");
@@ -79,7 +63,7 @@ describe('Mixed Button tests', () => {
         expect(mixBut.value).toBe('Stop');
 
         jest.advanceTimersByTime(5000);
-        expect(document.getElementById(seconds).innerHTML).toBe('55');
+        expect(document.getElementById('seconds').innerHTML).toBe('55');
     });
 
     test('Does the stop button become a start button', () => {
