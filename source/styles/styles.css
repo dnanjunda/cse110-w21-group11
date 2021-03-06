@@ -44,21 +44,6 @@ a {
     color: #b7daeb;
 }
 
-/* Not used */
-/* #StartReset {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    font-size: 2em;
-    padding: 1%;
-    padding-top: 1em;
-    align-items: center;
-}
-
-ul {
-    text-align: left;
-} */
-
 /* start/stop btn */
 #mixBut {
   /* color is changed in the html file */
@@ -81,61 +66,11 @@ ul {
     font-size: 1.5rem;
 }
 
-/* #task-container {
-    background-color: #b8daeb;
-    border-radius: 15px;
-    align-items: center;
-    color: #07232e;
-    text-align: center;
-    padding-bottom: 3px;
-    margin-bottom: 0.5rem;
-}
-
-#tasks {
-    background-color: #fbfbfb;
-    color: #2b2b2b;
-    padding: 1rem;
-    margin: 0.5em;
-    /* border-radius: 25px;
-} */
 
 /* Aligns text "num of complete pomos */
 #completePomos {
     text-align: center;
 }
-
-/* Old task list css */
-/* 
-h2 {
-    margin-bottom: 0;
-    text-align: center;
-}
-
-p {
-    margin-top: 0.5em;
-    margin-left: 1rem;
-    margin-right: 1rem;
-}
-
-#newitempomo {
-    width: 5em;
-}
-
-#add-btn {
-    background-color: #fbfbfb;
-    color: #2b2b2b;
-    margin: 0 auto;
-    padding: .25rem;  
-    border-radius: 25px;
-}
-
-#clear-btn, #clearList {
-    background-color: #fbfbfb;
-    color: #2b2b2b;
-    margin: 0 auto;
-    padding: .25rem;  
-    border-radius: 25px;
-} */
 
 /* Settings css format */
 .modal {
