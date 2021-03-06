@@ -204,12 +204,14 @@ fieldset {
     font-family: 'Nunito', sans-serif;
 }
 
+/* Changes font and size of alarm sounds*/
 #changeSelect {
     font-family: 'Nunito', sans-serif;
     height: 5vh;
     width: 15vw;
 }
 
+/* Makes overall container smaller */
 #volume-grid-container {
     line-height: .1;
 }
