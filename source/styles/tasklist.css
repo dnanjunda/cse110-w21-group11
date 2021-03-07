@@ -154,8 +154,8 @@ body {
 #add {
   border: none;
   border-radius: 20px;
-  background-color: #c7edff;
-  color: #08222e;
+  background-color: #ff671d;
+  color: white;
   font-family: var(--custom-font);
   padding: 10px;
   width: 100px;
@@ -168,13 +168,13 @@ body {
 }
 #add:hover {
   outline: none;
-  background-color: #97d4f3;
+  background-color: #ff8d53;
 }
 
 #clear {
   border: none;
   border-radius: 20px;
-  background-color: #ff671d;
+  background-color: #c83200;
   color: white;
   font-family: var(--custom-font);
   padding: 10px;
@@ -188,7 +188,7 @@ body {
 
 #clear:hover {
   outline: none;
-  background-color: #ff8d53;
+  background-color: #e25121;
 }
 
 input::-webkit-outer-spin-button,
