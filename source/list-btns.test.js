@@ -1,5 +1,8 @@
 import * as buttonFunctions from "./list-btns.js";
 
+document.getElementById('plus').onclick = buttonFunctions.increment;
+document.getElementById('minus').onclick = buttonFunctions.decrement;
+
 describe("Number of Pomos Button Tests", () => {
     let pomoNum;
 

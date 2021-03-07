@@ -67,15 +67,17 @@ document.addEventListener("DOMContentLoaded", function () {
    * Increment pomos by 1 when plus button is pressed.
    */
   export function increment() {
-    document.getElementById("pomo-num").stepUp();
+    document.getElementById("pomo-num").value = Number(document.getElementById("pomo-num").value) + 1;
   }
+  document.getElementById('plus').onclick = increment;
 
   /**
    * Decrement pomos by 1 when plus button is pressed.
    */
   export function decrement() {
-    document.getElementById("pomo-num").stepDown();
+    document.getElementById("pomo-num").value = Number(document.getElementById("pomo-num").value) - 1;
   }
+  document.getElementById('minus').onclick = decrement;
 
   // module.exports.addTask = addTask;
   // module.exports.clearList = clearList;
