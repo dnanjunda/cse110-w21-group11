@@ -1,3 +1,5 @@
+import {increment, decrement} from "../source/list-btns.js";
+
 document.body.innerHTML =
   '<span id="minute">25</span>' +
   '<span id="seconds">00</span>' +
@@ -12,4 +14,7 @@ document.body.innerHTML =
   '<input type="number" placeholder="Breaks" class="pomos" id="shortBreakPomos" />' +
   '<input type="number" placeholder="Pomos" class="pomos" id="userPomos" />' +
   '<input type="number" placeholder="Breaks" class="pomos" id="breakPomos" />' +
-  '<select id="changeSelect" name="alarmMusic" onselect="sound()">';
+  '<select id="changeSelect" name="alarmMusic" onselect="sound()">' +
+  '<input class="grid-item" type="number" id="pomo-num" value="1" min="1" max="4"/>' +
+  '<button id="plus" type="button" onclick="increment()">+</button>' +
+  '<button id="minus" type="button" onclick="decrement()">-</button>';
