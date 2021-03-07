@@ -5,7 +5,7 @@ const taskList = document.getElementById("tasks");
 
 window.addEventListener("DOMContentLoaded", () => {
   if (!myStorage.getItem("tasks")) {
-    myStorage.setItem("tasks","[]");
+    myStorage.setItem("tasks", "[]");
   }
   const tasks = JSON.parse(myStorage.getItem("tasks"));
   if (tasks.length > 0) {
@@ -62,7 +62,7 @@ function addTask() {
     taskName: newTask,
     pomoNum: newPomo,
   });
-  myStorage.setItem("tasks",JSON.stringify(storedTasks));
+  myStorage.setItem("tasks", JSON.stringify(storedTasks));
 }
 
 const clearButton = document.getElementById("clear");
@@ -79,7 +79,7 @@ function clearList() {
   while (tasks.children.length > 1) {
     tasks.removeChild(tasks.children[1]);
   }
-  myStorage.setItem("tasks","[]");
+  myStorage.setItem("tasks", "[]");
 }
 
 /* eslint-disable no-unused-vars */

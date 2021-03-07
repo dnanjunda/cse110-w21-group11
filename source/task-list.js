@@ -30,16 +30,15 @@ class Task extends window.HTMLElement {
     pomoNum.value = task.pomoNum;
 
     const deleteTask = document.createElement("button");
-    deleteTask.setAttribute("type","button");
+    deleteTask.setAttribute("type", "button");
     deleteTask.setAttribute("id", "delete");
     deleteTask.textContent = "Delete";
     deleteTask.addEventListener("click", function (e) {
-
       const array = e.target.getRootNode().host.parentNode.children;
-      const index = [].indexOf.call(array, e.target.getRootNode().host)-1;
+      const index = [].indexOf.call(array, e.target.getRootNode().host) - 1;
       const storedTasks = JSON.parse(myStorage.getItem("tasks"));
-      storedTasks.splice(index,1);
-      myStorage.setItem("tasks",JSON.stringify(storedTasks));
+      storedTasks.splice(index, 1);
+      myStorage.setItem("tasks", JSON.stringify(storedTasks));
       e.target.getRootNode().host.remove();
       if (
         tasks.children.length === 1 &&
@@ -68,11 +67,11 @@ class Task extends window.HTMLElement {
         const array = e.target.getRootNode().host.parentNode.children;
         const index = [].indexOf.call(array, e.target.getRootNode().host);
         const storedTasks = JSON.parse(myStorage.getItem("tasks"));
-        storedTasks.splice(index,1, {
+        storedTasks.splice(index, 1, {
           taskName: taskName.textContent,
           pomoNum: pomoNum.value,
         });
-        myStorage.setItem("tasks",JSON.stringify(storedTasks));
+        myStorage.setItem("tasks", JSON.stringify(storedTasks));
       }
     });
 
