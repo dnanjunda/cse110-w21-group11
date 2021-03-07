@@ -1,13 +1,13 @@
 /* global Task */
 /* eslint no-undef: "error" */
-let myStorage = window.localStorage;
+const myStorage = window.localStorage;
 const taskList = document.getElementById("tasks");
 
 window.addEventListener("DOMContentLoaded", () => {
   if (!myStorage.getItem("tasks")) {
     myStorage.setItem("tasks","[]");
   }
-  let tasks = JSON.parse(myStorage.getItem("tasks"));
+  const tasks = JSON.parse(myStorage.getItem("tasks"));
   if (tasks.length > 0) {
     document.getElementById("no-task").style.display = "none";
     for (let i = 0; i < tasks.length; i++) {
@@ -57,7 +57,7 @@ function addTask() {
   );
   document.getElementById("form").reset();
 
-  let storedTasks = JSON.parse(myStorage.getItem("tasks"));
+  const storedTasks = JSON.parse(myStorage.getItem("tasks"));
   storedTasks.push({
     taskName: newTask,
     pomoNum: newPomo,

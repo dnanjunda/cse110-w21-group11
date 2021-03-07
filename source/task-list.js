@@ -2,7 +2,7 @@ class Task extends window.HTMLElement {
   constructor(task) {
     super();
 
-    let myStorage = window.localStorage;
+    const myStorage = window.localStorage;
 
     const tasks = document.getElementById("tasks");
     const shadow = this.attachShadow({ mode: "open" });
@@ -35,9 +35,9 @@ class Task extends window.HTMLElement {
     deleteTask.textContent = "Delete";
     deleteTask.addEventListener("click", function (e) {
 
-      let array = e.target.getRootNode().host.parentNode.children;
-      let index = [].indexOf.call(array, e.target.getRootNode().host)-1;
-      let storedTasks = JSON.parse(myStorage.getItem("tasks"));
+      const array = e.target.getRootNode().host.parentNode.children;
+      const index = [].indexOf.call(array, e.target.getRootNode().host)-1;
+      const storedTasks = JSON.parse(myStorage.getItem("tasks"));
       storedTasks.splice(index,1);
       myStorage.setItem("tasks",JSON.stringify(storedTasks));
       e.target.getRootNode().host.remove();
@@ -65,9 +65,9 @@ class Task extends window.HTMLElement {
         editName.style.display = "none";
         taskName.textContent = editName.value;
         pomoNum.readOnly = true;
-        let array = e.target.getRootNode().host.parentNode.children;
-        let index = [].indexOf.call(array, e.target.getRootNode().host);
-        let storedTasks = JSON.parse(myStorage.getItem("tasks"));
+        const array = e.target.getRootNode().host.parentNode.children;
+        const index = [].indexOf.call(array, e.target.getRootNode().host);
+        const storedTasks = JSON.parse(myStorage.getItem("tasks"));
         storedTasks.splice(index,1, {
           taskName: taskName.textContent,
           pomoNum: pomoNum.value,
