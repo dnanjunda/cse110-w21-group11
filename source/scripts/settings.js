@@ -247,6 +247,8 @@ addEventListener("change", function(){
     inputSecs.value = inputSecs.value.substring(indexSecs);
     if(inputSecs.value == "" || inputSecs.value == "0"){
         document.getElementById("seconds").innerHTML = '00';
+        var addTime = parseInt(60 * inputMins.value, 10);
+        secondsPerPomo = addTime;
     }
     else if(inputSecs.value < 10){
         document.getElementById("seconds").innerHTML = '0' + inputSecs.value;
