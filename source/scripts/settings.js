@@ -363,9 +363,11 @@ slider.oninput = function () {
   document.getElementById("volume-number").value = document.getElementById(
     "volume-slider"
   ).value;
+  saveSettings();
 };
 numInp.oninput = function () {
   document.getElementById("volume-slider").value = document.getElementById(
     "volume-number"
   ).value;
+  saveSettings();
 };
