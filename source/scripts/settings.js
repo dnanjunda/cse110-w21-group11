@@ -18,6 +18,7 @@ let secondsPerPomo = 60 * 25; // Number of seconds in single pomo session
 let timeRemaining = secondsPerPomo; // Time remaining in session in seconds
 let pomodoro = 0; // Number of pomodoros completed
 let intervalId = null; // ID of interval calling the timeAdvance method
+let onBreak = false;
 
 /**
  * This function advances time by one second. It will be called on a one second interval while the timer is running.
@@ -31,41 +32,62 @@ export function timeAdvance() {
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
+
+  /*
+   * Break handling
+   */
+
   if (timeRemaining <= 0) {
-    pomodoro++;
-    timeRemaining = secondsPerPomo;
-    clearInterval(intervalId);
-    document.getElementById("completePomos").innerHTML =
-      "Number of Complete Pomodoros: " + pomodoro;
-    sound();
-  }
+    // If a break just completed
+    if (onBreak) {
+      onBreak = false;
 
-  const pomoBreak = document.getElementById("userPomos").value;
-  const pomoBreakLength = document.getElementById("breakPomos").value;
-  // let pomoShortBreakLength = document.getElementById("shortBreakPomos").value
-  // if(pomoBreakLength == 0){
-  //     pomoBreakLength = 0.5;
-  // }
+      clearInterval(intervalId);
+      timeRemaining = secondsPerPomo;
+      sound();
+    }
+    // If a pomo session just completed
+    else {
+      onBreak = true;
+      pomodoro++;
+      document.getElementById("completePomos").innerHTML =
+        "Number of Complete Pomodoros: " + pomodoro;
+      clearInterval(intervalId);
+      sound();
 
-  if (pomodoro % pomoBreak === 0 && pomodoro !== 0) {
-    // alert(pomodoro + " : " + numLongBreaks);
-    // numLongBreaks++;
-    alert("Time to take a long break");
-    const longBreak = 60 * pomoBreakLength;
-    timeRemaining = longBreak;
-    clearInterval(intervalId);
-    startButton();
-    // pomodoro--;
+      let pomosUntilLongBreak = document.getElementById("userPomos").value;
+
+      if (!pomosUntilLongBreak) {
+        pomosUntilLongBreak = 4;
+      }
+
+      // If it is time for a long break
+      if (pomodoro % pomosUntilLongBreak == 0 && pomodoro != 0) {
+        alert("Time to take a long break");
+
+        const minutesPerLongBreak = document.getElementById("breakPomos").value;
+        if (minutesPerLongBreak == "") {
+          // default value: 30 mins
+          timeRemaining = 60 * 30;
+        } else {
+          timeRemaining = 60 * minutesPerLongBreak;
+        }
+      }
+      // If it is time for a short break
+      else {
+        alert("Time to take a short break");
+
+        const minutesPerShortBreak = document.getElementById("shortBreakPomos")
+          .value;
+        if (minutesPerShortBreak == "") {
+          // default value: 5 mins
+          timeRemaining = 60 * 5;
+        } else {
+          timeRemaining = 60 * minutesPerShortBreak;
+        }
+      }
+    }
   }
-  // for short breaks(after every pomodoro except when its a long break)
-  // else if(pomodoro % pomoBreak != 0 && pomodoro != 0) {
-  //     alert("Time to take a short break");
-  //     let shortBreak = 60 * pomoShortBreakLength;
-  //     timeRemaining = shortBreak;
-  //     clearInterval(intervalId);
-  //     startButton();
-  //     // pomodoro--;
-  // }
 }
 // keep count of how many pomodoros have been completed
 document.getElementById("completePomos").innerHTML =
@@ -103,9 +125,16 @@ export function stopButton() {
   mixBut.removeEventListener("click", stopButton);
   mixBut.addEventListener("click", startButton);
   document.getElementById("mixBut").style.background = "lightgreen";
+
+  // Updating the time display given that a new time remaining will have been set for a break
+  let minute = Math.floor((timeRemaining / 60) % 60);
+  let seconds = Math.floor(timeRemaining % 60);
+  minute = minute < 10 ? "0" + minute : minute;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  document.getElementById("minute").innerHTML = minute;
+  document.getElementById("seconds").innerHTML = seconds;
   mixBut.value = "Start Timer";
 }
-
 mixBut.addEventListener("click", startButton);
 
 /**
@@ -123,6 +152,14 @@ export function resetButton() {
 }
 document.getElementById("reset-btn").addEventListener("click", resetButton);
 
+/**
+ * resetPomo is for use by Jest to reset the number of pomos completed
+ */
+export function resetPomos() {
+  pomodoro = 0;
+  onBreak = false;
+}
+
 /*
  * Settings Modal
  */
@@ -136,7 +173,7 @@ window.onclick = function (event) {
 };
 
 const inputMins = document.getElementById("userMins");
-
+const inputSecs = document.getElementById("userSecs");
 /**
  * Updating the timer when the userMins element in the settings menu changes.
  * Prevents leading zeroes in the input field.
@@ -152,31 +189,27 @@ export function minuteChange() {
   }
   inputMins.value = inputMins.value.substring(indexMins);
   if (inputMins.value == "") {
+    inputMins.value = "25";
     document.getElementById("minute").innerHTML = "25";
-    secondsPerPomo = 60 * 25;
+    secondsPerPomo = 60 * 25 + Number(inputSecs.value);
   } else if (inputMins.value == "0") {
     document.getElementById("minute").innerHTML = "00";
-    secondsPerPomo = 0;
+    secondsPerPomo = Number(inputSecs.value);
   } else if (inputMins.value < 10) {
     document.getElementById("minute").innerHTML = "0" + inputMins.value;
-    secondsPerPomo =
-      parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10);
+    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
   } else if (inputMins.value > 59) {
     // max mins for pomo timer 2 hours
     inputMins.value = 59;
-    secondsPerPomo =
-      parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10);
+    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
   } else {
     document.getElementById("minute").innerHTML = inputMins.value;
-    secondsPerPomo =
-      parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10);
+    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
   }
   timeRemaining = secondsPerPomo;
   intervalId = null;
 }
 inputMins.oninput = minuteChange;
-
-const inputSecs = document.getElementById("userSecs");
 
 /**
  * Updating timer when the userSecs element in the settings menu changes.
@@ -193,23 +226,19 @@ export function secondChange() {
   }
   inputSecs.value = inputSecs.value.substring(indexSecs);
   if (inputSecs.value === "" || inputSecs.value === "0") {
+    inputSecs.value = 0;
     document.getElementById("seconds").innerHTML = "00";
+    secondsPerPomo = 60 * Number(inputMins.value);
   } else if (inputSecs.value < 10) {
     document.getElementById("seconds").innerHTML = "0" + inputSecs.value;
-    const addTime =
-      parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10);
-    secondsPerPomo = addTime;
+    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
   } else if (inputSecs.value >= 60) {
     // max mins for pomo timer 2 hours
     inputSecs.value = 59;
-    const addTime =
-      parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10);
-    secondsPerPomo = addTime;
+    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
   } else {
     document.getElementById("seconds").innerHTML = inputSecs.value;
-    const addTime =
-      parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10);
-    secondsPerPomo = addTime;
+    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
   }
   timeRemaining = secondsPerPomo;
   intervalId = null;
@@ -245,16 +274,21 @@ function sound() {
     );
     audioSound.volume = 0;
   }
-  // infinite loop
-  audioSound.addEventListener(
-    "ended",
-    function () {
-      this.currentTime = 0;
-      this.play();
-    },
-    false
-  );
-  audioSound.play();
+
+  // Check if audio sound was successfully gotten (useful for jest)
+  if (audioSound) {
+    // infinite loop
+    audioSound.addEventListener(
+      "ended",
+      function () {
+        this.currentTime = 0;
+        this.play();
+      },
+      false
+    );
+    audioSound.play();
+  }
+
   // Stop alarm sound
   document.getElementById("mixBut").onclick = function (event) {
     stopAlarm();
@@ -285,43 +319,3 @@ numInp.oninput = function () {
     "volume-number"
   ).value;
 };
-
-/*
- * Task List functions
- */
-// (function(){
-//     var todo = document.querySelector( '#tasks' ),
-//         form = document.querySelector( 'form' ),
-//         field = document.querySelector( '#newitem' );
-//     form.addEventListener( 'submit', function( event ) {
-//       var text = field.value;
-//       if ( text !== '' ) {
-//         todo.innerHTML += '<li>' + text +
-//           ' <button onclick="Check(this);">check as done</button> <button onclick="Delete(this);">X</button> </li>';
-//         field.value = '';
-//       }
-//       event.preventDefault();
-//     }, false);
-//   })();
-
-// function Check(curr){
-// if(curr.parentNode.innerHTML.charAt(0) == "✓"){
-//     curr.parentNode.innerHTML= curr.parentNode.innerHTML.substring(1);
-// }
-// else{
-//     curr.parentNode.innerHTML = "✓" + curr.parentNode.innerHTML;
-// }
-// }
-
-// function Delete(curr){
-// curr.parentNode.parentNode.removeChild(curr.parentNode);
-// }
-
-// var listClear = document.getElementById("clearList");
-
-// listClear.addEventListener("click", noList);
-
-// function noList(){
-// var ul = document.getElementById("tasks");
-// ul.innerHTML = "";
-// }

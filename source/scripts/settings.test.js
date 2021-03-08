@@ -1,66 +1,48 @@
 import * as pageOperations from "./settings.js";
 
+window.alert = () => {};
+
 describe("timeAdvance tests", () => {
-  let minuteDisplay;
-  let secondDisplay;
+  const minuteDisplay = document.getElementById("minute");
+  const secondDisplay = document.getElementById("seconds");
 
-  beforeEach(() => {
-    minuteDisplay = document.getElementById("minute");
-    secondDisplay = document.getElementById("seconds");
-
+  afterEach(() => {
     pageOperations.stopButton();
     pageOperations.resetButton();
+    pageOperations.resetPomos();
   });
 
   test("Does timeAdvance correctly change the timer display", () => {
-    expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("2500");
+    for (
+      let secondsRemaining = 25 * 60;
+      secondsRemaining > 0;
+      secondsRemaining--
+    ) {
+      let minute = Math.floor(secondsRemaining / 60);
+      minute = minute < 10 ? "0" + String(minute) : String(minute);
+      let second = secondsRemaining % 60;
+      second = second < 10 ? "0" + String(second) : String(second);
 
-    pageOperations.timeAdvance();
+      expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe(
+        minute + second
+      );
 
-    for (let min = 24; min > 9; min--) {
-      for (let sec = 59; sec > 9; sec--) {
-        expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe(
-          String(min) + String(sec)
-        );
-
-        pageOperations.timeAdvance();
-      }
-      for (let sec = 9; sec > -1; sec--) {
-        expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe(
-          String(min) + "0" + String(sec)
-        );
-
-        pageOperations.timeAdvance();
-      }
-    }
-    for (let min = 9; min > 0; min--) {
-      for (let sec = 59; sec > 9; sec--) {
-        expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe(
-          "0" + String(min) + String(sec)
-        );
-
-        pageOperations.timeAdvance();
-      }
-      for (let sec = 9; sec > -1; sec--) {
-        expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe(
-          "0" + String(min) + "0" + String(sec)
-        );
-
-        pageOperations.timeAdvance();
-      }
+      pageOperations.timeAdvance();
     }
   });
 });
 
 describe("Mixed Button tests", () => {
-  let mixBut;
+  const mixBut = document.getElementById("mixBut");
 
   beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
     pageOperations.stopButton();
     pageOperations.resetButton();
-    jest.useFakeTimers();
-
-    mixBut = document.getElementById("mixBut");
+    pageOperations.resetPomos();
   });
 
   test("Does the start button become a stop button", () => {
@@ -82,5 +64,188 @@ describe("Mixed Button tests", () => {
 
     jest.advanceTimersByTime(5000);
     expect(document.getElementById("seconds").innerHTML).toBe("00");
+  });
+});
+
+describe("Break tests", () => {
+  const minuteDisplay = document.getElementById("minute");
+  const secondDisplay = document.getElementById("seconds");
+
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    pageOperations.stopButton();
+    pageOperations.resetButton();
+    pageOperations.resetPomos();
+  });
+
+  test("Does the timer stop counting down after 25 minutes", () => {
+    pageOperations.startButton();
+
+    expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("2500");
+
+    jest.advanceTimersByTime(25 * 60000);
+    expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("0000");
+
+    jest.advanceTimersByTime(5000);
+    expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("0000");
+  });
+
+  test("Does the timer begin a short break after the first pomo session", () => {
+    pageOperations.startButton();
+    jest.advanceTimersByTime(25 * 60000);
+    pageOperations.stopButton();
+
+    expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("0500");
+    pageOperations.startButton();
+
+    jest.advanceTimersByTime(5 * 60000);
+    expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("0000");
+
+    jest.advanceTimersByTime(5000);
+    expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("0000");
+  });
+
+  test("Does the timer begin a long break after the fourth pomo session", () => {
+    expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("2500");
+    pageOperations.startButton();
+    jest.advanceTimersByTime(25 * 60000);
+    expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("0000");
+    pageOperations.stopButton();
+
+    for (let i = 0; i < 3; i++) {
+      expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("0500");
+      pageOperations.startButton();
+      jest.advanceTimersByTime(5 * 60000);
+      expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("0000");
+      pageOperations.stopButton();
+
+      expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("2500");
+      pageOperations.startButton();
+      jest.advanceTimersByTime(25 * 60000);
+      expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("0000");
+      pageOperations.stopButton();
+    }
+
+    expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("3000");
+    pageOperations.startButton();
+
+    jest.advanceTimersByTime(30 * 60000);
+    expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("0000");
+
+    jest.advanceTimersByTime(5000);
+    expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("0000");
+  });
+
+  test("Does the timer repeat the correct pattern indefinitely", () => {
+    for (let j = 0; j < 5; j++) {
+      expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("2500");
+      pageOperations.startButton();
+      jest.advanceTimersByTime(25 * 60000);
+      expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("0000");
+      pageOperations.stopButton();
+
+      for (let i = 0; i < 3; i++) {
+        expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("0500");
+        pageOperations.startButton();
+        jest.advanceTimersByTime(5 * 60000);
+        expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("0000");
+        pageOperations.stopButton();
+
+        expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("2500");
+        pageOperations.startButton();
+        jest.advanceTimersByTime(25 * 60000);
+        expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("0000");
+        pageOperations.stopButton();
+      }
+
+      expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("3000");
+      pageOperations.startButton();
+      jest.advanceTimersByTime(30 * 60000);
+      expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("0000");
+      pageOperations.stopButton();
+    }
+  });
+});
+
+describe("minuteChange and secondChange tests", () => {
+  const minuteDisplay = document.getElementById("minute");
+  const secondDisplay = document.getElementById("seconds");
+  const inputMins = document.getElementById("userMins");
+  const inputSecs = document.getElementById("userSecs");
+
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    pageOperations.stopButton();
+    pageOperations.resetButton();
+    pageOperations.resetPomos();
+    inputMins.value = "25";
+    inputMins.oninput();
+    inputSecs.value = "0";
+    inputSecs.oninput();
+  });
+
+  test("Does changing userMins and userSecs update the timer display", () => {
+    for (
+      let secondsRemaining = 25 * 60;
+      secondsRemaining > 0;
+      secondsRemaining--
+    ) {
+      let minute = Math.floor(secondsRemaining / 60);
+      inputMins.value = minute;
+      inputMins.oninput();
+
+      let second = secondsRemaining % 60;
+      inputSecs.value = second;
+      inputSecs.oninput();
+
+      minute = minute < 10 ? "0" + String(minute) : String(minute);
+      second = second < 10 ? "0" + String(second) : String(second);
+      expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe(
+        minute + second
+      );
+    }
+  });
+
+  test("Does changing userMins and userSecs update the time remaining", () => {
+    for (
+      let secondsRemaining = 25 * 60;
+      secondsRemaining > 0;
+      secondsRemaining--
+    ) {
+      inputMins.value = String(Math.floor(secondsRemaining / 60));
+      inputMins.oninput();
+
+      inputSecs.value = String(secondsRemaining % 60);
+      inputSecs.oninput();
+
+      pageOperations.timeAdvance();
+
+      let minute = Math.floor((secondsRemaining - 1) / 60);
+      minute = minute < 10 ? "0" + String(minute) : String(minute);
+      let second = (secondsRemaining - 1) % 60;
+      second = second < 10 ? "0" + String(second) : String(second);
+      expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe(
+        minute + second
+      );
+    }
+  });
+
+  test("Does leaving userMins or userSecs blank break the timer", () => {
+    inputMins.value = "";
+    inputMins.oninput();
+    expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("2500");
+
+    inputSecs.value = "";
+    inputSecs.oninput();
+    expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("2500");
+
+    pageOperations.timeAdvance();
+    expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("2459");
   });
 });

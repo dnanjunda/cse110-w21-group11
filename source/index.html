@@ -55,25 +55,28 @@
                 <p class="settingText">Length of Short Break</p>
                 <input
                   type="number"
-                  placeholder="Breaks"
+                  placeholder="Minutes"
                   class="pomos"
                   id="shortBreakPomos"
-                />
-
-                <p class="settingText">Pomodoros til Long Break</p>
-                <input
-                  type="number"
-                  placeholder="Pomos"
-                  class="pomos"
-                  id="userPomos"
+                  value="5"
                 />
 
                 <p class="settingText">Length of Long Break</p>
                 <input
                   type="number"
-                  placeholder="Breaks"
+                  placeholder="Minutes"
                   class="pomos"
                   id="breakPomos"
+                  value="30"
+                />
+
+                <p class="settingText">Pomodoros until Long Break</p>
+                <input
+                  type="number"
+                  placeholder="Pomos"
+                  class="pomos"
+                  id="userPomos"
+                  value="4"
                 />
 
                 <p class="settingText">Pomodoro Length</p>
@@ -82,6 +85,7 @@
                   placeholder="Minutes"
                   class="minutes"
                   id="userMins"
+                  value="25"
                 />
                 <input
                   type="number"
@@ -90,6 +94,7 @@
                   min="0"
                   step="1"
                   id="userSecs"
+                  value="0"
                 />
 
                 <br />
@@ -179,7 +184,7 @@
         </div>
         <br />
         <!-- States the complete number of pomodoros -->
-        <!-- <p id="completePomos">Number of Complete Pomodors</p> -->
+        <p id="completePomos">Number of Complete Pomodors</p>
         <p style="display: none">
           Select the task(s) you want to start before starting the timer
         </p>
