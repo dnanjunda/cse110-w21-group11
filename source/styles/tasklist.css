@@ -7,7 +7,6 @@ body {
   min-width: 79.5vh;
   margin: auto;
   background: #08222e;
-
   font-family: var(--custom-font);
   text-align: center;
 }
@@ -31,12 +30,12 @@ body {
 }
 
 #list-title1 {
-  font-size: calc(10px + .5vw);
+  font-size: calc(10px + 0.5vw);
   text-align: left;
 }
 #list-title2 {
   text-align: left;
-  font-size: calc(10px + .5vw);
+  font-size: calc(10px + 0.5vw);
 }
 
 #task-list {
