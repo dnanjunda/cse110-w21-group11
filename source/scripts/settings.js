@@ -1,4 +1,4 @@
-//TODOs:
+// TODOs:
 /* 
 - Settings modal not responsive to window size
 - Custom minutes and seconds don’t work together (only changing one of them works at a time)
@@ -40,9 +40,9 @@ function timeAdvance() {
         sound();
     }
 
-    let pomoBreak = document.getElementById("userPomos").value;
-    let pomoBreakLength = document.getElementById("breakPomos").value;
-    let pomoShortBreakLength = document.getElementById("shortBreakPomos").value
+    // let pomoBreak = document.getElementById("userPomos").value;
+    // let pomoBreakLength = document.getElementById("breakPomos").value;
+    // let pomoShortBreakLength = document.getElementById("shortBreakPomos").value;
 
     // if(pomodoro % pomoBreak == 0 && pomodoro != 0){
     //     // alert(pomodoro + " : " + numLongBreaks);
@@ -105,7 +105,7 @@ mixBut.addEventListener("click", startButton);
  */
 function resetButton(){
     timeRemaining = secondsPerPomo;
-    //minutes
+    // minutes
     if(inputMins.value == ""){
         document.getElementById("minute").innerHTML = '25';
     }
@@ -118,7 +118,7 @@ function resetButton(){
     else{
         document.getElementById("minute").innerHTML = inputMins.value;
     }
-    //seconds
+    // seconds
     if(inputSecs.value == "" || inputSecs.value == "0" ){
         document.getElementById("seconds").innerHTML = '00';
     }
@@ -139,6 +139,7 @@ document.getElementById("reset-btn").addEventListener("click", resetButton);
 
 // Local Storage
 function saveSettings(){
+    
     localStorage._shortBreakPomos = parseInt(document.getElementById("shortBreakPomos").value);
     localStorage._userPomos = parseInt(document.getElementById("userPomos").value);
     localStorage._breakPomos = parseInt(document.getElementById("breakPomos").value);
@@ -191,8 +192,8 @@ window.onclick = function(event) {
  */
 const inputMins = document.getElementById("userMins");
 addEventListener("change", function(){
-    stopButton(); //so that there's no overlapping timers
-    indexMins = 0;
+    stopButton(); // so that there's no overlapping timers
+    let indexMins = 0;
     // doesnt allow for custom timer to start with a 0 and more numbers
     if(inputMins.value.length > 1){
         while(inputMins.value.substring(indexMins, indexMins + 1) == "0"){
@@ -210,24 +211,24 @@ addEventListener("change", function(){
     }
     else if(inputMins.value < 10){
         document.getElementById("minute").innerHTML = '0' + inputMins.value;
-        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+        const addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
         secondsPerPomo = addTime;
     }
-    else if(inputMins.value > 120){ //max mins for pomo timer 2 hours
+    else if(inputMins.value > 120){ // max mins for pomo timer 2 hours
         inputMins.value = 120;
-        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+        const addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
         secondsPerPomo = addTime;
     }
     else{
         document.getElementById("minute").innerHTML = inputMins.value;
-        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+        const addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
         secondsPerPomo = addTime;
     }
     timeRemaining = secondsPerPomo;
     intervalId = null;
     saveSettings();
 })
-let evtMins = new Event("change", {bubbles:true});
+const evtMins = new Event("change", {bubbles:true});
 document.dispatchEvent(evtMins);
 
 /**
@@ -236,7 +237,7 @@ document.dispatchEvent(evtMins);
 const inputSecs = document.getElementById("userSecs");
 
 addEventListener("change", function(){
-    stopButton(); //so that there's no overlapping timers
+    stopButton(); // so that there's no overlapping timers
     let indexSecs = 0;
     // doesnt allow for custom timer to start with a 0 and more numbers
     if(inputSecs.value.length > 1){
@@ -247,34 +248,36 @@ addEventListener("change", function(){
     inputSecs.value = inputSecs.value.substring(indexSecs);
     if(inputSecs.value == "" || inputSecs.value == "0"){
         document.getElementById("seconds").innerHTML = '00';
-        var addTime = parseInt(60 * inputMins.value, 10);
+        const addTime = parseInt(60 * inputMins.value, 10);
         secondsPerPomo = addTime;
     }
     else if(inputSecs.value < 10){
         document.getElementById("seconds").innerHTML = '0' + inputSecs.value;
-        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+        const addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
         secondsPerPomo = addTime;
     }
-    else if(inputSecs.value >= 60){ //max mins for pomo timer 2 hours
+    else if(inputSecs.value >= 60){ // max mins for pomo timer 2 hours
         inputSecs.value = 59;
-        var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+        const addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
         secondsPerPomo = addTime;
     }
     else{
         document.getElementById("seconds").innerHTML = inputSecs.value;
         if(inputMins.value == ""){
-            var addTime = parseInt(60 * 25, 10) + parseInt(inputSecs.value, 10)
+            const addTime = parseInt(60 * 25, 10) + parseInt(inputSecs.value, 10)
+            secondsPerPomo = addTime;
         }
         else{
-            var addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+            const addTime = parseInt(60 * inputMins.value, 10) + parseInt(inputSecs.value, 10)
+            secondsPerPomo = addTime;
         }
-        secondsPerPomo = addTime;
+
     }
     timeRemaining = secondsPerPomo;
     intervalId = null;
     saveSettings();
 })
-let evtSecs = new Event("change", {bubbles:true});
+const evtSecs = new Event("change", {bubbles:true});
 document.dispatchEvent(evtSecs);
 
 /*
@@ -282,8 +285,8 @@ document.dispatchEvent(evtSecs);
 */
 function sound(){
     // alarm("alarm");
-    let x = document.getElementById("changeSelect").value;
-    let volLevel = document.getElementById("volume-slider").value / 100;
+    const x = document.getElementById("changeSelect").value;
+    const volLevel = document.getElementById("volume-slider").value / 100;
     let audioSound;
     if(x == "Chirp"){
         audioSound = new Audio('https://freesound.org/data/previews/456/456440_5121236-lq.mp3');
@@ -303,9 +306,9 @@ function sound(){
         this.play();
     }, false);
     audioSound.play();
-    //Stop alarm sound
-    document.getElementById("mixBut").onclick = function(event) {stopAlarm()}; //stop alarm when press stop
-    document.getElementById("reset-btn").onclick = function(event) {stopAlarm()}; //stop alarm when press reset
+    // Stop alarm sound
+    document.getElementById("mixBut").onclick = function(event) {stopAlarm()}; // stop alarm when press stop
+    document.getElementById("reset-btn").onclick = function(event) {stopAlarm()}; // stop alarm when press reset
     function stopAlarm() {
         if(audioSound){
             audioSound.pause();

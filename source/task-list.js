@@ -39,7 +39,7 @@ class Task extends HTMLElement {
 
     const taskName = document.createElement("p");
     taskName.setAttribute("id", "taskName");
-    taskName.textContent = task["taskName"];
+    taskName.textContent = task.taskName;
     const pomoNum = document.createElement("input");
 
     pomoNum.setAttribute("type", "number");
@@ -48,7 +48,7 @@ class Task extends HTMLElement {
     pomoNum.setAttribute("min", "1");
     pomoNum.setAttribute("max", "4");
     pomoNum.setAttribute("readonly", "true");
-    pomoNum.value = task["pomoNum"];
+    pomoNum.value = task.pomoNum;
 
     wrapper.appendChild(taskName);
     wrapper.appendChild(pomoNum);

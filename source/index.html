@@ -28,22 +28,25 @@
 
                         <!-- Settings customization of breaks/pomos -->
                         <div class="modal-settings-customization">
-                            
-                            <p class="settingText">Length of Short Break</p>
-                            <input type="number" placeholder="Breaks" class="pomos" id="shortBreakPomos"/>
+                            <form>
+                                <p class="settingText">Length of Short Break</p>
+                                <input type="number" placeholder="Breaks" class="pomos" id="shortBreakPomos"/>
 
-                            <p class="settingText">Pomodoros til Long Break</p>
-                            <input type="number" placeholder="Pomos" class="pomos" id="userPomos"/>
-                            
-                            <p class="settingText">Length of Long Break</p>
-                            <input type="number" placeholder="Breaks" class="pomos" id="breakPomos"/>
-                            
-                            <p class="settingText">Pomodoro Length</p>
-                            <input type="number" placeholder="Minutes" class="minutes" id="userMins"/>
-                            <input type="number" placeholder="Seconds" class="seconds" min="0" step="1" id="userSecs"/>
-                            
-                            <br><hr style="color: black;"><br>
+                                <p class="settingText">Pomodoros til Long Break</p>
+                                <input type="number" placeholder="Pomos" class="pomos" id="userPomos"/>
                                 
+                                <p class="settingText">Length of Long Break</p>
+                                <input type="number" placeholder="Breaks" class="pomos" id="breakPomos"/>
+                                
+                                <p class="settingText">Pomodoro Length</p>
+                                <input type="number" placeholder="Minutes" class="minutes" id="userMins"/>
+                                <input type="number" placeholder="Seconds" class="seconds" min="0" step="1" id="userSecs"/>
+                                
+                                <br>
+                                <input type="submit" value="Save">
+                            </form>
+                            
+                            <hr style="color: black;">
                             <!-- Notification Sound -->
                             <label class="settingText">Notification Sound:</label>
                             
@@ -73,6 +76,7 @@
                                     value="100">
                                 </div>
                             </fieldset>
+
                         </div>
                     </div>
                 </div>
