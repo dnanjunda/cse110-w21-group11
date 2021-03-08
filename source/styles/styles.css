@@ -208,24 +208,29 @@ fieldset {
     line-height: .1;
 }
 
+.settingText {
+  margin-top: 3vh;
+  font-size: 23px;
+  font-family: "Nunito", sans-serif;
+}
+
 /* Keeps volume number relative to window size */
 #volume-number {
-    height: 2vh;
-    width: 5vw;
+  height: 2vh;
+  width: 5vw;
 }
 
 /* Keeps volume slider relative to window size */
 #volume-slider {
-    height: 10vh;
-    width: 10vw;
-  font-size: 23px;
-  font-family: "Nunito", sans-serif;
+  height: 10vh;
+  width: 10vw;
 }
 
 /* Style for user input */
 input[type="number"] {
   border: 0;
-  padding: 5px;
+  margin-bottom: 2vh;
+  padding: 1vh; 
   border-radius: 20px;
 }
 
@@ -265,6 +270,7 @@ select {
 /* Puts input minutes to the left in settings*/
 .minutes {
     width: 7vw;
+
     /* float: 7vw; */
  }
 
@@ -278,9 +284,8 @@ select {
 .close {
     color: #aaa;
     float: right;
-    font-size: 5vh;
     font-weight: bold;
-    font-size: 1.5vw;
+    font-size: 2.5vw;
     width: 100%;
 }
 
