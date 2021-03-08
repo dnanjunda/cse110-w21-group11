@@ -5,11 +5,11 @@ document.body.innerHTML =
   '<input type="button" id="mixBut" style="background-color:lightgreen;color:white;width:150px;height:40px;" value="Start Timer" />' +
   '<button id="reset-btn" style="background-color:gray;color:white;width:150px;height:40px;">Reset</button>' +
   '<div id="settings-modal" class="modal"></div>' +
-  '<input type="number" placeholder="Minutes" class="minutes" id="userMins" />' +
-  '<input type="number" placeholder="Seconds" class="seconds" min="0" step="1" id="userSecs" />' +
+  '<input type="number" placeholder="Minutes" class="minutes" id="userMins" value="25"/>' +
+  '<input type="number" placeholder="Seconds" class="seconds" min="0" step="1" id="userSecs" value="0"/>' +
   '<input id="volume-number" name="volume-number" type="number" min="0" max="100" value="100">' +
   '<input id="volume-slider" name="volume-slider" type="range" min="0" max="100" value="100">' +
-  '<input type="number" placeholder="Breaks" class="pomos" id="shortBreakPomos" />' +
-  '<input type="number" placeholder="Pomos" class="pomos" id="userPomos" />' +
-  '<input type="number" placeholder="Breaks" class="pomos" id="breakPomos" />' +
+  '<input type="number" placeholder="Breaks" class="pomos" id="shortBreakPomos" value="5"/>' +
+  '<input type="number" placeholder="Pomos" class="pomos" id="userPomos" value="4"/>' +
+  '<input type="number" placeholder="Breaks" class="pomos" id="breakPomos" value="30"/>' +
   '<select id="changeSelect" name="alarmMusic" onselect="sound()">';
