@@ -172,79 +172,78 @@ export function resetPomos() {
 
 // Local Storage
 function saveSettings() {
-  localStorage._shortBreakPomos = parseInt(
+  window.localStorage._shortBreakPomos = parseInt(
     document.getElementById("shortBreakPomos").value
   );
-  localStorage._userPomos = parseInt(
+  window.localStorage._userPomos = parseInt(
     document.getElementById("userPomos").value
   );
-  localStorage._breakPomos = parseInt(
+  window.localStorage._breakPomos = parseInt(
     document.getElementById("breakPomos").value
   );
-  localStorage._userMins = parseInt(document.getElementById("userMins").value);
-  localStorage._userSecs = parseInt(document.getElementById("userSecs").value);
-  localStorage._changeSelect = document.getElementById("changeSelect").value;
-  localStorage._volume_number = parseInt(
+  window.localStorage._userMins = parseInt(document.getElementById("userMins").value);
+  window.localStorage._userSecs = parseInt(document.getElementById("userSecs").value);
+  window.localStorage._changeSelect = document.getElementById("changeSelect").value;
+  window.localStorage._volume_number = parseInt(
     document.getElementById("volume-number").value
   );
-  localStorage._volume_slider = parseInt(
+  window.localStorage._volume_slider = parseInt(
     document.getElementById("volume-slider").value
   );
 }
 
 function loadSettings() {
-  document.getElementById("shortBreakPomos").value =
-    localStorage._shortBreakPomos;
-  document.getElementById("userPomos").value = localStorage._userPomos;
-  document.getElementById("breakPomos").value = localStorage._breakPomos;
-  document.getElementById("userMins").value = localStorage._userMins;
-  document.getElementById("userSecs").value = localStorage._userSecs;
-  document.getElementById("changeSelect").value = localStorage._changeSelect;
-  document.getElementById("volume-number").value = localStorage._volume_number;
-  document.getElementById("volume-slider").value = localStorage._volume_slider;
+  document.getElementById("shortBreakPomos").value = window.localStorage._shortBreakPomos;
+  document.getElementById("userPomos").value = window.localStorage._userPomos;
+  document.getElementById("breakPomos").value = window.localStorage._breakPomos;
+  document.getElementById("userMins").value = window.localStorage._userMins;
+  document.getElementById("userSecs").value = window.localStorage._userSecs;
+  document.getElementById("changeSelect").value = window.localStorage._changeSelect;
+  document.getElementById("volume-number").value = window.localStorage._volume_number;
+  document.getElementById("volume-slider").value = window.localStorage._volume_slider;
 
-  localStorage.setItem(
+  window.localStorage.setItem(
     "shortBreakPomos",
     document.getElementById("shortBreakPomos").value
   );
-  localStorage.setItem("userPomos", document.getElementById("userPomos").value);
-  localStorage.setItem(
+  window.localStorage.setItem("userPomos", document.getElementById("userPomos").value);
+  window.localStorage.setItem(
     "breakPomos",
     document.getElementById("breakPomos").value
   );
-  localStorage.setItem("userMins", document.getElementById("userMins").value);
-  localStorage.setItem("userSecs", document.getElementById("userSecs").value);
-  localStorage.setItem(
+  window.localStorage.setItem("userMins", document.getElementById("userMins").value);
+  window.localStorage.setItem("userSecs", document.getElementById("userSecs").value);
+  window.localStorage.setItem(
     "changeSelect",
     document.getElementById("changeSelect").value
   );
-  localStorage.setItem(
+  window.localStorage.setItem(
     "volume-number",
     document.getElementById("volume-number").value
   );
-  localStorage.setItem(
+  window.localStorage.setItem(
     "volume-slider",
     document.getElementById("volume-slider").value
   );
 
-  document.getElementById("shortBreakPomos").value = localStorage.getItem(
+  document.getElementById("shortBreakPomos").value = window.localStorage.getItem(
     "shortBreakPomos"
   );
-  document.getElementById("userPomos").value = localStorage.getItem(
+  document.getElementById("userPomos").value = window.localStorage.getItem(
     "userPomos"
   );
-  document.getElementById("breakPomos").value = localStorage.getItem(
+  document.getElementById("breakPomos").value = window.localStorage.getItem(
     "breakPomos"
   );
-  document.getElementById("userMins").value = localStorage.getItem("userMins");
-  document.getElementById("userSecs").value = localStorage.getItem("userSecs");
-  document.getElementById("changeSelect").value = localStorage.getItem(
+  document.getElementById("userMins").value = window.localStorage.getItem("userMins");
+  document.getElementById("userSecs").value = window.localStorage.getItem("userSecs");
+  document.getElementById("changeSelect").value = window.localStorage.getItem(
     "changeSelect"
   );
-  document.getElementById("volume-number").value = localStorage.getItem(
+  document.getElementById("volume-number").value = window.localStorage.getItem(
     "volume-number"
   );
-  document.getElementById("volume-slider").value = localStorage.getItem(
+  document.getElementById("volume-slider").value = window.localStorage.getItem(
     "volume-slider"
   );
 }
