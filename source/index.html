@@ -18,13 +18,25 @@
   <body>
     <div id="main">
       <div id="all">
-        <div id="Login">
-          <button
+        <div id="Settings">
+          <input
+            type="image"
+            src="images/gear-icon.png"
             id="settings-btn"
+            height="48"
             onclick="document.getElementById('settings-modal').style.display = 'block'"
-          >
-            <img src="images/cog-solid.svg" height="35" />
-          </button>
+            onmouseover="this.src='images/gear-icon-hover.png'"
+            onmouseout="this.src='images/gear-icon.png'"
+          />
+          <input
+            type="image"
+            src="images/stats-icon.png"
+            id="stats-btn"
+            height="48"
+            onclick="document.getElementById('stats-modal').style.display = 'block'"
+            onmouseover="this.src='images/stats-icon-hover.png'"
+            onmouseout="this.src='images/stats-icon.png'"
+          />
 
           <!-- Settings modal> -->
           <div id="settings-modal" class="modal">
@@ -144,6 +156,19 @@
           </div>
         </div>
 
+        <div id="stats-modal" class="modal">
+          <div class="modal-settings-content">
+            <span
+              class="close"
+              onclick="document.getElementById('stats-modal').style.display = 'none'"
+              >&times;</span
+            >
+            <span id="modal-title">
+              <p>Tasks Completed</p>
+            </span>
+          </div>
+        </div>
+
         <!-- Timer  -->
         <div id="timer-container">
           <!-- Makes timer into larger font -->
@@ -153,33 +178,16 @@
               <span id="seconds">00</span>
             </div>
             <!-- Turns start into stop button with changing colors -->
-            <input
-              type="button"
-              id="mixBut"
-              style="
-                background-color: lightgreen;
-                color: white;
-                width: 150px;
-                height: 40px;
-              "
-              value="Start Timer"
-            />
-            <button
-              id="reset-btn"
-              style="
-                background-color: gray;
-                color: white;
-                width: 150px;
-                height: 40px;
-              "
-            >
-              Reset
-            </button>
+            <input type="button" id="mixBut" value="Start" />
+            <button id="reset-btn">Reset</button>
           </h1>
         </div>
         <br />
         <!-- States the complete number of pomodoros -->
         <p id="completePomos">Number of Complete Pomodors</p>
+        <p style="display: none">
+          Select the task(s) you want to start before starting the timer
+        </p>
         <div id="title">TASKS</div>
 
         <section id="task-list" class="grid-container">
@@ -234,7 +242,10 @@
       <script src="./task-list.js"></script>
       <script src="./list-btns.js"></script>
       <script src="scripts/settings.js" type="module"></script>
-      <a href="https://github.com/james-c-lars/cse110-w21-group11.git"
+      <a
+        href="https://github.com/james-c-lars/cse110-w21-group11.git"
+        onmouseover="this.style.color = '#97d4f3'"
+        onmouseout="this.style.color = '#b7daeb'"
         >SOURCE</a
       >
     </div>
