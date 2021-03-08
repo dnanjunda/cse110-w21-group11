@@ -33,6 +33,7 @@ class Task extends window.HTMLElement {
     deleteTask.setAttribute("type", "button");
     deleteTask.setAttribute("id", "delete");
     deleteTask.textContent = "Delete";
+    deleteTask.style.display = "none";
     deleteTask.addEventListener("click", function (e) {
       const array = e.target.getRootNode().host.parentNode.children;
       const index = [].indexOf.call(array, e.target.getRootNode().host) - 1;
@@ -51,19 +52,24 @@ class Task extends window.HTMLElement {
     const editTask = document.createElement("button");
     editTask.setAttribute("id", "edit");
     editTask.textContent = "Edit";
+
     wrapper.addEventListener("submit", function (e) {
       e.preventDefault();
       if (editTask.textContent === "Edit") {
         editTask.textContent = "Done";
         taskName.style.display = "none";
         editName.style.display = "block";
+        deleteTask.style.display = "block";
         pomoNum.readOnly = false;
+        pomoNum.style.background = "#f0f0f0";
       } else {
         editTask.textContent = "Edit";
         taskName.style.display = "block";
         editName.style.display = "none";
+        deleteTask.style.display = "none";
         taskName.textContent = editName.value;
         pomoNum.readOnly = true;
+        pomoNum.style.background = "white";
         const array = e.target.getRootNode().host.parentNode.children;
         const index = [].indexOf.call(array, e.target.getRootNode().host) - 1;
         const storedTasks = JSON.parse(myStorage.getItem("tasks"));
@@ -86,11 +92,9 @@ class Task extends window.HTMLElement {
     style.textContent = `.nested-grid {
           display: grid;
           grid-template-columns: 55% 15% 15% 15%;
-          padding-left: 0;
           margin: auto;
           align-items: center;
       }
-
 
       input {
         border: none;
@@ -118,6 +122,7 @@ class Task extends window.HTMLElement {
       #pomo-num {
         text-align: center;
         width: 80%;
+        background-color: white;
       }
 
       #edit-name {
