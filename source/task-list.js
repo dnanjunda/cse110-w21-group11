@@ -10,7 +10,9 @@ class Task extends window.HTMLElement {
 
     const taskName = document.createElement("p");
     taskName.setAttribute("id", "task-name");
+    taskName.setAttribute("onclick", "selectTask(this)");
     taskName.textContent = task.taskName;
+
     const editName = document.createElement("input");
     editName.setAttribute("id", "edit-name");
     editName.value = taskName.textContent;
