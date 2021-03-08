@@ -32,7 +32,7 @@ let onBreak = false;
 export function timeAdvance() {
   --timeRemaining;
 
-  let minute = Math.floor((timeRemaining / 60) % 60);
+  let minute = Math.floor(timeRemaining / 60);
   let seconds = Math.floor(timeRemaining % 60);
   minute = minute < 10 ? "0" + minute : minute;
   seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -133,7 +133,7 @@ export function stopButton() {
   document.getElementById("mixBut").style.background = "lightgreen";
 
   // Updating the time display given that a new time remaining will have been set for a break
-  let minute = Math.floor((timeRemaining / 60) % 60);
+  let minute = Math.floor(timeRemaining / 60);
   let seconds = Math.floor(timeRemaining % 60);
   minute = minute < 10 ? "0" + minute : minute;
   seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -149,7 +149,7 @@ mixBut.addEventListener("click", startButton);
 export function resetButton() {
   timeRemaining = secondsPerPomo;
 
-  let minute = Math.floor((timeRemaining / 60) % 60);
+  let minute = Math.floor(timeRemaining / 60);
   let seconds = Math.floor(timeRemaining % 60);
   minute = minute < 10 ? "0" + minute : minute;
   seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -296,7 +296,7 @@ export function minuteChange() {
   }
   inputMins.value = inputMins.value.substring(indexMins);
   if (inputMins.value == "") {
-    // inputMins.value = "25";
+    inputMins.value = "25";
     document.getElementById("minute").innerHTML = "25";
     secondsPerPomo = 60 * 25 + Number(inputSecs.value);
   } else if (inputMins.value == "0") {
@@ -305,9 +305,9 @@ export function minuteChange() {
   } else if (inputMins.value < 10) {
     document.getElementById("minute").innerHTML = "0" + inputMins.value;
     secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
-  } else if (inputMins.value > 59) {
+  } else if (inputMins.value > 120) {
     // max mins for pomo timer 2 hours
-    inputMins.value = 59;
+    inputMins.value = 120;
     secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
   } else {
     document.getElementById("minute").innerHTML = inputMins.value;
