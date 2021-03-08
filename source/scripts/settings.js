@@ -14,10 +14,11 @@
 
 */
 
-let secondsPerPomo = 60 * 25; // Number of seconds in single pomo session
+let secondsPerPomo = 60*25; // Number of seconds in single pomo session
 let timeRemaining = secondsPerPomo; // Time remaining in session in seconds
 let pomodoro = 0; // Number of pomodoros completed
 let intervalId = null; // ID of interval calling the timeAdvance method
+
 
 /**
  * This function advances time by one second. It will be called on a one second interval while the timer is running.
@@ -31,6 +32,7 @@ export function timeAdvance() {
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
+  updateCircle(timeRemaining, secondsPerPomo);
   if (timeRemaining <= 0) {
     pomodoro++;
     timeRemaining = secondsPerPomo;
@@ -120,6 +122,7 @@ export function resetButton() {
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
+  updateCircle(secondsPerPomo,secondsPerPomo);
 }
 document.getElementById("reset-btn").addEventListener("click", resetButton);
 
@@ -325,3 +328,16 @@ numInp.oninput = function () {
 // var ul = document.getElementById("tasks");
 // ul.innerHTML = "";
 // }
+
+//circle start
+let progressBar = document.querySelector('.e-c-progress');
+let pointer = document.getElementById('e-pointer');
+let length = Math.PI * 2 * 100;
+
+progressBar.style.strokeDasharray = length;
+
+function updateCircle(value, timePercent) {
+  var offset = - length - length * value / (timePercent);
+  progressBar.style.strokeDashoffset = offset; 
+  pointer.style.transform = `rotate(${360 * value / (timePercent)}deg)`; 
+};

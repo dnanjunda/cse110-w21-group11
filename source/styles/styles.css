@@ -16,7 +16,7 @@ a {
   text-align: center;
   padding: 5px 0;
   margin: 0 auto;
-  margin-top: 15px;
+  margin-top: 15px; 
 }
 
 /* Main page layout and colors */
@@ -36,11 +36,16 @@ a {
   justify-content: center;
 }
 
+#circle {
+  display: flex;
+  justify-content: center;
+}
+
 /* Main timer */
 #timer {
   display: flex;
   justify-content: center;
-  font-size: 4em;
+  font-size: 2.5em;
   color: #b7daeb;
 }
 
@@ -239,3 +244,26 @@ select {
   text-decoration: none;
   cursor: pointer;
 }
+
+/* This the gray outline circle */
+.e-c-base {
+  fill: none;
+  stroke: #B6B6B6;
+  stroke-width: 4px
+}
+  /* This the red circle outline, disappear as timer counts down */ 
+.e-c-progress {
+  fill: none;
+  stroke: lightcoral;
+  stroke-width: 4px;
+  transition: stroke-dashoffset 0.7s;
+}
+/* This the circle, moves as timer counts down */ 
+.e-c-pointer {
+  fill: tomato;
+  stroke: palegreen;
+  stroke-width: 2px;
+}
+
+/* this determines the speed for red outline circle to disappear */ 
+#e-pointer { transition: transform 0.7s; }
