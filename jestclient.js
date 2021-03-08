@@ -15,4 +15,7 @@ document.body.innerHTML =
   '<select id="changeSelect" name="alarmMusic" onselect="sound()">' +
   '<input class="grid-item" type="number" id="pomo-num" value="1" min="1" max="4"/>' +
   '<button id="plus" type="button">+</button>' +
-  '<button id="minus" type="button">-</button>';
+  '<button id="minus" type="button">-</button>' +
+  '<button id="add" class="button-on" type="submit">ADD</button>' +
+  '<button id="clear" class="button-off" type="button">CLEAR</button>' +
+  '<div id="tasks"><div id="no-task">Tasks Complete!</div></div>';
