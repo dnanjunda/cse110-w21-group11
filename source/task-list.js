@@ -65,7 +65,7 @@ class Task extends window.HTMLElement {
         taskName.textContent = editName.value;
         pomoNum.readOnly = true;
         const array = e.target.getRootNode().host.parentNode.children;
-        const index = [].indexOf.call(array, e.target.getRootNode().host);
+        const index = [].indexOf.call(array, e.target.getRootNode().host) - 1;
         const storedTasks = JSON.parse(myStorage.getItem("tasks"));
         storedTasks.splice(index, 1, {
           taskName: taskName.textContent,
