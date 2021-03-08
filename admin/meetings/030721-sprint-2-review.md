@@ -50,28 +50,34 @@
   - Wrote tests for settings.js and they are pretty comprehensive
   - Added some documentation
 - Dhanush
+  - ![Iteration Image](images/Dhanush.png)
   - Worked on getting code into the main branch. Need to scroll down to see the task list
   - Worked on writing tests for the task list, not quite done yet
 - Arela
+  - ![Iteration Image](images/Arela.png)
   - Worked on saving the settings in local storage
   - Pulls values whenever the website loads
   - Also made a max time length of 120 minutes
   - Caps out when enter is pressed or menu exited
   - Could also make seconds cap at 0 when 120 minutes is chosen
 - Ashley
+  - ![Iteration Image](images/Ashley.png)
   - Worked on saving the tasks to local storage
   - Looks to correctly store things in local storage
   - Even works for tasks with duplicated names
   - Even keeps things in order
 - Brian
+  - ![Iteration Image](images/Brian.png)
   - Worked on animation for timer
   - Adjusts animation if pomo length is changed
   - Needs to work on putting it within our app
 - Haley
+  - ![Iteration Image](images/Haley.png)
   - Added local storage for incompleted tasks as well, and for completed tasks
   - Added way to track what task is being worked on
   - Should be easy to make the task move to the completed list
 - Ivan
+  - ![Iteration Image](images/Ivan.png)
   - First worked on the figma design, how to put in the task selection
   - Liked the checkbox next to tasks ideas
   - Thinks we should take away the delete button until edit is pressed
@@ -85,6 +91,7 @@
   - Issue with the timer
   - Added highlighting and hover
 - Jonathan
+  - ![Iteration Image](images/Jonathan.png)
   - Worked on settings alignment
   - Done for the most part, just needs to fix a few things that are thrown off in mobile display
   - Mostly finished issues with the javascript
