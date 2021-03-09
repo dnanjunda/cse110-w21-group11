@@ -245,7 +245,9 @@ describe("minuteChange and secondChange tests", () => {
     inputSecs.oninput();
     expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("2500");
 
-    pageOperations.timeAdvance();
+    pageOperations.startButton();
+    jest.advanceTimersByTime(1000);
+
     expect(minuteDisplay.innerHTML + secondDisplay.innerHTML).toBe("2459");
   });
 });
