@@ -296,7 +296,7 @@ export function minuteChange() {
   }
   inputMins.value = inputMins.value.substring(indexMins);
   if (inputMins.value == "") {
-    inputMins.value = "25";
+    //inputMins.value = "25";
     document.getElementById("minute").innerHTML = "25";
     secondsPerPomo = 60 * 25 + Number(inputSecs.value);
   } else if (inputMins.value == "0") {
@@ -334,7 +334,7 @@ export function secondChange() {
   }
   inputSecs.value = inputSecs.value.substring(indexSecs);
   if (inputSecs.value === "" || inputSecs.value === "0") {
-    inputSecs.value = 0;
+    //inputSecs.value = 0;
     document.getElementById("seconds").innerHTML = "00";
     secondsPerPomo = 60 * Number(inputMins.value);
   } else if (inputSecs.value < 10) {
