@@ -1,51 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="styles/styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="stylesheet" href="./styles/tasklist.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap"
-      rel="stylesheet"
-    />
-    <meta charset="utf-8" />
-  </head>
 
-  <body>
-    <div id="main">
-      <div id="all">
+<head>
+  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="stylesheet" href="./styles/tasklist.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet" />
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="all">
+      <div>
         <div id="Settings">
-          <input
-            type="image"
-            src="images/gear-icon.png"
-            id="settings-btn"
-            height="48"
+          <input type="image" src="images/gear-icon.png" id="settings-btn" height="48"
             onclick="document.getElementById('settings-modal').style.display = 'block'"
-            onmouseover="this.src='images/gear-icon-hover.png'"
-            onmouseout="this.src='images/gear-icon.png'"
-          />
-          <input
-            type="image"
-            src="images/stats-icon.png"
-            id="stats-btn"
-            height="48"
+            onmouseover="this.src='images/gear-icon-hover.png'" onmouseout="this.src='images/gear-icon.png'" />
+          <input type="image" src="images/stats-icon.png" id="stats-btn" height="48"
             onclick="document.getElementById('stats-modal').style.display = 'block'"
-            onmouseover="this.src='images/stats-icon-hover.png'"
-            onmouseout="this.src='images/stats-icon.png'"
-          />
+            onmouseover="this.src='images/stats-icon-hover.png'" onmouseout="this.src='images/stats-icon.png'" />
 
           <!-- Settings modal> -->
           <div id="settings-modal" class="modal">
             <div class="modal-settings-content">
-              <span
-                class="close"
-                onclick="document.getElementById('settings-modal').style.display = 'none'"
-                >&times;</span
-              >
+              <span class="close"
+                onclick="document.getElementById('settings-modal').style.display = 'none'">&times;</span>
               <span id="modal-title">
                 <p>Settings</p>
               </span>
@@ -53,49 +34,17 @@
               <!-- Settings customization of breaks/pomos -->
               <div class="modal-settings-customization">
                 <p class="settingText">Length of Short Break</p>
-                <input
-                  type="number"
-                  placeholder="Minutes"
-                  class="pomos"
-                  id="shortBreakPomos"
-                  value="5"
-                />
+                <input type="number" placeholder="Minutes" class="pomos" id="shortBreakPomos" value="5" />
 
                 <p class="settingText">Length of Long Break</p>
-                <input
-                  type="number"
-                  placeholder="Minutes"
-                  class="pomos"
-                  id="breakPomos"
-                  value="30"
-                />
+                <input type="number" placeholder="Minutes" class="pomos" id="breakPomos" value="30" />
 
                 <p class="settingText">Pomodoros until Long Break</p>
-                <input
-                  type="number"
-                  placeholder="Pomos"
-                  class="pomos"
-                  id="userPomos"
-                  value="4"
-                />
+                <input type="number" placeholder="Pomos" class="pomos" id="userPomos" value="4" />
 
                 <p class="settingText">Pomodoro Length</p>
-                <input
-                  type="number"
-                  placeholder="Minutes"
-                  class="minutes"
-                  id="userMins"
-                  value="25"
-                />
-                <input
-                  type="number"
-                  placeholder="Seconds"
-                  class="seconds"
-                  min="0"
-                  step="1"
-                  id="userSecs"
-                  value="0"
-                />
+                <input type="number" placeholder="Minutes" class="minutes" id="userMins" value="25" />
+                <input type="number" placeholder="Seconds" class="seconds" min="0" step="1" id="userSecs" value="0" />
 
                 <br />
                 <hr style="color: black" />
@@ -107,11 +56,7 @@
                 <!-- Line break -->
                 <br /><br />
                 <form>
-                  <select
-                    id="changeSelect"
-                    name="alarmMusic"
-                    onselect="sound()"
-                  >
+                  <select id="changeSelect" name="alarmMusic" onselect="sound()">
                     <option value="Chirp">Chirp</option>
                     <option value="Alarm-Clock">Alarm Clock</option>
                     <option value="None">None</option>
@@ -127,28 +72,9 @@
                 <!-- Volume adjuster -->
                 <fieldset id="volume-controls">
                   <div id="volume-grid-container">
-                    <label
-                      for="volume-number"
-                      class="settingText"
-                      id="volume-text"
-                      >Volume</label
-                    >
-                    <input
-                      id="volume-number"
-                      name="volume-number"
-                      type="number"
-                      min="0"
-                      max="100"
-                      value="100"
-                    />
-                    <input
-                      id="volume-slider"
-                      name="volume-slider"
-                      type="range"
-                      min="0"
-                      max="100"
-                      value="100"
-                    />
+                    <label for="volume-number" class="settingText" id="volume-text">Volume</label>
+                    <input id="volume-number" name="volume-number" type="number" min="0" max="100" value="100" />
+                    <input id="volume-slider" name="volume-slider" type="range" min="0" max="100" value="100" />
                   </div>
                 </fieldset>
               </div>
@@ -158,11 +84,7 @@
 
         <div id="stats-modal" class="modal">
           <div class="modal-settings-content">
-            <span
-              class="close"
-              onclick="document.getElementById('stats-modal').style.display = 'none'"
-              >&times;</span
-            >
+            <span class="close" onclick="document.getElementById('stats-modal').style.display = 'none'">&times;</span>
             <span id="modal-title">
               <p>Tasks Completed</p>
             </span>
@@ -188,6 +110,8 @@
         <p style="display: none">
           Select the task(s) you want to start before starting the timer
         </p>
+      </div>
+      <div id="task-component">
         <div id="title">TASKS</div>
 
         <section id="task-list" class="grid-container">
@@ -206,51 +130,31 @@
           <div id="new-task">
             <p class="grid-item" id="task-title1">Task</p>
             <p class="grid-item" id="task-title2">Pomos</p>
-            <input
-              class="grid-item"
-              type="text"
-              id="task-name"
-              placeholder="Task name"
-              required
-            />
+            <input class="grid-item" type="text" id="task-name" placeholder="Task name" required />
             <div>
               <button id="minus" type="button" onclick="decrement()">-</button>
-              <input
-                class="grid-item"
-                type="number"
-                id="pomo-num"
-                value="1"
-                min="1"
-                max="4"
-              />
+              <input class="grid-item" type="number" id="pomo-num" value="1" min="1" max="4" />
               <button id="plus" type="button" onclick="increment()">+</button>
             </div>
           </div>
           <div id="btnGrid">
             <button id="add" class="button-on" type="submit">ADD</button>
-            <button
-              id="clear"
-              class="button-off"
-              type="button"
-              onclick="clearList()"
-            >
+            <button id="clear" class="button-off" type="button" onclick="clearList()">
               CLEAR
             </button>
           </div>
         </form>
       </div>
-      <script src="./task-list.js"></script>
-      <script src="./list-btns.js"></script>
-      <script src="scripts/settings.js" type="module"></script>
-      <a
-        href="https://github.com/james-c-lars/cse110-w21-group11.git"
-        onmouseover="this.style.color = '#97d4f3'"
-        onmouseout="this.style.color = '#b7daeb'"
-        >SOURCE</a
-      >
     </div>
-  </body>
-  <footer>
-    <!-- <div style="color: white;">Icons made by <a href="" style="color: white;" title="Icongeek26">Icongeek26</a> from <a style="color: white;" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
-  </footer>
+    <script src="./task-list.js"></script>
+    <script src="./list-btns.js"></script>
+    <script src="scripts/settings.js" type="module"></script>
+    <a href="https://github.com/james-c-lars/cse110-w21-group11.git" onmouseover="this.style.color = '#97d4f3'"
+      onmouseout="this.style.color = '#b7daeb'">SOURCE</a>
+  </div>
+</body>
+<footer>
+  <!-- <div style="color: white;">Icons made by <a href="" style="color: white;" title="Icongeek26">Icongeek26</a> from <a style="color: white;" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+</footer>
+
 </html>
