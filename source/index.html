@@ -60,6 +60,7 @@
                     class="pomos"
                     id="shortBreakPomos"
                     value="5"
+                    max="120"
                   />
 
                   <p class="settingText">Length of Long Break</p>
@@ -69,6 +70,7 @@
                     class="pomos"
                     id="breakPomos"
                     value="30"
+                    max="120"
                   />
 
                   <p class="settingText">Pomodoros until Long Break</p>
@@ -78,6 +80,7 @@
                     class="pomos"
                     id="userPomos"
                     value="4"
+                    min="0"
                   />
 
                   <p class="settingText">Pomodoro Length</p>
@@ -87,6 +90,8 @@
                     class="minutes"
                     id="userMins"
                     value="25"
+                    max="120"
+                    min="0"
                   />
                   <input
                     type="number"
@@ -96,6 +101,8 @@
                     step="1"
                     id="userSecs"
                     value="0"
+                    max="59"
+                    min="0"
                   />
                   <input type="submit" value="Save"></input>
                   <br />

@@ -305,11 +305,12 @@ export function minuteChange() {
   } else if (inputMins.value < 10) {
     document.getElementById("minute").innerHTML = "0" + inputMins.value;
     secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
-  } else if (inputMins.value > 120) {
-    // max mins for pomo timer 2 hours
-    inputMins.value = 120;
-    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
-  } else {
+   } //else if (inputMins.value > 120) {
+  //   // max mins for pomo timer 2 hours
+  //   inputMins.value = 120;
+  //   secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+  //} 
+  else {
     document.getElementById("minute").innerHTML = inputMins.value;
     secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
   }
@@ -336,17 +337,36 @@ export function secondChange() {
   if (inputSecs.value === "" || inputSecs.value === "0") {
     // inputSecs.value = 0;
     document.getElementById("seconds").innerHTML = "00";
-    secondsPerPomo = 60 * Number(inputMins.value);
+    if (inputMins.value == "") {
+      document.getElementById("minute").innerHTML = "25";
+      secondsPerPomo = 60 * 25 + Number(inputSecs.value);
+    }
+    else {
+      secondsPerPomo = 60 * Number(inputMins.value);
+    }
   } else if (inputSecs.value < 10) {
     document.getElementById("seconds").innerHTML = "0" + inputSecs.value;
-    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
-  } else if (inputSecs.value >= 60) {
+    if (inputMins.value == "") {
+      document.getElementById("minute").innerHTML = "25";
+      secondsPerPomo = 60 * 25 + Number(inputSecs.value);
+    }
+    else {
+      secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+    }
+  } //else if (inputSecs.value >= 60) {
     // max mins for pomo timer 2 hours
-    inputSecs.value = 59;
-    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
-  } else {
+    // inputSecs.value = 59;
+    // secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+  //} 
+  else {
     document.getElementById("seconds").innerHTML = inputSecs.value;
-    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+    if (inputMins.value == "") {
+      document.getElementById("minute").innerHTML = "25";
+      secondsPerPomo = 60 * 25 + Number(inputSecs.value);
+    }
+    else {
+      secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+    }
   }
   timeRemaining = secondsPerPomo;
   intervalId = null;
