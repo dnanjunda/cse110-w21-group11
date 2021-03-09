@@ -111,7 +111,7 @@ export function startButton() {
   intervalId = setInterval(timeAdvance, 1000);
   mixBut.removeEventListener("click", startButton);
   mixBut.addEventListener("click", stopButton);
-  document.getElementById("mixBut").style.background = "indianred";
+  document.getElementById("mixBut").style.background = "#c83200";
   mixBut.value = "Stop";
 }
 /**
@@ -124,7 +124,7 @@ export function stopButton() {
   }
   mixBut.removeEventListener("click", stopButton);
   mixBut.addEventListener("click", startButton);
-  document.getElementById("mixBut").style.background = "lightgreen";
+  document.getElementById("mixBut").style.background = "#ff671d";
 
   // Updating the time display given that a new time remaining will have been set for a break
   let minute = Math.floor((timeRemaining / 60) % 60);
@@ -133,7 +133,7 @@ export function stopButton() {
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
-  mixBut.value = "Start Timer";
+  mixBut.value = "Start";
 }
 mixBut.addEventListener("click", startButton);
 
