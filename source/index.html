@@ -40,28 +40,32 @@
 
           <!-- Settings modal> -->
           <div id="settings-modal" class="modal">
-            <div class="modal-settings-content">
-              <span
+            <div id="modal-settings-content" class="mod-grid">
+
+              <div class="mod-item"><span
                 class="close"
                 onclick="document.getElementById('settings-modal').style.display = 'none'"
                 >&times;</span
-              >
-              <span id="modal-title">
-                <p>Settings</p>
-              </span>
-
-              <!-- Settings customization of breaks/pomos -->
-              <div class="modal-settings-customization">
-                <p class="settingText">Length of Short Break</p>
+                >
+              </div>
+              <div class="mod-item"><span id="modal-title">
+                Settings
+                <hr style="color:black; background-color: black; height: 2px; border: 0; width: 35vw;">
+              </span></div>
+              <div class="mod-item" style="padding-bottom: 10px;">Short BreakLength</div>
+              
+              <div class="mod-item">
                 <input
-                  type="number"
-                  placeholder="Minutes"
-                  class="pomos"
-                  id="shortBreakPomos"
-                  value="5"
+                type="number"
+                placeholder="Minutes"
+                class="pomos"
+                id="shortBreakPomos"
+                value="5"
                 />
-
-                <p class="settingText">Length of Long Break</p>
+                <hr style="color:black; background-color: black; height: 2px; border: 0; width: 35vw;">
+              </div>
+              <div class="mod-item" style="padding-bottom: 10px;">Long Break Length</div>
+              <div class="mod-item">
                 <input
                   type="number"
                   placeholder="Minutes"
@@ -69,25 +73,30 @@
                   id="breakPomos"
                   value="30"
                 />
-
-                <p class="settingText">Pomodoros until Long Break</p>
+                <hr style="color:black; background-color: black; height: 2px; border: 0; width: 35vw;">
+              </div>
+              <div class="mod-item">Pomodoros until Long Break</div>
+              <div class="mod-item">
                 <input
-                  type="number"
-                  placeholder="Pomos"
-                  class="pomos"
-                  id="userPomos"
-                  value="4"
+                type="number"
+                placeholder="Pomos"
+                class="pomos"
+                id="userPomos"
+                value="4"
                 />
-
-                <p class="settingText">Pomodoro Length</p>
+              </div>
+              <hr style="color:black; background-color: black; height: 2px; border: 0; width: 35vw;">
+              <div class="mod-item"><p>Pomodoro Length</div>
+              <div class="mod-item">
+                <pre style="font-family: Nunito;">Minutes         Seconds</pre>
                 <input
-                  type="number"
-                  placeholder="Minutes"
-                  class="minutes"
-                  id="userMins"
-                  value="25"
-                />
-                <input
+                type="number"
+                placeholder="Min"
+                class="minutes"
+                id="userMins"
+                value="25"
+              />
+              <input
                   type="number"
                   placeholder="Seconds"
                   class="seconds"
@@ -96,16 +105,10 @@
                   id="userSecs"
                   value="0"
                 />
-
-                <br />
-                <hr style="color: black" />
-                <br />
-
-                <!-- Notification Sound -->
-                <label class="settingText">Notification Sound:</label>
-
-                <!-- Line break -->
-                <br /><br />
+                <hr style="color:black; background-color: black; height: 2px; border: 0; width: 35vw;">
+              </div>
+              <div class="mod-item"><label class="settingText">Notification Sound:</label></div>
+              <div class="mod-item">
                 <form>
                   <select
                     id="changeSelect"
@@ -117,40 +120,33 @@
                     <option value="None">None</option>
                   </select>
                 </form>
+              </div>
 
-                <!-- Thematic break -->
-                <hr />
-
-                <!-- Second line break -->
-                <br />
-
-                <!-- Volume adjuster -->
-                <fieldset id="volume-controls">
-                  <div id="volume-grid-container">
-                    <label
-                      for="volume-number"
-                      class="settingText"
-                      id="volume-text"
-                      >Volume</label
-                    >
-                    <input
-                      id="volume-number"
-                      name="volume-number"
-                      type="number"
-                      min="0"
-                      max="100"
-                      value="100"
-                    />
-                    <input
-                      id="volume-slider"
-                      name="volume-slider"
-                      type="range"
-                      min="0"
-                      max="100"
-                      value="100"
-                    />
-                  </div>
-                </fieldset>
+              <div class="mod-item">
+                <label
+                for="volume-number"
+                class="settingText"
+                id="volume-text"
+                >Volume
+                </label>
+              </div>
+              <div class="mod-item">
+                <input
+                id="volume-number"
+                name="volume-number"
+                type="number"
+                min="0"
+                max="100"
+                value="100"
+              />
+              <input
+                id="volume-slider"
+                name="volume-slider"
+                type="range"
+                min="0"
+                max="100"
+                value="100"
+              />
               </div>
             </div>
           </div>
