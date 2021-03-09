@@ -111,8 +111,8 @@ export function startButton() {
   intervalId = setInterval(timeAdvance, 1000);
   mixBut.removeEventListener("click", startButton);
   mixBut.addEventListener("click", stopButton);
-  document.getElementById("mixBut").style.background = "#c83200";
-  mixBut.value = "Stop";
+  document.getElementById("mixBut").style.background = "#bd0000";
+  mixBut.value = "STOP";
 }
 /**
  * This function implements the functionality of the stop button. It stops calling timeAdvance every second, and transforms the stop button into a start button
@@ -133,7 +133,7 @@ export function stopButton() {
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
-  mixBut.value = "Start";
+  mixBut.value = "START";
 }
 mixBut.addEventListener("click", startButton);
 

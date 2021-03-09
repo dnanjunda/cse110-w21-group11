@@ -91,17 +91,14 @@ a {
   font-family: Nunito, sans-serif;
 }
 
-#reset-btn:focus {
-  outline: none;
-}
-
+#reset-btn:focus,
 #reset-btn:active {
   outline: none;
 }
 
 #reset-btn:hover {
   outline: none;
-  background-color: #e25121;
+  background-color: #f71a1a;
 }
 
 /* Aligns text "num of complete pomos */
@@ -158,15 +155,6 @@ input[type=number] {
     border: 0;
     width: calc(10px + 1vw);
 }
-
-#userMins {
-  margin-left: 10vw;
-}
-
-#userSecs {
-  margin-right: 10vw;
-}
-
 /* Changes small text size in input boxes */
 :placeholder-shown {
     font-size: 100%;
@@ -207,14 +195,12 @@ fieldset {
 
 /* Changes font and size of alarm sounds*/
 #changeSelect {
-    font-family: 'Nunito', sans-serif;
-    height: 5vh;
-    width: 15vw;
-}
-
-/* Makes overall container smaller */
-#volume-grid-container {
-    line-height: .1;
+    font-family: Nunito;
+    width: 12vw;
+    height: 30px;
+    border-radius: 7px;
+    outline:none;
+    border:none;
 }
 
 .settingText {
@@ -223,16 +209,17 @@ fieldset {
   font-family: "Nunito", sans-serif;
 }
 
-/* Keeps volume number relative to window size */
-#volume-number {
-  height: 2vh;
-  width: 5vw;
-}
-
 /* Keeps volume slider relative to window size */
 #volume-slider {
-  height: 10vh;
   width: 10vw;
+  float: left;
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+#volume-number {
+  width: 50px;
+  float: right;
 }
 
 /* Style for user input */
@@ -252,16 +239,9 @@ fieldset {
   width: 300px;
 }
 
-/* Changes size of the audio selection */
-select {
-    width: 1vw;
-    padding: 1vh;
-    border-radius:5vw;
-}
-
 /* Changes size of "Settings" at top of settings */
 #modal-title {
-  font-size: 3vw;
+  font-size: calc(12px + 2vw);
   font-weight: bold;
   text-align: center;
   vertical-align: top;
@@ -275,7 +255,7 @@ select {
 
 /* Changes "x" sign in settings */
 .close {
-    color: #aaa;
+    color: #08222e;
     float: left;
     font-weight: bold;
     font-size: 2.5vw;
@@ -283,22 +263,48 @@ select {
     margin-top: 10px;
 }
 
+#minHead {
+  justify-self: right;
+  margin-right: 40px;
+  font-size: 1em;
+}
+
+#secHead {
+  margin-left: 40px;
+  justify-self: left;
+  font-size: medium;
+}
+
 /* Puts input minutes to the left in settings */
 .minutes {
-  width: 45%;
-  float: left;
+  float: right;
+  margin-right: 50px;
 }
 
 /* Puts input seconds to the right in settings */
 .seconds {
-  width: 45%;
-  float: right;
+  float: left;
+  margin-left: 50px;
 }
 
 /* Changes "x" to bold when mouse hovers over */
 .close:hover,
 .close:focus {
-  color: #2b2b2b;
+  color: white;
   text-decoration: none;
   cursor: pointer;
+}
+
+#len-grid{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+#volume-text {
+  font-size: medium;
+}
+
+#vol-grid {
+  display: grid;
+  grid-template-columns: auto auto;
 }
