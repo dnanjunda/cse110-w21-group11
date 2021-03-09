@@ -52,105 +52,110 @@
 
               <!-- Settings customization of breaks/pomos -->
               <div class="modal-settings-customization">
-                <p class="settingText">Length of Short Break</p>
-                <input
-                  type="number"
-                  placeholder="Minutes"
-                  class="pomos"
-                  id="shortBreakPomos"
-                  value="5"
-                />
+                <form id="saveSettings">
+                  <p class="settingText">Length of Short Break</p>
+                  <input
+                    type="number"
+                    placeholder="Minutes"
+                    class="pomos"
+                    id="shortBreakPomos"
+                    value="5"
+                    max="120"
+                  />
 
-                <p class="settingText">Length of Long Break</p>
-                <input
-                  type="number"
-                  placeholder="Minutes"
-                  class="pomos"
-                  id="breakPomos"
-                  value="30"
-                />
+                  <p class="settingText">Length of Long Break</p>
+                  <input
+                    type="number"
+                    placeholder="Minutes"
+                    class="pomos"
+                    id="breakPomos"
+                    value="30"
+                    max="120"
+                  />
 
-                <p class="settingText">Pomodoros until Long Break</p>
-                <input
-                  type="number"
-                  placeholder="Pomos"
-                  class="pomos"
-                  id="userPomos"
-                  value="4"
-                />
+                  <p class="settingText">Pomodoros until Long Break</p>
+                  <input
+                    type="number"
+                    placeholder="Pomos"
+                    class="pomos"
+                    id="userPomos"
+                    value="4"
+                    min="0"
+                  />
 
-                <p class="settingText">Pomodoro Length</p>
-                <input
-                  type="number"
-                  placeholder="Minutes"
-                  class="minutes"
-                  id="userMins"
-                  value="25"
-                />
-                <input
-                  type="number"
-                  placeholder="Seconds"
-                  class="seconds"
-                  min="0"
-                  step="1"
-                  id="userSecs"
-                  value="0"
-                />
+                  <p class="settingText">Pomodoro Length</p>
+                  <input
+                    type="number"
+                    placeholder="Minutes"
+                    class="minutes"
+                    id="userMins"
+                    value="25"
+                    max="120"
+                    min="0"
+                  />
+                  <input
+                    type="number"
+                    placeholder="Seconds"
+                    class="seconds"
+                    min="0"
+                    step="1"
+                    id="userSecs"
+                    value="0"
+                    max="59"
+                    min="0"
+                  />
+                  <input type="submit" value="Save" />
+                  <br />
+                  <hr style="color: black" />
+                  <br />
 
-                <br />
-                <hr style="color: black" />
-                <br />
+                  <!-- Notification Sound -->
+                  <label class="settingText">Notification Sound:</label>
 
-                <!-- Notification Sound -->
-                <label class="settingText">Notification Sound:</label>
+                  <!-- Line break -->
+                  <br /><br />
+                  <form>
+                    <select id="changeSelect" name="alarmMusic">
+                      <option value="Chirp">Chirp</option>
+                      <option value="Alarm-Clock">Alarm Clock</option>
+                      <option value="None">None</option>
+                    </select>
+                  </form>
 
-                <!-- Line break -->
-                <br /><br />
-                <form>
-                  <select
-                    id="changeSelect"
-                    name="alarmMusic"
-                    onselect="sound()"
-                  >
-                    <option value="Chirp">Chirp</option>
-                    <option value="Alarm-Clock">Alarm Clock</option>
-                    <option value="None">None</option>
-                  </select>
+                  <!-- Thematic break -->
+                  <hr />
+
+                  <!-- Second line break -->
+                  <br />
+
+                  <!-- Volume adjuster -->
+                  <fieldset id="volume-controls">
+                    <div id="volume-grid-container">
+                      <label
+                        for="volume-number"
+                        class="settingText"
+                        id="volume-text"
+                        >Volume</label
+                      >
+                      <input
+                        id="volume-number"
+                        name="volume-number"
+                        type="number"
+                        min="0"
+                        max="100"
+                        value="100"
+                      />
+                      <input
+                        id="volume-slider"
+                        name="volume-slider"
+                        type="range"
+                        min="0"
+                        max="100"
+                        value="100"
+                      />
+                    </div>
+                  </fieldset>
                 </form>
-
-                <!-- Thematic break -->
-                <hr />
-
-                <!-- Second line break -->
-                <br />
-
-                <!-- Volume adjuster -->
-                <fieldset id="volume-controls">
-                  <div id="volume-grid-container">
-                    <label
-                      for="volume-number"
-                      class="settingText"
-                      id="volume-text"
-                      >Volume</label
-                    >
-                    <input
-                      id="volume-number"
-                      name="volume-number"
-                      type="number"
-                      min="0"
-                      max="100"
-                      value="100"
-                    />
-                    <input
-                      id="volume-slider"
-                      name="volume-slider"
-                      type="range"
-                      min="0"
-                      max="100"
-                      value="100"
-                    />
-                  </div>
-                </fieldset>
               </div>
             </div>
           </div>
