@@ -315,7 +315,7 @@ export function minuteChange() {
   }
   timeRemaining = secondsPerPomo;
   intervalId = null;
-  saveSettings();
+  // saveSettings();
 }
 inputMins.oninput = minuteChange;
 
@@ -350,7 +350,7 @@ export function secondChange() {
   }
   timeRemaining = secondsPerPomo;
   intervalId = null;
-  saveSettings();
+  // saveSettings();
 }
 inputSecs.oninput = secondChange;
 
@@ -363,7 +363,6 @@ inputSecs.oninput = secondChange;
  * It also adds a function to the start/stop button and reset button to stop the audio clip when pressed, otherwise it will continue on a loop.
  */
 function sound() {
-  // alarm("alarm");
   const x = document.getElementById("changeSelect").value;
   const volLevel = document.getElementById("volume-slider").value / 100;
   let audioSound;
@@ -413,6 +412,12 @@ function sound() {
   }
 }
 
+// automatically save when audio option is changed
+var audioSelect = document.getElementById("changeSelect");
+audioSelect.addEventListener('change', function() {
+  saveSettings();
+});
+
 /*
  * Making sure the volume-number and the volume-slider always match
  */
@@ -430,3 +435,9 @@ numInp.oninput = function () {
   ).value;
   saveSettings();
 };
+
+// save custom timer settings
+let form  = document.getElementById('saveSettings');
+form.addEventListener('submit', function(e){
+  saveSettings();
+});
