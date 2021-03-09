@@ -1,5 +1,6 @@
 /* Background and "number of complete pomodoros" colors */
 body {
+
   /* Background color */
   background-color: #08222e;
   margin: 0;
@@ -11,13 +12,13 @@ body {
 
 /* "SOURCE" text */
 a {
-  color: #b7daeb;
-  height: 1.5rem;
-  width: 5rem;
-  text-align: center;
-  padding: 5px 0;
-  margin: 0 auto;
-  margin-top: 15px;
+    color: #B7DAEB;
+    height: 1.5rem;
+    width: 5rem;
+    text-align: center;
+    padding: 5px 0;
+    margin: 0 auto;
+    margin-top: 15px;
 }
 
 /* Main page layout and colors */
@@ -30,34 +31,18 @@ a {
 
 /* Creates flexbox for most of layout */
 #main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* Main timer */
 #timer {
-  display: flex;
-  justify-content: center;
-  font-size: 4em;
-  color: #b7daeb;
-}
-
-/* Not used */
-
-/* #StartReset {
     display: flex;
     justify-content: center;
-    flex-direction: row;
-    font-size: 2em;
-    padding: 1%;
-    padding-top: 1em;
-    align-items: center;
+    font-size: 4em;
+    color: #b7daeb;
 }
-
-ul {
-    text-align: left;
-} */
 
 /* start/stop btn */
 #mixBut {
@@ -99,7 +84,7 @@ ul {
   font-weight: bold;
   font-size: 1.5rem;
   border: none;
-  background-color: #c83200;
+  background-color: #bd0000;
   color: white;
   width: 150px;
   height: 40px;
@@ -119,62 +104,81 @@ ul {
   background-color: #e25121;
 }
 
-/* #task-container {
-    background-color: #b8daeb;
-    border-radius: 15px;
-    align-items: center;
-    color: #07232e;
-    text-align: center;
-    padding-bottom: 3px;
-    margin-bottom: 0.5rem;
-}
-
-#tasks {
-    background-color: #fbfbfb;
-    color: #2b2b2b;
-    padding: 1rem;
-    margin: 0.5em;
-    /* border-radius: 25px;
-} */
-
 /* Aligns text "num of complete pomos */
 #completePomos {
-  text-align: center;
-}
-
-/* Old task list css */
-
-/* 
-h2 {
-    margin-bottom: 0;
     text-align: center;
 }
 
-p {
-    margin-top: 0.5em;
-    margin-left: 1rem;
-    margin-right: 1rem;
+/* Settings css format */
+.modal {
+    overflow: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
 }
 
-#newitempomo {
-    width: 5em;
+/* settings popup */
+#modal-settings-content {
+    /* background of settings */
+    background-color: #b7daeb;
+    /* Color of text */
+    color: #08222e;
+
+    text-align: center;
+    border-radius: 15px;
+
+    border: 1px solid #888;
+    max-width: 40vw;
+    display: flex;
+    flex-direction: column;
+
+    line-height: 1;
+    margin: auto;
+    margin-top: 4vh;
 }
 
-#add-btn {
-    background-color: #fbfbfb;
-    color: #2b2b2b;
-    margin: 0 auto;
-    padding: .25rem;  
-    border-radius: 25px;
+/* Lines up the "x" in the settings to the left */
+.close {
+    text-align: left;
 }
 
-#clear-btn, #clearList {
-    background-color: #fbfbfb;
-    color: #2b2b2b;
-    margin: 0 auto;
-    padding: .25rem;  
-    border-radius: 25px;
-} */
+/* Style for user input boxes */
+input[type=number] {
+    border: 0;
+    width: calc(10px + 1vw);
+}
+
+#userMins {
+  margin-left: 10vw;
+}
+
+#userSecs {
+  margin-right: 10vw;
+}
+
+/* Changes small text size in input boxes */
+:placeholder-shown {
+    font-size: 100%;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* Gets rid of box around volume control */
+fieldset {
+    border: 0;
+    height: 10vh;
+    width: 19vw;
+}
 
 #settings-btn:focus {
   outline: none;
@@ -197,48 +201,48 @@ p {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
-/* settings popup */
-.modal-settings-content {
-  /* background of settings */
-  background-color: #b7daeb;
-
-  /* Color of text */
-  color: #08222e;
-  margin: 4em auto; /* 15% from the top and centered */
-  padding: 25px;
-  text-align: center;
-  border-radius: 15px;
-  border: 1px solid #888;
-  max-width: 20vw;
-  display: flex;
-  flex-direction: column;
+/* Changes font and size of alarm sounds*/
+#changeSelect {
+    font-family: 'Nunito', sans-serif;
+    height: 5vh;
+    width: 15vw;
 }
 
-/* Lines up the "x" in the settings to the left and changes "x" sign in settings */
-.close {
-  text-align: left;
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+/* Makes overall container smaller */
+#volume-grid-container {
+    line-height: .1;
 }
 
-/* Font of the settings */
 .settingText {
+  margin-top: 3vh;
   font-size: 23px;
   font-family: "Nunito", sans-serif;
+}
+
+/* Keeps volume number relative to window size */
+#volume-number {
+  height: 2vh;
+  width: 5vw;
+}
+
+/* Keeps volume slider relative to window size */
+#volume-slider {
+  height: 10vh;
+  width: 10vw;
 }
 
 /* Style for user input */
 input[type="number"] {
   border: 0;
-  padding: 5px;
-  border-radius: 20px;
+  margin-bottom: 2vh;
+  padding: 1vh; 
+  border-radius: 8px;
+  text-align: center;
+
 }
 
 /* Gets rid of box around volume control */
@@ -250,9 +254,9 @@ fieldset {
 
 /* Changes size of the audio selection */
 select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
+    width: 1vw;
+    padding: 1vh;
+    border-radius:5vw;
 }
 
 /* Changes size of "Settings" at top of settings */
@@ -265,8 +269,18 @@ select {
 
 /* Slightly alters spacing in settings */
 .modal-settings-customization {
-  font-size: 1.5vw;
-  width: 100%;
+    font-size: 1.5vw;
+    width:100%;
+}
+
+/* Changes "x" sign in settings */
+.close {
+    color: #aaa;
+    float: left;
+    font-weight: bold;
+    font-size: 2.5vw;
+    margin-left: 15px;
+    margin-top: 10px;
 }
 
 /* Puts input minutes to the left in settings */
