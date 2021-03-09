@@ -305,11 +305,11 @@ export function minuteChange() {
   } else if (inputMins.value < 10) {
     document.getElementById("minute").innerHTML = "0" + inputMins.value;
     secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
-   } //else if (inputMins.value > 120) {
+  } // else if (inputMins.value > 120) {
   //   // max mins for pomo timer 2 hours
   //   inputMins.value = 120;
   //   secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
-  //} 
+  // }
   else {
     document.getElementById("minute").innerHTML = inputMins.value;
     secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
@@ -340,8 +340,7 @@ export function secondChange() {
     if (inputMins.value == "") {
       document.getElementById("minute").innerHTML = "25";
       secondsPerPomo = 60 * 25 + Number(inputSecs.value);
-    }
-    else {
+    } else {
       secondsPerPomo = 60 * Number(inputMins.value);
     }
   } else if (inputSecs.value < 10) {
@@ -349,22 +348,20 @@ export function secondChange() {
     if (inputMins.value == "") {
       document.getElementById("minute").innerHTML = "25";
       secondsPerPomo = 60 * 25 + Number(inputSecs.value);
-    }
-    else {
+    } else {
       secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
     }
-  } //else if (inputSecs.value >= 60) {
-    // max mins for pomo timer 2 hours
-    // inputSecs.value = 59;
-    // secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
-  //} 
+  } // else if (inputSecs.value >= 60) {
+  // max mins for pomo timer 2 hours
+  // inputSecs.value = 59;
+  // secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+  // }
   else {
     document.getElementById("seconds").innerHTML = inputSecs.value;
     if (inputMins.value == "") {
       document.getElementById("minute").innerHTML = "25";
       secondsPerPomo = 60 * 25 + Number(inputSecs.value);
-    }
-    else {
+    } else {
       secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
     }
   }
@@ -433,8 +430,8 @@ function sound() {
 }
 
 // automatically save when audio option is changed
-var audioSelect = document.getElementById("changeSelect");
-audioSelect.addEventListener('change', function() {
+const audioSelect = document.getElementById("changeSelect");
+audioSelect.addEventListener("change", function () {
   saveSettings();
 });
 
@@ -457,7 +454,9 @@ numInp.oninput = function () {
 };
 
 // save custom timer settings
-let form  = document.getElementById('saveSettings');
-form.addEventListener('submit', function(e){
-  saveSettings();
-});
+const form = document.getElementById("saveSettings");
+if (form) {
+  form.addEventListener("submit", function (e) {
+    saveSettings();
+  });
+}
