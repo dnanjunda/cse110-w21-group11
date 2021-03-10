@@ -292,7 +292,7 @@ fieldset {
 
 #save-btn:focus,
 #save-btn:active {
-  outline:none;
+  outline: none;
 }
 
 #save-btn:hover {
