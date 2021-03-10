@@ -40,131 +40,199 @@
 
           <!-- Settings modal> -->
           <div id="settings-modal" class="modal">
-            <div class="modal-settings-content">
-              <span
-                class="close"
-                onclick="document.getElementById('settings-modal').style.display = 'none'"
-                >&times;</span
-              >
-              <span id="modal-title">
-                <p>Settings</p>
-              </span>
+            <div id="modal-settings-content" class="mod-grid">
+              <div class="mod-item">
+                <span
+                  class="close"
+                  onclick="document.getElementById('settings-modal').style.display = 'none'"
+                  >&times;</span
+                >
+              </div>
+              <div>
+                <div id="modal-title" style="padding-bottom: 10px">
+                  SETTINGS
+                </div>
+                <hr
+                  style="
+                    color: black;
+                    background-color: #08222e;
+                    height: 2px;
+                    border: 0;
+                    width: 25vw;
+                    min-width: 200px;
+                  "
+                />
+              </div>
+              <form id="saveSettings">
+                <div class="mod-item" style="padding-bottom: 10px">
+                  Short Break Length
+                </div>
 
-              <!-- Settings customization of breaks/pomos -->
-              <div class="modal-settings-customization">
-                <form id="saveSettings">
-                  <p class="settingText">Length of Short Break</p>
+                <div>
                   <input
                     type="number"
                     placeholder="Minutes"
                     class="pomos"
                     id="shortBreakPomos"
                     value="5"
-                    max="120"
                   />
-
-                  <p class="settingText">Length of Long Break</p>
+                  <hr
+                    style="
+                      color: black;
+                      background-color: #08222e;
+                      height: 2px;
+                      border: 0;
+                      width: 25vw;
+                      min-width: 200px;
+                    "
+                  />
+                </div>
+                <div class="mod-item" style="padding-bottom: 10px">
+                  Long Break Length
+                </div>
+                <div>
                   <input
                     type="number"
                     placeholder="Minutes"
                     class="pomos"
                     id="breakPomos"
                     value="30"
-                    max="120"
                   />
-
-                  <p class="settingText">Pomodoros until Long Break</p>
+                  <hr
+                    style="
+                      background-color: #08222e;
+                      height: 2px;
+                      border: 0;
+                      width: 25vw;
+                      min-width: 200px;
+                    "
+                  />
+                </div>
+                <div class="mod-item" style="padding: 10px">
+                  Pomodoros until Long Break
+                </div>
+                <div>
                   <input
                     type="number"
                     placeholder="Pomos"
                     class="pomos"
                     id="userPomos"
                     value="4"
-                    min="0"
                   />
-
-                  <p class="settingText">Pomodoro Length</p>
-                  <input
-                    type="number"
-                    placeholder="Minutes"
-                    class="minutes"
-                    id="userMins"
-                    value="25"
-                    max="120"
-                    min="0"
-                  />
-                  <input
-                    type="number"
-                    placeholder="Seconds"
-                    class="seconds"
-                    min="0"
-                    step="1"
-                    id="userSecs"
-                    value="0"
-                    max="59"
-                    min="0"
-                  />
-                  <input type="submit" value="Save" />
-                  <br />
-                  <hr style="color: black" />
-                  <br />
-
-                  <!-- Notification Sound -->
-                  <label class="settingText">Notification Sound:</label>
-
-                  <!-- Line break -->
-                  <br /><br />
-                  <form>
-                    <select id="changeSelect" name="alarmMusic">
-                      <option value="Chirp">Chirp</option>
-                      <option value="Alarm-Clock">Alarm Clock</option>
-                      <option value="None">None</option>
-                    </select>
-                  </form>
-
-                  <!-- Thematic break -->
-                  <hr />
-
-                  <!-- Second line break -->
-                  <br />
-
-                  <!-- Volume adjuster -->
-                  <fieldset id="volume-controls">
-                    <div id="volume-grid-container">
-                      <label
-                        for="volume-number"
-                        class="settingText"
-                        id="volume-text"
-                        >Volume</label
-                      >
+                </div>
+                <hr
+                  style="
+                    color: black;
+                    background-color: #08222e;
+                    height: 2px;
+                    border: 0;
+                    width: 25vw;
+                    min-width: 200px;
+                  "
+                />
+                <div class="mod-item"><p>Pomodoro Length</p></div>
+                <div>
+                  <div id="len-grid">
+                    <div id="minHead" style="padding-bottom: 10px">Minutes</div>
+                    <div id="secHead" style="padding-bottom: 10px">Seconds</div>
+                    <div id="len-item">
                       <input
-                        id="volume-number"
-                        name="volume-number"
                         type="number"
-                        min="0"
-                        max="100"
-                        value="100"
-                      />
-                      <input
-                        id="volume-slider"
-                        name="volume-slider"
-                        type="range"
-                        min="0"
-                        max="100"
-                        value="100"
+                        placeholder="Min"
+                        class="minutes"
+                        id="userMins"
+                        value="25"
                       />
                     </div>
-                  </fieldset>
+                    <div id="len-item">
+                      <input
+                        type="number"
+                        placeholder="Seconds"
+                        class="seconds"
+                        min="0"
+                        step="1"
+                        id="userSecs"
+                        value="0"
+                      />
+                    </div>
+                  </div>
+                  <hr
+                    style="
+                      color: black;
+                      background-color: #08222e;
+                      height: 2px;
+                      border: 0;
+                      width: 25vw;
+                      min-width: 200px;
+                    "
+                  />
+                </div>
+                <input type="submit" value="Save" />
+              </form>
+              <div class="mod-item" style="padding-bottom: 10px">
+                Notification Sound
+              </div>
+
+              <div>
+                <form>
+                  <select
+                    id="changeSelect"
+                    name="alarmMusic"
+                    onselect="sound()"
+                  >
+                    <option value="Chirp">Chirp</option>
+                    <option value="Alarm-Clock">Alarm Clock</option>
+                    <option value="None">None</option>
+                  </select>
                 </form>
+                <hr
+                  style="
+                    color: black;
+                    background-color: #08222e;
+                    height: 2px;
+                    border: 0;
+                    width: 25vw;
+                    min-width: 200px;
+                  "
+                />
+              </div>
+
+              <div class="mod-item" style="padding-bottom: 10px">
+                <label for="volume-number" class="settingText" id="volume-text"
+                  >Volume
+                </label>
+              </div>
+              <div id="vol-grid">
+                <div>
+                  <input
+                    id="volume-number"
+                    name="volume-number"
+                    type="number"
+                    min="0"
+                    max="100"
+                    value="100"
+                  />
+                </div>
+                <div>
+                  <input
+                    id="volume-slider"
+                    name="volume-slider"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="100"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <div id="stats-modal" class="modal">
-          <div class="modal-settings-content">
+          <div id="modal-settings-content">
             <span
               class="close"
+              style="width: 50px"
               onclick="document.getElementById('stats-modal').style.display = 'none'"
               >&times;</span
             >
@@ -183,13 +251,13 @@
               <span id="seconds">00</span>
             </div>
             <!-- Turns start into stop button with changing colors -->
-            <input type="button" id="mixBut" value="Start" />
-            <button id="reset-btn">Reset</button>
+            <input type="button" id="mixBut" value="START" />
+            <button id="reset-btn">RESET</button>
           </h1>
         </div>
         <br />
         <!-- States the complete number of pomodoros -->
-        <p id="completePomos">Number of Complete Pomodors</p>
+        <p id="completePomos">Number of Completed Pomodors</p>
         <p style="display: none">
           Select the task(s) you want to start before starting the timer
         </p>
