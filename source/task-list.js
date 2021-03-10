@@ -1,4 +1,6 @@
-class Task extends window.HTMLElement {
+import { selectTask } from "./scripts/stats.js";
+
+export class Task extends window.HTMLElement {
   constructor(task) {
     super();
 
@@ -12,7 +14,9 @@ class Task extends window.HTMLElement {
 
     const taskName = document.createElement("p");
     taskName.setAttribute("id", "task-name");
-    taskName.setAttribute("onclick", "selectTask(this)");
+    taskName.onclick = () => {
+      selectTask(taskName);
+    };
     taskName.textContent = task.taskName;
 
     const editName = document.createElement("input");

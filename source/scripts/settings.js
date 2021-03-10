@@ -1,3 +1,5 @@
+import { completedTask, isTaskSelected } from "./stats.js";
+
 // TODOs:
 /* 
 - Settings modal not responsive to window size
@@ -47,19 +49,24 @@ export function timeAdvance() {
     // If a break just completed
     if (onBreak) {
       onBreak = false;
+      document.getElementById("current-task").innerHTML = "Current Task: None";
 
       clearInterval(intervalId);
+      intervalId = null;
       timeRemaining = secondsPerPomo;
       sound();
     }
     // If a pomo session just completed
     else {
-      completedTask(currentTask);
+      completedTask();
+      document.getElementById("current-task").innerHTML =
+        "Current Task: On Break!";
       onBreak = true;
       pomodoro++;
       document.getElementById("completePomos").innerHTML =
-        "Number of Complete Pomodoros: " + pomodoro;
+        "Completed Pomodoros: " + pomodoro;
       clearInterval(intervalId);
+      intervalId = null;
       sound();
 
       let pomosUntilLongBreak = document.getElementById("userPomos").value;
@@ -98,7 +105,7 @@ export function timeAdvance() {
 }
 // keep count of how many pomodoros have been completed
 document.getElementById("completePomos").innerHTML =
-  "Number of Complete Pomodoros: " + pomodoro;
+  "Completed Pomodoros: " + pomodoro;
 
 /*
  * startButton and stopButton will be called by the start/stop button
@@ -111,9 +118,7 @@ const mixBut = document.getElementById("mixBut");
  * and transforms the start button into a stop button by changing its color, text, and associated function (startButton() -> stopButton()).
  */
 export function startButton() {
-  if (onBreak == false && startPressed() == false) {
-    return;
-  } else {
+  if (onBreak || isTaskSelected()) {
     if (secondsPerPomo == 0) {
       // defaults back to 25 mins if both mins and secs 0
       timeRemaining = 25 * 60;
@@ -132,6 +137,7 @@ export function startButton() {
 export function stopButton() {
   if (intervalId) {
     clearInterval(intervalId);
+    intervalId = null;
   }
   mixBut.removeEventListener("click", stopButton);
   mixBut.addEventListener("click", startButton);
@@ -152,7 +158,42 @@ mixBut.addEventListener("click", startButton);
  * resetButton is called by the reset button on the page. This button resets how much time is left on the timer to a non break amount.
  */
 export function resetButton() {
-  timeRemaining = secondsPerPomo;
+  stopButton();
+
+  // If this is a normal pomo session
+  if (!onBreak) {
+    timeRemaining = secondsPerPomo;
+  }
+  // If it's a break
+  else {
+    let pomosUntilLongBreak = document.getElementById("userPomos").value;
+
+    if (!pomosUntilLongBreak) {
+      pomosUntilLongBreak = 4;
+    }
+
+    // If it is time for a long break
+    if (pomodoro % pomosUntilLongBreak == 0 && pomodoro != 0) {
+      const minutesPerLongBreak = document.getElementById("breakPomos").value;
+      if (minutesPerLongBreak == "") {
+        // default value: 30 mins
+        timeRemaining = 60 * 30;
+      } else {
+        timeRemaining = 60 * minutesPerLongBreak;
+      }
+    }
+    // If it is time for a short break
+    else {
+      const minutesPerShortBreak = document.getElementById("shortBreakPomos")
+        .value;
+      if (minutesPerShortBreak == "") {
+        // default value: 5 mins
+        timeRemaining = 60 * 5;
+      } else {
+        timeRemaining = 60 * minutesPerShortBreak;
+      }
+    }
+  }
 
   let minute = Math.floor(timeRemaining / 60);
   let seconds = Math.floor(timeRemaining % 60);
@@ -171,34 +212,41 @@ export function resetPomos() {
   onBreak = false;
 }
 
+/**
+ * canChangeTask is for use by stats.js to determine whether now is an appropriate time to change what task the user is working on
+ */
+export function canChangeTask() {
+  return !onBreak && intervalId == null;
+}
+
 /*
  * Settings Modal
  */
 
 // Local Storage
 function saveSettings() {
-  window.localStorage._shortBreakPomos = parseInt(
+  window.localStorage._shortBreakPomos = String(
     document.getElementById("shortBreakPomos").value
   );
-  window.localStorage._userPomos = parseInt(
+  window.localStorage._userPomos = String(
     document.getElementById("userPomos").value
   );
-  window.localStorage._breakPomos = parseInt(
+  window.localStorage._breakPomos = String(
     document.getElementById("breakPomos").value
   );
-  window.localStorage._userMins = parseInt(
+  window.localStorage._userMins = String(
     document.getElementById("userMins").value
   );
-  window.localStorage._userSecs = parseInt(
+  window.localStorage._userSecs = String(
     document.getElementById("userSecs").value
   );
   window.localStorage._changeSelect = document.getElementById(
     "changeSelect"
   ).value;
-  window.localStorage._volume_number = parseInt(
+  window.localStorage._volume_number = String(
     document.getElementById("volume-number").value
   );
-  window.localStorage._volume_slider = parseInt(
+  window.localStorage._volume_slider = String(
     document.getElementById("volume-slider").value
   );
 }

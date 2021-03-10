@@ -245,7 +245,12 @@
               >&times;</span
             >
             <span id="modal-title">
-              <p>Tasks Completed</p>
+              <p id="completePomos">Completed Pomodoros: 0</p>
+              <hr />
+              <label>Completed Tasks</label>
+              <ul id="completed-tasks">
+                <!-- Tasks get added here when they're done -->
+              </ul>
             </span>
           </div>
         </div>
@@ -265,10 +270,12 @@
         </div>
         <br />
         <!-- States the complete number of pomodoros -->
-        <p id="completePomos">Number of Complete Pomodors</p>
-        <p id="current-task">Current Task</p>
-        <section id="select-task" class = "select-task" style="display:none">
-          <p>Please click on a task you would like to start. Press 'Start Timer' again to begin the Pomo session.</p>
+        <p id="current-task">Current Task: None</p>
+        <section id="select-task" class="select-task" style="display: none">
+          <p>
+            Please click on a task you would like to start. <br />
+            Then press 'Start' again to begin the Pomo session.
+          </p>
         </section>
         <section id="select-task"></section>
         <div id="title">TASKS</div>
@@ -297,7 +304,7 @@
               required
             />
             <div>
-              <button id="minus" type="button" onclick="decrement()">-</button>
+              <button id="minus" type="button">-</button>
               <input
                 class="grid-item"
                 type="number"
@@ -306,7 +313,7 @@
                 min="1"
                 max="4"
               />
-              <button id="plus" type="button" onclick="increment()">+</button>
+              <button id="plus" type="button">+</button>
             </div>
           </div>
           <div id="btnGrid">
@@ -322,11 +329,12 @@
           </div>
         </form>
       </div>
-      <script src="./task-list.js"></script>
-      <script src="./list-btns.js"></script>
+      <script src="./task-list.js" type="module"></script>
+      <script src="./list-btns.js" type="module"></script>
       <script src="scripts/settings.js" type="module"></script>
-      <script src="scripts/stats.js"></script>
-      <a href="https://github.com/james-c-lars/cse110-w21-group11.git"
+      <script src="scripts/stats.js" type="module"></script>
+      <a
+        href="https://github.com/james-c-lars/cse110-w21-group11.git"
         onmouseover="this.style.color = '#97d4f3'"
         onmouseout="this.style.color = '#b7daeb'"
         >SOURCE</a
