@@ -7,7 +7,6 @@ body {
   min-width: 79.5vh;
   margin: auto;
   background: #08222e;
-  padding: 1.5vh;
   font-family: var(--custom-font);
   text-align: center;
 }
@@ -31,12 +30,12 @@ body {
 }
 
 #list-title1 {
-  font-size: calc(10px + 1vw);
+  font-size: calc(10px + 0.5vw);
   text-align: left;
 }
 #list-title2 {
   text-align: left;
-  font-size: calc(10px + 1vw);
+  font-size: calc(10px + 0.5vw);
 }
 
 #task-list {
@@ -99,6 +98,7 @@ body {
   background-color: #f0f0f0;
   text-align: center;
   font-family: var(--custom-font);
+  width: 20px;
 }
 
 #pomo-num:focus {
@@ -154,8 +154,8 @@ body {
 #add {
   border: none;
   border-radius: 20px;
-  background-color: #c7edff;
-  color: #08222e;
+  background-color: #ff671d;
+  color: white;
   font-family: var(--custom-font);
   padding: 10px;
   width: 100px;
@@ -168,13 +168,13 @@ body {
 }
 #add:hover {
   outline: none;
-  background-color: #97d4f3;
+  background-color: #ff8d53;
 }
 
 #clear {
   border: none;
   border-radius: 20px;
-  background-color: #ff671d;
+  background-color: #bd0000;
   color: white;
   font-family: var(--custom-font);
   padding: 10px;
@@ -188,7 +188,7 @@ body {
 
 #clear:hover {
   outline: none;
-  background-color: #ff8d53;
+  background-color: #f71a1a;
 }
 
 input::-webkit-outer-spin-button,
