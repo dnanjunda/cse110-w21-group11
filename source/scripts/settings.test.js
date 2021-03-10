@@ -48,8 +48,8 @@ describe("Mixed Button tests", () => {
   test("Does the start button become a stop button", () => {
     pageOperations.startButton();
 
-    expect(mixBut.style.background).toBe("indianred");
-    expect(mixBut.value).toBe("Stop");
+    expect(mixBut.style.background).toBe("rgb(189, 0, 0)");
+    expect(mixBut.value).toBe("STOP");
 
     jest.advanceTimersByTime(5000);
     expect(document.getElementById("seconds").innerHTML).toBe("55");
@@ -59,8 +59,8 @@ describe("Mixed Button tests", () => {
     pageOperations.startButton();
     pageOperations.stopButton();
 
-    expect(mixBut.style.background).toBe("lightgreen");
-    expect(mixBut.value).toBe("Start Timer");
+    expect(mixBut.style.background).toBe("rgb(255, 103, 29)");
+    expect(mixBut.value).toBe("START");
 
     jest.advanceTimersByTime(5000);
     expect(document.getElementById("seconds").innerHTML).toBe("00");
