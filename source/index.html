@@ -63,97 +63,62 @@
                   "
                 />
               </div>
-              <div class="mod-item" style="padding-bottom: 10px">
-                Short Break Length
-              </div>
+              <form id="saveSettings">
+                <div class="mod-item" style="padding-bottom: 10px">
+                  Short Break Length
+                </div>
 
-              <div>
-                <input
-                  type="number"
-                  placeholder="Minutes"
-                  class="pomos"
-                  id="shortBreakPomos"
-                  value="5"
-                />
-                <hr
-                  style="
-                    color: black;
-                    background-color: #08222e;
-                    height: 2px;
-                    border: 0;
-                    width: 25vw;
-                    min-width: 200px;
-                  "
-                />
-              </div>
-              <div class="mod-item" style="padding-bottom: 10px">
-                Long Break Length
-              </div>
-              <div>
-                <input
-                  type="number"
-                  placeholder="Minutes"
-                  class="pomos"
-                  id="breakPomos"
-                  value="30"
-                />
-                <hr
-                  style="
-                    background-color: #08222e;
-                    height: 2px;
-                    border: 0;
-                    width: 25vw;
-                    min-width: 200px;
-                  "
-                />
-              </div>
-              <div class="mod-item" style="padding: 10px">
-                Pomodoros until Long Break
-              </div>
-              <div>
-                <input
-                  type="number"
-                  placeholder="Pomos"
-                  class="pomos"
-                  id="userPomos"
-                  value="4"
-                />
-              </div>
-              <hr
-                style="
-                  color: black;
-                  background-color: #08222e;
-                  height: 2px;
-                  border: 0;
-                  width: 25vw;
-                  min-width: 200px;
-                "
-              />
-              <div class="mod-item"><p>Pomodoro Length</p></div>
-              <div>
-                <div id="len-grid">
-                  <div id="minHead" style="padding-bottom: 10px">Minutes</div>
-                  <div id="secHead" style="padding-bottom: 10px">Seconds</div>
-                  <div id="len-item">
-                    <input
-                      type="number"
-                      placeholder="Min"
-                      class="minutes"
-                      id="userMins"
-                      value="25"
-                    />
-                  </div>
-                  <div id="len-item">
-                    <input
-                      type="number"
-                      placeholder="Seconds"
-                      class="seconds"
-                      min="0"
-                      step="1"
-                      id="userSecs"
-                      value="0"
-                    />
-                  </div>
+                <div>
+                  <input
+                    type="number"
+                    placeholder="Minutes"
+                    class="pomos"
+                    id="shortBreakPomos"
+                    value="5"
+                  />
+                  <hr
+                    style="
+                      color: black;
+                      background-color: #08222e;
+                      height: 2px;
+                      border: 0;
+                      width: 25vw;
+                      min-width: 200px;
+                    "
+                  />
+                </div>
+                <div class="mod-item" style="padding-bottom: 10px">
+                  Long Break Length
+                </div>
+                <div>
+                  <input
+                    type="number"
+                    placeholder="Minutes"
+                    class="pomos"
+                    id="breakPomos"
+                    value="30"
+                  />
+                  <hr
+                    style="
+                      background-color: #08222e;
+                      height: 2px;
+                      border: 0;
+                      width: 25vw;
+                      min-width: 200px;
+                    "
+                  />
+                </div>
+                <div class="mod-item" style="padding: 10px">
+                  Pomodoros until Long Break
+                </div>
+                <div>
+                  <input
+                    type="number"
+                    placeholder="Pomos"
+                    class="pomos"
+                    id="userPomos"
+                    value="4"
+                  />
                 </div>
                 <hr
                   style="
@@ -165,7 +130,45 @@
                     min-width: 200px;
                   "
                 />
-              </div>
+                <div class="mod-item"><p>Pomodoro Length</p></div>
+                <div>
+                  <div id="len-grid">
+                    <div id="minHead" style="padding-bottom: 10px">Minutes</div>
+                    <div id="secHead" style="padding-bottom: 10px">Seconds</div>
+                    <div id="len-item">
+                      <input
+                        type="number"
+                        placeholder="Min"
+                        class="minutes"
+                        id="userMins"
+                        value="25"
+                      />
+                    </div>
+                    <div id="len-item">
+                      <input
+                        type="number"
+                        placeholder="Seconds"
+                        class="seconds"
+                        min="0"
+                        step="1"
+                        id="userSecs"
+                        value="0"
+                      />
+                    </div>
+                  </div>
+                  <hr
+                    style="
+                      color: black;
+                      background-color: #08222e;
+                      height: 2px;
+                      border: 0;
+                      width: 25vw;
+                      min-width: 200px;
+                    "
+                  />
+                </div>
+                <input type="submit" value="Save" />
+              </form>
               <div class="mod-item" style="padding-bottom: 10px">
                 Notification Sound
               </div>
@@ -229,7 +232,7 @@
           <div id="modal-settings-content">
             <span
               class="close"
-              style="width: 50px;"
+              style="width: 50px"
               onclick="document.getElementById('stats-modal').style.display = 'none'"
               >&times;</span
             >
