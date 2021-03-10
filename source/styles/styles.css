@@ -280,3 +280,21 @@ fieldset {
   display: grid;
   grid-template-columns: auto auto;
 }
+
+#save-btn {
+  background-color: #ff671d;
+  border: none;
+  color: white;
+  border-radius: 20px;
+  padding: 5px;
+  width: 80px;
+}
+
+#save-btn:focus,
+#save-btn:active {
+  outline:none;
+}
+
+#save-btn:hover {
+  background-color: #ff8d53;
+}
