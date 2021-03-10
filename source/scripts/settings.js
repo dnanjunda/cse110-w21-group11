@@ -32,6 +32,7 @@ export function timeAdvance() {
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
   if (timeRemaining <= 0) {
+    completedTask(currentTask);
     pomodoro++;
     timeRemaining = secondsPerPomo;
     clearInterval(intervalId);
@@ -82,15 +83,19 @@ const mixBut = document.getElementById("mixBut");
  * and transforms the start button into a stop button by changing its color, text, and associated function (startButton() -> stopButton()).
  */
 export function startButton() {
-  if (secondsPerPomo == 0) {
-    // defaults back to 25 mins if both mins and secs 0
-    timeRemaining = 25 * 60;
+  if (startPressed() == false) {
+    return;
+  } else {
+    if (secondsPerPomo == 0) {
+      // defaults back to 25 mins if both mins and secs 0
+      timeRemaining = 25 * 60;
+    }
+    intervalId = setInterval(timeAdvance, 1000);
+    mixBut.removeEventListener("click", startButton);
+    mixBut.addEventListener("click", stopButton);
+    document.getElementById("mixBut").style.background = "indianred";
+    mixBut.value = "Stop";
   }
-  intervalId = setInterval(timeAdvance, 1000);
-  mixBut.removeEventListener("click", startButton);
-  mixBut.addEventListener("click", stopButton);
-  document.getElementById("mixBut").style.background = "indianred";
-  mixBut.value = "Stop";
 }
 /**
  * This function implements the functionality of the stop button. It stops calling timeAdvance every second, and transforms the stop button into a start button

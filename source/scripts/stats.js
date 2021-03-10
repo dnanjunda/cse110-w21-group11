@@ -1,3 +1,5 @@
+var currentTask = null;
+
 sessionStorage.setItem("completed", "[]");
 
 /**
@@ -12,7 +14,6 @@ function restoreTask() {
     } else {
         var task = JSON.parse(incomplete);
         for (var i = 0; i < task.length; i++) {
-            console.log(task[i]);
             var obj = task[i];
 
             const noTask = document.getElementById("no-task");
@@ -34,22 +35,21 @@ function restoreTask() {
     }
 }
 
+
+
 /**
  * select task or start timer
  */
 function startPressed() {
     var task = document.getElementById("current-task").innerHTML;
-    
+    var prompt = document.getElementById("select-task");
     if (task === "Current Task") {
-        var prompt = document.getElementById("select-task");
-        prompt.setAttribute("class", "select-task");
-        var text = document.createElement("p");
-        var node = document.createTextNode("Please click on a task you would like to start. Press 'Start Timer' again to begin the Pomo session.");
-        text.appendChild(node);
-        prompt.appendChild(text);
+        prompt.style.display = "block";
+        return false;
     } else {
         // function to start timer
-
+        prompt.style.display = "none";
+        return true;
     }
 }
 /**
@@ -58,7 +58,7 @@ function startPressed() {
 
 function selectTask(el) {
     document.getElementById("current-task").innerHTML = "Current Task: " + el.innerHTML;
-    completedTask(el);
+    currentTask = el;
 }
 
 /**
@@ -67,7 +67,7 @@ function selectTask(el) {
  */
 function completedTask(el) {
     var pomo = el.nextElementSibling.nextElementSibling;
-console.log(pomo);
+
     var tasks = JSON.parse(sessionStorage.getItem("completed"));
     var task = {
         "task" : el.innerHTML,
@@ -76,7 +76,10 @@ console.log(pomo);
     tasks.push(task);
     sessionStorage.setItem("completed", JSON.stringify(tasks));
 
-    //call delete for that row ****************
+    var remove = pomo.nextElementSibling.nextElementSibling;
+    remove.click();
+    document.getElementById("current-task").innerHTML = "Current Task";
+    currentTask = null;
 }
 
 /**

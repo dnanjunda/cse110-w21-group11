@@ -149,7 +149,6 @@ class Task extends window.HTMLElement {
         padding-left: 1vh;
       }
       `;
-
     shadow.appendChild(style);
     shadow.appendChild(wrapper);
   }
