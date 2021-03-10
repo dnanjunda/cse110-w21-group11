@@ -167,14 +167,12 @@
                     "
                   />
                 </div>
-                <input type="submit" value="Save" />
-              </form>
-              <div class="mod-item" style="padding-bottom: 10px">
-                Notification Sound
-              </div>
+                <div class="mod-item" style="padding-bottom: 10px">
+                  Notification Sound
+                </div>
 
-              <div>
-                <form>
+                <div>
+                  <!-- <form> -->
                   <select
                     id="changeSelect"
                     name="alarmMusic"
@@ -184,46 +182,56 @@
                     <option value="Alarm-Clock">Alarm Clock</option>
                     <option value="None">None</option>
                   </select>
-                </form>
-                <hr
-                  style="
-                    color: black;
-                    background-color: #08222e;
-                    height: 2px;
-                    border: 0;
-                    width: 25vw;
-                    min-width: 200px;
-                  "
-                />
-              </div>
+                  <!-- </form> -->
+                  <hr
+                    style="
+                      color: black;
+                      background-color: #08222e;
+                      height: 2px;
+                      border: 0;
+                      width: 25vw;
+                      min-width: 200px;
+                    "
+                  />
+                </div>
 
-              <div class="mod-item" style="padding-bottom: 10px">
-                <label for="volume-number" class="settingText" id="volume-text"
-                  >Volume
-                </label>
-              </div>
-              <div id="vol-grid">
-                <div>
-                  <input
-                    id="volume-number"
-                    name="volume-number"
-                    type="number"
-                    min="0"
-                    max="100"
-                    value="100"
-                  />
+                <div class="mod-item" style="padding-bottom: 10px">
+                  <label
+                    for="volume-number"
+                    class="settingText"
+                    id="volume-text"
+                    >Volume
+                  </label>
                 </div>
-                <div>
-                  <input
-                    id="volume-slider"
-                    name="volume-slider"
-                    type="range"
-                    min="0"
-                    max="100"
-                    value="100"
-                  />
+                <div id="vol-grid">
+                  <div>
+                    <input
+                      id="volume-number"
+                      name="volume-number"
+                      type="number"
+                      min="0"
+                      max="100"
+                      value="100"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      id="volume-slider"
+                      name="volume-slider"
+                      type="range"
+                      min="0"
+                      max="100"
+                      value="100"
+                    />
+                  </div>
                 </div>
-              </div>
+                <input
+                  id="save-btn"
+                  type="submit"
+                  value="Save"
+                  style="margin: auto; margin-bottom: 20px"
+                />
+              </form>
             </div>
           </div>
         </div>
