@@ -280,3 +280,11 @@ fieldset {
   display: grid;
   grid-template-columns: auto auto;
 }
+
+#scroll-down {
+  position: fixed;
+  bottom: 2vh;
+  right: 3vw;
+  z-index: 99;
+  cursor: pointer;
+}
