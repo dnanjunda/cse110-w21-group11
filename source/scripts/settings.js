@@ -158,6 +158,7 @@ export function resetButton() {
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
+  stopButton();
 }
 document.getElementById("reset-btn").addEventListener("click", resetButton);
 
