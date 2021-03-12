@@ -33,6 +33,7 @@ export function timeAdvance() {
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
   updateCircle(timeRemaining, secondsPerPomo);
+  
   if (timeRemaining <= 0) {
     pomodoro++;
     timeRemaining = secondsPerPomo;
@@ -91,8 +92,8 @@ export function startButton() {
   intervalId = setInterval(timeAdvance, 1000);
   mixBut.removeEventListener("click", startButton);
   mixBut.addEventListener("click", stopButton);
-  document.getElementById("mixBut").style.background = "indianred";
-  mixBut.value = "Stop";
+  document.getElementById("mixBut").style.background = "#bd0000";
+  mixBut.value = "STOP";
 }
 /**
  * This function implements the functionality of the stop button. It stops calling timeAdvance every second, and transforms the stop button into a start button
@@ -104,8 +105,8 @@ export function stopButton() {
   }
   mixBut.removeEventListener("click", stopButton);
   mixBut.addEventListener("click", startButton);
-  document.getElementById("mixBut").style.background = "lightgreen";
-  mixBut.value = "Start Timer";
+  document.getElementById("mixBut").style.background = "#ff671d";
+  mixBut.value = "START";
 }
 
 mixBut.addEventListener("click", startButton);
