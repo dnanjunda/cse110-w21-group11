@@ -147,6 +147,9 @@ mixBut.addEventListener("click", startButton);
  * resetButton is called by the reset button on the page. This button resets how much time is left on the timer to a non break amount.
  */
 export function resetButton() {
+  if (onBreak) {
+    onBreak = false;
+  }
   timeRemaining = secondsPerPomo;
 
   let minute = Math.floor(timeRemaining / 60);
@@ -155,6 +158,7 @@ export function resetButton() {
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
+  stopButton();
 }
 document.getElementById("reset-btn").addEventListener("click", resetButton);
 
