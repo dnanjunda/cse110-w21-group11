@@ -282,6 +282,7 @@ fieldset {
   stroke: #B6B6B6;
   stroke-width: 10px
 }
+
   /* This the red circle outline, disappear as timer counts down */ 
 .e-c-progress {
   fill: none;
@@ -290,6 +291,7 @@ fieldset {
   transition: stroke-dashoffset 0.7s;
   stroke-linecap: round;
 }
+
 /* This the circle, moves as timer counts down */ 
 .e-c-pointer {
   fill: none;

@@ -82,6 +82,7 @@
     color: #4271ae;
   }
 }
+
 /* Use higher contrast and text-weight for printable form. */
 @media print, projection {
   .str {
@@ -126,6 +127,7 @@
     color: #060;
   }
 }
+
 /* Style */
 
 /*
