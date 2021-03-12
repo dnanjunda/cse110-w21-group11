@@ -18,4 +18,5 @@ document.body.innerHTML =
   '<button id="minus" type="button">-</button>' +
   '<button id="add" class="button-on" type="submit">ADD</button>' +
   '<button id="clear" class="button-off" type="button">CLEAR</button>' +
-  '<div id="tasks"><div id="no-task">Tasks Complete!</div></div>';
+  '<div id="tasks"><div id="no-task">Tasks Complete!</div></div>' +
+  '<input class="grid-item" type="text" id="task-name" placeholder="Task name" required/>';

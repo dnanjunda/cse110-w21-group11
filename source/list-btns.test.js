@@ -22,12 +22,22 @@ describe("Number of Pomos Button Tests", () => {
     });
 
     test("Clear task list button", () => {
-        document.getElementById("clear").click();
+        buttonFunctions.clearList();
         expect(tasklist.children.length).toBe(1);
     });
 
-    // test("Add task to list button", () => {
+    test("Add task to list button", () => {
+        document.getElementById("task-name").value = "";
+        let oldVal = tasklist.children.length;
+        buttonFunctions.addTask();
+        // document.getElementById("add").click();
+        expect(tasklist.children.length).toBe(oldVal);
 
-    // });
+        document.getElementById("task-name").value = "abc";
+        oldVal = tasklist.children.length;
+        buttonFunctions.addTask();
+        // document.getElementById("add").click();
+        expect(tasklist.children.length).toBe(oldVal+1);
+    });
 
 })

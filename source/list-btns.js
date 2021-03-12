@@ -23,10 +23,29 @@ document.addEventListener("DOMContentLoaded", function () {
     addTask();
   });
 
+  const clearButton = document.getElementById("clear");
+  clearButton.addEventListener("click", function () {
+    clearList();
+  });
+
+});
+
+  /**
+   * Clear the current task list.
+   */
+  export function clearList() {
+    const taskList = document.getElementById("tasks");
+    const noTask = document.getElementById("no-task");
+    noTask.style.display = "block";
+    while (taskList.children.length > 1) {
+      taskList.removeChild(taskList.children[1]);
+    }
+  }
+
   /**
    * Add a new task into the list.
    */
-  function addTask() {
+   export function addTask() {
     const noTask = document.getElementById("no-task");
     const tasks = document.getElementById("tasks");
     const newTask = document.getElementById("task-name").value;
@@ -42,24 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
     document.getElementById("form").reset();
   }
-
-  const clearButton = document.getElementById("clear");
-  clearButton.addEventListener("click", function () {
-    clearList();
-  });
-  /**
-   * Clear the current task list.
-   */
-  function clearList() {
-    const taskList = document.getElementById("tasks");
-    const noTask = document.getElementById("no-task");
-    noTask.style.display = "block";
-    while (taskList.children.length > 1) {
-      taskList.removeChild(taskList.children[1]);
-    }
-  }
-
-});
+  document.getElementById("add").onclick = addTask;
 
   /* eslint-disable no-unused-vars */
 
