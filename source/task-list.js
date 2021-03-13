@@ -1,4 +1,6 @@
-class Task extends window.HTMLElement {
+import { selectTask } from "./scripts/stats.js";
+
+export class Task extends window.HTMLElement {
   constructor(task) {
     super();
 
@@ -12,7 +14,11 @@ class Task extends window.HTMLElement {
 
     const taskName = document.createElement("p");
     taskName.setAttribute("id", "task-name");
+    taskName.onclick = () => {
+      selectTask(taskName);
+    };
     taskName.textContent = task.taskName;
+
     const editName = document.createElement("input");
     editName.setAttribute("id", "edit-name");
     editName.value = taskName.textContent;
@@ -169,7 +175,6 @@ class Task extends window.HTMLElement {
         padding-left: 1vh;
       }
       `;
-
     shadow.appendChild(style);
     shadow.appendChild(wrapper);
   }
