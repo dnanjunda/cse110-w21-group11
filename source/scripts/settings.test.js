@@ -1,5 +1,7 @@
 import * as pageOperations from "./settings.js";
 
+jest.mock("./stats.js");
+
 window.alert = () => {};
 
 describe("timeAdvance tests", () => {
@@ -48,8 +50,7 @@ describe("Mixed Button tests", () => {
   test("Does the start button become a stop button", () => {
     pageOperations.startButton();
 
-    expect(mixBut.style.background).toBe("rgb(189, 0, 0)");
-    expect(mixBut.value).toBe("STOP");
+    expect(mixBut.value.toUpperCase()).toBe("STOP");
 
     jest.advanceTimersByTime(5000);
     expect(document.getElementById("seconds").innerHTML).toBe("55");
@@ -59,8 +60,7 @@ describe("Mixed Button tests", () => {
     pageOperations.startButton();
     pageOperations.stopButton();
 
-    expect(mixBut.style.background).toBe("rgb(255, 103, 29)");
-    expect(mixBut.value).toBe("START");
+    expect(mixBut.value.toUpperCase()).toBe("START");
 
     jest.advanceTimersByTime(5000);
     expect(document.getElementById("seconds").innerHTML).toBe("00");

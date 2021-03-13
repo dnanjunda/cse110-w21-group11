@@ -167,14 +167,12 @@
                     "
                   />
                 </div>
-                <input type="submit" value="Save" />
-              </form>
-              <div class="mod-item" style="padding-bottom: 10px">
-                Notification Sound
-              </div>
+                <div class="mod-item" style="padding-bottom: 10px">
+                  Notification Sound
+                </div>
 
-              <div>
-                <form>
+                <div>
+                  <!-- <form> -->
                   <select
                     id="changeSelect"
                     name="alarmMusic"
@@ -184,46 +182,56 @@
                     <option value="Alarm-Clock">Alarm Clock</option>
                     <option value="None">None</option>
                   </select>
-                </form>
-                <hr
-                  style="
-                    color: black;
-                    background-color: #08222e;
-                    height: 2px;
-                    border: 0;
-                    width: 25vw;
-                    min-width: 200px;
-                  "
-                />
-              </div>
+                  <!-- </form> -->
+                  <hr
+                    style="
+                      color: black;
+                      background-color: #08222e;
+                      height: 2px;
+                      border: 0;
+                      width: 25vw;
+                      min-width: 200px;
+                    "
+                  />
+                </div>
 
-              <div class="mod-item" style="padding-bottom: 10px">
-                <label for="volume-number" class="settingText" id="volume-text"
-                  >Volume
-                </label>
-              </div>
-              <div id="vol-grid">
-                <div>
-                  <input
-                    id="volume-number"
-                    name="volume-number"
-                    type="number"
-                    min="0"
-                    max="100"
-                    value="100"
-                  />
+                <div class="mod-item" style="padding-bottom: 10px">
+                  <label
+                    for="volume-number"
+                    class="settingText"
+                    id="volume-text"
+                    >Volume
+                  </label>
                 </div>
-                <div>
-                  <input
-                    id="volume-slider"
-                    name="volume-slider"
-                    type="range"
-                    min="0"
-                    max="100"
-                    value="100"
-                  />
+                <div id="vol-grid">
+                  <div>
+                    <input
+                      id="volume-number"
+                      name="volume-number"
+                      type="number"
+                      min="0"
+                      max="100"
+                      value="100"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      id="volume-slider"
+                      name="volume-slider"
+                      type="range"
+                      min="0"
+                      max="100"
+                      value="100"
+                    />
+                  </div>
                 </div>
-              </div>
+                <input
+                  id="save-btn"
+                  type="submit"
+                  value="Save"
+                  style="margin: auto; margin-bottom: 20px"
+                />
+              </form>
             </div>
           </div>
         </div>
@@ -236,9 +244,27 @@
               onclick="document.getElementById('stats-modal').style.display = 'none'"
               >&times;</span
             >
-            <span id="modal-title">
-              <p>Tasks Completed</p>
-            </span>
+            <div>
+              <div id="modal-title" style="padding-bottom: 10px">
+                STATISTICS
+              </div>
+              <hr
+                style="
+                  color: black;
+                  background-color: #08222e;
+                  height: 2px;
+                  border: 0;
+                  width: 25vw;
+                  min-width: 200px;
+                "
+              />
+              <p id="completePomos">Completed Pomodoros: 0</p>
+              <hr />
+              <label><u>Completed Tasks</u></label>
+              <ul id="completed-tasks">
+                <!-- Tasks get added here when they're done -->
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -257,10 +283,14 @@
         </div>
         <br />
         <!-- States the complete number of pomodoros -->
-        <p id="completePomos">Number of Completed Pomodors</p>
-        <p style="display: none">
-          Select the task(s) you want to start before starting the timer
-        </p>
+        <p id="current-task">Current Task: None</p>
+        <section id="select-task" class="select-task" style="display: none">
+          <p>
+            Please click on a task you would like to start. <br />
+            Then press 'Start' again to begin the Pomo session.
+          </p>
+        </section>
+        <section id="select-task"></section>
         <div id="title">TASKS</div>
 
         <section id="task-list" class="grid-container">
@@ -287,7 +317,7 @@
               required
             />
             <div>
-              <button id="minus" type="button" onclick="decrement()">-</button>
+              <button id="minus" type="button">-</button>
               <input
                 class="grid-item"
                 type="number"
@@ -296,7 +326,7 @@
                 min="1"
                 max="4"
               />
-              <button id="plus" type="button" onclick="increment()">+</button>
+              <button id="plus" type="button">+</button>
             </div>
           </div>
           <div id="btnGrid">
@@ -321,9 +351,10 @@
             onmouseout="this.src='images/dwn-caret.png'"
           />
       </div>
-      <script src="./task-list.js"></script>
-      <script src="./list-btns.js"></script>
+      <script src="./task-list.js" type="module"></script>
+      <script src="./list-btns.js" type="module"></script>
       <script src="scripts/settings.js" type="module"></script>
+      <script src="scripts/stats.js" type="module"></script>
       <a
         href="https://github.com/james-c-lars/cse110-w21-group11.git"
         onmouseover="this.style.color = '#97d4f3'"

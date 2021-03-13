@@ -1,4 +1,5 @@
-/* global Task */
+import { Task } from "./task-list.js";
+
 /* eslint no-undef: "error" */
 const myStorage = window.localStorage;
 const taskList = document.getElementById("tasks");
@@ -90,6 +91,7 @@ function clearList() {
 function increment() {
   document.getElementById("pomo-num").stepUp();
 }
+document.getElementById("plus").onclick = increment;
 
 /**
  * Decrement pomos by 1 when minus button is pressed.
@@ -97,6 +99,7 @@ function increment() {
 function decrement() {
   document.getElementById("pomo-num").stepDown();
 }
+document.getElementById("minus").onclick = decrement;
 
 const scrollButton = document.getElementById("scroll-down");
 window.onscroll = function() {scrollFunction()};
