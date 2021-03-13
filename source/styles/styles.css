@@ -282,11 +282,15 @@ fieldset {
 }
 
 #scroll-down {
-  position: fixed;
-  bottom: 2vh;
-  right: 3vw;
-  z-index: 99;
+  margin: auto;
+  margin-bottom: 20px;
   cursor: pointer;
+}
+
+#scroll-down:active,
+#scroll-down:focus
+ {
+  outline: none;
 }
 
 #save-btn {

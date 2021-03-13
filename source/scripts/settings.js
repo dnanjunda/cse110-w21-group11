@@ -126,8 +126,8 @@ export function startButton() {
     intervalId = setInterval(timeAdvance, 1000);
     mixBut.removeEventListener("click", startButton);
     mixBut.addEventListener("click", stopButton);
-    document.getElementById("mixBut").style.background = "indianred";
-    mixBut.value = "Stop";
+    document.getElementById("mixBut").style.background = "#bd0000";
+    mixBut.value = "STOP";
   }
 }
 /**
