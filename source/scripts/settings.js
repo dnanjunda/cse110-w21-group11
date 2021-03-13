@@ -158,42 +158,10 @@ mixBut.addEventListener("click", startButton);
  * resetButton is called by the reset button on the page. This button resets how much time is left on the timer to a non break amount.
  */
 export function resetButton() {
-  stopButton();
-
-  // If this is a normal pomo session
-  if (!onBreak) {
-    timeRemaining = secondsPerPomo;
+  if (onBreak) {
+    onBreak = false;
   }
-  // If it's a break
-  else {
-    let pomosUntilLongBreak = document.getElementById("userPomos").value;
-
-    if (!pomosUntilLongBreak) {
-      pomosUntilLongBreak = 4;
-    }
-
-    // If it is time for a long break
-    if (pomodoro % pomosUntilLongBreak == 0 && pomodoro != 0) {
-      const minutesPerLongBreak = document.getElementById("breakPomos").value;
-      if (minutesPerLongBreak == "") {
-        // default value: 30 mins
-        timeRemaining = 60 * 30;
-      } else {
-        timeRemaining = 60 * minutesPerLongBreak;
-      }
-    }
-    // If it is time for a short break
-    else {
-      const minutesPerShortBreak = document.getElementById("shortBreakPomos")
-        .value;
-      if (minutesPerShortBreak == "") {
-        // default value: 5 mins
-        timeRemaining = 60 * 5;
-      } else {
-        timeRemaining = 60 * minutesPerShortBreak;
-      }
-    }
-  }
+  timeRemaining = secondsPerPomo;
 
   let minute = Math.floor(timeRemaining / 60);
   let seconds = Math.floor(timeRemaining % 60);
@@ -201,6 +169,7 @@ export function resetButton() {
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
+  stopButton();
 }
 document.getElementById("reset-btn").addEventListener("click", resetButton);
 
