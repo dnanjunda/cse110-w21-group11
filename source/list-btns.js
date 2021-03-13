@@ -42,14 +42,14 @@ form.addEventListener("submit", function (e) {
   /**
    * Clear the current task list.
    */
-  export function clearList() {
-    const taskList = document.getElementById("tasks");
-    const noTask = document.getElementById("no-task");
-    noTask.style.display = "block";
-    while (taskList.children.length > 1) {
-      taskList.removeChild(taskList.children[1]);
-    }
-  }
+  // export function clearList() {
+  //   const taskList = document.getElementById("tasks");
+  //   const noTask = document.getElementById("no-task");
+  //   noTask.style.display = "block";
+  //   while (taskList.children.length > 1) {
+  //     taskList.removeChild(taskList.children[1]);
+  //   }
+  // }
 
   /**
    * Add a new task into the list.
@@ -83,7 +83,7 @@ clearButton.addEventListener("click", function () {
 /**
  * Clear the current task list.
  */
-function clearList() {
+export function clearList() {
   const tasks = document.getElementById("tasks");
   const noTask = document.getElementById("no-task");
   noTask.style.display = "block";
