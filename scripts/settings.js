@@ -1,3 +1,5 @@
+import { completedTask, isTaskSelected } from "./stats.js";
+
 // TODOs:
 /* 
 - Settings modal not responsive to window size
@@ -14,6 +16,12 @@
 
 */
 
+window.addEventListener("DOMContentLoaded", () => {
+  loadSettings();
+  minuteChange();
+  secondChange();
+});
+
 let secondsPerPomo = 60 * 25; // Number of seconds in single pomo session
 let timeRemaining = secondsPerPomo; // Time remaining in session in seconds
 let pomodoro = 0; // Number of pomodoros completed
@@ -26,7 +34,7 @@ let onBreak = false;
 export function timeAdvance() {
   --timeRemaining;
 
-  let minute = Math.floor((timeRemaining / 60) % 60);
+  let minute = Math.floor(timeRemaining / 60);
   let seconds = Math.floor(timeRemaining % 60);
   minute = minute < 10 ? "0" + minute : minute;
   seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -41,18 +49,24 @@ export function timeAdvance() {
     // If a break just completed
     if (onBreak) {
       onBreak = false;
+      document.getElementById("current-task").innerHTML = "Current Task: None";
 
       clearInterval(intervalId);
+      intervalId = null;
       timeRemaining = secondsPerPomo;
       sound();
     }
     // If a pomo session just completed
     else {
+      completedTask();
+      document.getElementById("current-task").innerHTML =
+        "Current Task: On Break!";
       onBreak = true;
       pomodoro++;
       document.getElementById("completePomos").innerHTML =
-        "Number of Complete Pomodoros: " + pomodoro;
+        "Completed Pomodoros: " + pomodoro;
       clearInterval(intervalId);
+      intervalId = null;
       sound();
 
       let pomosUntilLongBreak = document.getElementById("userPomos").value;
@@ -91,7 +105,7 @@ export function timeAdvance() {
 }
 // keep count of how many pomodoros have been completed
 document.getElementById("completePomos").innerHTML =
-  "Number of Complete Pomodoros: " + pomodoro;
+  "Completed Pomodoros: " + pomodoro;
 
 /*
  * startButton and stopButton will be called by the start/stop button
@@ -104,15 +118,17 @@ const mixBut = document.getElementById("mixBut");
  * and transforms the start button into a stop button by changing its color, text, and associated function (startButton() -> stopButton()).
  */
 export function startButton() {
-  if (secondsPerPomo == 0) {
-    // defaults back to 25 mins if both mins and secs 0
-    timeRemaining = 25 * 60;
+  if (onBreak || isTaskSelected()) {
+    if (secondsPerPomo == 0) {
+      // defaults back to 25 mins if both mins and secs 0
+      timeRemaining = 25 * 60;
+    }
+    intervalId = setInterval(timeAdvance, 1000);
+    mixBut.removeEventListener("click", startButton);
+    mixBut.addEventListener("click", stopButton);
+    document.getElementById("mixBut").style.background = "indianred";
+    mixBut.value = "Stop";
   }
-  intervalId = setInterval(timeAdvance, 1000);
-  mixBut.removeEventListener("click", startButton);
-  mixBut.addEventListener("click", stopButton);
-  document.getElementById("mixBut").style.background = "indianred";
-  mixBut.value = "Stop";
 }
 /**
  * This function implements the functionality of the stop button. It stops calling timeAdvance every second, and transforms the stop button into a start button
@@ -121,19 +137,20 @@ export function startButton() {
 export function stopButton() {
   if (intervalId) {
     clearInterval(intervalId);
+    intervalId = null;
   }
   mixBut.removeEventListener("click", stopButton);
   mixBut.addEventListener("click", startButton);
-  document.getElementById("mixBut").style.background = "lightgreen";
+  document.getElementById("mixBut").style.background = "#ff671d";
 
   // Updating the time display given that a new time remaining will have been set for a break
-  let minute = Math.floor((timeRemaining / 60) % 60);
+  let minute = Math.floor(timeRemaining / 60);
   let seconds = Math.floor(timeRemaining % 60);
   minute = minute < 10 ? "0" + minute : minute;
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
-  mixBut.value = "Start Timer";
+  mixBut.value = "START";
 }
 mixBut.addEventListener("click", startButton);
 
@@ -141,14 +158,18 @@ mixBut.addEventListener("click", startButton);
  * resetButton is called by the reset button on the page. This button resets how much time is left on the timer to a non break amount.
  */
 export function resetButton() {
+  if (onBreak) {
+    onBreak = false;
+  }
   timeRemaining = secondsPerPomo;
 
-  let minute = Math.floor((timeRemaining / 60) % 60);
+  let minute = Math.floor(timeRemaining / 60);
   let seconds = Math.floor(timeRemaining % 60);
   minute = minute < 10 ? "0" + minute : minute;
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
+  stopButton();
 }
 document.getElementById("reset-btn").addEventListener("click", resetButton);
 
@@ -160,9 +181,117 @@ export function resetPomos() {
   onBreak = false;
 }
 
+/**
+ * canChangeTask is for use by stats.js to determine whether now is an appropriate time to change what task the user is working on
+ */
+export function canChangeTask() {
+  return !onBreak && intervalId == null;
+}
+
 /*
  * Settings Modal
  */
+
+// Local Storage
+function saveSettings() {
+  window.localStorage._shortBreakPomos = String(
+    document.getElementById("shortBreakPomos").value
+  );
+  window.localStorage._userPomos = String(
+    document.getElementById("userPomos").value
+  );
+  window.localStorage._breakPomos = String(
+    document.getElementById("breakPomos").value
+  );
+  window.localStorage._userMins = String(
+    document.getElementById("userMins").value
+  );
+  window.localStorage._userSecs = String(
+    document.getElementById("userSecs").value
+  );
+  window.localStorage._changeSelect = document.getElementById(
+    "changeSelect"
+  ).value;
+  window.localStorage._volume_number = String(
+    document.getElementById("volume-number").value
+  );
+  window.localStorage._volume_slider = String(
+    document.getElementById("volume-slider").value
+  );
+}
+
+function loadSettings() {
+  document.getElementById("shortBreakPomos").value =
+    window.localStorage._shortBreakPomos;
+  document.getElementById("userPomos").value = window.localStorage._userPomos;
+  document.getElementById("breakPomos").value = window.localStorage._breakPomos;
+  document.getElementById("userMins").value = window.localStorage._userMins;
+  document.getElementById("userSecs").value = window.localStorage._userSecs;
+  document.getElementById("changeSelect").value =
+    window.localStorage._changeSelect;
+  document.getElementById("volume-number").value =
+    window.localStorage._volume_number;
+  document.getElementById("volume-slider").value =
+    window.localStorage._volume_slider;
+
+  window.localStorage.setItem(
+    "shortBreakPomos",
+    document.getElementById("shortBreakPomos").value
+  );
+  window.localStorage.setItem(
+    "userPomos",
+    document.getElementById("userPomos").value
+  );
+  window.localStorage.setItem(
+    "breakPomos",
+    document.getElementById("breakPomos").value
+  );
+  window.localStorage.setItem(
+    "userMins",
+    document.getElementById("userMins").value
+  );
+  window.localStorage.setItem(
+    "userSecs",
+    document.getElementById("userSecs").value
+  );
+  window.localStorage.setItem(
+    "changeSelect",
+    document.getElementById("changeSelect").value
+  );
+  window.localStorage.setItem(
+    "volume-number",
+    document.getElementById("volume-number").value
+  );
+  window.localStorage.setItem(
+    "volume-slider",
+    document.getElementById("volume-slider").value
+  );
+
+  document.getElementById(
+    "shortBreakPomos"
+  ).value = window.localStorage.getItem("shortBreakPomos");
+  document.getElementById("userPomos").value = window.localStorage.getItem(
+    "userPomos"
+  );
+  document.getElementById("breakPomos").value = window.localStorage.getItem(
+    "breakPomos"
+  );
+  document.getElementById("userMins").value = window.localStorage.getItem(
+    "userMins"
+  );
+  document.getElementById("userSecs").value = window.localStorage.getItem(
+    "userSecs"
+  );
+  document.getElementById("changeSelect").value = window.localStorage.getItem(
+    "changeSelect"
+  );
+  document.getElementById("volume-number").value = window.localStorage.getItem(
+    "volume-number"
+  );
+  document.getElementById("volume-slider").value = window.localStorage.getItem(
+    "volume-slider"
+  );
+}
 
 // When the user clicks anywhere outside of the modal, close it
 const modal = document.getElementById("settings-modal");
@@ -189,7 +318,7 @@ export function minuteChange() {
   }
   inputMins.value = inputMins.value.substring(indexMins);
   if (inputMins.value == "") {
-    inputMins.value = "25";
+    // inputMins.value = "25";
     document.getElementById("minute").innerHTML = "25";
     secondsPerPomo = 60 * 25 + Number(inputSecs.value);
   } else if (inputMins.value == "0") {
@@ -198,16 +327,18 @@ export function minuteChange() {
   } else if (inputMins.value < 10) {
     document.getElementById("minute").innerHTML = "0" + inputMins.value;
     secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
-  } else if (inputMins.value > 59) {
-    // max mins for pomo timer 2 hours
-    inputMins.value = 59;
-    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
-  } else {
+  } // else if (inputMins.value > 120) {
+  //   // max mins for pomo timer 2 hours
+  //   inputMins.value = 120;
+  //   secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+  // }
+  else {
     document.getElementById("minute").innerHTML = inputMins.value;
     secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
   }
   timeRemaining = secondsPerPomo;
   intervalId = null;
+  // saveSettings();
 }
 inputMins.oninput = minuteChange;
 
@@ -226,22 +357,39 @@ export function secondChange() {
   }
   inputSecs.value = inputSecs.value.substring(indexSecs);
   if (inputSecs.value === "" || inputSecs.value === "0") {
-    inputSecs.value = 0;
+    // inputSecs.value = 0;
     document.getElementById("seconds").innerHTML = "00";
-    secondsPerPomo = 60 * Number(inputMins.value);
+    if (inputMins.value == "") {
+      document.getElementById("minute").innerHTML = "25";
+      secondsPerPomo = 60 * 25 + Number(inputSecs.value);
+    } else {
+      secondsPerPomo = 60 * Number(inputMins.value);
+    }
   } else if (inputSecs.value < 10) {
     document.getElementById("seconds").innerHTML = "0" + inputSecs.value;
-    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
-  } else if (inputSecs.value >= 60) {
-    // max mins for pomo timer 2 hours
-    inputSecs.value = 59;
-    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
-  } else {
+    if (inputMins.value == "") {
+      document.getElementById("minute").innerHTML = "25";
+      secondsPerPomo = 60 * 25 + Number(inputSecs.value);
+    } else {
+      secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+    }
+  } // else if (inputSecs.value >= 60) {
+  // max mins for pomo timer 2 hours
+  // inputSecs.value = 59;
+  // secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+  // }
+  else {
     document.getElementById("seconds").innerHTML = inputSecs.value;
-    secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+    if (inputMins.value == "") {
+      document.getElementById("minute").innerHTML = "25";
+      secondsPerPomo = 60 * 25 + Number(inputSecs.value);
+    } else {
+      secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+    }
   }
   timeRemaining = secondsPerPomo;
   intervalId = null;
+  // saveSettings();
 }
 inputSecs.oninput = secondChange;
 
@@ -254,7 +402,6 @@ inputSecs.oninput = secondChange;
  * It also adds a function to the start/stop button and reset button to stop the audio clip when pressed, otherwise it will continue on a loop.
  */
 function sound() {
-  // alarm("alarm");
   const x = document.getElementById("changeSelect").value;
   const volLevel = document.getElementById("volume-slider").value / 100;
   let audioSound;
@@ -304,6 +451,12 @@ function sound() {
   }
 }
 
+// automatically save when audio option is changed
+const audioSelect = document.getElementById("changeSelect");
+audioSelect.addEventListener("change", function () {
+  saveSettings();
+});
+
 /*
  * Making sure the volume-number and the volume-slider always match
  */
@@ -313,9 +466,19 @@ slider.oninput = function () {
   document.getElementById("volume-number").value = document.getElementById(
     "volume-slider"
   ).value;
+  saveSettings();
 };
 numInp.oninput = function () {
   document.getElementById("volume-slider").value = document.getElementById(
     "volume-number"
   ).value;
+  saveSettings();
 };
+
+// save custom timer settings
+const form = document.getElementById("saveSettings");
+if (form) {
+  form.addEventListener("submit", function (e) {
+    saveSettings();
+  });
+}
