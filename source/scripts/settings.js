@@ -287,7 +287,6 @@ window.onclick = function (event) {
   }
 };
 
-
 const inputMins = document.getElementById("userMins");
 const inputSecs = document.getElementById("userSecs");
 /**
@@ -453,7 +452,7 @@ slider.oninput = function () {
   document.getElementById("volume-number").value = document.getElementById(
     "volume-slider"
   ).value;
-  saveSettings(); 
+  saveSettings();
 };
 numInp.oninput = function () {
   document.getElementById("volume-slider").value = document.getElementById(
