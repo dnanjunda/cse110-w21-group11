@@ -342,14 +342,14 @@
           </div>
         </form>
         <input
-            type="image"
-            src="images/down-caret.png"
-            id="scroll-down"
-            width="48"
-            onclick="scrollDown()"
-            onmouseover="this.src='images/dwn-caret-hover.png'"
-            onmouseout="this.src='images/dwn-caret.png'"
-          />
+          type="image"
+          src="images/dwn-caret.png"
+          id="scroll-down"
+          width="48"
+          onclick="document.documentElement.scrollTop = document.documentElement.scrollHeight"
+          onmouseover="this.src='images/dwn-caret-hover.png'"
+          onmouseout="this.src='images/dwn-caret.png'"
+        />
       </div>
       <script src="./task-list.js" type="module"></script>
       <script src="./list-btns.js" type="module"></script>

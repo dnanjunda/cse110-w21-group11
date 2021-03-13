@@ -102,18 +102,20 @@ function decrement() {
 document.getElementById("minus").onclick = decrement;
 
 const scrollButton = document.getElementById("scroll-down");
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () {
+  scrollFunction();
+};
 
 function scrollFunction() {
-  if (document.documentElement.scrollTop === document.documentElement.scrollHeight - document.documentElement.clientHeight) {
+  if (
+    document.documentElement.scrollTop ===
+    document.documentElement.scrollHeight -
+      document.documentElement.clientHeight
+  ) {
     scrollButton.style.display = "none";
   } else {
     scrollButton.style.display = "block";
   }
-}
-
-function scrollDown() {
-  document.documentElement.scrollTop = document.documentElement.scrollHeight;
 }
 
 // module.exports.addTask = addTask;
