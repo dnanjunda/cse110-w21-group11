@@ -244,14 +244,27 @@
               onclick="document.getElementById('stats-modal').style.display = 'none'"
               >&times;</span
             >
-            <span id="modal-title">
+            <div>
+              <div id="modal-title" style="padding-bottom: 10px">
+                STATISTICS
+              </div>
+              <hr
+                style="
+                  color: black;
+                  background-color: #08222e;
+                  height: 2px;
+                  border: 0;
+                  width: 25vw;
+                  min-width: 200px;
+                "
+              />
               <p id="completePomos">Completed Pomodoros: 0</p>
               <hr />
-              <label>Completed Tasks</label>
+              <label><u>Completed Tasks</u></label>
               <ul id="completed-tasks">
                 <!-- Tasks get added here when they're done -->
               </ul>
-            </span>
+            </div>
           </div>
         </div>
 
