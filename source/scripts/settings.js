@@ -44,8 +44,8 @@ export function timeAdvance() {
   /*
    * Break handling
    */
-
   if (timeRemaining <= 0) {
+    
     // If a break just completed
     if (onBreak) {
       onBreak = false;
@@ -62,7 +62,7 @@ export function timeAdvance() {
       document.getElementById("current-task").innerHTML =
         "Current Task: On Break!";
       onBreak = true;
-      pomodoro++;
+      ++pomodoro;
       document.getElementById("completePomos").innerHTML =
         "Completed Pomodoros: " + pomodoro;
       clearInterval(intervalId);
@@ -77,8 +77,7 @@ export function timeAdvance() {
 
       // If it is time for a long break
       if (pomodoro % pomosUntilLongBreak == 0 && pomodoro != 0) {
-        alert("Time to take a long break");
-
+        document.getElementById("mixBut").removeAttribute("disabled");
         const minutesPerLongBreak = document.getElementById("breakPomos").value;
         if (minutesPerLongBreak == "") {
           // default value: 30 mins
@@ -89,8 +88,7 @@ export function timeAdvance() {
       }
       // If it is time for a short break
       else {
-        alert("Time to take a short break");
-
+        document.getElementById("mixBut").removeAttribute("disabled");
         const minutesPerShortBreak = document.getElementById("shortBreakPomos")
           .value;
         if (minutesPerShortBreak == "") {
@@ -100,6 +98,8 @@ export function timeAdvance() {
           timeRemaining = 60 * minutesPerShortBreak;
         }
       }
+      document.getElementById("mixBut").style.background = "#bd0000";
+
     }
   }
 }
@@ -123,10 +123,11 @@ export function startButton() {
       // defaults back to 25 mins if both mins and secs 0
       timeRemaining = 25 * 60;
     }
+    mixBut.setAttribute("disabled","");
     intervalId = setInterval(timeAdvance, 1000);
     mixBut.removeEventListener("click", startButton);
     mixBut.addEventListener("click", stopButton);
-    document.getElementById("mixBut").style.background = "#bd0000";
+    document.getElementById("mixBut").style.background = "gray";
     mixBut.value = "STOP";
   }
 }
