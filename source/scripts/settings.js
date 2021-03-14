@@ -486,14 +486,14 @@ if (form) {
   });
 }
 
-//starting the circle timer animation
-let progressBar = document.querySelector('.e-c-progress');
-let pointer = document.getElementById('e-pointer');
-let length = Math.PI * 2 * 100;
+//  starting the circle timer animation
+const progressBar = document.querySelector('.e-c-progress');
+const pointer = document.getElementById('e-pointer');
+const length = Math.PI * 2 * 100;
 progressBar.style.strokeDasharray = length;
 
 function updateCircle(value, timePercent) {
   pointer.style.transform = `rotate(${360 * value / (timePercent)}deg)`;
-  var offset = - length + length * value / (timePercent);
+  let offset = - length + length * value / (timePercent);
   progressBar.style.strokeDashoffset = offset; 
 };
