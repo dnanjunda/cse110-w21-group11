@@ -14,10 +14,10 @@
   <div id="main">
     <div id="all">
       <div id="Settings">
-        <input type="image" src="images/gear-icon.png" id="settings-btn" height="48"
+        <input type="image" src="images/gear-icon.png" id="settings-btn"
           onclick="document.getElementById('settings-modal').style.display = 'block'"
           onmouseover="this.src='images/gear-icon-hover.png'" onmouseout="this.src='images/gear-icon.png'" />
-        <input type="image" src="images/stats-icon.png" id="stats-btn" height="48"
+        <input type="image" src="images/stats-icon.png" id="stats-btn"
           onclick="document.getElementById('stats-modal').style.display = 'block'"
           onmouseover="this.src='images/stats-icon-hover.png'" onmouseout="this.src='images/stats-icon.png'" />
 
@@ -29,7 +29,7 @@
                 onclick="document.getElementById('settings-modal').style.display = 'none'">&times;</span>
             </div>
             <div>
-              <div id="modal-title" style="padding-bottom: 10px">
+              <div id="modal-title" style="padding-bottom: 0.6vw">
                 SETTINGS
               </div>
               <hr style="
@@ -42,7 +42,7 @@
                   " />
             </div>
             <form id="saveSettings">
-              <div class="mod-item" style="padding-bottom: 10px">
+              <div class="mod-item" style="padding-bottom: 0.7vw">
                 Short Break Length
               </div>
 
@@ -58,7 +58,7 @@
                       min-width: 200px;
                     " />
               </div>
-              <div class="mod-item" style="padding-bottom: 10px">
+              <div class="mod-item" style="padding-bottom: 0.7vw">
                 Long Break Length
               </div>
               <div>
@@ -71,7 +71,7 @@
                       min-width: 200px;
                     " />
               </div>
-              <div class="mod-item" style="padding: 10px">
+              <div class="mod-item" style="padding-bottom: 0.7vw">
                 Pomodoros until Long Break
               </div>
               <div>
@@ -90,8 +90,8 @@
               </div>
               <div>
                 <div id="len-grid">
-                  <div id="minHead" style="padding-bottom: 10px">Minutes</div>
-                  <div id="secHead" style="padding-bottom: 10px">Seconds</div>
+                  <div id="minHead" style="padding-bottom: 0.6vw">Minutes</div>
+                  <div id="secHead" style="padding-bottom: 0.6vw">Seconds</div>
                   <div id="len-item">
                     <input type="number" placeholder="Min" class="minutes" id="userMins" value="25" max="120" min="0" />
                   </div>
@@ -109,7 +109,7 @@
                       min-width: 200px;
                     " />
               </div>
-              <div class="mod-item" style="padding-bottom: 10px">
+              <div class="mod-item" style="padding-bottom: 0.7vw">
                 Notification Sound
               </div>
 
@@ -131,7 +131,7 @@
                     " />
               </div>
 
-              <div class="mod-item" style="padding-bottom: 10px">
+              <div class="mod-item" style="padding-bottom: 0.7vw">
                 <label for="volume-number" class="settingText" id="volume-text">Volume
                 </label>
               </div>
@@ -143,7 +143,7 @@
                   <input id="volume-slider" name="volume-slider" type="range" min="0" max="100" value="100" />
                 </div>
               </div>
-              <input id="save-btn" type="submit" value="Save" style="margin: auto; margin-bottom: 20px" />
+              <input id="save-btn" type="submit" value="Save" style="margin: auto; margin-bottom: 1.5vw" />
             </form>
           </div>
         </div>
@@ -151,10 +151,10 @@
 
       <div id="stats-modal" class="modal">
         <div id="modal-settings-content">
-          <span class="close" style="width: 50px"
+          <span class="close" style="width: 5vw"
             onclick="document.getElementById('stats-modal').style.display = 'none'">&times;</span>
           <div>
-            <div id="modal-title" style="padding-bottom: 10px">
+            <div id="modal-title" style="padding-bottom: 0.7vw">
               STATISTICS
             </div>
             <hr style="
@@ -190,7 +190,7 @@
       </div>
       <br />
       <!-- States the complete number of pomodoros -->
-      <p id="current-task">Current Task: None</p>
+      <p id="current-task" style="font-size: 1.3vw;">Current Task: None</p>
       <section id="select-task" class="select-task" style="display: none">
         <p>
           Please click on a task you would like to start. <br />

@@ -15,9 +15,10 @@ a {
   height: 1.5rem;
   width: 5rem;
   text-align: center;
-  padding: 5px 0;
+  padding: 0.3vw 0;
   margin: 0 auto;
-  margin-top: 15px;
+  margin-top: 2vh;
+  font-size: 1.3vw;
 }
 
 /* Main page layout and colors */
@@ -25,7 +26,7 @@ a {
   width: auto;
   margin: 0 auto;
   margin-top: 1em;
-  border-radius: 25px;
+  border-radius: 2vw;
 }
 
 /* Creates flexbox for most of layout */
@@ -39,7 +40,7 @@ a {
 #timer {
   display: flex;
   justify-content: center;
-  font-size: 4em;
+  font-size: 10vw;
   color: #b7daeb;
 }
 
@@ -48,15 +49,15 @@ a {
   /* color is changed in the html file */
   background-color: #ff671d;
   color: white;
-  width: 150px;
-  height: 40px;
+  width: 12vw;
+  height: 3.3vw;
   font-family: Nunito, sans-serif;
   margin: 0 auto;
   float: left;
-  padding: 0.25rem;
-  border-radius: 25px;
+  padding: 0.2vw;
+  border-radius: 3vw;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.9vw;
   border: none;
 }
 
@@ -78,15 +79,15 @@ a {
   /* color is changed in the html file */
   margin: 0 auto;
   float: right;
-  padding: 0.25rem;
-  border-radius: 25px;
+  padding: 0.2vw;
+  border-radius: 3vw;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.9vw;
   border: none;
   background-color: #bd0000;
   color: white;
-  width: 150px;
-  height: 40px;
+  width: 12vw;
+  height: 3.3vw;
   font-family: Nunito, sans-serif;
 }
 
@@ -129,7 +130,7 @@ a {
   /* Color of text */
   color: #08222e;
   text-align: center;
-  border-radius: 15px;
+  border-radius: 1.5vw;
   border: 1px solid #888;
   max-width: 28vw;
   min-width: 250px;
@@ -147,8 +148,8 @@ a {
   float: left;
   font-weight: bold;
   font-size: calc(14px + 2vw);
-  margin-left: 15px;
-  margin-top: 10px;
+  margin-left: 1.2vw;
+  margin-top: 1vw;
 }
 
 /* Style for user input boxes */
@@ -157,7 +158,7 @@ input[type="number"] {
   width: calc(10px + 1vw);
   margin-bottom: 2vh;
   padding: 1vh;
-  border-radius: 8px;
+  border-radius: 0.6vw;
   text-align: center;
 }
 
@@ -178,8 +179,13 @@ fieldset {
   outline: none;
 }
 
+#settings-btn {
+  height: 4vw;
+}
+
 #stats-btn {
-  margin-left: 300px;
+  margin-left: 30vw;
+  height: 4vw;
 }
 
 #stats-btn:focus {
@@ -194,15 +200,15 @@ fieldset {
 #changeSelect {
   font-family: Nunito, sans-serif;
   width: 12vw;
-  height: 30px;
-  border-radius: 7px;
+  height: 5.2vh;
+  border-radius: 0.4vw;
   outline: none;
   border: none;
 }
 
 .settingText {
   margin-top: 3vh;
-  font-size: 23px;
+  /* font-size: 2vw; */
   font-family: Nunito, sans-serif;
 }
 
@@ -210,12 +216,12 @@ fieldset {
 #volume-slider {
   width: 10vw;
   float: left;
-  margin-left: 30px;
-  margin-top: 10px;
+  margin-left: 2.5vw;
+  margin-top: 0.5vw;
 }
 
 #volume-number {
-  width: 50px;
+  width: 4vw;
   float: right;
 }
 
@@ -235,28 +241,28 @@ fieldset {
 
 #minHead {
   justify-self: right;
-  padding-left: 10px;
-  margin-right: 40px;
-  font-size: 1em;
+  padding-left: 1vw;
+  margin-right: 3.2vw;
+  font-size: 1.3vw;
 }
 
 #secHead {
-  margin-left: 40px;
-  padding-right: 10px;
+  margin-left: 3vw;
+  padding-right: 1vw;
   justify-self: left;
-  font-size: medium;
+  font-size: 1.3vw;
 }
 
 /* Puts input minutes to the left in settings */
 .minutes {
   float: right;
-  margin-right: 50px;
+  margin-right: 4vw;
 }
 
 /* Puts input seconds to the right in settings */
 .seconds {
   float: left;
-  margin-left: 50px;
+  margin-left: 4vw;
 }
 
 /* Changes "x" to bold when mouse hovers over */
@@ -272,9 +278,9 @@ fieldset {
   grid-template-columns: auto auto;
 }
 
-#volume-text {
+/* #volume-text {
   font-size: medium;
-}
+} */
 
 #vol-grid {
   display: grid;
@@ -285,9 +291,10 @@ fieldset {
   background-color: #ff671d;
   border: none;
   color: white;
-  border-radius: 20px;
-  padding: 5px;
-  width: 80px;
+  border-radius: 3vw;
+  padding: 0.3vw;
+  width: 10vw;
+  font-size: 1.5vw;
 }
 
 #save-btn:focus,
@@ -298,3 +305,15 @@ fieldset {
 #save-btn:hover {
   background-color: #ff8d53;
 }
+
+.mod-item {
+  font-size: 1.5vw;
+  font-family: Nunito, sans-serif;
+}
+
+/* @media screen and (max-width: 768px) {
+  #all {
+    width: 100vw;
+    margin: 1vw;
+  }
+} */
