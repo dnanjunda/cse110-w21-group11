@@ -288,8 +288,7 @@ fieldset {
 }
 
 #scroll-down:active,
-#scroll-down:focus
- {
+#scroll-down:focus {
   outline: none;
 }
 
