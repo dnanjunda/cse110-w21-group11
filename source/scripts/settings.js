@@ -159,6 +159,7 @@ mixBut.addEventListener("click", startButton);
 export function resetButton() {
   if (onBreak) {
     onBreak = false;
+    document.getElementById("current-task").innerHTML = "Current Task: None";
   }
   timeRemaining = secondsPerPomo;
 
