@@ -9,7 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const completedTasks = JSON.parse(window.localStorage.getItem("completed"));
     const length = completedTasks.length;
     console.log(length);
-    for (var i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
       const task = document.createElement("li");
       task.innerHTML = completedTasks[i].task;
       document.getElementById("completed-tasks").appendChild(task);
