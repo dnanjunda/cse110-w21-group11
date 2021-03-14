@@ -45,7 +45,6 @@ export function timeAdvance() {
    * Break handling
    */
   if (timeRemaining <= 0) {
-    
     // If a break just completed
     if (onBreak) {
       onBreak = false;
@@ -99,7 +98,6 @@ export function timeAdvance() {
         }
       }
       document.getElementById("mixBut").style.background = "#bd0000";
-
     }
   }
 }
@@ -123,7 +121,7 @@ export function startButton() {
       // defaults back to 25 mins if both mins and secs 0
       timeRemaining = 25 * 60;
     }
-    mixBut.setAttribute("disabled","");
+    mixBut.setAttribute("disabled", "");
     intervalId = setInterval(timeAdvance, 1000);
     mixBut.removeEventListener("click", startButton);
     mixBut.addEventListener("click", stopButton);
