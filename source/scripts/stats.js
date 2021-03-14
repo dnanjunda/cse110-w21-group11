@@ -9,7 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const completedTasks = JSON.parse(window.localStorage.getItem("completed"));
     const length = completedTasks.length;
     console.log(length);
-    for( var i = 0; i < length; i++) {
+    for (var i = 0; i < length; i++) {
       const task = document.createElement("li");
       task.innerHTML = completedTasks[i].task;
       document.getElementById("completed-tasks").appendChild(task);
@@ -18,10 +18,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("clear-btn").addEventListener("click", () => {
     window.localStorage.setItem("completed", "[]");
-    while(document.getElementById("completed-tasks").firstChild) {
-      document.getElementById("completed-tasks").removeChild(document.getElementById("completed-tasks").firstChild);
+    while (document.getElementById("completed-tasks").firstChild) {
+      document
+        .getElementById("completed-tasks")
+        .removeChild(document.getElementById("completed-tasks").firstChild);
     }
-  })
+  });
 });
 
 /**
