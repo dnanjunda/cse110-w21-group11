@@ -99,6 +99,7 @@ body {
   background-color: #f0f0f0;
   text-align: center;
   font-family: var(--custom-font);
+  width: 20px;
 }
 
 #pomo-num:focus {
@@ -174,7 +175,7 @@ body {
 #clear {
   border: none;
   border-radius: 20px;
-  background-color: #ff671d;
+  background-color: #bd0000;
   color: white;
   font-family: var(--custom-font);
   padding: 10px;
@@ -188,7 +189,7 @@ body {
 
 #clear:hover {
   outline: none;
-  background-color: #ff8d53;
+  background-color: #f71a1a;
 }
 
 input::-webkit-outer-spin-button,
@@ -199,4 +200,15 @@ input::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.select-task {
+  display: grid;
+  grid-template-columns: auto;
+  background-color: #c7edff;
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 70px;
+  margin-bottom: 20px;
+  color: #08222e;
 }

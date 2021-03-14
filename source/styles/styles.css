@@ -25,16 +25,13 @@ a {
   width: auto;
   margin: 0 auto;
   margin-top: 1em;
-  /* border-radius: 25px; */
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  border-radius: 25px;
 }
 
 /* Creates flexbox for most of layout */
 #main {
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -45,26 +42,6 @@ a {
   font-size: 4em;
   color: #b7daeb;
 }
-
-#task-component {
-  padding-left: 5vw;
-}
-
-/* Not used */
-
-/* #StartReset {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    font-size: 2em;
-    padding: 1%;
-    padding-top: 1em;
-    align-items: center;
-}
-
-ul {
-    text-align: left;
-} */
 
 /* start/stop btn */
 #mixBut {
@@ -106,82 +83,96 @@ ul {
   font-weight: bold;
   font-size: 1.5rem;
   border: none;
-  background-color: #c83200;
+  background-color: #bd0000;
   color: white;
   width: 150px;
   height: 40px;
   font-family: Nunito, sans-serif;
 }
 
-#reset-btn:focus {
-  outline: none;
-}
-
+#reset-btn:focus,
 #reset-btn:active {
   outline: none;
 }
 
 #reset-btn:hover {
   outline: none;
-  background-color: #e25121;
+  background-color: #f71a1a;
 }
-
-/* #task-container {
-    background-color: #b8daeb;
-    border-radius: 15px;
-    align-items: center;
-    color: #07232e;
-    text-align: center;
-    padding-bottom: 3px;
-    margin-bottom: 0.5rem;
-}
-
-#tasks {
-    background-color: #fbfbfb;
-    color: #2b2b2b;
-    padding: 1rem;
-    margin: 0.5em;
-    /* border-radius: 25px;
-} */
 
 /* Aligns text "num of complete pomos */
 #completePomos {
   text-align: center;
 }
 
-/* Old task list css */
-
-/* 
-h2 {
-    margin-bottom: 0;
-    text-align: center;
+/* Settings css format */
+.modal {
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
-p {
-    margin-top: 0.5em;
-    margin-left: 1rem;
-    margin-right: 1rem;
+/* settings popup */
+#modal-settings-content {
+  /* background of settings */
+  background-color: #b7daeb;
+
+  /* Color of text */
+  color: #08222e;
+  text-align: center;
+  border-radius: 15px;
+  border: 1px solid #888;
+  max-width: 28vw;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  margin: auto;
+  margin-top: 4vh;
 }
 
-#newitempomo {
-    width: 5em;
+/* Lines up the "x" in the settings to the left */
+.close {
+  text-align: left;
+  color: #08222e;
+  float: left;
+  font-weight: bold;
+  font-size: calc(14px + 2vw);
+  margin-left: 15px;
+  margin-top: 10px;
 }
 
-#add-btn {
-    background-color: #fbfbfb;
-    color: #2b2b2b;
-    margin: 0 auto;
-    padding: .25rem;  
-    border-radius: 25px;
+/* Style for user input boxes */
+input[type="number"] {
+  border: 0;
+  width: calc(10px + 1vw);
+  margin-bottom: 2vh;
+  padding: 1vh;
+  border-radius: 8px;
+  text-align: center;
 }
 
-#clear-btn, #clearList {
-    background-color: #fbfbfb;
-    color: #2b2b2b;
-    margin: 0 auto;
-    padding: .25rem;  
-    border-radius: 25px;
-} */
+/* Changes small text size in input boxes */
+:placeholder-shown {
+  font-size: 100%;
+  font-family: "Nunito", sans-serif;
+}
+
+/* Gets rid of box around volume control */
+fieldset {
+  border: 0;
+  height: 100px;
+  width: 300px;
+}
 
 #settings-btn:focus {
   outline: none;
@@ -195,76 +186,42 @@ p {
   outline: none;
 }
 
-/* Settings css format */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+.modal::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 
-/* settings popup */
-.modal-settings-content {
-  /* background of settings */
-  background-color: #b7daeb;
-
-  /* Color of text */
-  color: #08222e;
-  margin: 4em auto; /* 15% from the top and centered */
-  padding: 25px;
-  text-align: center;
-  border-radius: 15px;
-  border: 1px solid #888;
-  max-width: 20vw;
-  display: flex;
-  flex-direction: column;
+/* Changes font and size of alarm sounds */
+#changeSelect {
+  font-family: Nunito, sans-serif;
+  width: 12vw;
+  height: 30px;
+  border-radius: 7px;
+  outline: none;
+  border: none;
 }
 
-/* Lines up the "x" in the settings to the left and changes "x" sign in settings */
-.close {
-  text-align: left;
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-/* Font of the settings */
 .settingText {
+  margin-top: 3vh;
   font-size: 23px;
-  font-family: "Nunito", sans-serif;
+  font-family: Nunito, sans-serif;
 }
 
-/* Style for user input */
-input[type="number"] {
-  border: 0;
-  padding: 5px;
-  border-radius: 20px;
+/* Keeps volume slider relative to window size */
+#volume-slider {
+  width: 10vw;
+  float: left;
+  margin-left: 30px;
+  margin-top: 10px;
 }
 
-/* Gets rid of box around volume control */
-fieldset {
-  border: 0;
-  height: 100px;
-  width: 300px;
-}
-
-/* Changes size of the audio selection */
-select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
+#volume-number {
+  width: 50px;
+  float: right;
 }
 
 /* Changes size of "Settings" at top of settings */
 #modal-title {
-  font-size: 3vw;
+  font-size: calc(12px + 2vw);
   font-weight: bold;
   text-align: center;
   vertical-align: top;
@@ -276,22 +233,68 @@ select {
   width: 100%;
 }
 
+#minHead {
+  justify-self: right;
+  padding-left: 10px;
+  margin-right: 40px;
+  font-size: 1em;
+}
+
+#secHead {
+  margin-left: 40px;
+  padding-right: 10px;
+  justify-self: left;
+  font-size: medium;
+}
+
 /* Puts input minutes to the left in settings */
 .minutes {
-  width: 45%;
-  float: left;
+  float: right;
+  margin-right: 50px;
 }
 
 /* Puts input seconds to the right in settings */
 .seconds {
-  width: 45%;
-  float: right;
+  float: left;
+  margin-left: 50px;
 }
 
 /* Changes "x" to bold when mouse hovers over */
 .close:hover,
 .close:focus {
-  color: #2b2b2b;
+  color: white;
   text-decoration: none;
   cursor: pointer;
+}
+
+#len-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+#volume-text {
+  font-size: medium;
+}
+
+#vol-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+#save-btn {
+  background-color: #ff671d;
+  border: none;
+  color: white;
+  border-radius: 20px;
+  padding: 5px;
+  width: 80px;
+}
+
+#save-btn:focus,
+#save-btn:active {
+  outline: none;
+}
+
+#save-btn:hover {
+  background-color: #ff8d53;
 }
