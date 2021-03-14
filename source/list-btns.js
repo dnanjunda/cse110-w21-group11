@@ -1,5 +1,6 @@
-import { Task } from "./task-list.js";
+// import { Task } from "./task-list.js";
 
+/* global Task */
 /* eslint no-undef: "error" */
 const myStorage = window.localStorage;
 const taskList = document.getElementById("tasks");
@@ -39,26 +40,26 @@ form.addEventListener("submit", function (e) {
   addTask();
 });
 
-  /**
-   * Clear the current task list.
-   */
-  // export function clearList() {
-  //   const taskList = document.getElementById("tasks");
-  //   const noTask = document.getElementById("no-task");
-  //   noTask.style.display = "block";
-  //   while (taskList.children.length > 1) {
-  //     taskList.removeChild(taskList.children[1]);
-  //   }
-  // }
+/**
+ * Clear the current task list.
+ */
+// export function clearList() {
+//   const taskList = document.getElementById("tasks");
+//   const noTask = document.getElementById("no-task");
+//   noTask.style.display = "block";
+//   while (taskList.children.length > 1) {
+//     taskList.removeChild(taskList.children[1]);
+//   }
+// }
 
-  /**
-   * Add a new task into the list.
-   */
-   export function addTask() {
-    const noTask = document.getElementById("no-task");
-    const tasks = document.getElementById("tasks");
-    const newTask = document.getElementById("task-name").value;
-    const newPomo = document.getElementById("pomo-num").value;
+/**
+ * Add a new task into the list.
+ */
+export function addTask() {
+  const noTask = document.getElementById("no-task");
+  const tasks = document.getElementById("tasks");
+  const newTask = document.getElementById("task-name").value;
+  const newPomo = document.getElementById("pomo-num").value;
 
   tasks.appendChild(
     new Task({
@@ -93,23 +94,23 @@ export function clearList() {
   myStorage.setItem("tasks", "[]");
 }
 
-  /* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars */
 
-  /**
-   * Increment pomos by 1 when plus button is pressed.
-   */
-  export function increment() {
-    document.getElementById("pomo-num").value = Number(document.getElementById("pomo-num").value) + 1;
-  }
-  document.getElementById('plus').onclick = increment;
+/**
+ * Increment pomos by 1 when plus button is pressed.
+ */
+export function increment() {
+  document.getElementById("pomo-num").value = Number(document.getElementById("pomo-num").value) + 1;
+}
+document.getElementById('plus').onclick = increment;
 
-  /**
-   * Decrement pomos by 1 when plus button is pressed.
-   */
-  export function decrement() {
-    document.getElementById("pomo-num").value = Number(document.getElementById("pomo-num").value) - 1;
-  }
-  document.getElementById('minus').onclick = decrement;
+/**
+ * Decrement pomos by 1 when plus button is pressed.
+ */
+export function decrement() {
+  document.getElementById("pomo-num").value = Number(document.getElementById("pomo-num").value) - 1;
+}
+document.getElementById('minus').onclick = decrement;
 
   // module.exports.addTask = addTask;
   // module.exports.clearList = clearList;

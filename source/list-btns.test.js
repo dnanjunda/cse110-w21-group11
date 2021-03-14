@@ -24,20 +24,26 @@ describe("Number of Pomos Button Tests", () => {
     test("Clear task list button", () => {
         buttonFunctions.clearList();
         expect(tasklist.children.length).toBe(1);
+
+        const task = document.createElement("div");
+        document.getElementById("tasks").appendChild(task);
+        expect(tasklist.children.length).toBe(2);
+        buttonFunctions.clearList();
+        expect(tasklist.children.length).toBe(1);
     });
 
-    test("Add task to list button", () => {
-        document.getElementById("task-name").value = "";
-        let oldVal = tasklist.children.length;
-        buttonFunctions.addTask();
-        // document.getElementById("add").click();
-        expect(tasklist.children.length).toBe(oldVal);
+    // test("Add task to list button", () => {
+    //     document.getElementById("task-name").value = "";
+    //     let oldVal = tasklist.children.length;
+    //     // buttonFunctions.addTask();
+    //     document.getElementById("add").click();
+    //     expect(tasklist.children.length).toBe(oldVal);
 
-        document.getElementById("task-name").value = "abc";
-        oldVal = tasklist.children.length;
-        buttonFunctions.addTask();
-        // document.getElementById("add").click();
-        expect(tasklist.children.length).toBe(oldVal+1);
-    });
+    //     document.getElementById("task-name").value = "abc";
+    //     oldVal = tasklist.children.length;
+    //     // buttonFunctions.addTask();
+    //     document.getElementById("add").click();
+    //     expect(tasklist.children.length).toBe(oldVal+1);
+    // });
 
 })
