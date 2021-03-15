@@ -28,8 +28,14 @@ export function selectTask(el) {
     document.getElementById("current-task").innerHTML =
       "Current Task: " + el.innerHTML;
     currentTask = el;
+    var currentPomo = currentTask.nextElementSibling.nextElementSibling.value;
+    if (initialPomo < currentPomo) {
+      initialPomo = currentPomo;
+    }
   }
 }
+
+var initialPomo = 0;
 
 /**
  * call when timer done
@@ -54,12 +60,18 @@ export function completedTask() {
     remove.click();
 
     // Add it to the completed task list
-    const completedTask = document.createElement("li");
+    const completedTask = document.createElement("div");
+    completedTask.setAttribute("id", "stats-task");
     completedTask.innerHTML = currentTask.innerHTML;
+    const completedTaskPomo = document.createElement("div");
+    completedTaskPomo.setAttribute("id", "stats-pomo");
+    completedTaskPomo.innerHTML = initialPomo;
     document.getElementById("completed-tasks").appendChild(completedTask);
+    document.getElementById("completed-tasks").appendChild(completedTaskPomo);
 
     // Resetting
     currentTask = null;
+    initialPomo = 0;
   }
   // If the task is not yet completed
   else {
