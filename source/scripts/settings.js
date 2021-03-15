@@ -55,6 +55,7 @@ export function timeAdvance() {
       clearInterval(intervalId);
       intervalId = null;
       timeRemaining = secondsPerPomo;
+      currentTime = secondsPerPomo;
       sound();
     }
     // If a pomo session just completed
@@ -176,7 +177,7 @@ export function resetButton() {
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
-  updateCircle(secondsPerPomo,secondsPerPomo);
+  updateCircle(timeRemaining,currentTime);
   stopButton();
 }
 document.getElementById("reset-btn").addEventListener("click", resetButton);
@@ -329,12 +330,15 @@ export function minuteChange() {
     // inputMins.value = "25";
     document.getElementById("minute").innerHTML = "25";
     secondsPerPomo = 60 * 25 + Number(inputSecs.value);
+    currentTime = secondsPerPomo;
   } else if (inputMins.value == "0") {
     document.getElementById("minute").innerHTML = "00";
     secondsPerPomo = Number(inputSecs.value);
+    currentTime = secondsPerPomo;
   } else if (inputMins.value < 10) {
     document.getElementById("minute").innerHTML = "0" + inputMins.value;
     secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+    currentTime = secondsPerPomo;
   } // else if (inputMins.value > 120) {
   //   // max mins for pomo timer 2 hours
   //   inputMins.value = 120;
@@ -343,8 +347,10 @@ export function minuteChange() {
   else {
     document.getElementById("minute").innerHTML = inputMins.value;
     secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+    currentTime = secondsPerPomo;
   }
   timeRemaining = secondsPerPomo;
+  updateCircle(timeRemaining,secondsPerPomo);
   intervalId = null;
   // saveSettings();
 }
@@ -370,16 +376,20 @@ export function secondChange() {
     if (inputMins.value == "") {
       document.getElementById("minute").innerHTML = "25";
       secondsPerPomo = 60 * 25 + Number(inputSecs.value);
+      currentTime = secondsPerPomo;
     } else {
       secondsPerPomo = 60 * Number(inputMins.value);
+      currentTime = secondsPerPomo;
     }
   } else if (inputSecs.value < 10) {
     document.getElementById("seconds").innerHTML = "0" + inputSecs.value;
     if (inputMins.value == "") {
       document.getElementById("minute").innerHTML = "25";
       secondsPerPomo = 60 * 25 + Number(inputSecs.value);
+      currentTime = secondsPerPomo;
     } else {
       secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+      currentTime = secondsPerPomo;
     }
   } // else if (inputSecs.value >= 60) {
   // max mins for pomo timer 2 hours
@@ -391,11 +401,14 @@ export function secondChange() {
     if (inputMins.value == "") {
       document.getElementById("minute").innerHTML = "25";
       secondsPerPomo = 60 * 25 + Number(inputSecs.value);
+      currentTime = secondsPerPomo;
     } else {
       secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+      currentTime = secondsPerPomo;
     }
   }
   timeRemaining = secondsPerPomo;
+  updateCircle(timeRemaining,secondsPerPomo);
   intervalId = null;
   // saveSettings();
 }
