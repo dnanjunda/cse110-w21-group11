@@ -23,25 +23,24 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 let secondsPerPomo = 60 * 25; // Number of seconds in single pomo session
+let currentTime = secondsPerPomo; // Time set after breaks or pomo sessions
 let timeRemaining = secondsPerPomo; // Time remaining in session in seconds
 let pomodoro = 0; // Number of pomodoros completed
 let intervalId = null; // ID of interval calling the timeAdvance method
 let onBreak = false;
-
 
 /**
  * This function advances time by one second. It will be called on a one second interval while the timer is running.
  */
 export function timeAdvance() {
   --timeRemaining;
-
   let minute = Math.floor(timeRemaining / 60);
   let seconds = Math.floor(timeRemaining % 60);
   minute = minute < 10 ? "0" + minute : minute;
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
-  updateCircle(timeRemaining, secondsPerPomo);
+  updateCircle(timeRemaining, currentTime);
 
   /*
    * Break handling
@@ -85,8 +84,10 @@ export function timeAdvance() {
         if (minutesPerLongBreak == "") {
           // default value: 30 mins
           timeRemaining = 60 * 30;
+          currentTime = 60 * 30;
         } else {
           timeRemaining = 60 * minutesPerLongBreak;
+          currentTime = 60 * minutesPerLongBreak;
         }
       }
       // If it is time for a short break
@@ -98,8 +99,10 @@ export function timeAdvance() {
         if (minutesPerShortBreak == "") {
           // default value: 5 mins
           timeRemaining = 60 * 5;
+          currentTime = 60 * 5;
         } else {
           timeRemaining = 60 * minutesPerShortBreak;
+          currentTime = 60 * minutesPerShortBreak;
         }
       }
     }
@@ -123,7 +126,7 @@ export function startButton() {
   if (onBreak || isTaskSelected()) {
     if (secondsPerPomo == 0) {
       // defaults back to 25 mins if both mins and secs 0
-      timeRemaining = 25 * 60;
+      timeRemaining = 60 * 25;
     }
     intervalId = setInterval(timeAdvance, 1000);
     mixBut.removeEventListener("click", startButton);
@@ -144,6 +147,7 @@ export function stopButton() {
   mixBut.removeEventListener("click", stopButton);
   mixBut.addEventListener("click", startButton);
   document.getElementById("mixBut").style.background = "#ff671d";
+  updateCircle(timeRemaining,currentTime);
 
   // Updating the time display given that a new time remaining will have been set for a break
   let minute = Math.floor(timeRemaining / 60);
@@ -164,6 +168,7 @@ export function resetButton() {
     onBreak = false;
   }
   timeRemaining = secondsPerPomo;
+  currentTime = secondsPerPomo;
 
   let minute = Math.floor(timeRemaining / 60);
   let seconds = Math.floor(timeRemaining % 60);
@@ -487,13 +492,14 @@ if (form) {
 }
 
 //starting the circle timer animation
-const progressBar = document.querySelector('.e-c-progress');
-const pointer = document.getElementById('e-pointer');
-const length = Math.PI * 2 * 100;
+let progressBar = document.querySelector('.e-c-progress');
+let pointer = document.getElementById('e-pointer');
+let length = Math.PI * 2 * 100;
 progressBar.style.strokeDasharray = length;
+
 
 function updateCircle(value, timePercent) {
   pointer.style.transform = `rotate(${360 * value / (timePercent)}deg)`;
-  let offset = - length + length * value / (timePercent);
+  var offset = - length + length * value / (timePercent);
   progressBar.style.strokeDashoffset = offset; 
 };
