@@ -108,9 +108,9 @@ window.onscroll = function () {
 
 function scrollFunction() {
   if (
-    document.documentElement.scrollTop ===
-    document.documentElement.scrollHeight -
-      document.documentElement.clientHeight
+    document.documentElement.scrollTop !== 0
+    // document.documentElement.scrollHeight -
+    //   document.documentElement.clientHeight
   ) {
     scrollButton.style.display = "none";
   } else {
