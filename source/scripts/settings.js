@@ -486,7 +486,7 @@ if (form) {
   });
 }
 
-//  starting the circle timer animation
+//starting the circle timer animation
 const progressBar = document.querySelector('.e-c-progress');
 const pointer = document.getElementById('e-pointer');
 const length = Math.PI * 2 * 100;
