@@ -291,10 +291,6 @@ fieldset {
 
 /* this determines the speed for red outline circle to disappear */ 
 #e-pointer { transition: transform 0.7s; }
-#len-grid {
-  display: grid;
-  grid-template-columns: auto auto;
-}
 
 /* Changes "x" to bold when mouse hovers over */
 .close:hover,

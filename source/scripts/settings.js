@@ -500,6 +500,6 @@ progressBar.style.strokeDasharray = length;
 
 function updateCircle(value, timePercent) {
   pointer.style.transform = `rotate(${360 * value / (timePercent)}deg)`;
-  let offset = - length + length * value / (timePercent);
+  const offset = - length + length * value / (timePercent);
   progressBar.style.strokeDashoffset = offset; 
 };
