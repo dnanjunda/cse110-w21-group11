@@ -84,6 +84,8 @@
                     class="pomos"
                     id="shortBreakPomos"
                     value="5"
+                    max="120"
+                    min="0"
                   />
                   <hr
                     style="
@@ -106,6 +108,8 @@
                     class="pomos"
                     id="breakPomos"
                     value="30"
+                    max="120"
+                    min="0"
                   />
                   <hr
                     style="
@@ -127,6 +131,7 @@
                     class="pomos"
                     id="userPomos"
                     value="4"
+                    min="0"
                   />
                 </div>
                 <hr
@@ -151,6 +156,8 @@
                         class="minutes"
                         id="userMins"
                         value="25"
+                        max="120"
+                        min="0"
                       />
                     </div>
                     <div id="len-item">
@@ -162,6 +169,7 @@
                         step="1"
                         id="userSecs"
                         value="0"
+                        max="59"
                       />
                     </div>
                   </div>
@@ -273,6 +281,7 @@
               <ul id="completed-tasks">
                 <!-- Tasks get added here when they're done -->
               </ul>
+              <button id="clear-btn">CLEAR</button>
             </div>
           </div>
         </div>

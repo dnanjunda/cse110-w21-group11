@@ -298,6 +298,10 @@ const modal = document.getElementById("settings-modal");
 window.onclick = function (event) {
   if (event.target === modal) {
     modal.style.display = "none";
+    loadSettings();
+    resetButton();
+    minuteChange();
+    secondChange();
   }
 };
 
