@@ -140,6 +140,7 @@ export function stopButton() {
   }
   mixBut.removeEventListener("click", stopButton);
   mixBut.addEventListener("click", startButton);
+  mixBut.removeAttribute("disabled");
   document.getElementById("mixBut").style.background = "#ff671d";
 
   // Updating the time display given that a new time remaining will have been set for a break
