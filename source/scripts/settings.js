@@ -23,6 +23,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 let secondsPerPomo = 60 * 25; // Number of seconds in single pomo session
+let currentTime = secondsPerPomo; // Time set after breaks or pomo sessions
 let timeRemaining = secondsPerPomo; // Time remaining in session in seconds
 let pomodoro = 0; // Number of pomodoros completed
 let intervalId = null; // ID of interval calling the timeAdvance method
@@ -33,13 +34,13 @@ let onBreak = false;
  */
 export function timeAdvance() {
   --timeRemaining;
-
   let minute = Math.floor(timeRemaining / 60);
   let seconds = Math.floor(timeRemaining % 60);
   minute = minute < 10 ? "0" + minute : minute;
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
+  updateCircle(timeRemaining, currentTime);
 
   /*
    * Break handling
@@ -53,6 +54,7 @@ export function timeAdvance() {
       clearInterval(intervalId);
       intervalId = null;
       timeRemaining = secondsPerPomo;
+      currentTime = secondsPerPomo;
       sound();
     }
     // If a pomo session just completed
@@ -81,8 +83,10 @@ export function timeAdvance() {
         if (minutesPerLongBreak == "") {
           // default value: 30 mins
           timeRemaining = 60 * 30;
+          currentTime = 60 * 30;
         } else {
           timeRemaining = 60 * minutesPerLongBreak;
+          currentTime = 60 * minutesPerLongBreak;
         }
       }
       // If it is time for a short break
@@ -93,8 +97,10 @@ export function timeAdvance() {
         if (minutesPerShortBreak == "") {
           // default value: 5 mins
           timeRemaining = 60 * 5;
+          currentTime = 60 * 5;
         } else {
           timeRemaining = 60 * minutesPerShortBreak;
+          currentTime = 60 * minutesPerShortBreak;
         }
       }
       document.getElementById("mixBut").style.background = "#bd0000";
@@ -119,7 +125,7 @@ export function startButton() {
   if (onBreak || isTaskSelected()) {
     if (secondsPerPomo == 0) {
       // defaults back to 25 mins if both mins and secs 0
-      timeRemaining = 25 * 60;
+      timeRemaining = 60 * 25;
     }
     mixBut.setAttribute("disabled", "");
     intervalId = setInterval(timeAdvance, 1000);
@@ -142,6 +148,7 @@ export function stopButton() {
   mixBut.addEventListener("click", startButton);
   mixBut.removeAttribute("disabled");
   document.getElementById("mixBut").style.background = "#ff671d";
+  updateCircle(timeRemaining, currentTime);
 
   // Updating the time display given that a new time remaining will have been set for a break
   let minute = Math.floor(timeRemaining / 60);
@@ -163,6 +170,7 @@ export function resetButton() {
     document.getElementById("current-task").innerHTML = "Current Task: None";
   }
   timeRemaining = secondsPerPomo;
+  currentTime = secondsPerPomo;
 
   let minute = Math.floor(timeRemaining / 60);
   let seconds = Math.floor(timeRemaining % 60);
@@ -170,6 +178,7 @@ export function resetButton() {
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
+  updateCircle(timeRemaining, currentTime);
   stopButton();
 }
 document.getElementById("reset-btn").addEventListener("click", resetButton);
@@ -326,12 +335,15 @@ export function minuteChange() {
     // inputMins.value = "25";
     document.getElementById("minute").innerHTML = "25";
     secondsPerPomo = 60 * 25 + Number(inputSecs.value);
+    currentTime = secondsPerPomo;
   } else if (inputMins.value == "0") {
     document.getElementById("minute").innerHTML = "00";
     secondsPerPomo = Number(inputSecs.value);
+    currentTime = secondsPerPomo;
   } else if (inputMins.value < 10) {
     document.getElementById("minute").innerHTML = "0" + inputMins.value;
     secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+    currentTime = secondsPerPomo;
   } // else if (inputMins.value > 120) {
   //   // max mins for pomo timer 2 hours
   //   inputMins.value = 120;
@@ -340,8 +352,10 @@ export function minuteChange() {
   else {
     document.getElementById("minute").innerHTML = inputMins.value;
     secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+    currentTime = secondsPerPomo;
   }
   timeRemaining = secondsPerPomo;
+  updateCircle(timeRemaining, secondsPerPomo);
   intervalId = null;
   // saveSettings();
 }
@@ -367,16 +381,20 @@ export function secondChange() {
     if (inputMins.value == "") {
       document.getElementById("minute").innerHTML = "25";
       secondsPerPomo = 60 * 25 + Number(inputSecs.value);
+      currentTime = secondsPerPomo;
     } else {
       secondsPerPomo = 60 * Number(inputMins.value);
+      currentTime = secondsPerPomo;
     }
   } else if (inputSecs.value < 10) {
     document.getElementById("seconds").innerHTML = "0" + inputSecs.value;
     if (inputMins.value == "") {
       document.getElementById("minute").innerHTML = "25";
       secondsPerPomo = 60 * 25 + Number(inputSecs.value);
+      currentTime = secondsPerPomo;
     } else {
       secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+      currentTime = secondsPerPomo;
     }
   } // else if (inputSecs.value >= 60) {
   // max mins for pomo timer 2 hours
@@ -388,11 +406,14 @@ export function secondChange() {
     if (inputMins.value == "") {
       document.getElementById("minute").innerHTML = "25";
       secondsPerPomo = 60 * 25 + Number(inputSecs.value);
+      currentTime = secondsPerPomo;
     } else {
       secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
+      currentTime = secondsPerPomo;
     }
   }
   timeRemaining = secondsPerPomo;
+  updateCircle(timeRemaining, secondsPerPomo);
   intervalId = null;
   // saveSettings();
 }
@@ -486,4 +507,16 @@ if (form) {
   form.addEventListener("submit", function (e) {
     saveSettings();
   });
+}
+
+// starting the circle timer animation
+const progressBar = document.querySelector(".e-c-progress");
+const pointer = document.getElementById("e-pointer");
+const length = Math.PI * 2 * 100;
+progressBar.style.strokeDasharray = length;
+
+function updateCircle(value, timePercent) {
+  pointer.style.transform = `rotate(${(360 * value) / timePercent}deg)`;
+  const offset = -length + (length * value) / timePercent;
+  progressBar.style.strokeDashoffset = offset;
 }
