@@ -21,5 +21,7 @@ document.body.innerHTML =
   '<input type="number" placeholder="Breaks" class="pomos" id="breakPomos" value="30"/>' +
   '<select id="changeSelect" name="alarmMusic" onselect="sound()"></select>' +
   '<p id="current-task">Current Task: Dummy</p>' +
-  '<section id="select-task"></section>' + 
-  '<form id="form"></form>';
+  '<form id="form"></form>' +
+  '<section id="select-task"></section>' +
+  '<circle r="100" class="e-c-progress" />' +
+  '<g id="e-pointer"></g>';
