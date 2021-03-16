@@ -28,14 +28,14 @@ export function selectTask(el) {
     document.getElementById("current-task").innerHTML =
       "Current Task: " + el.innerHTML;
     currentTask = el;
-    var currentPomo = currentTask.nextElementSibling.nextElementSibling.value;
+    const currentPomo = currentTask.nextElementSibling.nextElementSibling.value;
     if (initialPomo < currentPomo) {
       initialPomo = currentPomo;
     }
   }
 }
 
-var initialPomo = 0;
+let initialPomo = 0;
 
 /**
  * call when timer done
