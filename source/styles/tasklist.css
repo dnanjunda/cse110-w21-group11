@@ -44,7 +44,7 @@ body {
   background-color: #c7edff;
   border-radius: 10px;
   padding: 10px;
-  min-height: 250px;
+  min-height: 150px;
   margin-bottom: 20px;
   color: #08222e;
 }
@@ -53,13 +53,13 @@ body {
   grid-template-columns: auto auto;
   background-color: white;
   padding: 10px;
-  min-height: 190px;
+  min-height: 150px;
 }
 
 #no-task {
   font-size: calc(18px + 0.5vw);
   text-align: center;
-  line-height: 200px;
+  line-height: 150px;
 }
 
 #new-task {
