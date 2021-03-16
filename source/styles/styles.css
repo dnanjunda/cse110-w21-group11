@@ -285,7 +285,7 @@ fieldset {
   position: fixed;
   left: 48vw;
   bottom: 2vw;
-  z-index: 2;
+  z-index: 1;
 
   /* margin: auto;
   margin-bottom: 20px; */
