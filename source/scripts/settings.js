@@ -49,7 +49,7 @@ export function timeAdvance() {
     // If a break just completed
     document.getElementById("mixBut").style.background = "#bd0000";
     document.getElementById("mixBut").removeAttribute("disabled");
-    
+
     if (onBreak) {
       onBreak = false;
       document.getElementById("current-task").innerHTML = "Current Task: None";
