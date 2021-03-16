@@ -18,6 +18,15 @@
   <body>
     <div id="main">
       <div id="all">
+        <input
+          type="image"
+          src="images/dwn-caret.png"
+          id="scroll-down"
+          width="48"
+          onclick="document.documentElement.scrollTop = document.documentElement.scrollHeight"
+          onmouseover="this.src='images/dwn-caret-hover.png'"
+          onmouseout="this.src='images/dwn-caret.png'"
+        />
         <div id="Settings">
           <input
             type="image"
@@ -75,6 +84,8 @@
                     class="pomos"
                     id="shortBreakPomos"
                     value="5"
+                    max="120"
+                    min="0"
                   />
                   <hr
                     style="
@@ -97,6 +108,8 @@
                     class="pomos"
                     id="breakPomos"
                     value="30"
+                    max="120"
+                    min="0"
                   />
                   <hr
                     style="
@@ -118,6 +131,7 @@
                     class="pomos"
                     id="userPomos"
                     value="4"
+                    min="0"
                   />
                 </div>
                 <hr
@@ -130,7 +144,9 @@
                     min-width: 200px;
                   "
                 />
-                <div class="mod-item"><p>Pomodoro Length</p></div>
+                <div class="mod-item">
+                  <p>Pomodoro Length</p>
+                </div>
                 <div>
                   <div id="len-grid">
                     <div id="minHead" style="padding-bottom: 10px">Minutes</div>
@@ -142,6 +158,8 @@
                         class="minutes"
                         id="userMins"
                         value="25"
+                        max="120"
+                        min="0"
                       />
                     </div>
                     <div id="len-item">
@@ -153,6 +171,7 @@
                         step="1"
                         id="userSecs"
                         value="0"
+                        max="59"
                       />
                     </div>
                   </div>
@@ -260,10 +279,12 @@
               />
               <p id="completePomos">Completed Pomodoros: 0</p>
               <hr />
-              <label><u>Completed Tasks</u></label>
-              <ul id="completed-tasks">
+              <label id="label"><u>Completed Tasks</u></label>
+              <br />
+              <section id="completed-tasks" class="stats-grid">
                 <!-- Tasks get added here when they're done -->
-              </ul>
+              </section>
+              <button id="clear-btn">CLEAR</button>
             </div>
           </div>
         </div>
@@ -275,6 +296,24 @@
             <div id="timer">
               <span id="minute">25</span> :
               <span id="seconds">00</span>
+            </div>
+            <!--Timer circle animation-->
+            <div class="circle">
+              <svg
+                width="300"
+                viewBox="0 0 220 220"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g transform="translate(110,110)">
+                  <circle r="100" class="e-c-base" />
+                  <g transform="rotate(-90)">
+                    <circle r="100" class="e-c-progress" />
+                    <g id="e-pointer">
+                      <circle cx="100" cy="0" r="8" class="e-c-pointer" />
+                    </g>
+                  </g>
+                </g>
+              </svg>
             </div>
             <!-- Turns start into stop button with changing colors -->
             <input type="button" id="mixBut" value="START" />
@@ -305,6 +344,7 @@
             <div id="no-task">Tasks Complete!</div>
           </div>
         </section>
+
         <form id="form">
           <div id="new-task">
             <p class="grid-item" id="task-title1">Task</p>
@@ -329,6 +369,7 @@
               <button id="plus" type="button">+</button>
             </div>
           </div>
+
           <div id="btnGrid">
             <button id="add" class="button-on" type="submit">ADD</button>
             <button

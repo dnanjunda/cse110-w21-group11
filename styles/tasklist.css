@@ -44,7 +44,7 @@ body {
   background-color: #c7edff;
   border-radius: 10px;
   padding: 10px;
-  min-height: 250px;
+  min-height: 150px;
   margin-bottom: 20px;
   color: #08222e;
 }
@@ -53,13 +53,13 @@ body {
   grid-template-columns: auto auto;
   background-color: white;
   padding: 10px;
-  min-height: 190px;
+  min-height: 150px;
 }
 
 #no-task {
   font-size: calc(18px + 0.5vw);
   text-align: center;
-  line-height: 200px;
+  line-height: 150px;
 }
 
 #new-task {
@@ -210,4 +210,24 @@ input[type="number"] {
   min-height: 70px;
   margin-bottom: 20px;
   color: #08222e;
+}
+
+.stats-grid {
+  padding-top: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  gap: 0 20px;
+}
+
+#stats-task {
+  text-align: left;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+#stats-pomo {
+  text-align: right;
+  margin-right: 20px;
+  margin-bottom: 10px;
 }
