@@ -294,6 +294,22 @@ fieldset {
   grid-template-columns: auto auto;
 }
 
+#scroll-down {
+  position: fixed;
+  left: 48vw;
+  bottom: 2vw;
+  z-index: 2;
+
+  /* margin: auto;
+  margin-bottom: 20px; */
+  cursor: pointer;
+}
+
+#scroll-down:active,
+#scroll-down:focus {
+  outline: none;
+}
+
 #save-btn {
   background-color: #ff671d;
   border: none;

@@ -18,6 +18,15 @@
   <body>
     <div id="main">
       <div id="all">
+        <input
+          type="image"
+          src="images/dwn-caret.png"
+          id="scroll-down"
+          width="48"
+          onclick="document.documentElement.scrollTop = document.documentElement.scrollHeight"
+          onmouseover="this.src='images/dwn-caret-hover.png'"
+          onmouseout="this.src='images/dwn-caret.png'"
+        />
         <div id="Settings">
           <input
             type="image"
@@ -314,6 +323,7 @@
             <div id="no-task">Tasks Complete!</div>
           </div>
         </section>
+
         <form id="form">
           <div id="new-task">
             <p class="grid-item" id="task-title1">Task</p>
@@ -338,6 +348,7 @@
               <button id="plus" type="button">+</button>
             </div>
           </div>
+
           <div id="btnGrid">
             <button id="add" class="button-on" type="submit">ADD</button>
             <button
