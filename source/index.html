@@ -144,7 +144,9 @@
                     min-width: 200px;
                   "
                 />
-                <div class="mod-item"><p>Pomodoro Length</p></div>
+                <div class="mod-item">
+                  <p>Pomodoro Length</p>
+                </div>
                 <div>
                   <div id="len-grid">
                     <div id="minHead" style="padding-bottom: 10px">Minutes</div>
@@ -277,10 +279,11 @@
               />
               <p id="completePomos">Completed Pomodoros: 0</p>
               <hr />
-              <label><u>Completed Tasks</u></label>
-              <ul id="completed-tasks">
+              <label id="label"><u>Completed Tasks</u></label>
+              <br />
+              <section id="completed-tasks" class="stats-grid">
                 <!-- Tasks get added here when they're done -->
-              </ul>
+              </section>
               <button id="clear-btn">CLEAR</button>
             </div>
           </div>

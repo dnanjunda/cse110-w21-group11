@@ -211,3 +211,23 @@ input[type="number"] {
   margin-bottom: 20px;
   color: #08222e;
 }
+
+.stats-grid {
+  padding-top: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  gap: 0 20px;
+}
+
+#stats-task {
+  text-align: left;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+#stats-pomo {
+  text-align: right;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
