@@ -138,6 +138,19 @@ a {
   line-height: 1;
   margin: auto;
   margin-top: 4vh;
+  max-height: 92vh;
+  overflow-y: scroll;
+}
+
+#modal-settings-content::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+#modal-settings-content::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
 /* Lines up the "x" in the settings to the left */
@@ -296,5 +309,24 @@ fieldset {
 }
 
 #save-btn:hover {
+  background-color: #ff8d53;
+}
+
+#clear-btn {
+  background-color: #ff671d;
+  border: none;
+  color: white;
+  border-radius: 1vw;
+  padding: 0.5vw;
+  width: 10vw;
+  margin-bottom: 1vw;
+}
+
+#clear-btn:focus,
+#clear-btn:active {
+  outline: none;
+}
+
+#clear-btn:hover {
   background-color: #ff8d53;
 }
