@@ -47,6 +47,9 @@ export function timeAdvance() {
    */
   if (timeRemaining <= 0) {
     // If a break just completed
+    document.getElementById("mixBut").style.background = "#bd0000";
+    document.getElementById("mixBut").removeAttribute("disabled");
+    
     if (onBreak) {
       onBreak = false;
       document.getElementById("current-task").innerHTML = "Current Task: None";
@@ -78,7 +81,6 @@ export function timeAdvance() {
 
       // If it is time for a long break
       if (pomodoro % pomosUntilLongBreak == 0 && pomodoro != 0) {
-        document.getElementById("mixBut").removeAttribute("disabled");
         const minutesPerLongBreak = document.getElementById("breakPomos").value;
         if (minutesPerLongBreak == "") {
           // default value: 30 mins
@@ -91,7 +93,6 @@ export function timeAdvance() {
       }
       // If it is time for a short break
       else {
-        document.getElementById("mixBut").removeAttribute("disabled");
         const minutesPerShortBreak = document.getElementById("shortBreakPomos")
           .value;
         if (minutesPerShortBreak == "") {
@@ -103,7 +104,6 @@ export function timeAdvance() {
           currentTime = 60 * minutesPerShortBreak;
         }
       }
-      document.getElementById("mixBut").style.background = "#bd0000";
     }
   }
 }
