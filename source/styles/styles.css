@@ -284,11 +284,11 @@ fieldset {
 /* This the gray outline circle */
 .e-c-base {
   fill: none;
-  stroke: #B6B6B6;
-  stroke-width: 10px
+  stroke: #b6b6b6;
+  stroke-width: 10px;
 }
 
-  /* This the red circle outline, disappear as timer counts down */ 
+/* This the red circle outline, disappear as timer counts down */
 .e-c-progress {
   fill: none;
   stroke: #c7edff;
@@ -297,13 +297,15 @@ fieldset {
   stroke-linecap: round;
 }
 
-/* This the circle, moves as timer counts down */ 
+/* This the circle, moves as timer counts down */
 .e-c-pointer {
   fill: none;
 }
 
-/* this determines the speed for red outline circle to disappear */ 
-#e-pointer { transition: transform 0.7s; }
+/* this determines the speed for red outline circle to disappear */
+#e-pointer {
+  transition: transform 0.7s;
+}
 
 /* Changes "x" to bold when mouse hovers over */
 .close:hover,

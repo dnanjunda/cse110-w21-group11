@@ -148,7 +148,7 @@ export function stopButton() {
   mixBut.addEventListener("click", startButton);
   mixBut.removeAttribute("disabled");
   document.getElementById("mixBut").style.background = "#ff671d";
-  updateCircle(timeRemaining,currentTime);
+  updateCircle(timeRemaining, currentTime);
 
   // Updating the time display given that a new time remaining will have been set for a break
   let minute = Math.floor(timeRemaining / 60);
@@ -178,7 +178,7 @@ export function resetButton() {
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
-  updateCircle(timeRemaining,currentTime);
+  updateCircle(timeRemaining, currentTime);
   stopButton();
 }
 document.getElementById("reset-btn").addEventListener("click", resetButton);
@@ -355,7 +355,7 @@ export function minuteChange() {
     currentTime = secondsPerPomo;
   }
   timeRemaining = secondsPerPomo;
-  updateCircle(timeRemaining,secondsPerPomo);
+  updateCircle(timeRemaining, secondsPerPomo);
   intervalId = null;
   // saveSettings();
 }
@@ -413,7 +413,7 @@ export function secondChange() {
     }
   }
   timeRemaining = secondsPerPomo;
-  updateCircle(timeRemaining,secondsPerPomo);
+  updateCircle(timeRemaining, secondsPerPomo);
   intervalId = null;
   // saveSettings();
 }
@@ -510,14 +510,13 @@ if (form) {
 }
 
 // starting the circle timer animation
-const progressBar = document.querySelector('.e-c-progress');
-const pointer = document.getElementById('e-pointer');
+const progressBar = document.querySelector(".e-c-progress");
+const pointer = document.getElementById("e-pointer");
 const length = Math.PI * 2 * 100;
 progressBar.style.strokeDasharray = length;
 
-
 function updateCircle(value, timePercent) {
-  pointer.style.transform = `rotate(${360 * value / (timePercent)}deg)`;
-  const offset = - length + length * value / (timePercent);
-  progressBar.style.strokeDashoffset = offset; 
-};
+  pointer.style.transform = `rotate(${(360 * value) / timePercent}deg)`;
+  const offset = -length + (length * value) / timePercent;
+  progressBar.style.strokeDashoffset = offset;
+}
