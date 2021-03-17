@@ -17,39 +17,11 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// const entName = document.getElementById("task-name");
-// entName.addEventListener("keyup", function (e) {
-//   if (e.key === "Enter") {
-//     e.preventDefault();
-//     addTask();
-//   }
-// });
-
-// const entPomo = document.getElementById("pomo-num");
-// entPomo.addEventListener("keyup", function (e) {
-//   if (e.key === "Enter") {
-//     e.preventDefault();
-//     addTask();
-//   }
-// });
-
 const form = document.getElementById("form");
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   addTask();
 });
-
-/**
- * Clear the current task list.
- */
-// export function clearList() {
-//   const taskList = document.getElementById("tasks");
-//   const noTask = document.getElementById("no-task");
-//   noTask.style.display = "block";
-//   while (taskList.children.length > 1) {
-//     taskList.removeChild(taskList.children[1]);
-//   }
-// }
 
 /**
  * Add a new task into the list.
@@ -82,6 +54,7 @@ const clearButton = document.getElementById("clear");
 clearButton.addEventListener("click", function () {
   clearList();
 });
+
 /**
  * Clear the current task list.
  */
@@ -94,7 +67,7 @@ export function clearList() {
   }
   myStorage.setItem("tasks", "[]");
 }
-document.getElementById('clear').onclick = clearList;
+document.getElementById("clear").onclick = clearList;
 
 /* eslint-disable no-unused-vars */
 
@@ -102,34 +75,32 @@ document.getElementById('clear').onclick = clearList;
  * Increment pomos by 1 when plus button is pressed.
  */
 function increment() {
-  document.getElementById("pomo-num").value = Number(document.getElementById("pomo-num").value) + 1;
+  document.getElementById("pomo-num").value =
+    Number(document.getElementById("pomo-num").value) + 1;
 }
-document.getElementById('plus').onclick = increment;
+document.getElementById("plus").onclick = increment;
 
 /**
  * Decrement pomos by 1 when plus button is pressed.
  */
 function decrement() {
-  document.getElementById("pomo-num").value = Number(document.getElementById("pomo-num").value) - 1;
+  document.getElementById("pomo-num").value =
+    Number(document.getElementById("pomo-num").value) - 1;
 }
-document.getElementById('minus').onclick = decrement;
+document.getElementById("minus").onclick = decrement;
 
 const scrollButton = document.getElementById("scroll-down");
 window.onscroll = function () {
   scrollFunction();
 };
 
+/**
+ * Display scroll button if page is at the top
+ */
 function scrollFunction() {
-  if (
-    document.documentElement.scrollTop !== 0
-    // document.documentElement.scrollHeight -
-    //   document.documentElement.clientHeight
-  ) {
+  if (document.documentElement.scrollTop !== 0) {
     scrollButton.style.display = "none";
   } else {
     scrollButton.style.display = "block";
   }
 }
-
-// module.exports.addTask = addTask;
-// module.exports.clearList = clearList;
