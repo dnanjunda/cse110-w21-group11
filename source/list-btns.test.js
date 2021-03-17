@@ -1,5 +1,7 @@
 import * as buttonFunctions from "./list-btns.js";
 
+jest.mock("./task-list.js");
+
 describe("Number of Pomos Button Tests", () => {
     let pomoNum;
     let tasklist;

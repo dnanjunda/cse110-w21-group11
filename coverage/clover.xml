@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1615942826752" clover="3.2.0">
-  <project timestamp="1615942826752" name="All files">
+<coverage generated="1615950956039" clover="3.2.0">
+  <project timestamp="1615950956039" name="All files">
     <metrics statements="242" coveredstatements="164" conditionals="74" coveredconditionals="55" methods="22" coveredmethods="9" elements="338" coveredelements="228" complexity="0" loc="242" ncloc="242" packages="1" files="1" classes="1"/>
     <file name="settings.js" path="/Users/amador/cse110-w21-group11/source/scripts/settings.js">
       <metrics statements="242" coveredstatements="164" conditionals="74" coveredconditionals="55" methods="22" coveredmethods="9"/>
