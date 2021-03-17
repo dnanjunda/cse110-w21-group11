@@ -180,4 +180,4 @@ export class Task extends window.HTMLElement {
   }
 }
 
-window.customElements.define("task-item", Task);
+window.customElements.define("task-list", Task);
