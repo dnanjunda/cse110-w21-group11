@@ -13,14 +13,14 @@
 <body>
   <div id="main">
     <div id="all">
-      <input type="image" src="images/dwn-caret.png" id="scroll-down" width="48"
+      <input type="image" src="images/dwn-caret.png" id="scroll-down"
         onclick="document.documentElement.scrollTop = document.documentElement.scrollHeight"
         onmouseover="this.src='images/dwn-caret-hover.png'" onmouseout="this.src='images/dwn-caret.png'" />
       <div id="Settings">
-        <input type="image" src="images/gear-icon.png" id="settings-btn" height="48"
+        <input type="image" src="images/gear-icon.png" id="settings-btn"
           onclick="document.getElementById('settings-modal').style.display = 'block'"
           onmouseover="this.src='images/gear-icon-hover.png'" onmouseout="this.src='images/gear-icon.png'" />
-        <input type="image" src="images/stats-icon.png" id="stats-btn" height="48"
+        <input type="image" src="images/stats-icon.png" id="stats-btn"
           onclick="document.getElementById('stats-modal').style.display = 'block'"
           onmouseover="this.src='images/stats-icon-hover.png'" onmouseout="this.src='images/stats-icon.png'" />
 
@@ -93,8 +93,8 @@
               </div>
               <div>
                 <div id="len-grid">
-                  <div id="minHead" style="padding-bottom: 10px">Minutes</div>
-                  <div id="secHead" style="padding-bottom: 10px">Seconds</div>
+                  <div id="minHead" style="padding-bottom: 0.6vw">Minutes</div>
+                  <div id="secHead" style="padding-bottom: 0.6vw">Seconds</div>
                   <div id="len-item">
                     <input type="number" placeholder="Min" class="minutes" id="userMins" value="25" max="120" min="0" />
                   </div>
@@ -170,7 +170,7 @@
                 " />
             <p id="completePomos">Completed Pomodoros: 0</p>
             <hr />
-            <label id="label"><u>Completed Tasks</u></label>
+            <label style="font-size: 1.3vw;" id="completedLabel"><u>Completed Tasks</u></label>
             <br />
             <section id="completed-tasks" class="stats-grid">
               <!-- Tasks get added here when they're done -->
@@ -190,7 +190,7 @@
           </div>
           <!--Timer circle animation-->
           <div class="circle">
-            <svg width="300" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <svg width="26vw" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
               <g transform="translate(110,110)">
                 <circle r="100" class="e-c-base" />
                 <g transform="rotate(-90)">
@@ -259,12 +259,6 @@
     <a href="https://github.com/james-c-lars/cse110-w21-group11.git" onmouseover="this.style.color = '#97d4f3'"
       onmouseout="this.style.color = '#b7daeb'">SOURCE</a>
   </div>
-  <!-- <script src="./task-list.js"></script>
-    <script src="./list-btns.js"></script>
-    <script src="scripts/settings.js" type="module"></script>
-    <a href="https://github.com/james-c-lars/cse110-w21-group11.git" onmouseover="this.style.color = '#97d4f3'"
-      onmouseout="this.style.color = '#b7daeb'">SOURCE</a>
-  </div> -->
 </body>
 <footer>
   <!-- <div style="color: white;">Icons made by <a href="" style="color: white;" title="Icongeek26">Icongeek26</a> from <a style="color: white;" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->

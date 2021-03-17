@@ -159,8 +159,8 @@ body {
 #add {
   border: none;
   border-radius: 3vw;
-  background-color: #c7edff;
-  color: #08222e;
+  background-color: #ff671d;
+  color: white;
   font-family: var(--custom-font);
   padding: 0.8vw;
   width: 7.8vw;
@@ -174,7 +174,7 @@ body {
 }
 #add:hover {
   outline: none;
-  background-color: #97d4f3;
+  background-color: #ff8d53;
 }
 
 #clear {
@@ -186,7 +186,7 @@ body {
   padding: 0.8vw;
   width: 7.8vw;
   text-align: center;
-  margin-left: 0.5vw;
+  margin-left: 2vw;
   font-size: 1.1vw;
 }
 #clear:focus {
@@ -220,6 +220,10 @@ input[type="number"] {
   font-size: 1.2vw;
 }
 
+#current-task {
+  font-size: 1.5vw;
+}
+
 #task-title1 {
   font-size: 1.3vw;
 }
@@ -229,21 +233,23 @@ input[type="number"] {
 }
 
 .stats-grid {
-  padding-top: 10px;
+  padding-top: 1vw;
   display: grid;
   grid-template-columns: auto auto;
   align-items: center;
-  gap: 0 20px;
+  gap: 0 2vw;
 }
 
 #stats-task {
   text-align: left;
-  margin-left: 20px;
-  margin-bottom: 10px;
+  margin-left: 2vw;
+  margin-bottom: 0.7vw;
+  font-size: 1.2vw;
 }
 
 #stats-pomo {
   text-align: right;
-  margin-right: 20px;
-  margin-bottom: 10px;
+  margin-right: 2vw;
+  margin-bottom: 0.7vw;
+  font-size: 1.2vw;
 }

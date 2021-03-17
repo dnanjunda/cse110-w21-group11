@@ -18,9 +18,6 @@ window.addEventListener("DOMContentLoaded", () => {
       completedTaskPomo.innerHTML = completedTasks[i].pomo;
       document.getElementById("completed-tasks").appendChild(task);
       document.getElementById("completed-tasks").appendChild(completedTaskPomo);
-      // const task = document.createElement("li");
-      // task.innerHTML = completedTasks[i].task;
-      // document.getElementById("completed-tasks").appendChild(task);
     }
   }
 

@@ -119,6 +119,7 @@ export class Task extends window.HTMLElement {
       #task-name {
         text-align: left;
         padding-left: 1vh;
+        font-size: 1.3vw;
       }
 
       #task-name:focus {
@@ -129,6 +130,7 @@ export class Task extends window.HTMLElement {
         text-align: center;
         width: 80%;
         background-color: white;
+        font-size: 1.3vw;
       }
 
       #edit-name {
@@ -144,6 +146,7 @@ export class Task extends window.HTMLElement {
         background-color: rgb(102, 128, 146);
         color: white;
         height: 65%;
+        font-size: 1.05vw;
       }  
 
       #edit:focus {
@@ -161,6 +164,7 @@ export class Task extends window.HTMLElement {
         border-radius: 0.8vw;
         background-color: #bd0000;
         height: 65%;
+        font-size: 1.05vw;
       }
       #delete:focus {
         outline: none;
