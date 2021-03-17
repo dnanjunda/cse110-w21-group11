@@ -87,7 +87,6 @@ export class Task extends window.HTMLElement {
       }
     });
 
-    // this.setAttribute("class","nested-grid");
     wrapper.appendChild(taskName);
     wrapper.appendChild(editName);
     wrapper.appendChild(pomoNum);

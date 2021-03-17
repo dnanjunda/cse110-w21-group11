@@ -202,12 +202,12 @@ fieldset {
   width: 300px;
 }
 
-#settings-btn:focus {
-  outline: none;
-}
-
 #settings-btn {
   height: 4vw;
+}
+
+#settings-btn:focus {
+  outline: none;
 }
 
 #stats-btn {
@@ -343,7 +343,7 @@ fieldset {
   z-index: 1;
   width: 3.7vw;
   cursor: pointer;
-  filter: drop-shadow(0 0 0.15vw Black);
+  filter: drop-shadow(0 0 0.15vw black);
 }
 
 #scroll-down:active,
