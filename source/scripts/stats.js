@@ -24,11 +24,15 @@ window.addEventListener("DOMContentLoaded", () => {
     window.localStorage.setItem("completePomos", 0);
   } else {
     const numPomos = window.localStorage.getItem("completePomos");
-    document.getElementById("completePomos").innerHTML = "Completed Pomodoros: " + numPomos;
+    document.getElementById("completePomos").innerHTML =
+      "Completed Pomodoros: " + numPomos;
   }
 
   document.getElementById("clear-btn").addEventListener("click", () => {
     window.localStorage.setItem("completed", "[]");
+    window.localStorage.setItem("completePomos", 0);
+    document.getElementById("completePomos").innerHTML =
+      "Completed Pomodoros: 0";
     while (document.getElementById("completed-tasks").firstChild) {
       document
         .getElementById("completed-tasks")
@@ -88,9 +92,10 @@ export function completedTask() {
     window.localStorage.setItem("completed", JSON.stringify(tasks));
 
     const numPomos = window.localStorage.getItem("completePomos");
-    numPomos += pomo.value;
-    document.getElementById("completePomos").innerHTML = "Completed Pomodoros: " + numPomos;
-    window.localStorage.setItem("completePomos", numPomos);
+    const disPomos = parseInt(numPomos) + parseInt(pomo.value);
+    document.getElementById("completePomos").innerHTML =
+      "Completed Pomodoros: " + disPomos;
+    window.localStorage.setItem("completePomos", disPomos);
 
     // remove is the delete button
     const remove = pomo.nextElementSibling.nextElementSibling;
