@@ -1,6 +1,5 @@
-// import { Task } from "./task-list.js";
+import { Task } from "./task-list.js";
 
-/* global Task */
 /* eslint no-undef: "error" */
 const myStorage = window.localStorage;
 const taskList = document.getElementById("tasks");
@@ -61,6 +60,8 @@ export function addTask() {
   const newTask = document.getElementById("task-name").value;
   const newPomo = document.getElementById("pomo-num").value;
 
+  noTask.style.display = "none";
+
   tasks.appendChild(
     new Task({
       taskName: newTask,
@@ -93,13 +94,14 @@ export function clearList() {
   }
   myStorage.setItem("tasks", "[]");
 }
+document.getElementById('clear').onclick = clearList;
 
 /* eslint-disable no-unused-vars */
 
 /**
  * Increment pomos by 1 when plus button is pressed.
  */
-export function increment() {
+function increment() {
   document.getElementById("pomo-num").value = Number(document.getElementById("pomo-num").value) + 1;
 }
 document.getElementById('plus').onclick = increment;
@@ -107,7 +109,7 @@ document.getElementById('plus').onclick = increment;
 /**
  * Decrement pomos by 1 when plus button is pressed.
  */
-export function decrement() {
+function decrement() {
   document.getElementById("pomo-num").value = Number(document.getElementById("pomo-num").value) - 1;
 }
 document.getElementById('minus').onclick = decrement;
