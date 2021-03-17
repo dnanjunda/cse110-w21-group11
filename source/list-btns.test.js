@@ -24,14 +24,12 @@ describe("Number of Pomos Button Tests", () => {
   });
 
   test("Clear task list button", () => {
-    // document.getElementById("clear").click();
     buttonFunctions.clearList();
     expect(tasklist.children.length).toBe(1);
 
     const task = document.createElement("div");
     document.getElementById("tasks").appendChild(task);
     expect(tasklist.children.length).toBe(2);
-    // document.getElementById("clear").click();
     buttonFunctions.clearList();
     expect(tasklist.children.length).toBe(1);
   });

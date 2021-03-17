@@ -87,7 +87,6 @@ export class Task extends window.HTMLElement {
       }
     });
 
-    // this.setAttribute("class","nested-grid");
     wrapper.appendChild(taskName);
     wrapper.appendChild(editName);
     wrapper.appendChild(pomoNum);
@@ -104,12 +103,12 @@ export class Task extends window.HTMLElement {
 
       input {
         border: none;
-        border-radius: 10px;
+        border-radius: 0.8vw;
         background-color: #f0f0f0;
         padding-top: 1em;
         padding-bottom: 1em;
         font-family: Nunito;
-        font-size: 16px;
+        font-size: 1.3vw;
       }
 
       input:focus {
@@ -119,6 +118,7 @@ export class Task extends window.HTMLElement {
       #task-name {
         text-align: left;
         padding-left: 1vh;
+        font-size: 1.3vw;
       }
 
       #task-name:focus {
@@ -129,6 +129,7 @@ export class Task extends window.HTMLElement {
         text-align: center;
         width: 80%;
         background-color: white;
+        font-size: 1.3vw;
       }
 
       #edit-name {
@@ -140,10 +141,11 @@ export class Task extends window.HTMLElement {
         font-family: Nunito;
         width: 90%;
         border: none;
-        border-radius: 10px;
+        border-radius: 0.8vw;
         background-color: rgb(102, 128, 146);
         color: white;
         height: 65%;
+        font-size: 1.05vw;
       }  
 
       #edit:focus {
@@ -158,9 +160,10 @@ export class Task extends window.HTMLElement {
         width: 90%;
         color: white;
         border: none;
-        border-radius: 10px;
+        border-radius: 0.8vw;
         background-color: #bd0000;
         height: 65%;
+        font-size: 1.05vw;
       }
       #delete:focus {
         outline: none;

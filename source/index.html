@@ -22,7 +22,6 @@
           type="image"
           src="images/dwn-caret.png"
           id="scroll-down"
-          width="48"
           onclick="document.documentElement.scrollTop = document.documentElement.scrollHeight"
           onmouseover="this.src='images/dwn-caret-hover.png'"
           onmouseout="this.src='images/dwn-caret.png'"
@@ -32,7 +31,6 @@
             type="image"
             src="images/gear-icon.png"
             id="settings-btn"
-            height="48"
             onclick="document.getElementById('settings-modal').style.display = 'block'"
             onmouseover="this.src='images/gear-icon-hover.png'"
             onmouseout="this.src='images/gear-icon.png'"
@@ -41,7 +39,6 @@
             type="image"
             src="images/stats-icon.png"
             id="stats-btn"
-            height="48"
             onclick="document.getElementById('stats-modal').style.display = 'block'"
             onmouseover="this.src='images/stats-icon-hover.png'"
             onmouseout="this.src='images/stats-icon.png'"
@@ -58,7 +55,7 @@
                 >
               </div>
               <div>
-                <div id="modal-title" style="padding-bottom: 10px">
+                <div id="modal-title" style="padding-bottom: 0.6vw">
                   SETTINGS
                 </div>
                 <hr
@@ -73,7 +70,7 @@
                 />
               </div>
               <form id="saveSettings">
-                <div class="mod-item" style="padding-bottom: 10px">
+                <div class="mod-item" style="padding-bottom: 0.7vw">
                   Short Break Length
                 </div>
 
@@ -98,7 +95,7 @@
                     "
                   />
                 </div>
-                <div class="mod-item" style="padding-bottom: 10px">
+                <div class="mod-item" style="padding-bottom: 0.7vw">
                   Long Break Length
                 </div>
                 <div>
@@ -121,7 +118,7 @@
                     "
                   />
                 </div>
-                <div class="mod-item" style="padding: 10px">
+                <div class="mod-item" style="padding-bottom: 0.7vw">
                   Pomodoros until Long Break
                 </div>
                 <div>
@@ -149,8 +146,12 @@
                 </div>
                 <div>
                   <div id="len-grid">
-                    <div id="minHead" style="padding-bottom: 10px">Minutes</div>
-                    <div id="secHead" style="padding-bottom: 10px">Seconds</div>
+                    <div id="minHead" style="padding-bottom: 0.6vw">
+                      Minutes
+                    </div>
+                    <div id="secHead" style="padding-bottom: 0.6vw">
+                      Seconds
+                    </div>
                     <div id="len-item">
                       <input
                         type="number"
@@ -186,12 +187,11 @@
                     "
                   />
                 </div>
-                <div class="mod-item" style="padding-bottom: 10px">
+                <div class="mod-item" style="padding-bottom: 0.7vw">
                   Notification Sound
                 </div>
 
                 <div>
-                  <!-- <form> -->
                   <select
                     id="changeSelect"
                     name="alarmMusic"
@@ -201,7 +201,6 @@
                     <option value="Alarm-Clock">Alarm Clock</option>
                     <option value="None">None</option>
                   </select>
-                  <!-- </form> -->
                   <hr
                     style="
                       color: black;
@@ -214,7 +213,7 @@
                   />
                 </div>
 
-                <div class="mod-item" style="padding-bottom: 10px">
+                <div class="mod-item" style="padding-bottom: 0.7vw">
                   <label
                     for="volume-number"
                     class="settingText"
@@ -248,7 +247,7 @@
                   id="save-btn"
                   type="submit"
                   value="Save"
-                  style="margin: auto; margin-bottom: 20px"
+                  style="margin: auto; margin-bottom: 1.5vw"
                 />
               </form>
             </div>
@@ -259,12 +258,12 @@
           <div id="modal-settings-content">
             <span
               class="close"
-              style="width: 50px"
+              style="width: 5vw"
               onclick="document.getElementById('stats-modal').style.display = 'none'"
               >&times;</span
             >
             <div>
-              <div id="modal-title" style="padding-bottom: 10px">
+              <div id="modal-title" style="padding-bottom: 0.7vw">
                 STATISTICS
               </div>
               <hr
@@ -279,7 +278,9 @@
               />
               <p id="completePomos">Completed Pomodoros: 0</p>
               <hr />
-              <label id="label"><u>Completed Tasks</u></label>
+              <label style="font-size: 1.3vw" id="completedLabel"
+                ><u>Completed Tasks</u></label
+              >
               <br />
               <section id="completed-tasks" class="stats-grid">
                 <!-- Tasks get added here when they're done -->
@@ -300,7 +301,7 @@
             <!--Timer circle animation-->
             <div class="circle">
               <svg
-                width="300"
+                width="26vw"
                 viewBox="0 0 220 220"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -383,7 +384,7 @@
           </div>
         </form>
       </div>
-      <script src="./task-list.js"></script>
+      <script src="./task-list.js" type="module"></script>
       <script src="./list-btns.js" type="module"></script>
       <script src="scripts/settings.js" type="module"></script>
       <script src="scripts/stats.js" type="module"></script>

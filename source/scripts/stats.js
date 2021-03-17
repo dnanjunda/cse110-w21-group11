@@ -8,7 +8,6 @@ window.addEventListener("DOMContentLoaded", () => {
   } else {
     const completedTasks = JSON.parse(window.localStorage.getItem("completed"));
     const length = completedTasks.length;
-    console.log(length);
     for (let i = 0; i < length; i++) {
       const task = document.createElement("div");
       task.setAttribute("id", "stats-task");
@@ -18,14 +17,22 @@ window.addEventListener("DOMContentLoaded", () => {
       completedTaskPomo.innerHTML = completedTasks[i].pomo;
       document.getElementById("completed-tasks").appendChild(task);
       document.getElementById("completed-tasks").appendChild(completedTaskPomo);
-      // const task = document.createElement("li");
-      // task.innerHTML = completedTasks[i].task;
-      // document.getElementById("completed-tasks").appendChild(task);
     }
+  }
+
+  if (!window.localStorage.getItem("completePomos")) {
+    window.localStorage.setItem("completePomos", 0);
+  } else {
+    const numPomos = window.localStorage.getItem("completePomos");
+    document.getElementById("completePomos").innerHTML =
+      "Completed Pomodoros: " + numPomos;
   }
 
   document.getElementById("clear-btn").addEventListener("click", () => {
     window.localStorage.setItem("completed", "[]");
+    window.localStorage.setItem("completePomos", 0);
+    document.getElementById("completePomos").innerHTML =
+      "Completed Pomodoros: 0";
     while (document.getElementById("completed-tasks").firstChild) {
       document
         .getElementById("completed-tasks")
@@ -76,7 +83,6 @@ export function completedTask() {
 
   // If the task is completed
   if (pomo.value < 2) {
-    // Remove it from the task list
     const tasks = JSON.parse(window.localStorage.getItem("completed"));
     const task = {
       task: currentTask.innerHTML,
@@ -84,6 +90,12 @@ export function completedTask() {
     };
     tasks.push(task);
     window.localStorage.setItem("completed", JSON.stringify(tasks));
+
+    const numPomos = window.localStorage.getItem("completePomos");
+    const disPomos = parseInt(numPomos) + parseInt(pomo.value);
+    document.getElementById("completePomos").innerHTML =
+      "Completed Pomodoros: " + disPomos;
+    window.localStorage.setItem("completePomos", disPomos);
 
     // remove is the delete button
     const remove = pomo.nextElementSibling.nextElementSibling;

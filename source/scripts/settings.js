@@ -1,21 +1,5 @@
 import { completedTask, isTaskSelected } from "./stats.js";
 
-// TODOs:
-/* 
-- Settings modal not responsive to window size
-- Custom minutes and seconds don’t work together (only changing one of them works at a time)
-  - messes up if secs is inputted before mins 
-- When the goal for number of pomodoros for long break is reached, alert for both short break and long break both alert
-- Having short and long breaks not freeze the timer
-- Add JSDoc comments
-- Unit testing
-
-- Jonathan working on resizing the settings modal, as well as tweaking CSS and making HTML more readable
-- Arela working on custom minutes and seconds. Can't really get it to work properly
-- Brian will help Arela with custom minutes and seconds. Separate the short break and long break alert
-
-*/
-
 window.addEventListener("DOMContentLoaded", () => {
   loadSettings();
   minuteChange();
@@ -332,7 +316,6 @@ export function minuteChange() {
   }
   inputMins.value = inputMins.value.substring(indexMins);
   if (inputMins.value == "") {
-    // inputMins.value = "25";
     document.getElementById("minute").innerHTML = "25";
     secondsPerPomo = 60 * 25 + Number(inputSecs.value);
     currentTime = secondsPerPomo;
@@ -344,12 +327,7 @@ export function minuteChange() {
     document.getElementById("minute").innerHTML = "0" + inputMins.value;
     secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
     currentTime = secondsPerPomo;
-  } // else if (inputMins.value > 120) {
-  //   // max mins for pomo timer 2 hours
-  //   inputMins.value = 120;
-  //   secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
-  // }
-  else {
+  } else {
     document.getElementById("minute").innerHTML = inputMins.value;
     secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
     currentTime = secondsPerPomo;
@@ -357,7 +335,6 @@ export function minuteChange() {
   timeRemaining = secondsPerPomo;
   updateCircle(timeRemaining, secondsPerPomo);
   intervalId = null;
-  // saveSettings();
 }
 inputMins.oninput = minuteChange;
 
@@ -376,7 +353,6 @@ export function secondChange() {
   }
   inputSecs.value = inputSecs.value.substring(indexSecs);
   if (inputSecs.value === "" || inputSecs.value === "0") {
-    // inputSecs.value = 0;
     document.getElementById("seconds").innerHTML = "00";
     if (inputMins.value == "") {
       document.getElementById("minute").innerHTML = "25";
@@ -396,12 +372,7 @@ export function secondChange() {
       secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
       currentTime = secondsPerPomo;
     }
-  } // else if (inputSecs.value >= 60) {
-  // max mins for pomo timer 2 hours
-  // inputSecs.value = 59;
-  // secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
-  // }
-  else {
+  } else {
     document.getElementById("seconds").innerHTML = inputSecs.value;
     if (inputMins.value == "") {
       document.getElementById("minute").innerHTML = "25";
@@ -415,7 +386,6 @@ export function secondChange() {
   timeRemaining = secondsPerPomo;
   updateCircle(timeRemaining, secondsPerPomo);
   intervalId = null;
-  // saveSettings();
 }
 inputSecs.oninput = secondChange;
 
