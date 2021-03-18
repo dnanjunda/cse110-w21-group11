@@ -20,8 +20,8 @@ export function timeAdvance() {
   --timeRemaining;
   let minute = Math.floor(timeRemaining / 60);
   let seconds = Math.floor(timeRemaining % 60);
-  minute = minute < 10 ? "0" + minute : minute;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
+  //minute = minute < 10 ? "0" + minute : minute;
+  //seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
   updateCircle(timeRemaining, currentTime);
