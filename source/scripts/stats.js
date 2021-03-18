@@ -77,8 +77,8 @@ export function completedTask() {
   const array = pomo.getRootNode().host.parentNode.children;
   const index = [].indexOf.call(array, pomo.getRootNode().host) - 1;
   const partialTasks = JSON.parse(window.localStorage.getItem("incomplete"));
-  var taskToUpdate = partialTasks.splice(index,1);
-  var taskPomo = taskToUpdate.length == 0 ? 0 : taskToUpdate[0].pomoNum;
+  let taskToUpdate = partialTasks.splice(index,1);
+  let taskPomo = taskToUpdate.length == 0 ? 0 : taskToUpdate[0].pomoNum;
   
   // If the task is completed
   if (pomo.value < 2) {

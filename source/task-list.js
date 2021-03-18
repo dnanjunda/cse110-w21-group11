@@ -59,8 +59,6 @@ export class Task extends window.HTMLElement {
     editTask.setAttribute("id", "edit");
     editTask.textContent = "Edit";
 
-    var pomo = null;
-
     wrapper.addEventListener("submit", function (e) {
       e.preventDefault();
       if (editTask.textContent === "Edit") {
@@ -70,8 +68,6 @@ export class Task extends window.HTMLElement {
         deleteTask.style.display = "block";
         pomoNum.readOnly = false;
         pomoNum.style.background = "#f0f0f0";
-
-        pomo = document.getElementById
       } else {
         editTask.textContent = "Edit";
         taskName.style.display = "block";
