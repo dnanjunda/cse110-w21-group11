@@ -20,21 +20,12 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-<<<<<<< HEAD
   if (!window.localStorage.getItem("totalPomo")) {
     window.localStorage.setItem("totalPomo", 0);
   } else {
     document.getElementById("completePomos").innerHTML =
       "Completed Pomodoros: " +
       parseInt(window.localStorage.getItem("totalPomo"));
-=======
-  if (!window.localStorage.getItem("completePomos")) {
-    window.localStorage.setItem("completePomos", 0);
-  } else {
-    const numPomos = window.localStorage.getItem("completePomos");
-    document.getElementById("completePomos").innerHTML =
-      "Completed Pomodoros: " + numPomos;
->>>>>>> main
   }
 
   document.getElementById("clear-btn").addEventListener("click", () => {
@@ -96,10 +87,7 @@ export function completedTask() {
 
   // If the task is completed
   if (pomo.value < 2) {
-<<<<<<< HEAD
     // Add it to local storage
-=======
->>>>>>> main
     const tasks = JSON.parse(window.localStorage.getItem("completed"));
     const task = {
       task: currentTask.innerHTML,
