@@ -6,11 +6,11 @@ const taskList = document.getElementById("tasks");
 
 window.addEventListener("DOMContentLoaded", () => {
   if (!myStorage.getItem("tasks")) {
-    myStorage.setItem("tasks", "[]"); 
+    myStorage.setItem("tasks", "[]");
   }
 
   if (!myStorage.getItem("incomplete")) {
-    myStorage.setItem("incomplete", "[]"); 
+    myStorage.setItem("incomplete", "[]");
   }
 
   const tasks = JSON.parse(myStorage.getItem("tasks"));

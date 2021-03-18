@@ -24,7 +24,9 @@ window.addEventListener("DOMContentLoaded", () => {
   if (!window.localStorage.getItem("totalPomo")) {
     window.localStorage.setItem("totalPomo", 0);
   } else {
-    document.getElementById("completePomos").innerHTML = "Completed Pomodoros: " + parseInt(window.localStorage.getItem("totalPomo"));
+    document.getElementById("completePomos").innerHTML =
+      "Completed Pomodoros: " +
+      parseInt(window.localStorage.getItem("totalPomo"));
   }
 
   document.getElementById("clear-btn").addEventListener("click", () => {
@@ -36,8 +38,9 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     window.localStorage.setItem("incomplete", "[]");
     window.localStorage.setItem("totalPomo", 0);
-    document.getElementById("completePomos").innerHTML = "Completed Pomodoros: 0";
-  });  
+    document.getElementById("completePomos").innerHTML =
+      "Completed Pomodoros: 0";
+  });
 });
 
 /**
@@ -77,9 +80,9 @@ export function completedTask() {
   const array = pomo.getRootNode().host.parentNode.children;
   const index = [].indexOf.call(array, pomo.getRootNode().host) - 1;
   const partialTasks = JSON.parse(window.localStorage.getItem("incomplete"));
-  let taskToUpdate = partialTasks.splice(index,1);
-  let taskPomo = taskToUpdate.length == 0 ? 0 : taskToUpdate[0].pomoNum;
-  
+  const taskToUpdate = partialTasks.splice(index, 1);
+  const taskPomo = taskToUpdate.length == 0 ? 0 : taskToUpdate[0].pomoNum;
+
   // If the task is completed
   if (pomo.value < 2) {
     // Add it to local storage
@@ -118,7 +121,7 @@ export function completedTask() {
     partialTasks.splice(index, 1, {
       taskName: currentTask.textContent,
       pomoNum: taskPomo + 1,
-    });   
+    });
     window.localStorage.setItem("incomplete", JSON.stringify(partialTasks));
 
     // Updating the number of pomos remaining in local storage

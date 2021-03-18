@@ -63,10 +63,15 @@ export function timeAdvance() {
         "Current Task: On Break!";
       onBreak = true;
       pomodoro++;
-      document.getElementById("completePomos").innerHTML = "Completed Pomodoros: " + (parseInt(window.localStorage.getItem("totalPomo")) + 1);
-      
+      document.getElementById("completePomos").innerHTML =
+        "Completed Pomodoros: " +
+        (parseInt(window.localStorage.getItem("totalPomo")) + 1);
+
       // store total pomo in local storage
-      window.localStorage.setItem("totalPomo", parseInt(window.localStorage.getItem("totalPomo"))+ 1);
+      window.localStorage.setItem(
+        "totalPomo",
+        parseInt(window.localStorage.getItem("totalPomo")) + 1
+      );
 
       clearInterval(intervalId);
       intervalId = null;
