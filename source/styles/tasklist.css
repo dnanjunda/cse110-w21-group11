@@ -14,9 +14,9 @@ body {
 #head {
   display: grid;
   grid-template-columns: 55% 15% 15% 15%;
-  padding: 10px;
+  padding: 0.6vw;
   max-width: 100%;
-  min-width: 400px;
+  min-width: 35vw;
   background-color: #c7edff;
   font-weight: bold;
   font-size: larger;
@@ -24,54 +24,54 @@ body {
 
 #title {
   color: white;
-  font-size: calc(18px + 1vw);
-  padding-bottom: 5px;
+  font-size: 2.3vw;
+  padding-bottom: 0.5vw;
   text-align: center;
 }
 
 #list-title1 {
-  font-size: calc(10px + 0.5vw);
+  font-size: calc(10px + 1vw);
   text-align: left;
 }
 #list-title2 {
   text-align: left;
-  font-size: calc(10px + 0.5vw);
+  font-size: calc(10px + 1vw);
 }
 
 #task-list {
   display: grid;
   grid-template-columns: auto;
   background-color: #c7edff;
-  border-radius: 10px;
-  padding: 10px;
-  min-height: 250px;
-  margin-bottom: 20px;
+  border-radius: 1vw;
+  padding: 1vw;
+  min-height: 31vh;
+  margin-bottom: 2vw;
   color: #08222e;
 }
 
 #tasks {
   grid-template-columns: auto auto;
   background-color: white;
-  padding: 10px;
-  min-height: 190px;
+  padding: 0.5vw;
+  min-height: 31vh;
 }
 
 #no-task {
-  font-size: calc(18px + 0.5vw);
+  font-size: 2vw;
   text-align: center;
-  line-height: 200px;
+  line-height: 31vh;
 }
 
 #new-task {
   margin: auto;
   display: grid;
   background-color: white;
-  border-radius: 10px;
-  max-width: 350px;
+  border-radius: 1vw;
+  max-width: 30vw;
   grid-template-columns: auto auto;
-  padding-top: 10px;
-  padding-bottom: 25px;
-  margin-bottom: 10px;
+  padding-top: 0.6vw;
+  padding-bottom: 1.5vw;
+  margin-bottom: 0.6vw;
   text-align: center;
   color: #08222e;
 }
@@ -79,11 +79,13 @@ body {
 #task-name {
   margin: auto;
   border: none;
-  border-radius: 10px;
-  height: 30px;
+  border-radius: 0.6vw;
+  height: 6vh;
   background-color: #f0f0f0;
   text-align: center;
   font-family: var(--custom-font);
+  width: 15vw;
+  font-size: 1.3vw;
 }
 
 #task-name:focus {
@@ -93,12 +95,13 @@ body {
 #pomo-num {
   margin: auto;
   border: none;
-  border-radius: 10px;
-  height: 30px;
+  border-radius: 0.6vw;
+  height: 4.5vh;
   background-color: #f0f0f0;
   text-align: center;
   font-family: var(--custom-font);
-  width: 20px;
+  width: 1.8vw;
+  font-size: 1.1vw;
 }
 
 #pomo-num:focus {
@@ -106,13 +109,14 @@ body {
 }
 
 #minus {
-  width: 20px;
-  height: 20px;
-  border-radius: 3px;
+  width: 1.6vw;
+  height: 1.6vw;
+  border-radius: 0.3vw;
   background-color: rgb(35, 133, 68);
   color: white;
-  line-height: 6px;
+  line-height: 0.5vw;
   border: none;
+  font-size: 1vw;
 }
 
 #minus:focus {
@@ -124,13 +128,14 @@ body {
 }
 
 #plus {
-  width: 20px;
-  height: 20px;
-  border-radius: 3px;
+  width: 1.6vw;
+  height: 1.6vw;
+  border-radius: 0.3vw;
   background-color: #bd0000;
   color: white;
-  line-height: 5px;
+  line-height: 0.5vw;
   border: none;
+  font-size: 1vw;
 }
 
 #plus:focus {
@@ -145,22 +150,23 @@ body {
   display: grid;
   grid-template-columns: auto auto;
   margin: auto;
-  margin-top: 15px;
+  margin-top: 2vh;
   align-content: center;
   text-align: center;
-  max-width: 250px;
+  max-width: 18vw;
 }
 
 #add {
   border: none;
-  border-radius: 20px;
+  border-radius: 3vw;
   background-color: #ff671d;
   color: white;
   font-family: var(--custom-font);
-  padding: 10px;
-  width: 100px;
+  padding: 0.8vw;
+  width: 7.8vw;
   text-align: center;
   margin: auto;
+  font-size: 1.1vw;
 }
 
 #add:focus {
@@ -173,14 +179,15 @@ body {
 
 #clear {
   border: none;
-  border-radius: 20px;
+  border-radius: 3vw;
   background-color: #bd0000;
   color: white;
   font-family: var(--custom-font);
-  padding: 10px;
-  width: 100px;
+  padding: 0.8vw;
+  width: 7.8vw;
   text-align: center;
-  margin-left: 0.5vw;
+  margin-left: 2vw;
+  font-size: 1.1vw;
 }
 #clear:focus {
   outline: none;
@@ -205,29 +212,44 @@ input[type="number"] {
   display: grid;
   grid-template-columns: auto;
   background-color: #c7edff;
-  border-radius: 10px;
-  padding: 10px;
-  min-height: 70px;
-  margin-bottom: 20px;
+  border-radius: 0.6vw;
+  padding: 1vw;
+  min-height: 5vw;
+  margin-bottom: 1.2vw;
   color: #08222e;
+  font-size: 1.2vw;
+}
+
+#current-task {
+  font-size: 1.5vw;
+}
+
+#task-title1 {
+  font-size: 1.3vw;
+}
+
+#task-title2 {
+  font-size: 1.3vw;
 }
 
 .stats-grid {
-  padding-top: 10px;
+  padding-top: 1vw;
   display: grid;
   grid-template-columns: auto auto;
   align-items: center;
-  gap: 0 20px;
+  gap: 0 2vw;
 }
 
 #stats-task {
   text-align: left;
-  margin-left: 20px;
-  margin-bottom: 10px;
+  margin-left: 2vw;
+  margin-bottom: 0.7vw;
+  font-size: 1.2vw;
 }
 
 #stats-pomo {
   text-align: right;
-  margin-right: 20px;
-  margin-bottom: 10px;
+  margin-right: 2vw;
+  margin-bottom: 0.7vw;
+  font-size: 1.2vw;
 }
