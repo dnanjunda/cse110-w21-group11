@@ -1,4 +1,4 @@
-import { selectTask } from "./scripts/stats.js";
+import { selectTask } from "./stats.js";
 
 export class Task extends window.HTMLElement {
   constructor(task) {
