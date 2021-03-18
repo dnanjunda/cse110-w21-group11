@@ -145,7 +145,7 @@ export class Task extends window.HTMLElement {
         background-color: rgb(102, 128, 146);
         color: white;
         height: 65%;
-        font-size: 1.05vw;
+        font-size: 1.2vw;
       }  
 
       #edit:focus {
@@ -163,7 +163,7 @@ export class Task extends window.HTMLElement {
         border-radius: 0.8vw;
         background-color: #bd0000;
         height: 65%;
-        font-size: 1.05vw;
+        font-size: 1.2vw;
       }
       #delete:focus {
         outline: none;

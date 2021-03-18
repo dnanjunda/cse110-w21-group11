@@ -19,6 +19,7 @@ a {
   margin: 0 auto;
   margin-top: 1.5vw;
   font-size: 1.3vw;
+  margin-bottom: 2vw;
 }
 
 /* Main page layout and colors */
@@ -45,12 +46,12 @@ a {
 #timer {
   display: flex;
   justify-content: center;
-  font-size: 7vw;
+  font-size: 9vw;
   color: #b7daeb;
   z-index: 0;
   position: absolute;
-  margin-top: 8vw;
-  margin-left: 10.8vw;
+  margin-top: 9.4vw;
+  margin-left: 13vw;
 }
 
 #timer-container {
@@ -211,7 +212,7 @@ fieldset {
 }
 
 #stats-btn {
-  margin-left: 30vw;
+  margin-left: 40vw;
   height: 4vw;
 }
 
