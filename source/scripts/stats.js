@@ -18,10 +18,13 @@ window.addEventListener("DOMContentLoaded", () => {
       completedTaskPomo.innerHTML = completedTasks[i].pomo;
       document.getElementById("completed-tasks").appendChild(task);
       document.getElementById("completed-tasks").appendChild(completedTaskPomo);
-      // const task = document.createElement("li");
-      // task.innerHTML = completedTasks[i].task;
-      // document.getElementById("completed-tasks").appendChild(task);
     }
+  }
+
+  if (!window.localStorage.getItem("totalPomo")) {
+    window.localStorage.setItem("totalPomo", 0);
+  } else {
+    document.getElementById("completePomos").innerHTML = "Completed Pomodoros: " + parseInt(window.localStorage.getItem("totalPomo"));
   }
 
   document.getElementById("clear-btn").addEventListener("click", () => {
@@ -31,7 +34,10 @@ window.addEventListener("DOMContentLoaded", () => {
         .getElementById("completed-tasks")
         .removeChild(document.getElementById("completed-tasks").firstChild);
     }
-  });
+    window.localStorage.setItem("incomplete", "[]");
+    window.localStorage.setItem("totalPomo", 0);
+    document.getElementById("completePomos").innerHTML = "Completed Pomodoros: 0";
+  });  
 });
 
 /**
@@ -49,23 +55,17 @@ export function isTaskSelected() {
     return true;
   }
 }
+
 /**
  * store incomplete tasks
  */
-
 export function selectTask(el) {
   if (canChangeTask()) {
     document.getElementById("current-task").innerHTML =
       "Current Task: " + el.innerHTML;
     currentTask = el;
-    const currentPomo = currentTask.nextElementSibling.nextElementSibling.value;
-    if (initialPomo < currentPomo) {
-      initialPomo = currentPomo;
-    }
   }
 }
-
-let initialPomo = 0;
 
 /**
  * call when timer done
@@ -74,13 +74,19 @@ export function completedTask() {
   // pomo is the element representing the number of pomos remaining for the task
   const pomo = currentTask.nextElementSibling.nextElementSibling;
 
+  const array = pomo.getRootNode().host.parentNode.children;
+  const index = [].indexOf.call(array, pomo.getRootNode().host) - 1;
+  const partialTasks = JSON.parse(window.localStorage.getItem("incomplete"));
+  var taskToUpdate = partialTasks.splice(index,1);
+  var taskPomo = taskToUpdate.length == 0 ? 0 : taskToUpdate[0].pomoNum;
+  
   // If the task is completed
   if (pomo.value < 2) {
-    // Remove it from the task list
+    // Add it to local storage
     const tasks = JSON.parse(window.localStorage.getItem("completed"));
     const task = {
       task: currentTask.innerHTML,
-      pomo: pomo.value,
+      pomo: taskPomo + 1,
     };
     tasks.push(task);
     window.localStorage.setItem("completed", JSON.stringify(tasks));
@@ -95,22 +101,27 @@ export function completedTask() {
     completedTask.innerHTML = currentTask.innerHTML;
     const completedTaskPomo = document.createElement("div");
     completedTaskPomo.setAttribute("id", "stats-pomo");
-    completedTaskPomo.innerHTML = initialPomo;
+    completedTaskPomo.innerHTML = taskPomo + 1;
     document.getElementById("completed-tasks").appendChild(completedTask);
     document.getElementById("completed-tasks").appendChild(completedTaskPomo);
 
     // Resetting
     currentTask = null;
-    initialPomo = 0;
+    window.localStorage.setItem("incomplete", JSON.stringify(partialTasks));
   }
   // If the task is not yet completed
   else {
     // The user has made progress on the current task, so the number of pomo sessions remaining is decremented
     pomo.value -= 1;
 
+    // Storing partially completed task in local storage
+    partialTasks.splice(index, 1, {
+      taskName: currentTask.textContent,
+      pomoNum: taskPomo + 1,
+    });   
+    window.localStorage.setItem("incomplete", JSON.stringify(partialTasks));
+
     // Updating the number of pomos remaining in local storage
-    const array = pomo.getRootNode().host.parentNode.children;
-    const index = [].indexOf.call(array, pomo.getRootNode().host) - 1;
     const storedTasks = JSON.parse(window.localStorage.getItem("tasks"));
     storedTasks.splice(index, 1, {
       taskName: currentTask.textContent,

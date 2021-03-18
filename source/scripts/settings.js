@@ -63,8 +63,11 @@ export function timeAdvance() {
         "Current Task: On Break!";
       onBreak = true;
       pomodoro++;
-      document.getElementById("completePomos").innerHTML =
-        "Completed Pomodoros: " + pomodoro;
+      document.getElementById("completePomos").innerHTML = "Completed Pomodoros: " + (parseInt(window.localStorage.getItem("totalPomo")) + 1);
+      
+      // store total pomo in local storage
+      localStorage.setItem("totalPomo", parseInt(window.localStorage.getItem("totalPomo"))+ 1);
+
       clearInterval(intervalId);
       intervalId = null;
       sound();
@@ -104,9 +107,9 @@ export function timeAdvance() {
   }
 }
 // keep count of how many pomodoros have been completed
-document.getElementById("completePomos").innerHTML =
+/*document.getElementById("completePomos").innerHTML =
   "Completed Pomodoros: " + pomodoro;
-
+*/
 /*
  * startButton and stopButton will be called by the start/stop button
  * The single button will swap between the two functions each time one is called
