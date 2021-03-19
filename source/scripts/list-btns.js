@@ -8,6 +8,11 @@ window.addEventListener("DOMContentLoaded", () => {
   if (!myStorage.getItem("tasks")) {
     myStorage.setItem("tasks", "[]");
   }
+
+  if (!myStorage.getItem("incomplete")) {
+    myStorage.setItem("incomplete", "[]");
+  }
+
   const tasks = JSON.parse(myStorage.getItem("tasks"));
   if (tasks.length > 0) {
     document.getElementById("no-task").style.display = "none";

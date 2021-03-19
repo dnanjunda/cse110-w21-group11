@@ -1,4 +1,32 @@
-import { completedTask, isTaskSelected } from "./stats.js";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: settings.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: settings.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { completedTask, isTaskSelected } from "./stats.js";
 
 window.addEventListener("DOMContentLoaded", () => {
   loadSettings();
@@ -20,8 +48,8 @@ export function timeAdvance() {
   --timeRemaining;
   let minute = Math.floor(timeRemaining / 60);
   let seconds = Math.floor(timeRemaining % 60);
-  minute = minute < 10 ? "0" + minute : minute;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
+  minute = minute &lt; 10 ? "0" + minute : minute;
+  seconds = seconds &lt; 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
   updateCircle(timeRemaining, currentTime);
@@ -29,7 +57,7 @@ export function timeAdvance() {
   /*
    * Break handling
    */
-  if (timeRemaining <= 0) {
+  if (timeRemaining &lt;= 0) {
     // If a break just completed
     document.getElementById("mixBut").style.background = "#bd0000";
     document.getElementById("mixBut").removeAttribute("disabled");
@@ -72,7 +100,7 @@ export function timeAdvance() {
       }
 
       // If it is time for a long break
-      if (pomodoro % pomosUntilLongBreak == 0 && pomodoro != 0) {
+      if (pomodoro % pomosUntilLongBreak == 0 &amp;&amp; pomodoro != 0) {
         const minutesPerLongBreak = document.getElementById("breakPomos").value;
         if (minutesPerLongBreak == "") {
           // default value: 30 mins
@@ -142,8 +170,8 @@ export function stopButton() {
   // Updating the time display given that a new time remaining will have been set for a break
   let minute = Math.floor(timeRemaining / 60);
   let seconds = Math.floor(timeRemaining % 60);
-  minute = minute < 10 ? "0" + minute : minute;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
+  minute = minute &lt; 10 ? "0" + minute : minute;
+  seconds = seconds &lt; 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
   mixBut.value = "START";
@@ -163,8 +191,8 @@ export function resetButton() {
 
   let minute = Math.floor(timeRemaining / 60);
   let seconds = Math.floor(timeRemaining % 60);
-  minute = minute < 10 ? "0" + minute : minute;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
+  minute = minute &lt; 10 ? "0" + minute : minute;
+  seconds = seconds &lt; 10 ? "0" + seconds : seconds;
   document.getElementById("minute").innerHTML = minute;
   document.getElementById("seconds").innerHTML = seconds;
   updateCircle(timeRemaining, currentTime);
@@ -184,7 +212,7 @@ export function resetPomos() {
  * canChangeTask is for use by stats.js to determine whether now is an appropriate time to change what task the user is working on
  */
 export function canChangeTask() {
-  return !onBreak && intervalId == null;
+  return !onBreak &amp;&amp; intervalId == null;
 }
 
 /*
@@ -328,7 +356,7 @@ export function minuteChange() {
     document.getElementById("minute").innerHTML = "00";
     secondsPerPomo = Number(inputSecs.value);
     currentTime = secondsPerPomo;
-  } else if (inputMins.value < 10) {
+  } else if (inputMins.value &lt; 10) {
     document.getElementById("minute").innerHTML = "0" + inputMins.value;
     secondsPerPomo = 60 * Number(inputMins.value) + Number(inputSecs.value);
     currentTime = secondsPerPomo;
@@ -367,7 +395,7 @@ export function secondChange() {
       secondsPerPomo = 60 * Number(inputMins.value);
       currentTime = secondsPerPomo;
     }
-  } else if (inputSecs.value < 10) {
+  } else if (inputSecs.value &lt; 10) {
     document.getElementById("seconds").innerHTML = "0" + inputSecs.value;
     if (inputMins.value == "") {
       document.getElementById("minute").innerHTML = "25";
@@ -495,3 +523,26 @@ function updateCircle(value, timePercent) {
   const offset = -length + (length * value) / timePercent;
   progressBar.style.strokeDashoffset = offset;
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#canChangeTask">canChangeTask</a></li><li><a href="global.html#clearList">clearList</a></li><li><a href="global.html#completedTask">completedTask</a></li><li><a href="global.html#decrement">decrement</a></li><li><a href="global.html#increment">increment</a></li><li><a href="global.html#isTaskSelected">isTaskSelected</a></li><li><a href="global.html#minuteChange">minuteChange</a></li><li><a href="global.html#resetButton">resetButton</a></li><li><a href="global.html#resetPomos">resetPomos</a></li><li><a href="global.html#scrollFunction">scrollFunction</a></li><li><a href="global.html#secondChange">secondChange</a></li><li><a href="global.html#selectTask">selectTask</a></li><li><a href="global.html#sound">sound</a></li><li><a href="global.html#startButton">startButton</a></li><li><a href="global.html#stopButton">stopButton</a></li><li><a href="global.html#timeAdvance">timeAdvance</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Thu Mar 18 2021 10:01:58 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
